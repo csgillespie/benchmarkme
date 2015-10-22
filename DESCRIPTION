@@ -1,0 +1,13 @@
+Package: benchmarkme
+Type: Package
+Title: System Benchmarks
+Version: 0.1
+Date: 2015-10-22
+Authors@R: person(given="Colin", family="Gillespie",
+    email="csgillespie@gmail.com", role = c("aut", "cre"))
+Maintainer: Colin Gillespie <csgillespie@gmail.com>
+Description: Provides functions for obtaining system specifications, such as 
+  RAM, CPU type, and R version. It also contains a benchmarking script.
+URL: https://github.com/csgillespie/benchmarkme
+BugReports: https://github.com/csgillespie/benchmarkme/issues
+LazyData: TRUE
