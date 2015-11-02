@@ -12,7 +12,7 @@ bm_matrix_fft = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- fft(a)})[1:3]
   }
   if(verbose)
-    message(c("FFT over 2,400,000 random values____________________ (sec): ", colSums(timings)[3], "\n"))
+    message(c("FFT over 2,400,000 random values____________________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -28,7 +28,7 @@ bm_matrix_eigen = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({ b <- eigen(a, symmetric=FALSE, only.values=TRUE)$Value})[1:3]
   }
   if(verbose)
-    message(c("Eigenvalues of a 640x640 random matrix______________ (sec): ", colSums(timings)[3], "\n"))
+    message(c("Eigenvalues of a 640x640 random matrix______________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -43,7 +43,7 @@ bm_matrix_determinant = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- det(a)})[1:3]
   }
   if(verbose)
-    message(c("Determinant of a 2500x2500 random matrix____________ (sec): ", colSums(timings)[3], "\n"))
+    message(c("Determinant of a 2500x2500 random matrix____________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -59,7 +59,7 @@ bm_matrix_cholesky = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- chol(a)})[1:3]
   }
   if(verbose)
-    message(c("Cholesky decomposition of a 3000x3000 matrix________ (sec): ", colSums(timings)[3], "\n"))
+    message(c("Cholesky decomposition of a 3000x3000 matrix________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -74,6 +74,6 @@ bm_matrix_inverse = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- solve(a)})[1:3]
   }
   if(verbose)
-    message(c("Inverse of a 1600x1600 random matrix________________ (sec): ", colSums(timings)[3], "\n"))
+    message(c("Inverse of a 1600x1600 random matrix________________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }

@@ -15,7 +15,7 @@ bm_matrix_manip = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing[1:3]
   }
   if(verbose)
-    message(c("Creation, transp., deformation of a 2500x2500 matrix (sec): ", timing, "\n"))
+    message(c("Creation, transp., deformation of a 2500x2500 matrix (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -30,7 +30,7 @@ bm_matrix_power = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- a^1000})[1:3]
   }
   if(verbose)
-    message(c("2400x2400 normal distributed random matrix ^1000____ (sec): ", timing, "\n"))
+    message(c("2400x2400 normal distributed random matrix ^1000____ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -45,7 +45,7 @@ bm_matrix_sort = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- sort(a, method="quick")})[1:3]
   }
   if(verbose)
-    message(c("Sorting of 7,000,000 random values__________________ (sec): ", timing, "\n"))
+    message(c("Sorting of 7,000,000 random values__________________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -60,7 +60,7 @@ bm_matrix_cross_product = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({b <- crossprod(a)})[1:3]
   }
   if(verbose)
-    message(c("2800x2800 cross-product matrix (b = a' * a)_________ (sec): ", timing, "\n"))
+    message(c("2800x2800 cross-product matrix (b = a' * a)_________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -76,6 +76,6 @@ bm_matrix_lm = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = system.time({ans = solve(crossprod(a), crossprod(a,b))})[1:3]
   }
   if(verbose)
-    message(c("Linear regr. over a 3000x3000 matrix (c = a \\ b')___ (sec): ", timing, "\n"))
+    message(c("Linear regr. over a 3000x3000 matrix (c = a \\ b')___ (sec): ", mean(timings[,3]), "\n"))
   timings
 }

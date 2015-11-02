@@ -7,7 +7,7 @@ benchmark_all = function(runs=3, verbose=FALSE) {
                   "bm_matrix_sort")
 
   results = lapply(c(prog_funs, matrix_funs), do.call, list(runs=runs, verbose=verbose))
-  Reduce(results, "rbind")
+  Reduce("rbind", results)
 }
 
 

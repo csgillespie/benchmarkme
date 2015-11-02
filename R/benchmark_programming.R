@@ -10,7 +10,7 @@ bm_prog_fib = function(runs=3, verbose=FALSE) {
     timings[i, 1:3] = system.time({b <- (phi^a - (-phi)^(-a))/sqrt(5)})[1:3]
   }
   if(verbose)
-    message(c("3,500,000 Fibonacci numbers calculation (vector calc)(sec): ", timing, "\n"))
+    message(c("3,500,000 Fibonacci numbers calculation (vector calc)(sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -28,7 +28,7 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 3000x3000 Hilbert matrix (matrix calc) (sec): ", timing, "\n"))
+    message(c("Creation of a 3000x3000 Hilbert matrix (matrix calc) (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -45,7 +45,7 @@ bm_prog_gcd = function(runs=3, verbose=FALSE) {
     timings[i,1:3] <- system.time({ans <- gcd2(a, b)})[1:3]                            # gcd2 is a recursive function
   }
   if(verbose)
-    message(c("Grand common divisors of 400,000 pairs (recursion)__ (sec): ", timing, "\n"))
+    message(c("Grand common divisors of 400,000 pairs (recursion): ", mean(timings[,3]), " (sec) \n"))
   timings
 }
 
@@ -53,22 +53,24 @@ bm_prog_gcd = function(runs=3, verbose=FALSE) {
 #' @export
 bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, test="prog_toeplitz")
+  N = 5000
+  ans = rep(0, N*N)
+  dim(ans) = c(N, N)
   for (i in 1:runs) {
-    ans <- rep(0, 500*500); dim(ans) <- c(500, 500)
     invisible(gc())
     timing <- system.time({
       # Rem: there are faster ways to do this
       # but here we want to time loops (220*220 'for' loops)! 
-      for (j in 1:500) {
-        for (k in 1:500) {
-          ans[k,j] <- abs(j - k) + 1
+      for (j in 1:N) {
+        for (k in 1:N) {
+          ans[k,j] = abs(j - k) + 1
         }
       }
     })[1:3]
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 500x500 Toeplitz matrix (loops)_______ (sec): ", timing, "\n"))
+    message(c("Creation of a 500x500 Toeplitz matrix (loops)_______ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
 
@@ -113,6 +115,6 @@ bm_prog_escoufier = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Escoufier's method on a 45x45 matrix (mixed)________ (sec): ", timing, "\n"))
+    message(c("Escoufier's method on a 45x45 matrix (mixed)________ (sec): ", mean(timings[,3]), "\n"))
   timings
 }
