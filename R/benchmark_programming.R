@@ -1,5 +1,6 @@
 
 #' @title Programming benchmarks
+#' @inheritParams benchmark_all
 #' @export
 bm_prog_fib = function(runs=3, verbose=FALSE) {
   a = 0; b = 0; phi = 1.6180339887498949

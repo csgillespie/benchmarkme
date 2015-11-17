@@ -18,4 +18,9 @@ bm_prog_toeplitz(runs = 3, verbose = FALSE)
 
 bm_prog_escoufier(runs = 3, verbose = FALSE)
 }
+\arguments{
+\item{runs}{Number of times to run the test. Default 3.}
+
+\item{verbose}{Default FALSE.}
+}
 
