@@ -26,7 +26,7 @@ get_ram = function() {
   }  else {
     ram =  memory.size()
   }
-  structure(ram, class="bytes")
+  structure(ram, class="bytes", names="ram")
 }
 
 #' @references Taken from the pryr package

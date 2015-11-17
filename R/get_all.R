@@ -1,10 +1,26 @@
 #' @export
 get_all = function() {
-  list(ram = get_ram(), 
-       cpu = get_cpu(), 
-       r_version = get_r_version(), 
-       byte_compiler = get_byte_compiler(), 
-       platform_info = get_platform_info())
+
+  list(r_version = get_r_version(), 
+       platform_info = get_platform_info(), 
+       sys_info = get_sys_info())
+}
+
+#' @export
+save_results = function(filename, results=NULL, ...) {
+  if(is.null(results)) 
+    results = benchmark_all(...)
+  type = get_all()
+  type$results = results
+  saveRDS(type, file=filename)
 }
 
 
+# @export
+# upload = function(results) {
+#   
+#  tmp = serialize(results, NULL)
+#  
+#   x = unserialize(tmp)
+#   x
+# }
