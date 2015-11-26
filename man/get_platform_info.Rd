@@ -2,14 +2,11 @@
 % Please edit documentation in R/platform_info.R
 \name{get_platform_info}
 \alias{get_platform_info}
-\title{Platform Info}
+\title{Platform information}
 \usage{
 get_platform_info()
 }
-\value{
-Returns \code{.Platform}
-}
 \description{
-Platform Info
+This function just returns the outpu of \code{.Platform}
 }
 
