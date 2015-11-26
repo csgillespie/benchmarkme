@@ -2,8 +2,13 @@
 % Please edit documentation in R/upload_results.R
 \name{upload_results}
 \alias{upload_results}
-\title{Upload results}
+\title{Upload benchmark results}
 \usage{
-upload_results(results)
+upload_results(results, url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php")
+}
+\arguments{
+\item{results}{Benchmark results. Probably obtained from \code{benchmark_all()}.}
+
+\item{url}{The location of where to upload the results.}
 }
 
