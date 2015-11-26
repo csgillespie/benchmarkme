@@ -1,8 +1,8 @@
-Rnorm   = function(...) {
+Rnorm   = function(n) {
   if(requireNamespace("RcppZiggurat", quietly = TRUE))
-    RcppZiggurat::zrnorm(...)
+    zrnorm(n)
   else
-    rnorm(...)
+    rnorm(n)
 }
 
 Runif = function(...) {
