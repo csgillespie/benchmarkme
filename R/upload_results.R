@@ -13,7 +13,7 @@ upload_results = function(results, url="http://www.mas.ncl.ac.uk/~ncsg3/form.php
   saveRDS(results, file=fname)
   r = POST(url, 
            body = list(userFile = upload_file(fname)),
-                       encode = "multipart")
+           encode = "multipart")
   unlink(fname)        
   
 }
