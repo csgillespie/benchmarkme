@@ -2,7 +2,10 @@
 % Please edit documentation in R/upload_results.R
 \name{upload_results}
 \alias{upload_results}
-\title{Upload benchmark results}
+\title{Upload benchmark results
+
+This function uploads the benchmarking results. These results will then be incorparated
+in future versions of the package.}
 \usage{
 upload_results(results, url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php")
 }

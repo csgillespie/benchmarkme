@@ -1,4 +1,7 @@
 #' @title Upload benchmark results
+#' 
+#' This function uploads the benchmarking results. These results will then be incorparated
+#' in future versions of the package.
 #' @param results Benchmark results. Probably obtained from \code{benchmark_all()}.
 #' @param url The location of where to upload the results.
 #' @export
