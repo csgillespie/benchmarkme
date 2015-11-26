@@ -11,6 +11,7 @@
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' for a complete history.
+#' @inheritParams benchmark_all
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' @export
 bm_matrix_fft = function(runs=3, verbose=FALSE) {

@@ -18,6 +18,11 @@ bm_matrix_cross_product(runs = 3, verbose = FALSE)
 
 bm_matrix_lm(runs = 3, verbose = FALSE)
 }
+\arguments{
+\item{runs}{Number of times to run the test. Default 3.}
+
+\item{verbose}{Default FALSE.}
+}
 \description{
 A collection of matrix benchmark functions aimed at
 assessing the calculation speed.
@@ -26,7 +31,7 @@ assessing the calculation speed.
 \item 2400x2400 normal distributed random matrix ^1000.
 \item Sorting of 7,000,000 random values.
 \item Cholesky decomposition of a 3000x3000 matrix.
-\item Inverse of a 1600x1600 random matrix.
+\item Linear regr. over a 3000x3000 matrix.
 }
 These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
 for a complete history.

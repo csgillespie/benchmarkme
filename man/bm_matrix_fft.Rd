@@ -18,6 +18,11 @@ bm_matrix_cholesky(runs = 3, verbose = FALSE)
 
 bm_matrix_inverse(runs = 3, verbose = FALSE)
 }
+\arguments{
+\item{runs}{Number of times to run the test. Default 3.}
+
+\item{verbose}{Default FALSE.}
+}
 \description{
 A collection of matrix benchmark functions
 \itemize{
