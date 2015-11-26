@@ -13,7 +13,8 @@ BugReports: https://github.com/csgillespie/benchmarkme/issues
 LazyData: TRUE
 Imports:
     Matrix,
-    compiler, httr
-Enhances: RcppZigguart
+    compiler,
+    httr
+Suggests: RcppZiggurat
 RoxygenNote: 5.0.1
 License: GPL-2 | GPL-3
