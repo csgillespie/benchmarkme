@@ -1,4 +1,11 @@
-
+#' CPU Description
+#' 
+#' Extracting the amount of RAM is OS specific and hence messy.
+#' \itemize{
+#' \item Linux: \code{/proc/cpuinfo}
+#' \item Apple: \code{sysctl -n}
+#' \item Windows: \code{??}
+#' }
 #' @export
 get_cpu = function() {
   os = R.version$os
@@ -8,29 +15,13 @@ get_cpu = function() {
     
     cmd  = "awk '/model name/' /proc/cpuinfo"
     model_name = gsub("model name\t: ", "", unique(system(cmd, intern=TRUE)))
+  } else if(length(grep("^darwin", os))) {
+    vendor_id = system("sysctl -n machdep.cpu.vendor",intern=TRUE) 
+    model_name = system("sysctl -n machdep.cpu.brand_string",intern=TRUE) 
   }
-#   } else if(length(grep("^darwin", os))) {
-#     #(ram = system('system_profiler -detailLevel mini | grep "  Memory:"'))
-#     #ram = to_Bytes(unlist(strsplit(ram, " ")))
-#   }  else {
-#     return(system("wmic cpu"))
-#   }
+  #   }  else {
+  #     return(system("wmic cpu"))
+  #   }
   list(vendor_id=vendor_id, model_name = model_name)
 }
 
-
-# $ /usr/sbin/system_profiler SPHardwareDataType
-#
-# Hardware:
-#
-#   Hardware Overview:
-#
-#   Model Name: iMac
-# Model Identifier: iMac7,1
-# Processor Name: Intel Core 2 Duo
-# Processor Speed: 2.4 GHz
-# Number of Processors: 1
-# Total Number of Cores: 2
-# L2 Cache: 4 MB
-# Memory: 4 GB
-# Bus Speed: 800 MHz
