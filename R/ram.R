@@ -27,7 +27,7 @@ get_ram = function() {
     cmd = "awk '/MemFree/ {print $2}' /proc/meminfo"
     ram = as.numeric(system(cmd, intern=TRUE))*1000
   } else if(length(grep("^darwin", os))) {
-    (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE))
+    (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1])
     ram = to_Bytes(unlist(strsplit(ram, " ")))
   } else if(length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory"
