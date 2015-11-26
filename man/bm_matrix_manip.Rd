@@ -6,7 +6,7 @@
 \alias{bm_matrix_manip}
 \alias{bm_matrix_power}
 \alias{bm_matrix_sort}
-\title{Matrix calculations}
+\title{Matrix function benchmarks}
 \usage{
 bm_matrix_manip(runs = 3, verbose = FALSE)
 
@@ -19,6 +19,19 @@ bm_matrix_cross_product(runs = 3, verbose = FALSE)
 bm_matrix_lm(runs = 3, verbose = FALSE)
 }
 \description{
-Matrix calculations
+A collection of matrix benchmark functions aimed at
+assessing the calculation speed.
+\itemize{
+\item Creation, transp., deformation of a 2500x2500 matrix.
+\item 2400x2400 normal distributed random matrix ^1000.
+\item Sorting of 7,000,000 random values.
+\item Cholesky decomposition of a 3000x3000 matrix.
+\item Inverse of a 1600x1600 random matrix.
+}
+These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
+for a complete history.
+}
+\references{
+http://r.research.att.com/benchmarks/R-benchmark-25.R
 }
 
