@@ -10,7 +10,18 @@ to_Bytes = function(value) {
 }
 
 
+#' Get the amount of RAM
+#' 
+#' Extracting the amount of RAM is OS specific and hence messy.
+#' \itemize{
+#' \item Linux: \code{proc/meminfo}
+#' \item Apple: \code{system_profiler -detailLevel mini}
+#' \item Windows: \code{memory.size()}
+#' \item Solaris: \code{prtconf}
+#' }
 #' @export
+#' @examples 
+#' get_ram()
 get_ram = function() {
   os = R.version$os
   if(length(grep("^linux", os))) {
@@ -29,7 +40,8 @@ get_ram = function() {
   structure(ram, class="bytes", names="ram")
 }
 
-#' @references Taken from the pryr package
+#' @rdname get_ram
+#' @references The print.bytes function was taken from the pryr package.
 #' @export
 print.bytes = function (x, digits = 3, ...) 
 {
