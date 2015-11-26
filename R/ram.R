@@ -9,7 +9,6 @@ to_Bytes = function(value) {
 
 }
 
-
 #' Get the amount of RAM
 #' 
 #' Extracting the amount of RAM is OS specific and hence messy.
@@ -28,11 +27,11 @@ get_ram = function() {
     cmd = "awk '/MemFree/ {print $2}' /proc/meminfo"
     ram = as.numeric(system(cmd, intern=TRUE))*1000
   } else if(length(grep("^darwin", os))) {
-    (ram = system('system_profiler -detailLevel mini | grep "  Memory:"'))
+    (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE))
     ram = to_Bytes(unlist(strsplit(ram, " ")))
   } else if(length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory"
-    ram = system(cmd) ## Memory size: XXX Megabytes
+    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
     ram = to_Bytes(unlist(strsplit(ram, " "))[3:4])
   }  else {
     ram =  memory.size()
