@@ -2,24 +2,11 @@
 % Please edit documentation in R/sys_info.R
 \name{get_sys_info}
 \alias{get_sys_info}
-\title{General system information}
+\title{System info}
 \usage{
 get_sys_info()
 }
-\value{
-A list
-}
 \description{
-The \code{get_sys_info} returns general system level information as a list. Each element of the list
-is contains the output from: 
-\itemize{
-\item \code{Sys.info()};
-\item \code{get_platform_info()};
-\item \code{get_r_version()};
-\item \code{get_ram()};
-\item \code{get_cpu()};
-\item \code{get_byte_compiler()};
-\item The current date.
-}
+Returns \code{Sys.info()}
 }
 
