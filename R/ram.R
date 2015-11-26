@@ -39,9 +39,9 @@ get_ram = function() {
   structure(ram, class="bytes", names="ram")
 }
 
-#' @rdname get_ram
-#' @references The print.bytes function was taken from the pryr package.
-#' @export
+
+# @references The print.bytes function was taken from the pryr package.
+#' @S3method  print bytes
 print.bytes = function (x, digits = 3, ...) 
 {
   power <- min(floor(log(abs(x), 1000)), 4)

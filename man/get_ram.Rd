@@ -2,12 +2,9 @@
 % Please edit documentation in R/ram.R
 \name{get_ram}
 \alias{get_ram}
-\alias{print.bytes}
 \title{Get the amount of RAM}
 \usage{
 get_ram()
-
-print.bytes(x, digits = 3, ...)
 }
 \description{
 Extracting the amount of RAM is OS specific and hence messy.
@@ -20,8 +17,5 @@ Extracting the amount of RAM is OS specific and hence messy.
 }
 \examples{
 get_ram()
-}
-\references{
-The print.bytes function was taken from the pryr package.
 }
 
