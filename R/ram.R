@@ -39,8 +39,8 @@ get_ram = function() {
   structure(ram, class="bytes", names="ram")
 }
 
-# @rdname get_ram
-# @references The print.bytes function was taken from the pryr package.
+#' @rdname get_ram
+#' @references The print.bytes function was taken from the pryr package.
 #' @export
 print.bytes = function (x, digits = 3, ...) 
 {
