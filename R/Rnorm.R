@@ -1,6 +1,6 @@
 Rnorm   = function(n) {
   if(requireNamespace("RcppZiggurat", quietly = TRUE))
-    zrnorm(n)
+    RcppZiggurat::zrnorm(n)
   else
     rnorm(n)
 }
