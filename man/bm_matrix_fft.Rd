@@ -6,7 +6,7 @@
 \alias{bm_matrix_eigen}
 \alias{bm_matrix_fft}
 \alias{bm_matrix_inverse}
-\title{FFT benchmark}
+\title{Matrix function benchmarks}
 \usage{
 bm_matrix_fft(runs = 3, verbose = FALSE)
 
