@@ -3,14 +3,14 @@
 \name{get_ram}
 \alias{get_ram}
 \alias{print.bytes}
-\title{Obtain RAM}
+\title{Get the amount of RAM}
 \usage{
 get_ram()
 
 print.bytes(x, digits = 3, ...)
 }
 \description{
-Extracting the amount of RAM is OS specific.
+Extracting the amount of RAM is OS specific and hence messy.
 \itemize{
 \item Linux: \code{proc/meminfo}
 \item Apple: \code{system_profiler -detailLevel mini}
