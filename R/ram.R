@@ -6,7 +6,7 @@ to_Bytes = function(value) {
 
   power = match(units, c("Kilobytes", "Megabytes", "Gigabytes", "Terabytes"))
   if(!is.na(power)) return(num*1000^power)
-
+  num
 }
 
 #' Get the amount of RAM
@@ -34,7 +34,11 @@ get_ram = function() {
     ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
     ram = to_Bytes(unlist(strsplit(ram, " "))[3:4])
   }  else {
-    ram =  memory.size()
+    ## Ram
+    ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1]
+    ram = remove_white(ram)
+    ram = ram[nchar(ram) > 0]
+    ram = sum(as.numeric(ram))
   }
   structure(ram, class="bytes", names="ram")
 }
