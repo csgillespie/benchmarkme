@@ -1,5 +1,15 @@
 
 #' @title Programming benchmarks
+#' @description A collection of matrix programming benchmark functions
+#' \itemize{
+#' \item 3,500,000 Fibonacci numbers calculation (vector calc).
+#' \item Creation of a 3000x3000 Hilbert matrix (matrix calc).
+#' \item Grand common divisors of 400,000 pairs (recursion).
+#' \item Creation of a 500x500 Toeplitz matrix (loops).
+#' \item Escoufier's method on a 45x45 matrix (mixed).
+#' }
+#' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
+#' for a complete history.
 #' @inheritParams benchmark_all
 #' @export
 bm_prog_fib = function(runs=3, verbose=FALSE) {
