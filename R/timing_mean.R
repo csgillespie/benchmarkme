@@ -3,4 +3,4 @@ timings_mean = function(timings) {
   paste0(": ", signif(m, 3), " (sec).")
 }
 
-# plot(ben)
+remove_white = function(x) gsub("(^[[:space:]]+|[[:space:]]+$)", "", x)
