@@ -6,8 +6,7 @@
 #' @importFrom compiler getCompilerOption
 #' @export
 get_byte_compiler = function() {
-  optimize = compiler::getCompilerOption("optimize")
-  structure(optimize, names = "byte_optimize")
+  structure(Sys.getenv("R_COMPILE_PKGS"), names = "byte_optimize")
 }
 
 
