@@ -8,7 +8,7 @@ benchmark_all = function(runs=3, verbose=FALSE) {
 
   results = lapply(get_benchmarks(), do.call, list(runs=runs, verbose=verbose))
   results = Reduce("rbind", results)
-  class(results) = c("ben_results", class(ben))
+  class(results) = c("ben_results", class(results))
   results
 }
 
