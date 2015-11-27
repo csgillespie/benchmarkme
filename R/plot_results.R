@@ -6,12 +6,12 @@ plot.ben_results = function(x, ...) {
   tmp_env = environment()
   data(results, package="benchmarkme", envir = tmp_env)
   results = tmp_env$results
-  results = results[order(-results$timings), ]
+  results = results[order(results$timings), ]
   
   ## Manipulate new data
   no_of_reps = length(x$test)/length(unique(x$test))
-  ben_sum = sum(ben[,3])/no_of_reps
-  ben_rank = which(ben_sum > results$timings)[1]
+  ben_sum = sum(x[,3])/no_of_reps
+  ben_rank = which(ben_sum < results$timings)[1]
   
   ## Sort plot
   op = par(mar=c(3,3,2,1), 
@@ -20,24 +20,20 @@ plot.ben_results = function(x, ...) {
   on.exit(op)
   
   ymax = max(results$timings, ben_sum)
-  
-  
-  plot(results$timings, xlab="CPU", ylab="Total timing (secs)", 
+  plot(results$timings, xlab="Rank", ylab="Total timing (secs)", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
        panel.first=grid())
   
   points(ben_rank-1/2,ben_sum, bg=2, pch=21)
   text(ben_rank-1/2, mean(results$timings), "You", col=2)
-  
+
+  ## Relative timings  
   fastest = min(ben_sum, results$timings)
   ymax= ymax/fastest
-  
-  
-  plot(results$timings/fastest, xlab="CPU", ylab="Relative", 
+  plot(results$timings/fastest, xlab="Rank", ylab="Relative timing", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
        panel.first=grid())
   
   points(ben_rank-1/2,ben_sum/fastest, bg=2, pch=21)
   text(ben_rank-1/2, mean(results$timings)/fastest, "You", col=2)
-  
 }
