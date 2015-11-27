@@ -4,14 +4,15 @@
 #' @export
 bm_prog_fib = function(runs=3, verbose=FALSE) {
   a = 0; b = 0; phi = 1.6180339887498949
-  timings = data.frame(user = numeric(runs), system=0, elapsed=0, test="prog_fib")
+  timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
+                       test="fib", group="prog")
   for (i in 1:runs) {
     a = floor(Runif(3500000)*1000)
     invisible(gc())
     timings[i, 1:3] = system.time({b <- (phi^a - (-phi)^(-a))/sqrt(5)})[1:3]
   }
   if(verbose)
-    message(c("3,500,000 Fibonacci numbers calculation (vector calc)(sec): ", mean(timings[,3]), "\n"))
+    message(c("3,500,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
   timings
 }
 
@@ -19,7 +20,8 @@ bm_prog_fib = function(runs=3, verbose=FALSE) {
 #' @export
 bm_prog_hilbert = function(runs=3, verbose=FALSE) {
   a = 3000; b = 0
-  timings = data.frame(user = numeric(runs), system=0, elapsed=0, test="prog_hilbert")
+  timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
+                       test="hilbert", group="prog")
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
@@ -29,7 +31,7 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 3000x3000 Hilbert matrix (matrix calc) (sec): ", mean(timings[,3]), "\n"))
+    message(c("Creation of a 3000x3000 Hilbert matrix (matrix calc)", timings_mean(timings)))
   timings
 }
 
@@ -37,23 +39,25 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
 #' @export
 bm_prog_gcd = function(runs=3, verbose=FALSE) {
   ans = 0
-  timings = data.frame(user = numeric(runs), system=0, elapsed=0, test="prog_gcd")
+  timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
+                       test="gcd", group="prog")
   gcd2 = function(x, y) {if (sum(y > 1.0E-4) == 0) x else {y[y == 0] <- x[y == 0]; Recall(y, x %% y)}}
   for (i in 1:runs) {
     a = ceiling(Runif(400000)*1000)
     b = ceiling(Runif(400000)*1000)
     invisible(gc())
-    timings[i,1:3] <- system.time({ans <- gcd2(a, b)})[1:3]                            # gcd2 is a recursive function
+    timings[i,1:3] <- system.time({ans <- gcd2(a, b)})[1:3] # gcd2 is a recursive function
   }
   if(verbose)
-    message(c("Grand common divisors of 400,000 pairs (recursion): ", mean(timings[,3]), " (sec) \n"))
+    message(c("Grand common divisors of 400,000 pairs (recursion)", timings_mean(timings)))
   timings
 }
 
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
-  timings = data.frame(user = numeric(runs), system=0, elapsed=0, test="prog_toeplitz")
+  timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
+                       test="toeplitz", group="prog")
   N = 5000
   ans = rep(0, N*N)
   dim(ans) = c(N, N)
@@ -71,14 +75,15 @@ bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 500x500 Toeplitz matrix (loops)_______ (sec): ", mean(timings[,3]), "\n"))
+    message(c("Creation of a 500x500 Toeplitz matrix (loops)", timings_mean(timings)))
   timings
 }
 
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_escoufier = function(runs=3, verbose=FALSE) {
-  timings = data.frame(user = numeric(runs), system=0, elapsed=0, test="prog_escoufier")
+  timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
+                       test="escoufier", group="prog")
   p <- 0; vt <- 0; vr <- 0; vrt <- 0; rvt <- 0; RV <- 0; j <- 0; k <- 0;
   x2 <- 0; R <- 0; Rxx <- 0; Ryy <- 0; Rxy <- 0; Ryx <- 0; Rvmax <- 0
   # Calculate the trace of a matrix (sum of its diagonal elements)
@@ -116,6 +121,6 @@ bm_prog_escoufier = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Escoufier's method on a 45x45 matrix (mixed)________ (sec): ", mean(timings[,3]), "\n"))
+    message(c("Escoufier's method on a 45x45 matrix (mixed)", timings_mean(timings)))
   timings
 }
