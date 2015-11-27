@@ -19,6 +19,7 @@ is contains the output from:
 \item \code{get_ram()};
 \item \code{get_cpu()};
 \item \code{get_byte_compiler()};
+\item \code{get_linear_algebra()};
 \item \code{installed.packages()}
 \item The current date.
 }
