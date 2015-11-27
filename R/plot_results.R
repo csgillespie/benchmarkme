@@ -1,4 +1,3 @@
-
 #' @S3method plot ben_results
 plot.ben_results = function(x, ...) {
   
@@ -12,6 +11,7 @@ plot.ben_results = function(x, ...) {
   no_of_reps = length(x$test)/length(unique(x$test))
   ben_sum = sum(x[,3])/no_of_reps
   ben_rank = which(ben_sum < results$timings)[1]
+  if(is.na(ben_rank)) ben_rank = nrow(results) + 1
   
   ## Sort plot
   op = par(mar=c(3,3,2,1), 
@@ -35,5 +35,5 @@ plot.ben_results = function(x, ...) {
        panel.first=grid())
   
   points(ben_rank-1/2,ben_sum/fastest, bg=2, pch=21)
-  text(ben_rank-1/2, mean(results$timings)/fastest, "You", col=2)
+  text(ben_rank-1/2, ben_sum/fastest, "You", col=2)
 }
