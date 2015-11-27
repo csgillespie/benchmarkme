@@ -2,9 +2,9 @@
 #' 
 #' This functions runs all benchmarks. To view the list of benchmarks, see \code{get_benchmarks}.
 #' @param runs Number of times to run the test. Default 3.
-#' @param verbose Default FALSE.
+#' @param verbose Default TRUE.
 #' @export
-benchmark_all = function(runs=3, verbose=FALSE) {
+benchmark_all = function(runs=3, verbose=TRUE) {
 
   results = lapply(get_benchmarks(), do.call, list(runs=runs, verbose=verbose))
   results = Reduce("rbind", results)
