@@ -11,7 +11,7 @@ Extracting the amount of RAM is OS specific and hence messy.
 \itemize{
 \item Linux: \code{/proc/cpuinfo}
 \item Apple: \code{sysctl -n}
-\item Windows: \code{??}
+\item Windows: \code{wmic cpu}
 }
 }
 

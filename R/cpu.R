@@ -4,7 +4,7 @@
 #' \itemize{
 #' \item Linux: \code{/proc/cpuinfo}
 #' \item Apple: \code{sysctl -n}
-#' \item Windows: \code{??}
+#' \item Windows: \code{wmic cpu}
 #' }
 #' @export
 get_cpu = function() {
@@ -18,10 +18,11 @@ get_cpu = function() {
   } else if(length(grep("^darwin", os))) {
     vendor_id = system("sysctl -n machdep.cpu.vendor",intern=TRUE) 
     model_name = system("sysctl -n machdep.cpu.brand_string",intern=TRUE) 
+  }  else {
+    ## CPU
+    model_name = system("wmic cpu get name", intern=TRUE)[2]
+    vendor_id = system("wmic cpu get manufacturer", intern=TRUE)[2]
   }
-  #   }  else {
-  #     return(system("wmic cpu"))
-  #   }
-  list(vendor_id=vendor_id, model_name = model_name)
+  list(vendor_id=remove_white(vendor_id), model_name = remove_white(model_name))
 }
 
