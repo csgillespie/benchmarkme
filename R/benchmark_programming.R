@@ -34,10 +34,12 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
                        test="hilbert", group="prog")
   for (i in 1:runs) {
     invisible(gc())
-    timing <- system.time({
-      b <- rep(1:a, a); dim(b) <- c(a, a);
-      b <- 1 / (t(b) + 0:(a-1))
-    })[1:3]
+    timing <- system.time(
+      {
+        b <- rep(1:a, a); dim(b) <- c(a, a);
+        b <- 1 / (t(b) + 0:(a-1))
+      }
+    )[1:3]
     timings[i,1:3] = timing
   }
   if(verbose)
@@ -73,15 +75,17 @@ bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
   dim(ans) = c(N, N)
   for (i in 1:runs) {
     invisible(gc())
-    timing <- system.time({
-      # Rem: there are faster ways to do this
-      # but here we want to time loops (220*220 'for' loops)! 
-      for (j in 1:N) {
-        for (k in 1:N) {
-          ans[k,j] = abs(j - k) + 1
+    timing <- system.time(
+      {
+        # Rem: there are faster ways to do this
+        # but here we want to time loops (220*220 'for' loops)! 
+        for (j in 1:N) {
+          for (k in 1:N) {
+            ans[k,j] = abs(j - k) + 1
+          }
         }
       }
-    })[1:3]
+    )[1:3]
     timings[i,1:3] = timing
   }
   if(verbose)
@@ -101,33 +105,35 @@ bm_prog_escoufier = function(runs=3, verbose=FALSE) {
   for (i in 1:runs) {
     x <- abs(Rnorm(45*45)); dim(x) <- c(45, 45)
     invisible(gc())
-    timing <- system.time({
-      # Calculation of Escoufier's equivalent vectors
-      p <- ncol(x)
-      vt <- 1:p                                  # Variables to test
-      vr <- NULL                                 # Result: ordered variables
-      RV <- 1:p                                  # Result: correlations
-      vrt <- NULL
-      for (j in 1:p) {                           # loop on the variable number
-        Rvmax <- 0
-        for (k in 1:(p-j+1)) {                   # loop on the variables
-          x2 <- cbind(x, x[,vr], x[,vt[k]])
-          R <- cor(x2)                           # Correlations table
-          Ryy <- R[1:p, 1:p]
-          Rxx <- R[(p+1):(p+j), (p+1):(p+j)]
-          Rxy <- R[(p+1):(p+j), 1:p]
-          Ryx <- t(Rxy)
-          rvt <- Trace(Ryx %*% Rxy) / sqrt(Trace(Ryy %*% Ryy) * Trace(Rxx %*% Rxx)) # RV calculation
-          if (rvt > Rvmax) {
-            Rvmax <- rvt                         # test of RV
-            vrt <- vt[k]                         # temporary held variable
+    timing <- system.time(
+      {
+        # Calculation of Escoufier's equivalent vectors
+        p <- ncol(x)
+        vt <- 1:p                                  # Variables to test
+        vr <- NULL                                 # Result: ordered variables
+        RV <- 1:p                                  # Result: correlations
+        vrt <- NULL
+        for (j in 1:p) {                           # loop on the variable number
+          Rvmax <- 0
+          for (k in 1:(p-j+1)) {                   # loop on the variables
+            x2 <- cbind(x, x[,vr], x[,vt[k]])
+            R <- cor(x2)                           # Correlations table
+            Ryy <- R[1:p, 1:p]
+            Rxx <- R[(p+1):(p+j), (p+1):(p+j)]
+            Rxy <- R[(p+1):(p+j), 1:p]
+            Ryx <- t(Rxy)
+            rvt <- Trace(Ryx %*% Rxy) / sqrt(Trace(Ryy %*% Ryy) * Trace(Rxx %*% Rxx)) # RV calculation
+            if (rvt > Rvmax) {
+              Rvmax <- rvt                         # test of RV
+              vrt <- vt[k]                         # temporary held variable
+            }
           }
+          vr[j] <- vrt                             # Result: variable
+          RV[j] <- Rvmax                           # Result: correlation
+          vt <- vt[vt!=vr[j]]                      # reidentify variables to test
         }
-        vr[j] <- vrt                             # Result: variable
-        RV[j] <- Rvmax                           # Result: correlation
-        vt <- vt[vt!=vr[j]]                      # reidentify variables to test
       }
-    })[1:3]
+    )[1:3]
     timings[i,1:3] = timing
   }
   if(verbose)

@@ -19,4 +19,3 @@ upload_results = function(results, url="http://www.mas.ncl.ac.uk/~ncsg3/form.php
   unlink(fname)        
   message("Upload complete")
 }
-

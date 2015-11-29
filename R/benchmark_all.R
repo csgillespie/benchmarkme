@@ -22,6 +22,3 @@ get_benchmarks = function(){
                   "bm_matrix_sort")
   c(prog_funs, matrix_funs)  
 }
-
-
-

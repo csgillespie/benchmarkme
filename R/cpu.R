@@ -25,4 +25,3 @@ get_cpu = function() {
   }
   list(vendor_id=remove_white(vendor_id), model_name = remove_white(model_name))
 }
-
