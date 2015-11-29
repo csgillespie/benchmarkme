@@ -15,6 +15,6 @@ Imports:
     Matrix,
     compiler,
     httr
-Suggests: RcppZiggurat
+Suggests: RcppZiggurat, testthat
 RoxygenNote: 5.0.1
 License: GPL-2 | GPL-3
