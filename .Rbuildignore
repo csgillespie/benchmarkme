@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 README.md
 add_to_drat.R
+^.travis\..yml$
