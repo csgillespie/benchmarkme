@@ -1,5 +1,3 @@
-
-
 #' Get BLAS and LAPACK libraries
 #' 
 #' This currently only works under Linux. For other OS, \code{NA}'s 
