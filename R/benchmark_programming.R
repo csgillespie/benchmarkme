@@ -17,7 +17,7 @@ bm_prog_fib = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="fib", group="prog")
   for (i in 1:runs) {
-    a = floor(Runif(3500000)*1000)
+    a = floor(runif(3500000)*1000)
     invisible(gc())
     timings[i, 1:3] = system.time({b <- (phi^a - (-phi)^(-a))/sqrt(5)})[1:3]
   }
@@ -55,8 +55,8 @@ bm_prog_gcd = function(runs=3, verbose=FALSE) {
                        test="gcd", group="prog")
   gcd2 = function(x, y) {if (sum(y > 1.0E-4) == 0) x else {y[y == 0] <- x[y == 0]; Recall(y, x %% y)}}
   for (i in 1:runs) {
-    a = ceiling(Runif(400000)*1000)
-    b = ceiling(Runif(400000)*1000)
+    a = ceiling(runif(400000)*1000)
+    b = ceiling(runif(400000)*1000)
     invisible(gc())
     timings[i,1:3] <- system.time({ans <- gcd2(a, b)})[1:3] # gcd2 is a recursive function
   }

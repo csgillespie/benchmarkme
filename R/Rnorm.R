@@ -5,6 +5,3 @@ Rnorm   = function(n) {
     rnorm(n)
 }
 
-Runif = function(...) {
-  runif(...)
-}
