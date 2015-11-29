@@ -19,13 +19,14 @@ plot.ben_results = function(x, ...) {
            cex.axis=0.9, las=1, mfrow=c(1,2)) 
   on.exit(op)
   
+  adj = ifelse(ben_rank < nrow(results)/2, -1.5, 1.5)
   ymax = max(results$timings, ben_sum)
   plot(results$timings, xlab="Rank", ylab="Total timing (secs)", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
        panel.first=grid())
   
-  points(ben_rank-1/2,ben_sum, bg=2, pch=21)
-  text(ben_rank-1/2, mean(results$timings), "You", col=2)
+  points(ben_rank-1/2,ben_sum, bg=4, pch=21)
+  text(ben_rank-1/2, ben_sum, "You", col=4, adj=adj)
 
   ## Relative timings  
   fastest = min(ben_sum, results$timings)
@@ -34,6 +35,6 @@ plot.ben_results = function(x, ...) {
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
        panel.first=grid())
   
-  points(ben_rank-1/2,ben_sum/fastest, bg=2, pch=21)
-  text(ben_rank-1/2, ben_sum/fastest, "You", col=2)
+  points(ben_rank-1/2,ben_sum/fastest, bg=4, pch=21)
+  text(ben_rank-1/2, ben_sum/fastest, "You", col=4, adj=adj)
 }
