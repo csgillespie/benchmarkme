@@ -20,7 +20,9 @@ is contains the output from:
 \item \code{get_cpu()};
 \item \code{get_byte_compiler()};
 \item \code{get_linear_algebra()};
-\item \code{installed.packages()}
+\item \code{installed.packages()};
+\item The package version number;
+\item Unique ID - used to extract results;
 \item The current date.
 }
 }

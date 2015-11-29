@@ -18,4 +18,6 @@ upload_results = function(results, url="http://www.mas.ncl.ac.uk/~ncsg3/form.php
            encode = "multipart")
   unlink(fname)        
   message("Upload complete")
+  message("Tracking id: ", type$id)
+  type$id
 }

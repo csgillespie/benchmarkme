@@ -10,7 +10,9 @@
 #' \item \code{get_cpu()};
 #' \item \code{get_byte_compiler()};
 #' \item \code{get_linear_algebra()};
-#' \item \code{installed.packages()}
+#' \item \code{installed.packages()};
+#' \item The package version number;
+#' \item Unique ID - used to extract results;
 #' \item The current date.
 #' }
 #' @return A list
@@ -25,6 +27,8 @@ get_sys_details = function() {
   l$byte_compiler = as.list(get_byte_compiler())
   l$linear_algebra = get_linear_algebra()
   l$install_packages = installed.packages()
+  l$package_version = packageDescription("benchmarkme")
+  l$id = paste0(Sys.Date(), "-", sample(1e8, 1))
   l$date = structure(Sys.Date(), class="Date")
   l  
 }
