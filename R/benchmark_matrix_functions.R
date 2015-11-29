@@ -3,7 +3,7 @@
 #' 
 #' @description A collection of matrix benchmark functions
 #' \itemize{
-#' \item FFT over 2400000 random values.
+#' \item FFT over 5,000,000 random values.
 #' \item Eigenvalues of a 640x640 random matrix.
 #' \item Determinant of a 2500x2500 random matrix.
 #' \item Cholesky decomposition of a 3000x3000 matrix.
@@ -19,12 +19,12 @@ bm_matrix_fft = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="fft", group="matrix_fun")
   for (i in 1:runs) {
-    a = Rnorm(2400000)
+    a = Rnorm(5000000)
     invisible(gc())
     timings[i,1:3] = system.time({b <- fft(a)})[1:3]
   }
   if(verbose)
-    message(c("FFT over 2,400,000 random values", timings_mean(timings)))
+    message(c("FFT over 5,000,000 random values", timings_mean(timings)))
   timings
 }
 

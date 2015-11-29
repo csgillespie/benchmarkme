@@ -2,11 +2,11 @@
 #' @title Programming benchmarks
 #' @description A collection of matrix programming benchmark functions
 #' \itemize{
-#' \item 3,500,000 Fibonacci numbers calculation (vector calc).
-#' \item Creation of a 3000x3000 Hilbert matrix (matrix calc).
-#' \item Grand common divisors of 400,000 pairs (recursion).
+#' \item 10,000,000 Fibonacci numbers calculation (vector calc).
+#' \item Creation of a 10000x10000 Hilbert matrix (matrix calc).
+#' \item Grand common divisors of 1,000,000 pairs (recursion).
 #' \item Creation of a 500x500 Toeplitz matrix (loops).
-#' \item Escoufier's method on a 45x45 matrix (mixed).
+#' \item Escoufier's method on a 60x60 matrix (mixed).
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' for a complete history.
@@ -17,19 +17,19 @@ bm_prog_fib = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="fib", group="prog")
   for (i in 1:runs) {
-    a = floor(runif(3500000)*1000)
+    a = floor(runif(10000000)*1000)
     invisible(gc())
     timings[i, 1:3] = system.time({b <- (phi^a - (-phi)^(-a))/sqrt(5)})[1:3]
   }
   if(verbose)
-    message(c("3,500,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
+    message(c("10,000,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
   timings
 }
 
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_hilbert = function(runs=3, verbose=FALSE) {
-  a = 3000; b = 0
+  a = 10000; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="hilbert", group="prog")
   for (i in 1:runs) {
@@ -43,7 +43,7 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 3000x3000 Hilbert matrix (matrix calc)", timings_mean(timings)))
+    message(c("Creation of a 10000x10000 Hilbert matrix (matrix calc)", timings_mean(timings)))
   timings
 }
 
@@ -55,13 +55,13 @@ bm_prog_gcd = function(runs=3, verbose=FALSE) {
                        test="gcd", group="prog")
   gcd2 = function(x, y) {if (sum(y > 1.0E-4) == 0) x else {y[y == 0] <- x[y == 0]; Recall(y, x %% y)}}
   for (i in 1:runs) {
-    a = ceiling(runif(400000)*1000)
-    b = ceiling(runif(400000)*1000)
+    a = ceiling(runif(1000000)*1000)
+    b = ceiling(runif(1000000)*1000)
     invisible(gc())
     timings[i,1:3] <- system.time({ans <- gcd2(a, b)})[1:3] # gcd2 is a recursive function
   }
   if(verbose)
-    message(c("Grand common divisors of 400,000 pairs (recursion)", timings_mean(timings)))
+    message(c("Grand common divisors of 1,000,000 pairs (recursion)", timings_mean(timings)))
   timings
 }
 
@@ -103,7 +103,7 @@ bm_prog_escoufier = function(runs=3, verbose=FALSE) {
   # Calculate the trace of a matrix (sum of its diagonal elements)
   Trace <- function(y) {sum(c(y)[1 + 0:(min(dim(y)) - 1) * (dim(y)[1] + 1)], na.rm=FALSE)}
   for (i in 1:runs) {
-    x <- abs(Rnorm(45*45)); dim(x) <- c(45, 45)
+    x <- abs(Rnorm(60*60)); dim(x) <- c(60, 60)
     invisible(gc())
     timing <- system.time(
       {
@@ -137,6 +137,6 @@ bm_prog_escoufier = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Escoufier's method on a 45x45 matrix (mixed)", timings_mean(timings)))
+    message(c("Escoufier's method on a 60x60 matrix (mixed)", timings_mean(timings)))
   timings
 }
