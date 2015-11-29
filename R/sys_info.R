@@ -11,7 +11,7 @@ get_byte_compiler = function() {
   
   ## Try to detect compilePKGS - long shot
   ## Return to same state as we found it
-  if(length(nchar(comp)) == 0L) {
+  if(nchar(comp) == 0L) {
     comp = compiler::compilePKGS(1)
     compiler::compilePKGS(comp)
     if(comp) {
