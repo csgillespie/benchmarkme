@@ -5,14 +5,14 @@
 \alias{get_benchmarks}
 \title{Run all benchmarks}
 \usage{
-benchmark_all(runs = 3, verbose = FALSE)
+benchmark_all(runs = 3, verbose = TRUE)
 
 get_benchmarks()
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
-\item{verbose}{Default FALSE.}
+\item{verbose}{Default TRUE.}
 }
 \description{
 This functions runs all benchmarks. To view the list of benchmarks, see \code{get_benchmarks}.

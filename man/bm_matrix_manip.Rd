@@ -21,7 +21,7 @@ bm_matrix_lm(runs = 3, verbose = FALSE)
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
-\item{verbose}{Default FALSE.}
+\item{verbose}{Default TRUE.}
 }
 \description{
 A collection of matrix benchmark functions aimed at

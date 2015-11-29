@@ -11,6 +11,7 @@ An integer indicating if byte compiling has been turn on. See \code{?compiler} f
 details.
 }
 \description{
-Attempts to detect if byte compiling has been used on the package.
+Attempts to detect if byte compiling has been used on the package. There isn't a fool proof
+way of detecting if the the package has been benchmarked.
 }
 
