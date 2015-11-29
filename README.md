@@ -28,8 +28,7 @@ library("benchmarkme")
 All benchmarks can be run using
 
 ```
-## This will take somewhere between 
-## 1 and 5 minutes
+## This will take somewhere between 1 and 5 minutes
 res = benchmark_all()
 ```
 
@@ -46,3 +45,42 @@ and upload your results
 ```
 upload_results(res)
 ```
+
+This function returns a unique identifer that will allow you to identifer your
+results from the public data sets.
+
+## Uploaded data sets
+
+A summary of the uploaded data sets is available in within this package
+```
+data(results, package="benchmarkme")
+```
+
+A column of this data set, contains the unique identifer returned by the 
+'upload_results' function. A complete version of the uploaded data sets will be
+made available (soon) in a companion package.
+
+## What's uploaded
+
+Two objects are uploaded:
+
+1. Your benchmarks (`benchmark_all`);
+1. A summary of your system information (`get_sys_details()`).
+
+The `get_sys_details()` returns:
+
+  * Sys.info();
+  * get_platform_info();
+  * get_r_version();
+  * get_ram();
+  * get_cpu();
+  * get_byte_compiler();
+  * get_linear_algebra();
+  * installed.packages();
+  * The package version number;
+  * Unique ID - used to extract results;
+  * The current date.
+
+The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will be removed.
+
+
