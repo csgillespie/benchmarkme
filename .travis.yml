@@ -29,7 +29,7 @@ notifications:
 
 env:
   matrix:
-    - RVERSION=release
+    - RVERSION=release COVERAGE=true
 
 #env:
 #  matrix:
