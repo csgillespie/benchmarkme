@@ -20,5 +20,5 @@ get_byte_compiler = function() {
       comp = 0
     }
   }
-  structure(comp, names = "byte_optimize")
+  structure(as.numeric(comp), names = "byte_optimize")
 }
