@@ -2,7 +2,7 @@ Package: benchmarkme
 Type: Package
 Title: System Benchmarks
 Version: 0.1
-Date: 2015-10-22
+Date: 2015-11-29
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
