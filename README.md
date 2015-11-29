@@ -1,4 +1,5 @@
-# System benchmarking
+# System benchmarking 
+[![Build Status](https://travis-ci.org/csgillespie/benchmarkme.svg?branch=master)](https://travis-ci.org/csgillespie/benchmarkme)
 
 To install:
 ```
