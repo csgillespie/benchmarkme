@@ -10,11 +10,13 @@ get_linear_algebra = function() {
     gui = get_platform_info()$GUI
     if(gui == "RStudio") {
       search = "/rstudio"
+    } else if(gui == "X11") {
+      search = "lib/R"
     } else { 
       search = "exec/R"
     }
     #!/bin/bash
-    cmd = paste("ps aux | grep -i", search, "| awk 'FNR == 1 {print $2}'")
+    cmd = paste("ps aux | grep", search, "| awk 'FNR == 1 {print $2}'")
     p_id = system(cmd, intern=TRUE)
     
     cmd_blas = paste("lsof -p", p_id, "| grep 'blas' | awk '{print $9}'")
