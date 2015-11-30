@@ -23,10 +23,12 @@ Load the package in the usual way
 
 ```
 library("benchmarkme")
+## View past results
+plot_past()
 ```
 
 Obviously the impact on your system will depend on how much RAM and the speed of your CPU. 
-If you have less than 3GB of RAM (run `get_ram()` to find out how much is on your system), 
+If you have less than 3GB of RAM (run `get_ram()` to find out how much is available on your system), 
 then you should kill any memory hungry applications, e.g. firefox, and only have a single replicate.
 
 To benchmark your system, use
@@ -43,6 +45,7 @@ You can compare your results other users
 plot(res)
 ## Needs the DT package
 get_datatable(res)
+get_datatable_past()
 ```
 
 and upload your results
