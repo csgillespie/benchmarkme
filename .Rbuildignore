@@ -5,3 +5,4 @@ add_to_drat.R
 ^.travis.yml$
 ^pkg-build.sh$
 .lintr
+NEWS.md
