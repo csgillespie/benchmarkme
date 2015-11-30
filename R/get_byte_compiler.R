@@ -1,9 +1,10 @@
 #' Byte compiler status
 #' 
-#' Attempts to detect if byte compiling has been used on the package. 
+#' Attempts to detect if byte compiling or JIT has been used on the package. 
 #' @return An integer indicating if byte compiling has been turn on. See \code{?compiler} for
 #' details.
 #' @importFrom compiler getCompilerOption
+#' @importFrom compiler compilePKGS enableJIT
 #' @importFrom utils capture.output
 #' @export
 get_byte_compiler = function() {
@@ -23,6 +24,13 @@ get_byte_compiler = function() {
       comp = 0L
     } 
   } 
+  
+  ## Try to detect enableJIT
+  ## Return to same state as we found it
+  if(comp == 0L) {
+    comp = compiler::enableJIT(3)
+    compiler::enableJIT(comp)
+  }
   
   if(comp == 0L){
     out = capture.output(benchmark_all)
