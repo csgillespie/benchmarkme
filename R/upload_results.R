@@ -11,7 +11,7 @@ upload_results = function(results, url="http://www.mas.ncl.ac.uk/~ncsg3/form.php
   type$results = results
   message("Creating temporary file")
   fname = tempfile(fileext=".RData")
-  saveRDS(results, file=fname)
+  saveRDS(type, file=fname)
   message("Uploading results")
   r = POST(url, 
            body = list(userFile = upload_file(fname)),
