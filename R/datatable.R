@@ -23,6 +23,7 @@ get_datatable = function(results) {
   
   results$new = FALSE
   results$cpus = as.character(results$cpus)
+  results = results[,c("cpus", "timings", "new")]
   results = rbind(results, data.frame(cpus = get_cpu()$model_name, timings=ben_sum, new=TRUE))
   
   
