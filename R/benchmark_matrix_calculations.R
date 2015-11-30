@@ -5,9 +5,9 @@
 #' assessing the calculation speed.
 #' \itemize{
 #' \item Creation, transp., deformation of a 2500x2500 matrix.
-#' \item 2400x2400 normal distributed random matrix ^1000.
+#' \item 2500x2500 normal distributed random matrix ^1000.
 #' \item Sorting of 7,000,000 random values.
-#' \item Cholesky decomposition of a 3000x3000 matrix.
+#' \item 2500x2500 cross-product matrix (b = a' * a)
 #' \item Linear regr. over a 3000x3000 matrix.
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
@@ -73,12 +73,12 @@ bm_matrix_cross_product = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="cross_product", group="matrix_cal")
   for (i in 1:runs) {
-    a = Rnorm(2800*2800); dim(a) = c(2800, 2800)
+    a = Rnorm(2500*2500); dim(a) = c(2500, 2500)
     invisible(gc())
     timings[i,1:3] = system.time({b <- crossprod(a)})[1:3]
   }
   if(verbose)
-    message(c("2800x2800 cross-product matrix (b = a' * a)", timings_mean(timings)))
+    message(c("2500x2500 cross-product matrix (b = a' * a)", timings_mean(timings)))
   timings
 }
 

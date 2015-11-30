@@ -29,7 +29,7 @@ A collection of matrix programming benchmark functions
 \item 3,500,000 Fibonacci numbers calculation (vector calc).
 \item Creation of a 3500x3500 Hilbert matrix (matrix calc).
 \item Grand common divisors of 1,000,000 pairs (recursion).
-\item Creation of a 500x500 Toeplitz matrix (loops).
+\item Creation of a 1600x1600 Toeplitz matrix (loops).
 \item Escoufier's method on a 60x60 matrix (mixed).
 }
 These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R

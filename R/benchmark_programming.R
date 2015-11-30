@@ -5,7 +5,7 @@
 #' \item 3,500,000 Fibonacci numbers calculation (vector calc).
 #' \item Creation of a 3500x3500 Hilbert matrix (matrix calc).
 #' \item Grand common divisors of 1,000,000 pairs (recursion).
-#' \item Creation of a 500x500 Toeplitz matrix (loops).
+#' \item Creation of a 1600x1600 Toeplitz matrix (loops).
 #' \item Escoufier's method on a 60x60 matrix (mixed).
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
@@ -70,7 +70,7 @@ bm_prog_gcd = function(runs=3, verbose=FALSE) {
 bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="toeplitz", group="prog")
-  N = 5000
+  N = 3000
   ans = rep(0, N*N)
   dim(ans) = c(N, N)
   for (i in 1:runs) {
@@ -89,7 +89,7 @@ bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 500x500 Toeplitz matrix (loops)", timings_mean(timings)))
+    message(c("Creation of a 3000x3000 Toeplitz matrix (loops)", timings_mean(timings)))
   timings
 }
 
