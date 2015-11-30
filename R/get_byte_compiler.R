@@ -19,6 +19,8 @@ get_byte_compiler = function() {
     compiler::compilePKGS(comp)
     if(comp) {
       comp = compiler::getCompilerOption("optimize")
+    } else {
+      comp = 0L
     } 
   } 
   
