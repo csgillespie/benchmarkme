@@ -29,6 +29,7 @@ All benchmarks can be run using
 
 ```
 ## This will take somewhere between 1 and 5 minutes
+## Current record is 1 minute
 res = benchmark_all()
 ```
 
@@ -43,6 +44,7 @@ get_datatable(res)
 and upload your results
 
 ```
+## You can control exactly what is uploaded. See details below.
 upload_results(res)
 ```
 
@@ -69,18 +71,24 @@ Two objects are uploaded:
 
 The `get_sys_details()` returns:
 
-  * Sys.info();
-  * get_platform_info();
-  * get_r_version();
-  * get_ram();
-  * get_cpu();
-  * get_byte_compiler();
-  * get_linear_algebra();
-  * installed.packages();
+  * `Sys.info()`;
+  * `get_platform_info()`;
+  * `get_r_version()`;
+  * `get_ram()`;
+  * `get_cpu()`;
+  * `get_byte_compiler()`;
+  * `get_linear_algebra()`;
+  * `installed.packages()`;
   * The package version number;
   * Unique ID - used to extract results;
   * The current date.
 
-The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will be removed.
+The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will is removed. If you don't wish to upload certain information, just set the corresponding argument, i.e.
+
+```
+upload_results(res, sys_info=FALSE)
+```
+
+
 
 
