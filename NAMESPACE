@@ -3,6 +3,7 @@
 S3method(plot,ben_results)
 S3method(print,bytes)
 export(benchmark_all)
+export(benchmark_std)
 export(bm_matrix_cholesky)
 export(bm_matrix_cross_product)
 export(bm_matrix_determinant)

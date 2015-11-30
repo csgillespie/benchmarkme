@@ -32,10 +32,9 @@ then you should kill any memory hungry applications, e.g. firefox, and only have
 To benchmark your system, use
 
 ```
-## This will take somewhere between 1 and 5 minutes
-## Current record is 1 minute
+## This will take somewhere between 0.5 and 5 minutes
 ## Increase runs if you have a higher spec machine
-res = benchmark_all(runs=1)
+res = benchmark_std(runs=3)
 ```
 
 You can compare your results other users
