@@ -27,7 +27,7 @@ get_sys_details = function() {
   l$byte_compiler = as.list(get_byte_compiler())
   l$linear_algebra = get_linear_algebra()
   l$install_packages = installed.packages()
-  l$package_version = packageDescription("benchmarkme")
+  l$package_version = packageDescription("benchmarkme")$Version
   l$id = paste0(Sys.Date(), "-", sample(1e8, 1))
   l$date = structure(Sys.Date(), class="Date")
   l  
