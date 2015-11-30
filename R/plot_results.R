@@ -6,6 +6,10 @@ plot.ben_results = function(x, ...) {
   data(results, package="benchmarkme", envir = tmp_env)
   results = tmp_env$results
   results = results[order(results$timings), ]
+  if(get_byte_compiler() > 0.5)
+    results = results[results$byte_optimize > 0.5,]
+  else 
+    results = results[results$byte_optimize < 0.5,]
   
   ## Manipulate new data
   no_of_reps = length(x$test)/length(unique(x$test))

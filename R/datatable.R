@@ -16,6 +16,11 @@ get_datatable = function(results) {
   tmp_env = environment()
   data(results, package="benchmarkme", envir = tmp_env)
   results = tmp_env$results
+  if(get_byte_compiler() > 0.5)
+    results = results[results$byte_optimize > 0.5,]
+  else 
+    results = results[results$byte_optimize < 0.5,]
+  
   results$new = FALSE
   results$cpus = as.character(results$cpus)
   results = rbind(results, data.frame(cpus = get_cpu()$model_name, timings=ben_sum, new=TRUE))
