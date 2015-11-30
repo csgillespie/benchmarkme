@@ -25,7 +25,7 @@ get_byte_compiler = function() {
   if(comp == 0L){
     out = capture.output(benchmark_all)
     is_byte = out[length(out)-1]
-    if(grep("bytecode: ", is_byte) == 1) {
+    if(length(grep("bytecode: ", is_byte)) > 0) {
       comp = compiler::getCompilerOption("optimize")
     }
   }
