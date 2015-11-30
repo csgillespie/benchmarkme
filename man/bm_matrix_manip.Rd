@@ -27,8 +27,8 @@ bm_matrix_lm(runs = 3, verbose = FALSE)
 A collection of matrix benchmark functions aimed at
 assessing the calculation speed.
 \itemize{
-\item Creation, transp., deformation of a 5000x5000 matrix.
-\item 3500x3500 normal distributed random matrix ^1000.
+\item Creation, transp., deformation of a 2500x2500 matrix.
+\item 2400x2400 normal distributed random matrix ^1000.
 \item Sorting of 7,000,000 random values.
 \item Cholesky decomposition of a 3000x3000 matrix.
 \item Linear regr. over a 3000x3000 matrix.

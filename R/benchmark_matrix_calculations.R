@@ -4,8 +4,8 @@
 #' @description A collection of matrix benchmark functions aimed at
 #' assessing the calculation speed.
 #' \itemize{
-#' \item Creation, transp., deformation of a 5000x5000 matrix.
-#' \item 3500x3500 normal distributed random matrix ^1000.
+#' \item Creation, transp., deformation of a 2500x2500 matrix.
+#' \item 2400x2400 normal distributed random matrix ^1000.
 #' \item Sorting of 7,000,000 random values.
 #' \item Cholesky decomposition of a 3000x3000 matrix.
 #' \item Linear regr. over a 3000x3000 matrix.
@@ -22,9 +22,9 @@ bm_matrix_manip = function(runs=3, verbose=FALSE) {
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
-      a = matrix(rnorm(5000*5000)/10, ncol=5000, nrow=5000);
+      a = matrix(rnorm(2500*2500)/10, ncol=2500, nrow=2500);
       b = t(a);
-      dim(b) = c(2500, 10000);
+      dim(b) = c(1250, 5000);
       a = t(b)
     })
     timings[i,1:3] = timing[1:3]
@@ -41,12 +41,12 @@ bm_matrix_power = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="power", group="matrix_cal")
   for (i in 1:runs) {
-    a <- abs(matrix(Rnorm(3500*3500)/2, ncol=3500, nrow=3500));
+    a <- abs(matrix(Rnorm(2500*2500)/2, ncol=2500, nrow=2500));
     invisible(gc())
     timings[i,1:3] = system.time({b <- a^1000})[1:3]
   }
   if(verbose)
-    message(c("3500x3500 normal distributed random matrix ^1000", timings_mean(timings)))
+    message(c("2500x2500 normal distributed random matrix ^1000", timings_mean(timings)))
   timings
 }
 

@@ -2,8 +2,8 @@
 #' @title Programming benchmarks
 #' @description A collection of matrix programming benchmark functions
 #' \itemize{
-#' \item 10,000,000 Fibonacci numbers calculation (vector calc).
-#' \item Creation of a 10000x10000 Hilbert matrix (matrix calc).
+#' \item 3,500,000 Fibonacci numbers calculation (vector calc).
+#' \item Creation of a 3500x3500 Hilbert matrix (matrix calc).
 #' \item Grand common divisors of 1,000,000 pairs (recursion).
 #' \item Creation of a 500x500 Toeplitz matrix (loops).
 #' \item Escoufier's method on a 60x60 matrix (mixed).
@@ -17,19 +17,19 @@ bm_prog_fib = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="fib", group="prog")
   for (i in 1:runs) {
-    a = floor(runif(10000000)*1000)
+    a = floor(runif(3500000)*1000)
     invisible(gc())
     timings[i, 1:3] = system.time({b <- (phi^a - (-phi)^(-a))/sqrt(5)})[1:3]
   }
   if(verbose)
-    message(c("10,000,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
+    message(c("3,500,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
   timings
 }
 
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_hilbert = function(runs=3, verbose=FALSE) {
-  a = 10000; b = 0
+  a = 3500; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="hilbert", group="prog")
   for (i in 1:runs) {
@@ -43,7 +43,7 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 10000x10000 Hilbert matrix (matrix calc)", timings_mean(timings)))
+    message(c("Creation of a 3500x3500 Hilbert matrix (matrix calc)", timings_mean(timings)))
   timings
 }
 

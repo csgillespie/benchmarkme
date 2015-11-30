@@ -26,8 +26,8 @@ bm_prog_escoufier(runs = 3, verbose = FALSE)
 \description{
 A collection of matrix programming benchmark functions
 \itemize{
-\item 10,000,000 Fibonacci numbers calculation (vector calc).
-\item Creation of a 10000x10000 Hilbert matrix (matrix calc).
+\item 3,500,000 Fibonacci numbers calculation (vector calc).
+\item Creation of a 3500x3500 Hilbert matrix (matrix calc).
 \item Grand common divisors of 1,000,000 pairs (recursion).
 \item Creation of a 500x500 Toeplitz matrix (loops).
 \item Escoufier's method on a 60x60 matrix (mixed).

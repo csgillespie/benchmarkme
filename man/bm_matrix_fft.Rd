@@ -26,7 +26,7 @@ bm_matrix_inverse(runs = 3, verbose = FALSE)
 \description{
 A collection of matrix benchmark functions
 \itemize{
-\item FFT over 5,000,000 random values.
+\item FFT over 2,500,000 random values.
 \item Eigenvalues of a 640x640 random matrix.
 \item Determinant of a 2500x2500 random matrix.
 \item Cholesky decomposition of a 3000x3000 matrix.
