@@ -4,7 +4,7 @@
 [![codecov.io](https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master)](https://codecov.io/github/csgillespie/benchmarkme?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/benchmarkme)](http://cran.r-project.org/package=benchmarkme)
 
-R benchmarking made easy. The package contains a number of benchmarks for assessing 
+R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at http://r.research.att.com/benchmarks/R-benchmark-25.R, for assessing 
 the speed of your system. 
 
 ## Installation
