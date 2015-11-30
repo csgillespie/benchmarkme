@@ -2,12 +2,18 @@
 % Please edit documentation in R/datatable.R
 \name{get_datatable}
 \alias{get_datatable}
+\alias{get_datatable_past}
 \title{Interactive table of results}
 \usage{
 get_datatable(results)
+
+get_datatable_past(byte_optimize = NULL)
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from \code{benchmark_all()}.}
+
+\item{byte_optimize}{Default \code{NULL}. The default behaviour is to plot all results.
+To plot only the byte optimized results, set to \code{TRUE}, otherwise \code{FALSE}}
 }
 \description{
 Compare your results against past results. Your results is 
