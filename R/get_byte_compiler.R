@@ -1,24 +1,33 @@
 #' Byte compiler status
 #' 
-#' Attempts to detect if byte compiling has been used on the package. There isn't a fool proof
-#' way of detecting if the the package has been benchmarked. 
+#' Attempts to detect if byte compiling has been used on the package. 
 #' @return An integer indicating if byte compiling has been turn on. See \code{?compiler} for
 #' details.
 #' @importFrom compiler getCompilerOption
+#' @importFrom utils capture.output
 #' @export
 get_byte_compiler = function() {
   comp = Sys.getenv("R_COMPILE_PKGS")
+  if(nchar(comp) > 0L) comp = as.numeric(comp)
+  else comp = 0L
+  
   
   ## Try to detect compilePKGS - long shot
   ## Return to same state as we found it
-  if(nchar(comp) == 0L) {
+  if(comp == 0L) {
     comp = compiler::compilePKGS(1)
     compiler::compilePKGS(comp)
     if(comp) {
       comp = compiler::getCompilerOption("optimize")
-    } else {
-      comp = 0
+    } 
+  } 
+  
+  if(comp == 0L){
+    out = capture.output(benchmark_all)
+    is_byte = out[length(out)-1]
+    if(grep("bytecode: ", is_byte) == 1) {
+      comp = compiler::getCompilerOption("optimize")
     }
   }
-  structure(as.numeric(comp), names = "byte_optimize")
+  structure(comp, names = "byte_optimize")
 }
