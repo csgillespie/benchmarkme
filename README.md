@@ -25,12 +25,17 @@ Load the package in the usual way
 library("benchmarkme")
 ```
 
-All benchmarks can be run using
+Obviously the impact on your system will depend on how much RAM and the speed of your CPU. 
+If you have less than 3GB of RAM (run `get_ram()` to find out how much is on your system), 
+then you should kill any memory hungry applications, e.g. firefox, and only have a single replicate.
+
+To benchmark your system, use
 
 ```
 ## This will take somewhere between 1 and 5 minutes
 ## Current record is 1 minute
-res = benchmark_all()
+## Increase runs if you have a higher spec machine
+res = benchmark_all(runs=1)
 ```
 
 You can compare your results other users
