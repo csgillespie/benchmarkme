@@ -38,7 +38,7 @@ plot.ben_results = function(x, ...) {
   plot(results$timings/fastest, xlab="Rank", ylab="Relative timing", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
        panel.first=grid())
-  
+  abline(h=1, lty=3)
   points(ben_rank-1/2,ben_sum/fastest, bg=4, pch=21)
   text(ben_rank-1/2, ben_sum/fastest, "You", col=4, adj=adj)
 }
@@ -78,6 +78,7 @@ plot_past = function(byte_optimize = NULL) {
   plot(results$timings/fastest, xlab="Rank", ylab="Relative timing", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
        panel.first=grid())
+  abline(h=1, lty=3)
 }
 
 
