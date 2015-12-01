@@ -3,7 +3,7 @@ to_Bytes = function(value) {
   units = value[2]
   power = match(units, c("kB", "MB", "GB", "TB"))
   if(!is.na(power)) return(num*1000^power)
-
+  
   power = match(units, c("Kilobytes", "Megabytes", "Gigabytes", "Terabytes"))
   if(!is.na(power)) return(num*1000^power)
   num
@@ -23,8 +23,9 @@ to_Bytes = function(value) {
 #' get_ram()
 get_ram = function() {
   os = R.version$os
+  
   if(length(grep("^linux", os))) {
-    cmd = "awk '/MemFree/ {print $2}' /proc/meminfo"
+    cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
     ram = as.numeric(system(cmd, intern=TRUE))*1000
   } else if(length(grep("^darwin", os))) {
     (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1])
@@ -33,13 +34,22 @@ get_ram = function() {
     cmd = "prtconf | grep Memory"
     ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
     ram = to_Bytes(unlist(strsplit(ram, " "))[3:4])
-  }  else {
+  } else {
     ## Ram
     ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1]
     ram = remove_white(ram)
     ram = ram[nchar(ram) > 0]
     ram = sum(as.numeric(ram))
   }
+  if(is.na(ram)) {
+    message("I'm having trouble detecting your RAM. So try a number of things to help future versions")
+    ## Hack to see what's happening on MACs - why can't everyone use Linux
+    ram1 = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)
+    ram2 = system("awk '/MemFree/ {print $2}' /proc/meminfo", intern=TRUE)
+    ram3 = system("wmic MemoryChip get Capacity", intern=TRUE)
+    return(list(ram1, ram2, ram3))
+  }
+  
   structure(ram, class="bytes", names="ram")
 }
 
@@ -51,8 +61,7 @@ print.bytes = function (x, digits = 3, ...)
   power <- min(floor(log(abs(x), 1000)), 4)
   if (power < 1) {
     unit <- "B"
-  }
-  else {
+  } else {
     unit <- c("kB", "MB", "GB", "TB")[[power]]
     x <- x/(1000^power)
   }
