@@ -12,9 +12,9 @@ the speed of your system.
 The package isn't yet available on CRAN. To install the current version use
 
 ```
-install.packages("drat")
+install.packages(c("drat", "httr", "Matrix"))
 drat::addRepo("csgillespie")
-install.packages("benchmarkme")
+install.packages("benchmarkme", type="source")
 ```
 
 ## Usage
