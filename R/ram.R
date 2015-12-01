@@ -32,7 +32,7 @@ get_ram = function() {
     ram = to_Bytes(unlist(strsplit(ram, " ")))
   } else if(length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory"
-    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
+    ram = remove_white(system(cmd, intern=TRUE)) ## Memory size: XXX Megabytes
     ram = to_Bytes(unlist(strsplit(ram, " "))[3:4])
   } else {
     ## Ram
