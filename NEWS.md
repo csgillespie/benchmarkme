@@ -1,3 +1,6 @@
+# Version 0.1.5
+  * Further RAM and Mac issues
+
 # Version 0.1.4
   * Bug fix: Remove white space from apple RAM output (thanks to @vzemlys). Fixes #2. 
   

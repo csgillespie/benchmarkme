@@ -42,12 +42,10 @@ get_ram = function() {
     ram = sum(as.numeric(ram))
   }
   if(is.na(ram)) {
-    message("I'm having trouble detecting your RAM. So try a number of things to help future versions")
+    message("I'm having trouble detecting your RAM. Feel free to raise an github issue to try and get to the bottom of this.")
     ## Hack to see what's happening on MACs - why can't everyone use Linux
-    ram1 = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)
-    ram2 = system("awk '/MemFree/ {print $2}' /proc/meminfo", intern=TRUE)
-    ram3 = system("wmic MemoryChip get Capacity", intern=TRUE)
-    return(list(ram1, ram2, ram3))
+    ram1 = try(suppressWarnings(system('system_profiler -detailLevel mini', intern=TRUE)), silent=TRUE)
+    return(list(ram1, R.version$os))
   }
   
   structure(ram, class="bytes", names="ram")
