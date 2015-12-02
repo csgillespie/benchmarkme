@@ -15,6 +15,7 @@ Imports:
     Matrix,
     compiler,
     httr
-Suggests: RcppZiggurat, testthat, DT
+Suggests: RcppZiggurat, testthat, DT, knitr
+VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 License: GPL-2 | GPL-3

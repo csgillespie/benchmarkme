@@ -1,0 +1,82 @@
+---
+title: "benchmarkme: Crowd sourced benchmarks"
+author: "Colin Gillespie"
+date: "2015-12-02"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{benchmarkme: Crowd sourced benchmarks}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r echo=FALSE}
+library("benchmarkme")
+data(sample_results, package="benchmarkme")
+res = sample_results
+```
+
+## Overview 
+
+A straightforward way of speeding up your analysis, is to buy a better computer. Modern desktops are relatively cheap, especially compared to user time. However, it isn't clear clear if upgrading your computing is worth the cost. `benchmarkme` provides a set of benchmarks to help quantify your system. More importantly, it allows you to compare your timings with other systems.
+
+## Getting Started
+
+To benchmark you system, just run
+
+```{r eval=FALSE}
+library("benchmarkme")
+res = benchmark_std(runs = 3)
+```
+
+The `runs` account controls the number of replicates. If you have a fast system, then consider increasing this number. Currently, it takes around 3 minutes to run the benchmarks on a standard system.
+
+You can then upload the results using
+
+```{r eval=FALSE}
+id = upload_results(res)
+```
+
+The object `id` contains a unique identifier that you can use to extract your
+dataset in future versions of the package.
+
+## Exploring the Results
+
+Past results are include with the package and can be accessed via
+
+```{r}
+data(results, package="benchmarkme")
+```
+
+The data set is a simple data frame
+
+```{r}
+head(results, 3)
+```
+
+and plotted via
+
+```{r, fig.width=7, fig.height=3.5}
+plot_past()
+```
+
+You can also see how you computer measures up with others
+
+```{r, fig.width=7, fig.height=3.5}
+plot(res)
+```
+
+## Interactive Tables
+
+If you crave raw numbers, install the `DT` package` 
+
+```{r eval=FALSE}
+install.packages("DT")
+```
+
+and run 
+
+```{r eval=FALSE}
+## Your result is highlighted in orange.
+get_datatable(res)
+get_datatable_past()
+```
