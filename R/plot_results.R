@@ -18,8 +18,8 @@ plot.ben_results = function(x, ...) {
   if(is.na(ben_rank)) ben_rank = nrow(results) + 1
   
   ## Sort plot
-  op = par(mar=c(3,3,2,1), 
-           mgp=c(2,0.4,0), tck=-.01,
+  op = par(mar=c(3, 3, 2, 1), 
+           mgp=c(2, 0.4, 0), tck=-.01,
            cex.axis=0.9, las=1, mfrow=c(1,2)) 
   on.exit(op)
   
@@ -86,5 +86,3 @@ plot_past = function(byte_optimize = NULL) {
        panel.first=grid())
   abline(h=1, lty=3)
 }
-
-

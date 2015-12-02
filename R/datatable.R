@@ -36,8 +36,8 @@ get_datatable = function(results) {
   colnames(results) = c("Rank", "CPU", "Time (sec)")
   
   data_table = DT::datatable(results, rownames=FALSE) 
-  DT::formatStyle(data_table, 'Rank',
-                  backgroundColor = DT::styleEqual(current_rank, c('orange')))
+  DT::formatStyle(data_table, "Rank",
+                  backgroundColor = DT::styleEqual(current_rank, "orange"))
 }
 
 #' @rdname get_datatable
@@ -75,5 +75,3 @@ get_datatable_past = function(byte_optimize=NULL) {
   }
   DT::datatable(results, rownames=FALSE) 
 }
-
-

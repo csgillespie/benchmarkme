@@ -4,4 +4,3 @@ Rnorm   = function(n) {
   else
     rnorm(n)
 }
-
