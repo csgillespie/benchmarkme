@@ -9,6 +9,25 @@ to_Bytes = function(value) {
   num
 }
 
+clean_linux_ram = function(ram) {
+  as.numeric(ram)*1000
+}
+clean_darwin_ram = function(ram) {
+  ram = remove_white(ram)
+  to_Bytes(unlist(strsplit(ram, " "))[2:3])
+}
+  
+clean_solaris_ram = function(ram) {
+  ram = remove_white(ram)
+  to_Bytes(unlist(strsplit(ram, " "))[3:4])
+}
+
+clean_win_ram = function(ram) {
+    ram = remove_white(ram)
+    ram = ram[nchar(ram) > 0]
+    sum(as.numeric(ram))
+}
+
 #' Get the amount of RAM
 #' 
 #' Extracting the amount of RAM is OS specific and hence messy.
@@ -26,28 +45,21 @@ get_ram = function() {
   
   if(length(grep("^linux", os))) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
-    ram = as.numeric(system(cmd, intern=TRUE))*1000
+    ram = system(cmd, intern=TRUE)
+    clean_ram = suppressWarnings(try(clean_linux_ram(ram), silent=TRUE))
   } else if(length(grep("^darwin", os))) {
     (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1])
-    ram = to_Bytes(unlist(strsplit(ram, " ")))
+    clean_ram = suppressWarnings(try(clean_darwin_ram(ram), silent=TRUE))
   } else if(length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory"
-    ram = remove_white(system(cmd, intern=TRUE)) ## Memory size: XXX Megabytes
-    ram = to_Bytes(unlist(strsplit(ram, " "))[3:4])
+    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
+    clean_ram = suppressWarnings(try(clean_solaris_ram(ram), silent=TRUE))
   } else {
-    ## Ram
     ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1]
-    ram = remove_white(ram)
-    ram = ram[nchar(ram) > 0]
-    ram = sum(as.numeric(ram))
-  }
-  if(is.na(ram)) {
-    message("I'm having trouble detecting your RAM. Feel free to raise an github issue to try and get to the bottom of this.")
-    ## Hack to see what's happening on MACs - why can't everyone use Linux
-    ram1 = try(suppressWarnings(system('system_profiler -detailLevel mini', intern=TRUE)), silent=TRUE)
-    return(list(ram1, R.version$os))
+    clean_ram = suppressWarnings(try(clean_win_ram(ram), silent=TRUE))
   }
   
+  if(!(class(clean_ram) == "try-error")) ram = clean_ram
   structure(ram, class="bytes", names="ram")
 }
 

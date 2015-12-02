@@ -1,3 +1,6 @@
+# Version 0.1.6
+  * Still trying to fix RAM and Mac issues
+
 # Version 0.1.5
   * Further RAM and Mac issues
 
