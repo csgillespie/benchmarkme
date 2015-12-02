@@ -1,3 +1,6 @@
+# Version 0.1.8
+  * Adjust placement of "You" in the S3 plot.
+
 # Version 0.1.7
   * Add locale to `get_sys_details`
 
