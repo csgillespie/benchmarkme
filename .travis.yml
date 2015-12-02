@@ -27,8 +27,9 @@ notifications:
 
 env:
   matrix:
+    - RVERSION=devel
     - RVERSION=release COVERAGE=true
-
+    - RVERSION=oldrel
 #env:
 #  matrix:
 #    - RVERSION=oldrel
