@@ -86,11 +86,12 @@ The `get_sys_details()` returns:
   * `get_byte_compiler()`;
   * `get_linear_algebra()`;
   * `installed.packages()`;
-  * The package version number;
+  * `Sys.getlocale()`;
+  * The `benchmarkme` version number;
   * Unique ID - used to extract results;
   * The current date.
 
-The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will is removed. If you don't wish to upload certain information, just set the corresponding argument, i.e.
+The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will be removed. If you don't wish to upload certain information, just set the corresponding argument, i.e.
 
 ```
 upload_results(res, sys_info=FALSE)
