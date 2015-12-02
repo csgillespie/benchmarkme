@@ -6,7 +6,7 @@
 \usage{
 get_sys_details(sys_info = TRUE, platform_info = TRUE, r_version = TRUE,
   ram = TRUE, cpu = TRUE, byte_compiler = TRUE, linear_algebra = TRUE,
-  installed_packages = TRUE)
+  locale = TRUE, installed_packages = TRUE)
 }
 \arguments{
 \item{sys_info}{Default \code{TRUE}.}
@@ -22,6 +22,8 @@ get_sys_details(sys_info = TRUE, platform_info = TRUE, r_version = TRUE,
 \item{byte_compiler}{Default \code{TRUE}.}
 
 \item{linear_algebra}{Default \code{TRUE}.}
+
+\item{locale}{Default \code{TRUE}}
 
 \item{installed_packages}{Default \code{TRUE}.}
 }
@@ -42,6 +44,7 @@ is contains the output from:
 \item \code{get_byte_compiler()};
 \item \code{get_linear_algebra()};
 \item \code{installed.packages()};
+\item \code{Sys.getlocale()}
 \item The package version number;
 \item Unique ID - used to extract results;
 \item The current date.

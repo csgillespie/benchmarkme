@@ -1,3 +1,6 @@
+# Version 0.1.7
+  * Add locale to `get_sys_details`
+
 # Version 0.1.6
   * Still trying to fix RAM and Mac issues
 
