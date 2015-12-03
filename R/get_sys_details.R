@@ -28,6 +28,7 @@
 #' @param installed_packages Default \code{TRUE}.
 #' @param locale Default \code{TRUE}
 #' @return A list
+#' @importFrom utils installed.packages packageDescription
 #' @export
 get_sys_details = function(sys_info = TRUE, platform_info = TRUE,
                            r_version = TRUE, ram=TRUE, 

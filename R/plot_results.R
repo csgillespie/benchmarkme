@@ -1,3 +1,5 @@
+#' @importFrom graphics abline grid par plot points text
+#' @importFrom utils data
 #' @S3method plot ben_results
 plot.ben_results = function(x, ...) {
   
