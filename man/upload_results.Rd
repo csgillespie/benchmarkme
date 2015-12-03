@@ -5,33 +5,20 @@
 \title{Upload benchmark results}
 \usage{
 upload_results(results, url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
-  sys_info = TRUE, platform_info = TRUE, r_version = TRUE, ram = TRUE,
-  cpu = TRUE, byte_compiler = TRUE, linear_algebra = TRUE,
-  installed_packages = TRUE)
+  args = NULL)
 }
 \arguments{
-\item{results}{Benchmark results. Probably obtained from \code{benchmark_all()}.}
+\item{results}{Benchmark results. Probably obtained from 
+\code{benchmark_std()}.}
 
 \item{url}{The location of where to upload the results.}
 
-\item{sys_info}{Default \code{TRUE}.}
-
-\item{platform_info}{Default \code{TRUE}.}
-
-\item{r_version}{Default \code{TRUE}.}
-
-\item{ram}{Default \code{TRUE}.}
-
-\item{cpu}{Default \code{TRUE}.}
-
-\item{byte_compiler}{Default \code{TRUE}.}
-
-\item{linear_algebra}{Default \code{TRUE}.}
-
-\item{installed_packages}{Default \code{TRUE}.}
+\item{args}{Default \code{NULL}. A list of arguments to 
+be passed to \cc{get_sys_details}.}
 }
 \description{
-This function uploads the benchmarking results. These results will then be incorparated
+This function uploads the benchmarking results. 
+These results will then be incorparated
 in future versions of the package.
 }
 

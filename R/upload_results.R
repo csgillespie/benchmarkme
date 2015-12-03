@@ -1,22 +1,23 @@
 #' @title Upload benchmark results
 #' 
-#' @description This function uploads the benchmarking results. These results will then be incorparated
+#' @description This function uploads the benchmarking results. 
+#' These results will then be incorparated
 #' in future versions of the package.
-#' @param results Benchmark results. Probably obtained from \code{benchmark_all()}.
+#' @param results Benchmark results. Probably obtained from 
+#' \code{benchmark_std()}.
 #' @param url The location of where to upload the results.
-#' @inheritParams get_sys_details
+#' @param args Default \code{NULL}. A list of arguments to 
+#' be passed to \cc{get_sys_details}. 
 #' @export
 #' @importFrom httr POST upload_file
-upload_results = function(results, url="http://www.mas.ncl.ac.uk/~ncsg3/form.php",
-                          sys_info = TRUE, platform_info = TRUE,
-                          r_version = TRUE, ram=TRUE, 
-                          cpu=TRUE, byte_compiler=TRUE, linear_algebra=TRUE,
-                          installed_packages=TRUE) {
-  
-  type = get_sys_details(sys_info=sys_info, platform_info=platform_info, 
-                         r_version = r_version, ram=ram, cpu=cpu,
-                         byte_compiler = byte_compiler, linear_algebra = linear_algebra,
-                         installed_packages = installed_packages)
+upload_results = function(results, 
+                          url="http://www.mas.ncl.ac.uk/~ncsg3/form.php",
+                          args = NULL) {
+
+  if(is.null(args)) args = list()
+  message("Getting system specs. This can take a while on Macs")
+  type = do.call(get_sys_details, args)  
+
   type$results = results
   message("Creating temporary file")
   fname = tempfile(fileext=".RData")
