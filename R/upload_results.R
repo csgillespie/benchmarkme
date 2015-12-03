@@ -7,7 +7,7 @@
 #' \code{benchmark_std()}.
 #' @param url The location of where to upload the results.
 #' @param args Default \code{NULL}. A list of arguments to 
-#' be passed to \cc{get_sys_details}. 
+#' be passed to \code{get_sys_details}. 
 #' @export
 #' @importFrom httr POST upload_file
 upload_results = function(results, 
