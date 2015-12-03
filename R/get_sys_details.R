@@ -12,8 +12,9 @@
 #' \item \code{get_cpu()};
 #' \item \code{get_byte_compiler()};
 #' \item \code{get_linear_algebra()};
-#' \item \code{installed.packages()};
 #' \item \code{Sys.getlocale()}
+#' \item \code{installed.packages()};
+#' \item \code{.Machine}
 #' \item The package version number;
 #' \item Unique ID - used to extract results;
 #' \item The current date.
@@ -25,15 +26,18 @@
 #' @param cpu Default \code{TRUE}.
 #' @param byte_compiler Default \code{TRUE}.
 #' @param linear_algebra Default \code{TRUE}.
-#' @param installed_packages Default \code{TRUE}.
 #' @param locale Default \code{TRUE}
+#' @param installed_packages Default \code{TRUE}.
+#' @param machine Default \code{TRUE}
 #' @return A list
 #' @importFrom utils installed.packages packageDescription
 #' @export
 get_sys_details = function(sys_info = TRUE, platform_info = TRUE,
                            r_version = TRUE, ram=TRUE, 
-                           cpu=TRUE, byte_compiler=TRUE, linear_algebra=TRUE,
-                           locale = TRUE, installed_packages=TRUE) {
+                           cpu=TRUE, byte_compiler=TRUE, 
+                           linear_algebra=TRUE,
+                           locale = TRUE, installed_packages=TRUE,
+                           machine=TRUE) {
   l = list()
   if(sys_info) l$sys_info = as.list(Sys.info())
   else l$sys_info = NA
@@ -59,8 +63,11 @@ get_sys_details = function(sys_info = TRUE, platform_info = TRUE,
   if(locale) l$locale = Sys.getlocale()
   else l$locale = NA
   
-  if(installed_packages)   l$installed_packages  = installed.packages()
+  if(installed_packages) l$installed_packages  = installed.packages()
   else   l$installed_packages = NA
+
+  if(machine) l$machine = .Machine
+  else l$machine = NA
   
   l$package_version = packageDescription("benchmarkme")$Version
   l$id = paste0(Sys.Date(), "-", sample(1e8, 1))
