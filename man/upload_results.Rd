@@ -14,7 +14,7 @@ upload_results(results, url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
 \item{url}{The location of where to upload the results.}
 
 \item{args}{Default \code{NULL}. A list of arguments to 
-be passed to \cc{get_sys_details}.}
+be passed to \code{get_sys_details}.}
 }
 \description{
 This function uploads the benchmarking results. 
