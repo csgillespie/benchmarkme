@@ -9,11 +9,13 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-```{r echo=FALSE}
+```{r echo=FALSE, purl=FALSE}
 library("benchmarkme")
 data(sample_results, package="benchmarkme")
 res = sample_results
 ```
+
+
 
 ## Overview 
 
@@ -23,7 +25,7 @@ A straightforward way of speeding up your analysis, is to buy a better computer.
 
 To benchmark you system, just run
 
-```{r eval=FALSE}
+```{r eval=FALSE, include=TRUE}
 library("benchmarkme")
 res = benchmark_std(runs = 3)
 ```

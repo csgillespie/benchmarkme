@@ -6,7 +6,7 @@
 # RStudio files
 .Rproj.user/
 # produced vignettes
-vignettes/*.html
-vignettes/*.pdf
+#vignettes/*.html
+#vignettes/*.pdf
 .Rproj.user
 add_to_drat.R
