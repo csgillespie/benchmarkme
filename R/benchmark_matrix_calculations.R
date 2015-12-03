@@ -17,12 +17,12 @@
 #' @export
 bm_matrix_manip = function(runs=3, verbose=FALSE) {
   a = 0; b = 0
-  timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
+  timings = data.frame(user = numeric(runs), system=0, elapsed=0,
                        test="manip", group="matrix_cal")
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
-      a = matrix(rnorm(2500*2500)/10, ncol=2500, nrow=2500);
+      a = matrix(rnorm(2500 * 2500)/10, ncol=2500, nrow=2500);
       b = t(a);
       dim(b) = c(1250, 5000);
       a = t(b)

@@ -12,7 +12,7 @@ get_linear_algebra = function() {
       search = "/rstudio"
     } else if(gui == "X11") {
       search = "lib/R"
-    } else { 
+    } else {
       search = "exec/R"
     }
     #!/bin/bash

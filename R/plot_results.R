@@ -20,29 +20,35 @@ plot.ben_results = function(x, ...) {
   if(is.na(ben_rank)) ben_rank = nrow(results) + 1
   
   ## Sort plot
-  op = par(mar=c(3,3,2,1), 
-           mgp=c(2,0.4,0), tck=-.01,
+  op = par(mar=c(3, 3, 2, 1), 
+           mgp=c(2, 0.4, 0), tck=-.01,
            cex.axis=0.9, las=1, mfrow=c(1,2)) 
   on.exit(op)
   
+  ## Calculate adjustment for sensible "You" placement
   adj = ifelse(ben_rank < nrow(results)/2, -1.5, 1.5)
+
+  ## Maximum value for plot
   ymax = max(results$timings, ben_sum)
+
+  ## Standard timings
   plot(results$timings, xlab="Rank", ylab="Total timing (secs)", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
-       panel.first=grid())
-  
+       panel.first=grid(), cex=0.7, ...)
   points(ben_rank-1/2,ben_sum, bg=4, pch=21)
-  text(ben_rank-1/2, ben_sum, "You", col=4, adj=adj)
+  abline(v=ben_rank-1/2, col=4, lty=3)
+  text(ben_rank-1/2, 0, "You", col=4, adj=adj)
 
   ## Relative timings  
   fastest = min(ben_sum, results$timings)
   ymax= ymax/fastest
   plot(results$timings/fastest, xlab="Rank", ylab="Relative timing", 
        ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
-       panel.first=grid())
+       panel.first=grid(), cex=0.7, ...)
   abline(h=1, lty=3)
+  abline(v=ben_rank-1/2, col=4, lty=3)
   points(ben_rank-1/2,ben_sum/fastest, bg=4, pch=21)
-  text(ben_rank-1/2, ben_sum/fastest, "You", col=4, adj=adj)
+  text(ben_rank-1/2, 0, "You", col=4, adj=adj)
 }
 
 
@@ -82,5 +88,3 @@ plot_past = function(byte_optimize = NULL) {
        panel.first=grid())
   abline(h=1, lty=3)
 }
-
-
