@@ -14,7 +14,7 @@ LazyData: TRUE
 Imports:
     Matrix,
     compiler,
-    httr
+    httr, methods
 Suggests: RcppZiggurat, testthat, DT, knitr
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1

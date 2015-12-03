@@ -11,6 +11,7 @@
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' for a complete history.
 #' @inheritParams benchmark_all
+#' @importFrom stats runif
 #' @export
 bm_prog_fib = function(runs=3, verbose=FALSE) {
   a = 0; b = 0; phi = 1.6180339887498949
@@ -91,6 +92,8 @@ bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
   timings
 }
 
+
+#' @importFrom stats cor
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_escoufier = function(runs=3, verbose=FALSE) {

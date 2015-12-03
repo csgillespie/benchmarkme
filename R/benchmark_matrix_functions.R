@@ -13,6 +13,7 @@
 #' for a complete history.
 #' @inheritParams benchmark_all
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
+#' @importFrom stats fft
 #' @export
 bm_matrix_fft = function(runs=3, verbose=FALSE) {
   b = 0
@@ -61,6 +62,7 @@ bm_matrix_determinant = function(runs=3, verbose=FALSE) {
   timings
 }
 
+#' @importFrom methods new
 #' @rdname bm_matrix_fft
 #' @import Matrix
 #' @export
