@@ -94,7 +94,7 @@ The `get_sys_details()` returns:
 The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will be removed. If you don't wish to upload certain information, just set the corresponding argument, i.e.
 
 ```
-upload_results(res, sys_info=FALSE)
+upload_results(res, args=list(sys_info=FALSE))
 ```
 
 
