@@ -6,7 +6,7 @@
 \usage{
 get_sys_details(sys_info = TRUE, platform_info = TRUE, r_version = TRUE,
   ram = TRUE, cpu = TRUE, byte_compiler = TRUE, linear_algebra = TRUE,
-  locale = TRUE, installed_packages = TRUE)
+  locale = TRUE, installed_packages = TRUE, machine = TRUE)
 }
 \arguments{
 \item{sys_info}{Default \code{TRUE}.}
@@ -26,6 +26,8 @@ get_sys_details(sys_info = TRUE, platform_info = TRUE, r_version = TRUE,
 \item{locale}{Default \code{TRUE}}
 
 \item{installed_packages}{Default \code{TRUE}.}
+
+\item{machine}{Default \code{TRUE}}
 }
 \value{
 A list
@@ -43,8 +45,9 @@ is contains the output from:
 \item \code{get_cpu()};
 \item \code{get_byte_compiler()};
 \item \code{get_linear_algebra()};
-\item \code{installed.packages()};
 \item \code{Sys.getlocale()}
+\item \code{installed.packages()};
+\item \code{.Machine}
 \item The package version number;
 \item Unique ID - used to extract results;
 \item The current date.

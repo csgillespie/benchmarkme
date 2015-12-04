@@ -39,5 +39,5 @@ get_byte_compiler = function() {
       comp = compiler::getCompilerOption("optimize")
     }
   }
-  structure(comp, names = "byte_optimize")
+  structure(as.integer(comp), names = "byte_optimize")
 }

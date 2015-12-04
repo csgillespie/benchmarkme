@@ -10,7 +10,8 @@ get_datatable(results)
 get_datatable_past(byte_optimize = NULL)
 }
 \arguments{
-\item{results}{Benchmark results. Probably obtained from \code{benchmark_all()}.}
+\item{results}{Benchmark results. Probably obtained from 
+\code{benchmark_std()}.}
 
 \item{byte_optimize}{Default \code{NULL}. The default behaviour is to plot all results.
 To plot only the byte optimized results, set to \code{TRUE}, otherwise \code{FALSE}}
