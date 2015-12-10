@@ -1,7 +1,7 @@
 #' @importFrom graphics abline grid par plot points text
 #' @importFrom utils data
 #' @S3method plot ben_results
-plot.ben_results = function(x, ...) {
+plot.ben_results = function(x, log="y", ...) {
   
   ## Load past data
   tmp_env = environment()
@@ -33,33 +33,42 @@ plot.ben_results = function(x, ...) {
 
   ## Standard timings
   plot(results$timings, xlab="Rank", ylab="Total timing (secs)", 
-       ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
-       panel.first=grid(), cex=0.7, ...)
+       ylim=c(1, ymax), xlim=c(1, nrow(results)+1), 
+       panel.first=grid(), cex=0.7, log=log, ...)
   points(ben_rank-1/2,ben_sum, bg=4, pch=21)
   abline(v=ben_rank-1/2, col=4, lty=3)
-  text(ben_rank-1/2, 0, "You", col=4, adj=adj)
+  text(ben_rank-1/2, 1.2, "You", col=4, adj=adj)
 
   ## Relative timings  
   fastest = min(ben_sum, results$timings)
   ymax= ymax/fastest
   plot(results$timings/fastest, xlab="Rank", ylab="Relative timing", 
-       ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
-       panel.first=grid(), cex=0.7, ...)
+       ylim=c(1, ymax), xlim=c(1, nrow(results)+1), 
+       panel.first=grid(), cex=0.7, log=log, ...)
   abline(h=1, lty=3)
   abline(v=ben_rank-1/2, col=4, lty=3)
   points(ben_rank-1/2,ben_sum/fastest, bg=4, pch=21)
-  text(ben_rank-1/2, 0, "You", col=4, adj=adj)
+  text(ben_rank-1/2, 1.2, "You", col=4, adj=adj)
 }
 
 
 #' Plot past results
 #' 
-#' Plot the previous benchmarks. This function creates two plots. The first showing
-#' time in seconds, the other relative time. The data set used is \code{data(results)}.
+#' Plot the previous benchmarks. This function creates two figures.
+#' \itemize{
+#' \item Figure 1: Total benchmark time over all benchmarks (in seconds) on the y-axis..
+#' \item Figure 2: Relative time (compared to the smallest benchmark).
+#' }
+#' The data set used is \code{data(results)}.
 #' @param byte_optimize Default \code{NULL}. The default behaviour is to plot all results.
-#' To plot only the byte optimized results, set to \code{TRUE}, otherwise \code{FALSE}
+#' To plot only the byte optimized results, set to \code{TRUE}, otherwise \code{FALSE}.
+#' @param log By default the y axis is plotted on the log scale. To change, set the 
+#' the argument equal to the empty parameter string, \code{""}.
+#' @examples 
+#' ## Plot non byte optimize code
+#' plot_past(byte_optimize=FALSE)
 #' @export
-plot_past = function(byte_optimize = NULL) {
+plot_past = function(byte_optimize = NULL, log="y") {
   ## Load past data
   tmp_env = environment()
   data(results, package="benchmarkme", envir = tmp_env)
@@ -77,14 +86,14 @@ plot_past = function(byte_optimize = NULL) {
   on.exit(op)
   ymax = max(results$timings)
   plot(results$timings, xlab="Rank", ylab="Total timing (secs)", 
-       ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
-       panel.first=grid())
+       ylim=c(1, ymax), xlim=c(1, nrow(results)+1), 
+       panel.first=grid(), log=log)
   
   ## Relative timings  
   fastest = min(results$timings)
   ymax= ymax/fastest
   plot(results$timings/fastest, xlab="Rank", ylab="Relative timing", 
-       ylim=c(0, ymax), xlim=c(0, nrow(results)+1), 
-       panel.first=grid())
+       ylim=c(1, ymax), xlim=c(1, nrow(results)+1), 
+       panel.first=grid(), log=log)
   abline(h=1, lty=3)
 }

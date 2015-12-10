@@ -4,14 +4,25 @@
 \alias{plot_past}
 \title{Plot past results}
 \usage{
-plot_past(byte_optimize = NULL)
+plot_past(byte_optimize = NULL, log = "y")
 }
 \arguments{
 \item{byte_optimize}{Default \code{NULL}. The default behaviour is to plot all results.
-To plot only the byte optimized results, set to \code{TRUE}, otherwise \code{FALSE}}
+To plot only the byte optimized results, set to \code{TRUE}, otherwise \code{FALSE}.}
+
+\item{log}{By default the y axis is plotted on the log scale. To change, set the 
+the argument equal to the empty parameter string, \code{""}.}
 }
 \description{
-Plot the previous benchmarks. This function creates two plots. The first showing
-time in seconds, the other relative time. The data set used is \code{data(results)}.
+Plot the previous benchmarks. This function creates two figures.
+\itemize{
+\item Figure 1: Total benchmark time over all benchmarks (in seconds) on the y-axis..
+\item Figure 2: Relative time (compared to the smallest benchmark).
+}
+The data set used is \code{data(results)}.
+}
+\examples{
+## Plot non byte optimize code
+plot_past(byte_optimize=FALSE)
 }
 

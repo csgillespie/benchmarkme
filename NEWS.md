@@ -1,3 +1,6 @@
+## Version 0.1.8.9000
+  * Default log scale on y-axis (suggested by @eddelbuettel). Fixes #5.
+
 ## Version 0.1.8
   * Added introduction to benchmarkme vignette.
   * Adjust placement of "You" in the S3 plot.
