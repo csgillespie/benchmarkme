@@ -4,6 +4,7 @@
 #' are returned.
 #' @export
 get_linear_algebra = function() {
+  ##XXX: ?R CMD config BLAS_LIBS
   os = R.version$os
   if(length(grep("^linux", os))) {
     
