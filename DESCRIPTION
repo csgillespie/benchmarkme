@@ -21,4 +21,4 @@ Suggests: RcppZiggurat, testthat, DT, knitr
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 License: GPL-2 | GPL-3
-Additional_repositories: https://github.com/csgillespie/drat
+Additional_repositories: https://github.com/csgillespie/drat/tree/gh-pages
