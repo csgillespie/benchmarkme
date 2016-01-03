@@ -1,6 +1,7 @@
-## Version 0.1.8.9001
+## Version 0.1.8.9002
   * Default log scale on y-axis (suggested by @eddelbuettel). Fixes #5.
   * Moved data sets to benchmarkmeData package.
+  * New ranking function to compare results with past.
 
 ## Version 0.1.8
   * Added introduction to benchmarkme vignette.
