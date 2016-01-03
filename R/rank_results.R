@@ -1,6 +1,6 @@
 #' Benchmark rankings
 #' 
-#' Comparison with past resultss
+#' Comparison with past results.
 #' @inheritParams upload_results
 #' @inheritParams benchmark_std
 #' @export
