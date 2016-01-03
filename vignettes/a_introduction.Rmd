@@ -43,16 +43,16 @@ dataset in future versions of the package.
 
 ## Exploring the Results
 
-Past results are include with the package and can be accessed via
+Past results are included in a companion package and can be accessed via
 
 ```{r}
-data(results, package="benchmarkme")
+data(past_results, package="benchmarkmeData")
 ```
 
 The data set is a simple data frame
 
 ```{r}
-head(results, 3)
+head(past_results, 3)
 ```
 
 and plotted via

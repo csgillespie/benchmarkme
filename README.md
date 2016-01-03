@@ -60,9 +60,9 @@ results from the public data sets.
 
 ## Uploaded data sets
 
-A summary of the uploaded data sets is available in within this package
+A summary of the uploaded data sets is available in the [benchmarkmeData](https://github.com/csgillespie/benchmarkme-data) package
 ```
-data(results, package="benchmarkme")
+data(past_results, package="benchmarkmeData")
 ```
 
 A column of this data set, contains the unique identifer returned by the 

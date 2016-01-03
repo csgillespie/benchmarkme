@@ -3,6 +3,7 @@
 #' Compare your results against past results. Your results is 
 #' shown in Orange.
 #' @inheritParams upload_results
+#' @import benchmarkmeData
 #' @export
 get_datatable = function(results) {
   if(!requireNamespace("DT", quietly = TRUE))
@@ -13,20 +14,21 @@ get_datatable = function(results) {
   ben_sum = sum(results[,3])/no_of_reps
   
   ## Load past data
-  tmp_env = environment()
-  data(results, package="benchmarkme", envir = tmp_env)
-  results = tmp_env$results
+  tmp_env = new.env()
+  data(past_results, package="benchmarkmeData", envir = tmp_env)
+  pas_res = tmp_env$past_results
   if(get_byte_compiler() > 0.5)
-    results = results[results$byte_optimize > 0.5,]
+    pas_res = pas_res[pas_res$byte_optimize > 0.5,]
   else 
-    results = results[results$byte_optimize < 0.5,]
+    pas_res = pas_res[pas_res$byte_optimize < 0.5,]
   
-  results$new = FALSE
-  results$cpus = as.character(results$cpus)
-  results = results[,c("cpus", "timings", "new")]
-  results = rbind(results, data.frame(cpus = get_cpu()$model_name, timings=ben_sum, new=TRUE))
-  
-  
+  pas_res$new = FALSE
+  pas_res$cpus = as.character(pas_res$cpus)
+  pas_res = pas_res[,c("cpus", "timings", "new")]
+  results = rbind(pas_res, 
+                  data.frame(cpus = get_cpu()$model_name, 
+                             timings=ben_sum, new=TRUE))
+
   results$timings = signif(results$timings, 5)
   results = results[order(results$timings), ]
   results$rank = 1:nrow(results)
@@ -50,8 +52,8 @@ get_datatable_past = function(byte_optimize=NULL) {
   
   ## Load past data
   tmp_env = environment()
-  data(results, package="benchmarkme", envir = tmp_env)
-  results = tmp_env$results
+  data(past_results, package="benchmarkmeData", envir = tmp_env)
+  results = tmp_env$past_results
   results$cpus = as.character(results$cpus)
   
   if(!is.null(byte_optimize)){

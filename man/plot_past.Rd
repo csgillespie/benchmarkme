@@ -19,7 +19,7 @@ Plot the previous benchmarks. This function creates two figures.
 \item Figure 1: Total benchmark time over all benchmarks (in seconds) on the y-axis..
 \item Figure 2: Relative time (compared to the smallest benchmark).
 }
-The data set used is \code{data(results)}.
+The data set used is \code{data(past_results)}.
 }
 \examples{
 ## Plot non byte optimize code

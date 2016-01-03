@@ -6,10 +6,10 @@
 #  id = upload_results(res)
 
 ## ------------------------------------------------------------------------
-data(results, package="benchmarkme")
+data(past_results, package="benchmarkmeData")
 
 ## ------------------------------------------------------------------------
-head(results, 3)
+head(past_results, 3)
 
 ## ---- fig.width=7, fig.height=3.5----------------------------------------
 plot_past()
