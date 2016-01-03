@@ -9,6 +9,7 @@ before_install:
 
 install:
   - ./pkg-build.sh install_github jimhester/covr
+  - ./pkg-build.sh install_github csgillespie/benchmarkme-data
   - ./pkg-build.sh install_deps
 
 script:
