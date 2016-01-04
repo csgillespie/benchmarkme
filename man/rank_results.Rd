@@ -13,6 +13,6 @@ rank_results(results, verbose = TRUE)
 \item{verbose}{Default TRUE.}
 }
 \description{
-Comparison with past resultss
+Comparison with past results.
 }
 
