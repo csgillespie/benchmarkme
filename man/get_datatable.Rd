@@ -4,11 +4,17 @@
 \alias{get_datatable}
 \title{Interactive table of results}
 \usage{
-get_datatable(results)
+get_datatable(results, test_group = NULL,
+  byte_optimize = get_byte_compiler())
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 
 \code{benchmark_std()}.}
+
+\item{test_group}{Default \code{NULL}. The default behaviour is to average over all tests.}
+
+\item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
+byte_optimized setting. To use all results, set to \code{NULL}.}
 }
 \description{
 Compare your results against past results. Your results is 
