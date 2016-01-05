@@ -1,3 +1,6 @@
+## Version 0.2.0
+  * More flexibilty in plot and datatable functions - you can now specify the test you want to compare.
+
 ## Version 0.1.9
   * Default log scale on y-axis (suggested by @eddelbuettel). Fixes #5.
   * Moved data sets to benchmarkmeData package.
