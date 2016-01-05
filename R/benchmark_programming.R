@@ -9,14 +9,14 @@
 #' \item Escoufier's method on a 60x60 matrix (mixed).
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
-#' for a complete history.
+#' for a complete history. The function \code{benchmark_prog()} runs the five \code{bm} functions.
 #' @inheritParams benchmark_all
 #' @importFrom stats runif
 #' @export
 bm_prog_fib = function(runs=3, verbose=FALSE) {
   a = 0; b = 0; phi = 1.6180339887498949
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="fib", group="prog")
+                       test="fib", test_group="prog")
   for (i in 1:runs) {
     a = floor(runif(3500000)*1000)
     invisible(gc())
@@ -32,7 +32,7 @@ bm_prog_fib = function(runs=3, verbose=FALSE) {
 bm_prog_hilbert = function(runs=3, verbose=FALSE) {
   a = 3500; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="hilbert", group="prog")
+                       test="hilbert", test_group="prog")
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
@@ -52,7 +52,7 @@ bm_prog_hilbert = function(runs=3, verbose=FALSE) {
 bm_prog_gcd = function(runs=3, verbose=FALSE) {
   ans = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="gcd", group="prog")
+                       test="gcd", test_group="prog")
   gcd2 = function(x, y) {if (sum(y > 1.0E-4) == 0) x else {y[y == 0] <- x[y == 0]; Recall(y, x %% y)}}
   for (i in 1:runs) {
     a = ceiling(runif(1000000)*1000)
@@ -69,7 +69,7 @@ bm_prog_gcd = function(runs=3, verbose=FALSE) {
 #' @export
 bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="toeplitz", group="prog")
+                       test="toeplitz", test_group="prog")
   N = 3000
   ans = rep(0, N*N)
   dim(ans) = c(N, N)
@@ -98,7 +98,7 @@ bm_prog_toeplitz = function(runs=3, verbose=FALSE) {
 #' @export
 bm_prog_escoufier = function(runs=3, verbose=FALSE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="escoufier", group="prog")
+                       test="escoufier", test_group="prog")
   p <- 0; vt <- 0; vr <- 0; vrt <- 0; rvt <- 0; RV <- 0; j <- 0; k <- 0;
   x2 <- 0; R <- 0; Rxx <- 0; Ryy <- 0; Rxy <- 0; Ryx <- 0; Rvmax <- 0
   # Calculate the trace of a matrix (sum of its diagonal elements)

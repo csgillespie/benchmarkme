@@ -3,14 +3,11 @@
 \name{benchmark_std}
 \alias{benchmark_all}
 \alias{benchmark_std}
-\alias{get_benchmarks}
 \title{Run standard benchmarks}
 \usage{
 benchmark_std(runs = 3, verbose = TRUE)
 
 benchmark_all(runs = 3, verbose = TRUE)
-
-get_benchmarks()
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
@@ -18,8 +15,16 @@ get_benchmarks()
 \item{verbose}{Default TRUE.}
 }
 \description{
-This functions runs the standard benchmarks, which should be suitable for most
-machines
-To view the list of benchmarks, see \code{get_benchmarks}.
+A collection of matrix benchmark functions
+\itemize{
+\item \code{benchmark_prog}
+\item \code{benchmark_matrix_cal}
+\item \code{benchmark_matrix_fun}
+}
+To view the list of benchmarks, see \code{get_available_benchmarks}.
+}
+\details{
+This function runs a set of standard benchmarks, which should be suitable for most
+machines. It runs
 }
 

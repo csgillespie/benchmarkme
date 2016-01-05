@@ -1,4 +1,3 @@
-
 #' Matrix function benchmarks
 #' 
 #' @description A collection of matrix benchmark functions aimed at
@@ -11,14 +10,14 @@
 #' \item Linear regr. over a 3000x3000 matrix.
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
-#' for a complete history.
+#' for a complete history. The function \code{benchmark_matrix_cal()} runs the five \code{bm} functions.
 #' @inheritParams benchmark_all
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' @export
-bm_matrix_manip = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_manip = function(runs=3, verbose=FALSE) {
   a = 0; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0,
-                       test="manip", group="matrix_cal")
+                       test="manip", test_group="matrix_cal")
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
@@ -34,12 +33,12 @@ bm_matrix_manip = function(runs=3, verbose=FALSE) {
   timings
 }
 
-#' @rdname bm_matrix_manip
+#' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_power = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_power = function(runs=3, verbose=FALSE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="power", group="matrix_cal")
+                       test="power", test_group="matrix_cal")
   for (i in 1:runs) {
     a <- abs(matrix(Rnorm(2500*2500)/2, ncol=2500, nrow=2500));
     invisible(gc())
@@ -50,12 +49,12 @@ bm_matrix_power = function(runs=3, verbose=FALSE) {
   timings
 }
 
-#' @rdname bm_matrix_manip
+#' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_sort = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_sort = function(runs=3, verbose=FALSE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="sort", group="matrix_cal")
+                       test="sort", test_group="matrix_cal")
   for (i in 1:runs) {
     a = Rnorm(7000000)
     invisible(gc())
@@ -66,12 +65,12 @@ bm_matrix_sort = function(runs=3, verbose=FALSE) {
   timings
 }
 
-#' @rdname bm_matrix_manip
+#' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cross_product = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_cross_product = function(runs=3, verbose=FALSE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="cross_product", group="matrix_cal")
+                       test="cross_product", test_group="matrix_cal")
   for (i in 1:runs) {
     a = Rnorm(2500*2500); dim(a) = c(2500, 2500)
     invisible(gc())
@@ -82,13 +81,13 @@ bm_matrix_cross_product = function(runs=3, verbose=FALSE) {
   timings
 }
 
-#' @rdname bm_matrix_manip
+#' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_lm = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_lm = function(runs=3, verbose=FALSE) {
   ans = 0
   b = as.double(1:2000)
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="lm", group="matrix_cal")
+                       test="lm", test_group="matrix_cal")
   for (i in 1:runs) {
     a = new("dgeMatrix", x = Rnorm(2000*2000), Dim = as.integer(c(2000,2000)))
     invisible(gc())
