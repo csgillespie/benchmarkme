@@ -1,11 +1,12 @@
 #' CPU Description
 #' 
-#' Extracting the amount of RAM is OS specific and hence messy.
+#' Extracting the CPU is OS specific and hence messy.
 #' \itemize{
 #' \item Linux: \code{/proc/cpuinfo}
 #' \item Apple: \code{sysctl -n}
 #' \item Windows: \code{wmic cpu}
 #' }
+#' @importFrom parallel detectCores
 #' @export
 get_cpu = function() {
   os = R.version$os
@@ -23,5 +24,7 @@ get_cpu = function() {
     model_name = system("wmic cpu get name", intern=TRUE)[2]
     vendor_id = system("wmic cpu get manufacturer", intern=TRUE)[2]
   }
-  list(vendor_id=remove_white(vendor_id), model_name = remove_white(model_name))
+  list(vendor_id=remove_white(vendor_id), 
+       model_name = remove_white(model_name), 
+       no_of_cores = parallel::detectCores())
 }

@@ -7,7 +7,7 @@
 get_cpu()
 }
 \description{
-Extracting the amount of RAM is OS specific and hence messy.
+Extracting the CPU is OS specific and hence messy.
 \itemize{
 \item Linux: \code{/proc/cpuinfo}
 \item Apple: \code{sysctl -n}
