@@ -14,7 +14,7 @@
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' @importFrom stats fft
 #' @export
-bm_matrix_fun_fft = function(runs=3, verbose=FALSE) {
+bm_matrix_fun_fft = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="fft", test_group="matrix_fun")
@@ -31,7 +31,7 @@ bm_matrix_fun_fft = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_fun_fft
 #' @export
-bm_matrix_fun_eigen = function(runs=3, verbose=FALSE) {
+bm_matrix_fun_eigen = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="eigen", test_group="matrix_fun")
@@ -47,7 +47,7 @@ bm_matrix_fun_eigen = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_fun_fft
 #' @export
-bm_matrix_fun_determinant = function(runs=3, verbose=FALSE) {
+bm_matrix_fun_determinant = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="determinant", test_group="matrix_fun")
@@ -65,7 +65,7 @@ bm_matrix_fun_determinant = function(runs=3, verbose=FALSE) {
 #' @rdname bm_matrix_fun_fft
 #' @import Matrix
 #' @export
-bm_matrix_fun_cholesky = function(runs=3, verbose=FALSE) {
+bm_matrix_fun_cholesky = function(runs=3, verbose=TRUE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="cholesky", test_group="matrix_fun")
   for (i in 1:runs) {
@@ -81,7 +81,7 @@ bm_matrix_fun_cholesky = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_fun_fft
 #' @export
-bm_matrix_fun_inverse = function(runs=3, verbose=FALSE) {
+bm_matrix_fun_inverse = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="inverse", test_group="matrix_fun")

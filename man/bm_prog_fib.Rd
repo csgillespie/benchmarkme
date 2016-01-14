@@ -9,15 +9,15 @@
 \alias{bm_prog_toeplitz}
 \title{Programming benchmarks}
 \usage{
-bm_prog_fib(runs = 3, verbose = FALSE)
+bm_prog_fib(runs = 3, verbose = TRUE)
 
-bm_prog_hilbert(runs = 3, verbose = FALSE)
+bm_prog_hilbert(runs = 3, verbose = TRUE)
 
-bm_prog_gcd(runs = 3, verbose = FALSE)
+bm_prog_gcd(runs = 3, verbose = TRUE)
 
-bm_prog_toeplitz(runs = 3, verbose = FALSE)
+bm_prog_toeplitz(runs = 3, verbose = TRUE)
 
-bm_prog_escoufier(runs = 3, verbose = FALSE)
+bm_prog_escoufier(runs = 3, verbose = TRUE)
 
 benchmark_prog(runs = 3, verbose = TRUE)
 }

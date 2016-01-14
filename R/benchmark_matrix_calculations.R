@@ -14,7 +14,7 @@
 #' @inheritParams benchmark_all
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' @export
-bm_matrix_cal_manip = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_manip = function(runs=3, verbose=TRUE) {
   a = 0; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0,
                        test="manip", test_group="matrix_cal")
@@ -35,7 +35,7 @@ bm_matrix_cal_manip = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_power = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_power = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="power", test_group="matrix_cal")
@@ -51,7 +51,7 @@ bm_matrix_cal_power = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_sort = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_sort = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="sort", test_group="matrix_cal")
@@ -67,7 +67,7 @@ bm_matrix_cal_sort = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_cross_product = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_cross_product = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="cross_product", test_group="matrix_cal")
@@ -83,7 +83,7 @@ bm_matrix_cal_cross_product = function(runs=3, verbose=FALSE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_lm = function(runs=3, verbose=FALSE) {
+bm_matrix_cal_lm = function(runs=3, verbose=TRUE) {
   ans = 0
   b = as.double(1:2000)
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 

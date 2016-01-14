@@ -9,15 +9,15 @@
 \alias{bm_matrix_fun_inverse}
 \title{Matrix function benchmarks}
 \usage{
-bm_matrix_fun_fft(runs = 3, verbose = FALSE)
+bm_matrix_fun_fft(runs = 3, verbose = TRUE)
 
-bm_matrix_fun_eigen(runs = 3, verbose = FALSE)
+bm_matrix_fun_eigen(runs = 3, verbose = TRUE)
 
-bm_matrix_fun_determinant(runs = 3, verbose = FALSE)
+bm_matrix_fun_determinant(runs = 3, verbose = TRUE)
 
-bm_matrix_fun_cholesky(runs = 3, verbose = FALSE)
+bm_matrix_fun_cholesky(runs = 3, verbose = TRUE)
 
-bm_matrix_fun_inverse(runs = 3, verbose = FALSE)
+bm_matrix_fun_inverse(runs = 3, verbose = TRUE)
 
 benchmark_matrix_fun(runs = 3, verbose = TRUE)
 }

@@ -9,15 +9,15 @@
 \alias{bm_matrix_cal_sort}
 \title{Matrix function benchmarks}
 \usage{
-bm_matrix_cal_manip(runs = 3, verbose = FALSE)
+bm_matrix_cal_manip(runs = 3, verbose = TRUE)
 
-bm_matrix_cal_power(runs = 3, verbose = FALSE)
+bm_matrix_cal_power(runs = 3, verbose = TRUE)
 
-bm_matrix_cal_sort(runs = 3, verbose = FALSE)
+bm_matrix_cal_sort(runs = 3, verbose = TRUE)
 
-bm_matrix_cal_cross_product(runs = 3, verbose = FALSE)
+bm_matrix_cal_cross_product(runs = 3, verbose = TRUE)
 
-bm_matrix_cal_lm(runs = 3, verbose = FALSE)
+bm_matrix_cal_lm(runs = 3, verbose = TRUE)
 
 benchmark_matrix_cal(runs = 3, verbose = TRUE)
 }
