@@ -76,6 +76,6 @@ print.bytes = function (x, digits = 3, ...) {
   }
   formatted <- format(signif(x, digits = digits), big.mark = ",", 
                       scientific = FALSE)
-  cat(formatted, " ", unit, "\n", sep = "")
-  invisible(paste(formatted, unit))
+  cat(unclass(formatted), " ", unit, "\n", sep = "")
+  invisible(paste(unclass(formatted), unit))
 }
