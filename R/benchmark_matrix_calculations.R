@@ -29,7 +29,7 @@ bm_matrix_cal_manip = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = timing[1:3]
   }
   if(verbose)
-    message(c("Creation, transp., deformation of a 5000x5000 matrix", timings_mean(timings)))
+    message(c("\tCreation, transp., deformation of a 5000x5000 matrix", timings_mean(timings)))
   timings
 }
 
@@ -45,7 +45,7 @@ bm_matrix_cal_power = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- a^1000})[1:3]
   }
   if(verbose)
-    message(c("2500x2500 normal distributed random matrix ^1000", timings_mean(timings)))
+    message(c("\t2500x2500 normal distributed random matrix ^1000", timings_mean(timings)))
   timings
 }
 
@@ -61,7 +61,7 @@ bm_matrix_cal_sort = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- sort(a, method="quick")})[1:3]
   }
   if(verbose)
-    message(c("Sorting of 7,000,000 random values", timings_mean(timings)))
+    message(c("\tSorting of 7,000,000 random values", timings_mean(timings)))
   timings
 }
 
@@ -77,7 +77,7 @@ bm_matrix_cal_cross_product = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- crossprod(a)})[1:3]
   }
   if(verbose)
-    message(c("2500x2500 cross-product matrix (b = a' * a)", timings_mean(timings)))
+    message(c("\t2500x2500 cross-product matrix (b = a' * a)", timings_mean(timings)))
   timings
 }
 
@@ -94,6 +94,6 @@ bm_matrix_cal_lm = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({ans = solve(crossprod(a), crossprod(a,b))})[1:3]
   }
   if(verbose)
-    message(c("Linear regr. over a 3000x3000 matrix (c = a \\ b')", timings_mean(timings)))
+    message(c("\tLinear regr. over a 3000x3000 matrix (c = a \\ b')", timings_mean(timings)))
   timings
 }

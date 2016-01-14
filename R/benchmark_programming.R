@@ -23,7 +23,7 @@ bm_prog_fib = function(runs=3, verbose=TRUE) {
     timings[i, 1:3] = system.time({b <- (phi^a - (-phi)^(-a))/sqrt(5)})[1:3]
   }
   if(verbose)
-    message(c("3,500,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
+    message(c("\t3,500,000 Fibonacci numbers calculation (vector calc)", timings_mean(timings)))
   timings
 }
 
@@ -43,7 +43,7 @@ bm_prog_hilbert = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 3500x3500 Hilbert matrix (matrix calc)", timings_mean(timings)))
+    message(c("\tCreation of a 3500x3500 Hilbert matrix (matrix calc)", timings_mean(timings)))
   timings
 }
 
@@ -61,7 +61,7 @@ bm_prog_gcd = function(runs=3, verbose=TRUE) {
     timings[i,1:3] <- system.time({ans <- gcd2(a, b)})[1:3] # gcd2 is a recursive function
   }
   if(verbose)
-    message(c("Grand common divisors of 1,000,000 pairs (recursion)", timings_mean(timings)))
+    message(c("\tGrand common divisors of 1,000,000 pairs (recursion)", timings_mean(timings)))
   timings
 }
 
@@ -88,7 +88,7 @@ bm_prog_toeplitz = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Creation of a 3000x3000 Toeplitz matrix (loops)", timings_mean(timings)))
+    message(c("\tCreation of a 3000x3000 Toeplitz matrix (loops)", timings_mean(timings)))
   timings
 }
 
@@ -139,6 +139,6 @@ bm_prog_escoufier = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = timing
   }
   if(verbose)
-    message(c("Escoufier's method on a 60x60 matrix (mixed)", timings_mean(timings)))
+    message(c("\tEscoufier's method on a 60x60 matrix (mixed)", timings_mean(timings)))
   timings
 }

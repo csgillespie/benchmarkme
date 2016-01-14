@@ -24,7 +24,7 @@ bm_matrix_fun_fft = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- fft(a)})[1:3]
   }
   if(verbose)
-    message(c("FFT over 2,500,000 random values", timings_mean(timings)))
+    message(c("\tFFT over 2,500,000 random values", timings_mean(timings)))
   timings
 }
 
@@ -41,7 +41,7 @@ bm_matrix_fun_eigen = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({ b <- eigen(a, symmetric=FALSE, only.values=TRUE)$Value})[1:3]
   }
   if(verbose)
-    message(c("Eigenvalues of a 640x640 random matrix", timings_mean(timings)))
+    message(c("\tEigenvalues of a 640x640 random matrix", timings_mean(timings)))
   timings
 }
 
@@ -57,7 +57,7 @@ bm_matrix_fun_determinant = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- det(a)})[1:3]
   }
   if(verbose)
-    message(c("Determinant of a 2500x2500 random matrix", timings_mean(timings)))
+    message(c("\tDeterminant of a 2500x2500 random matrix", timings_mean(timings)))
   timings
 }
 
@@ -75,7 +75,7 @@ bm_matrix_fun_cholesky = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- chol(a)})[1:3]
   }
   if(verbose)
-    message(c("Cholesky decomposition of a 3000x3000 matrix", timings_mean(timings)))
+    message(c("\tCholesky decomposition of a 3000x3000 matrix", timings_mean(timings)))
   timings
 }
 
@@ -91,6 +91,6 @@ bm_matrix_fun_inverse = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = system.time({b <- solve(a)})[1:3]
   }
   if(verbose)
-    message(c("Inverse of a 1600x1600 random matrix", timings_mean(timings)))
+    message(c("\tInverse of a 1600x1600 random matrix", timings_mean(timings)))
   timings
 }
