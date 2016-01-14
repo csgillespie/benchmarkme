@@ -13,8 +13,22 @@ run_benchmarks = function(bm, runs, verbose) {
 #' @examples 
 #' get_available_benchmarks()
 get_available_benchmarks = function() {
-  c("benchmark_prog", "benchmark_matrix_cal", "benchmark_matrix_fun")
+  c("benchmark_prog", "benchmark_matrix_cal", "benchmark_matrix_fun", "benchmark_io")
 }
+
+#' IO benchmarks
+#' 
+#' @description Benchmarking reading and writing a csv file (containing 2e6 random numbers).
+#' The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
+#' @inheritParams benchmark_all
+#' @export
+benchmark_io = function(runs=3, verbose=TRUE) {
+  bm = "bm_io"
+  if(verbose)
+    message("# IO benchmarks (2 tests):")
+  run_benchmarks(bm, runs, verbose)
+}
+
 
 #' @inheritParams benchmark_std
 #' @rdname bm_prog_fib
