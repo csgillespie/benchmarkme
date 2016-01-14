@@ -2,7 +2,7 @@
 #' @inheritParams benchmark_all
 #' @export
 bm_io= function(runs=3, verbose=TRUE) {
-  set.seed(1)
+  set.seed(1); on.exit(set.seed(NULL))
   x = Rnorm(2e6)
   m = data.frame(x, ncol=10)
 
