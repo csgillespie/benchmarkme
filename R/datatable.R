@@ -5,7 +5,9 @@
 #' @inheritParams upload_results
 #' @inheritParams plot.ben_results
 #' @export
-get_datatable = function(results, test_group=NULL, byte_optimize=get_byte_compiler()) {
+get_datatable = function(results, 
+                         test_group=unique(results$test_group), 
+                         byte_optimize=get_byte_compiler()) {
   if(!requireNamespace("DT", quietly = TRUE))
     stop("Install DT package to use datatable")
   
@@ -20,7 +22,6 @@ get_datatable = function(results, test_group=NULL, byte_optimize=get_byte_compil
     else 
       pas_res = pas_res[pas_res$byte_optimize < 0.5,]
   }
-  if(is.null(test_group)) test_group = unique(pas_res$test_group)
   pas_res = pas_res[pas_res$test_group %in% test_group,]
   pas_res = aggregate(time ~ id + byte_optimize + cpu + date + sysname, 
                       data=pas_res, 

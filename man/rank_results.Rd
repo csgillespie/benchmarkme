@@ -4,14 +4,15 @@
 \alias{rank_results}
 \title{Benchmark rankings}
 \usage{
-rank_results(results, test_group = NULL,
+rank_results(results, test_group = unique(results$test_group),
   byte_optimize = get_byte_compiler(), verbose = TRUE)
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 
 \code{benchmark_std()}.}
 
-\item{test_group}{Default \code{NULL}. The default behaviour is to average over all tests.}
+\item{test_group}{Default \code{unique(x$test_group)}. 
+The default behaviour is select the groups from your benchmark results.}
 
 \item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
 byte_optimized setting. To use all results, set to \code{NULL}.}

@@ -4,13 +4,14 @@
 \alias{plot.ben_results}
 \title{Compare results to past tests}
 \usage{
-\method{plot}{ben_results}(x, test_group = NULL,
+\method{plot}{ben_results}(x, test_group = unique(x$test_group),
   byte_optimize = get_byte_compiler(), log = "y", ...)
 }
 \arguments{
 \item{x}{The output from a \code{benchmark_*} call.}
 
-\item{test_group}{Default \code{NULL}. The default behaviour is to average over all tests.}
+\item{test_group}{Default \code{unique(x$test_group)}. 
+The default behaviour is select the groups from your benchmark results.}
 
 \item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
 byte_optimized setting. To use all results, set to \code{NULL}.}

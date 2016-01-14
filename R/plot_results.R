@@ -2,7 +2,8 @@
 #' 
 #' Plotting
 #' @param x The output from a \code{benchmark_*} call.
-#' @param test_group Default \code{NULL}. The default behaviour is to average over all tests. 
+#' @param test_group Default \code{unique(x$test_group)}. 
+#' The default behaviour is select the groups from your benchmark results.
 #' @param byte_optimize The default behaviour is to compare your results with results that use the same 
 #' byte_optimized setting. To use all results, set to \code{NULL}.
 #' @param log By default the y axis is plotted on the log scale. To change, set the 
@@ -16,7 +17,8 @@
 #' plot(sample_results)
 #' plot(sample_results, byte_optimze=NULL)
 plot.ben_results = function(x, 
-                            test_group=NULL, byte_optimize=get_byte_compiler(), 
+                            test_group=unique(x$test_group), 
+                            byte_optimize=get_byte_compiler(), 
                             log="y", ...) {
   
   ## Load past data
@@ -31,7 +33,6 @@ plot.ben_results = function(x,
       results = results[results$byte_optimize < 0.5,]
   }
   
-  if(is.null(test_group)) test_group = unique(results$test_group)
   results = results[results$test_group %in% test_group,]
   results = aggregate(time ~ id + byte_optimize + cpu + date + sysname, 
                       data=results, 
