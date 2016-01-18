@@ -20,13 +20,21 @@ get_available_benchmarks = function() {
 #' 
 #' @description Benchmarking reading and writing a csv file (containing 2e6 random numbers).
 #' The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
+#' Of \code{size}MB.
 #' @inheritParams benchmark_all
+#' @param tmpdir a non-empty character vector giving the directory name
+#' @param size a number specifying the approximate size of the generated csv. Must be one of
+#' 5, 10, 50, 100 or 500.
 #' @export
-benchmark_io = function(runs=3, verbose=TRUE) {
-  bm = "bm_io"
+benchmark_io = function(runs=3, 
+                        size = c(5, 10, 50, 100, 500),
+                        tmpdir = tempdir(),
+                        verbose=TRUE) {
   if(verbose)
     message("# IO benchmarks (2 tests):")
-  run_benchmarks(bm, runs, verbose)
+  results = bm_io(runs, size, tmpdir, verbose)
+  class(results) = c("ben_results", class(results))
+  results
 }
 
 

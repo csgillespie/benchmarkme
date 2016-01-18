@@ -5,17 +5,25 @@
 \alias{bm_io}
 \title{IO benchmarks}
 \usage{
-bm_io(runs = 3, verbose = TRUE)
+bm_io(runs = 3, size = c(5, 10, 50, 100, 500), tmpdir = tempdir(),
+  verbose = TRUE)
 
-benchmark_io(runs = 3, verbose = TRUE)
+benchmark_io(runs = 3, size = c(5, 10, 50, 100, 500), tmpdir = tempdir(),
+  verbose = TRUE)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
+
+\item{size}{a number specifying the approximate size of the generated csv. Must be one of
+5, 10, 50, 100 or 500.}
+
+\item{tmpdir}{a non-empty character vector giving the directory name}
 
 \item{verbose}{Default TRUE.}
 }
 \description{
 Benchmarking reading and writing a csv file (containing 2e6 random numbers).
 The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
+Of \code{size}MB.
 }
 
