@@ -57,7 +57,7 @@ and upload your results
 upload_results(res)
 ```
 
-This function returns a unique identifer that will allow you to identifer your
+This function returns a unique identifier that will allow you to identifier your
 results from the public data sets.
 
 
@@ -70,7 +70,7 @@ A summary of the uploaded data sets is available in the [benchmarkmeData](https:
 data(past_results, package="benchmarkmeData")
 ```
 
-A column of this data set, contains the unique identifer returned by the 
+A column of this data set, contains the unique identifier returned by the 
 'upload_results' function. A complete version of the uploaded data sets will be
 made available (soon) in a companion package.
 
