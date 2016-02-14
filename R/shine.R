@@ -24,4 +24,4 @@
 
 #' @importFrom benchmarkmeData shine
 #' @export
-shine = benchmarkmeData::shine
+benchmarkmeData::shine
