@@ -59,12 +59,14 @@ and plotted via
 
 ```{r, fig.width=7, fig.height=3.5}
 plot_past()
+## shine() # if you have shiny
 ```
 
 You can also see how you computer measures up with others
 
 ```{r, fig.width=7, fig.height=3.5}
 plot(res)
+## shine(res) # if you have shiny
 ```
 
 ## Interactive Tables

@@ -25,6 +25,9 @@ Load the package in the usual way
 library("benchmarkme")
 ## View past results
 plot_past()
+## shine() # Needs shiny
+## get_datatable_past() # Needs DT
+
 ```
 
 Obviously the impact on your system will depend on how much RAM and the speed of your CPU. 
@@ -43,9 +46,8 @@ You can compare your results other users
 
 ```
 plot(res)
-## Needs the DT package
-get_datatable(res)
-get_datatable_past()
+## shine(res)
+## get_datatable(res)
 ```
 
 and upload your results
@@ -57,6 +59,9 @@ upload_results(res)
 
 This function returns a unique identifer that will allow you to identifer your
 results from the public data sets.
+
+
+
 
 ## Uploaded data sets
 

@@ -2,6 +2,7 @@
   * More flexibilty in plot and datatable functions - you can now specify the test you want to compare.
   * The number of cores returned by get_cpu().
   * Adding io benchmarks.
+  * New shiny interface.
 
 ## Version 0.1.9
   * Default log scale on y-axis (suggested by @eddelbuettel). Fixes #5.
