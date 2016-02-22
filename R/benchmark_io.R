@@ -1,7 +1,7 @@
 #' @importFrom utils read.csv write.csv
 #' @importFrom utils write.csv
 #' @rdname benchmark_io
-#' @inheritParams benchmark_all
+#' @inheritParams benchmark_std
 #' @export
 bm_io = function (runs = 3, size = c(5, 10, 50, 100, 500),
                   tmpdir = tempdir(), verbose = TRUE) 

@@ -1,8 +1,7 @@
 #' Run standard benchmarks
 #' 
-#' This function runs a set of standard benchmarks, which should be suitable for most
-#' machines. It runs 
-#' @description A collection of matrix benchmark functions
+#' @description This function runs a set of standard benchmarks, which should be suitable for most
+#' machines. It runs a collection of matrix benchmark functions
 #' \itemize{
 #' \item \code{benchmark_prog}
 #' \item \code{benchmark_matrix_cal}
@@ -27,9 +26,4 @@ benchmark_std = function(runs=3, verbose=TRUE) {
 }
 
 
-#' @rdname benchmark_std
-#' @export
-benchmark_all = function(runs=3, verbose=TRUE) {
-  .Deprecated("benchmark_std")
-}
 
