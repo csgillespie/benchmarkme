@@ -21,4 +21,11 @@ This function uploads the benchmarking results.
 These results will then be incorparated
 in future versions of the package.
 }
+\examples{
+## Run benchmarks
+\dontrun{
+res = benchmark_std()
+upload_results(res)
+}
+}
 

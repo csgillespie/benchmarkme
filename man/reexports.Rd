@@ -14,5 +14,16 @@ below to see their documentation.
 \describe{
   \item{benchmarkmeData}{\code{\link[benchmarkmeData]{get_datatable_past}}, \code{\link[benchmarkmeData]{plot_past}}, \code{\link[benchmarkmeData]{shine}}}
 }}
+\examples{
+## Explore past data
+\dontrun{
+shine()
+}
+## Explore your benchmarks
+data(sample_results, package="benchmarkme")
+\dontrun{
+shine(sample_results)
+}
+}
 \keyword{internal}
 

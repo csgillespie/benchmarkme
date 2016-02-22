@@ -25,5 +25,7 @@ benchmark_io(runs = 3, size = c(5, 10, 50, 100, 500), tmpdir = tempdir(),
 Benchmarking reading and writing a csv file (containing 2e6 random numbers).
 The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
 Of \code{size}MB.
+
+This function is liable to change.
 }
 

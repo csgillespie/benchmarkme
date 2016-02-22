@@ -21,6 +21,8 @@ get_available_benchmarks = function() {
 #' @description Benchmarking reading and writing a csv file (containing 2e6 random numbers).
 #' The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
 #' Of \code{size}MB.
+#' 
+#' This function is liable to change.
 #' @inheritParams benchmark_all
 #' @param tmpdir a non-empty character vector giving the directory name
 #' @param size a number specifying the approximate size of the generated csv. Must be one of

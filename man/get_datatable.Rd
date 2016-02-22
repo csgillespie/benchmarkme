@@ -21,4 +21,15 @@ byte_optimized setting. To use all results, set to \code{NULL}.}
 Compare your results against past results. Your results is 
 shown in Orange.
 }
+\examples{
+## Using example data
+data("sample_results", package="benchmarkme")
+plot(sample_results)
+
+## Your results
+\dontrun{
+res = benchmark_std(3)
+plot(res)
+}
+}
 

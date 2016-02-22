@@ -1,8 +1,8 @@
 Package: benchmarkme
 Type: Package
 Title: Crowd Sourced System Benchmarks
-Version: 0.2.0
-Date: 2016-02-14
+Version: 0.2.1
+Date: 2016-02-22
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
@@ -22,4 +22,3 @@ Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, shiny
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 License: GPL-2 | GPL-3
-Additional_repositories: http://csgillespie.github.io/drat/

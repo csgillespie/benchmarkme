@@ -10,6 +10,12 @@
 #' be passed to \code{get_sys_details}. 
 #' @export
 #' @importFrom httr POST upload_file
+#' @examples
+#' ## Run benchmarks
+#' \dontrun{
+#' res = benchmark_std()
+#' upload_results(res)
+#' }
 upload_results = function(results, 
                           url="http://www.mas.ncl.ac.uk/~ncsg3/form.php",
                           args = NULL) {

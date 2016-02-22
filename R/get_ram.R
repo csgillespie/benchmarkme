@@ -39,6 +39,7 @@ clean_win_ram = function(ram) {
 #' }
 #' @export
 #' @examples 
+#' ## Return (and pretty print) the amount of RAM
 #' get_ram()
 get_ram = function() {
   os = R.version$os

@@ -14,4 +14,8 @@ Extracting the CPU is OS specific and hence messy.
 \item Windows: \code{wmic cpu}
 }
 }
+\examples{
+## Return the machine CPU
+get_cpu()
+}
 

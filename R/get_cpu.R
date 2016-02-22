@@ -8,6 +8,9 @@
 #' }
 #' @importFrom parallel detectCores
 #' @export
+#' @examples 
+#' ## Return the machine CPU
+#' get_cpu()
 get_cpu = function() {
   os = R.version$os
   if(length(grep("^linux", os))) {

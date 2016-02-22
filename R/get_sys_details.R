@@ -32,6 +32,9 @@
 #' @return A list
 #' @importFrom utils installed.packages packageDescription
 #' @export
+#' @examples
+#' ## Returns all details about your machine
+#' get_sys_details()
 get_sys_details = function(sys_info = TRUE, platform_info = TRUE,
                            r_version = TRUE, ram=TRUE, 
                            cpu=TRUE, byte_compiler=TRUE, 

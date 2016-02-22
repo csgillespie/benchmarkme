@@ -13,4 +13,8 @@ details.
 \description{
 Attempts to detect if byte compiling or JIT has been used on the package.
 }
+\examples{
+## Detect if you use byte optimization
+get_byte_compiler()
+}
 

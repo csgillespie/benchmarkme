@@ -53,4 +53,8 @@ is contains the output from:
 \item The current date.
 }
 }
+\examples{
+## Returns all details about your machine
+get_sys_details()
+}
 

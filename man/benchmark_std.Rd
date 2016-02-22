@@ -27,4 +27,13 @@ To view the list of benchmarks, see \code{get_available_benchmarks}.
 This function runs a set of standard benchmarks, which should be suitable for most
 machines. It runs
 }
+\examples{
+## Benchmark your system
+\dontrun{
+res = benchmark_std(3)
+
+## Plot results
+plot(res)
+}
+}
 

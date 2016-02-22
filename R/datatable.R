@@ -5,6 +5,16 @@
 #' @inheritParams upload_results
 #' @inheritParams plot.ben_results
 #' @export
+#' @examples
+#' ## Using example data
+#' data("sample_results", package="benchmarkme")
+#' plot(sample_results)
+#' 
+#' ## Your results
+#' \dontrun{
+#' res = benchmark_std(3)
+#' plot(res)
+#' }
 get_datatable = function(results, 
                          test_group=unique(results$test_group), 
                          byte_optimize=get_byte_compiler()) {

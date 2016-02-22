@@ -1,3 +1,6 @@
+## Version 0.2.1
+  * First CRAN version
+  
 ## Version 0.2.0
   * More flexibilty in plot and datatable functions - you can now specify the test you want to compare.
   * The number of cores returned by get_cpu().

@@ -16,6 +16,7 @@ Extracting the amount of RAM is OS specific and hence messy.
 }
 }
 \examples{
+## Return (and pretty print) the amount of RAM
 get_ram()
 }
 

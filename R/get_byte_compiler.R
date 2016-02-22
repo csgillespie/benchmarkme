@@ -7,6 +7,9 @@
 #' @importFrom compiler compilePKGS enableJIT
 #' @importFrom utils capture.output
 #' @export
+#' @examples
+#' ## Detect if you use byte optimization
+#' get_byte_compiler()
 get_byte_compiler = function() {
   comp = Sys.getenv("R_COMPILE_PKGS")
   if(nchar(comp) > 0L) comp = as.numeric(comp)

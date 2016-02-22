@@ -12,6 +12,14 @@
 #' @param runs Number of times to run the test. Default 3.
 #' @param verbose Default TRUE.
 #' @export
+#' @examples 
+#' ## Benchmark your system
+#' \dontrun{
+#' res = benchmark_std(3)
+#' 
+#' ## Plot results
+#' plot(res)
+#' }
 benchmark_std = function(runs=3, verbose=TRUE) {
   rbind(benchmark_prog(runs, verbose), 
         benchmark_matrix_cal(runs, verbose), 
