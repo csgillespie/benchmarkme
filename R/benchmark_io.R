@@ -1,3 +1,5 @@
+#' @importFrom utils read.csv write.csv
+#' @importFrom utils write.csv
 #' @rdname benchmark_io
 #' @inheritParams benchmark_all
 #' @export

@@ -11,6 +11,7 @@
 #' @param ... Arguments to be passed to other downstream methods.
 #' @importFrom graphics abline grid par plot points text
 #' @importFrom utils data
+#' @importFrom stats aggregate
 #' @S3method plot ben_results
 #' @examples 
 #' data(sample_results)
