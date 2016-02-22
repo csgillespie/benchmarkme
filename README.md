@@ -78,7 +78,7 @@ made available (soon) in a companion package.
 
 Two objects are uploaded:
 
-1. Your benchmarks (`benchmark_all`);
+1. Your benchmarks (`benchmark_std`);
 1. A summary of your system information (`get_sys_details()`).
 
 The `get_sys_details()` returns:

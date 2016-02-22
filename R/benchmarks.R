@@ -23,7 +23,7 @@ get_available_benchmarks = function() {
 #' Of \code{size}MB.
 #' 
 #' This function is liable to change.
-#' @inheritParams benchmark_all
+#' @inheritParams benchmark_std
 #' @param tmpdir a non-empty character vector giving the directory name
 #' @param size a number specifying the approximate size of the generated csv. Must be one of
 #' 5, 10, 50, 100 or 500.

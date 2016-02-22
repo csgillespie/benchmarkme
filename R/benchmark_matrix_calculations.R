@@ -11,7 +11,7 @@
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' for a complete history. The function \code{benchmark_matrix_cal()} runs the five \code{bm} functions.
-#' @inheritParams benchmark_all
+#' @inheritParams benchmark_std
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' @export
 bm_matrix_cal_manip = function(runs=3, verbose=TRUE) {

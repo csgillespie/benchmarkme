@@ -10,7 +10,7 @@
 #' }
 #' These benchmarks have been developed by many authors. See http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' for a complete history. The function \code{benchmark_prog()} runs the five \code{bm} functions.
-#' @inheritParams benchmark_all
+#' @inheritParams benchmark_std
 #' @importFrom stats runif
 #' @export
 bm_prog_fib = function(runs=3, verbose=TRUE) {
