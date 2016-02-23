@@ -5,7 +5,8 @@
 \title{Interactive table of results}
 \usage{
 get_datatable(results, test_group = unique(results$test_group),
-  byte_optimize = get_byte_compiler())
+  byte_optimize = get_byte_compiler(),
+  blas_optimize = is_blas_optimize(results))
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 
@@ -16,6 +17,10 @@ The default behaviour is select the groups from your benchmark results.}
 
 \item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
 byte_optimized setting. To use all results, set to \code{NULL}.}
+
+\item{blas_optimize}{Logical. Default The default behaviour 
+is to compare your results with results that use the same 
+blas_optimize setting. To use all results, set to \code{NULL}.}
 }
 \description{
 Compare your results against past results. Your results is 

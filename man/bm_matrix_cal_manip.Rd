@@ -7,7 +7,7 @@
 \alias{bm_matrix_cal_manip}
 \alias{bm_matrix_cal_power}
 \alias{bm_matrix_cal_sort}
-\title{Matrix function benchmarks}
+\title{Matrix calculation benchmarks}
 \usage{
 bm_matrix_cal_manip(runs = 3, verbose = TRUE)
 

@@ -1,4 +1,4 @@
-#' Matrix function benchmarks
+#' Matrix calculation benchmarks
 #' 
 #' @description A collection of matrix benchmark functions aimed at
 #' assessing the calculation speed.

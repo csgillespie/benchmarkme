@@ -5,7 +5,8 @@
 \title{Compare results to past tests}
 \usage{
 \method{plot}{ben_results}(x, test_group = unique(x$test_group),
-  byte_optimize = get_byte_compiler(), log = "y", ...)
+  byte_optimize = get_byte_compiler(), blas_optimize = is_blas_optimize(x),
+  log = "y", ...)
 }
 \arguments{
 \item{x}{The output from a \code{benchmark_*} call.}
@@ -15,6 +16,10 @@ The default behaviour is select the groups from your benchmark results.}
 
 \item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
 byte_optimized setting. To use all results, set to \code{NULL}.}
+
+\item{blas_optimize}{Logical. Default The default behaviour 
+is to compare your results with results that use the same 
+blas_optimize setting. To use all results, set to \code{NULL}.}
 
 \item{log}{By default the y axis is plotted on the log scale. To change, set the 
 the argument equal to the empty parameter string, \code{""}.}
