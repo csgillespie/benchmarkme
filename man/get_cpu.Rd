@@ -7,7 +7,8 @@
 get_cpu()
 }
 \description{
-Extracting the CPU is OS specific and hence messy.
+Attempt to extracting the CPU model on the current host. This is OS 
+specific:
 \itemize{
 \item Linux: \code{/proc/cpuinfo}
 \item Apple: \code{sysctl -n}
