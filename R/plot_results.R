@@ -22,7 +22,7 @@ nice_palette = function(){
 #' @param log By default the y axis is plotted on the log scale. To change, set the 
 #' the argument equal to the empty parameter string, \code{""}.
 #' @param ... Arguments to be passed to other downstream methods.
-#' @importFrom graphics abline grid par plot points text legend
+#' @importFrom graphics abline grid par plot points text legend title
 #' @importFrom grDevices palette rgb
 #' @importFrom utils data
 #' @importFrom stats aggregate
