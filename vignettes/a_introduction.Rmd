@@ -23,16 +23,16 @@ A straightforward way of speeding up your analysis, is to buy a better computer.
 
 ## Getting Started
 
-To benchmark you system, just run
+To benchmark your system just run
 
 ```{r eval=FALSE, include=TRUE}
 library("benchmarkme")
 res = benchmark_std(runs = 3)
 ```
 
-The `runs` account controls the number of replicates. If you have a fast system, then consider increasing this number. Currently, it takes around 3 minutes to run the benchmarks on a standard system.
+The `runs` argument controls the number of replicates. If you have a fast system, then consider increasing this number. Currently it takes around a minute to run a single benchmark on a standard system (so $3$ minutes for $3$ runs).
 
-You can then upload the results using
+You can upload the results using
 
 ```{r eval=FALSE}
 id = upload_results(res)
@@ -55,7 +55,7 @@ The data set is a simple data frame
 head(past_results, 3)
 ```
 
-and plotted via
+and can plotted via
 
 ```{r, fig.width=7, fig.height=3.5}
 plot_past()
