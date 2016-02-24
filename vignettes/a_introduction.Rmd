@@ -1,10 +1,10 @@
 ---
-title: "benchmarkme: Crowd sourced benchmarks"
+title: "Crowd sourced benchmarks"
 author: "Colin Gillespie"
 date: "2015-12-02"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{benchmarkme: Crowd sourced benchmarks}
+  %\VignetteIndexEntry{Crowd sourced benchmarks}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
