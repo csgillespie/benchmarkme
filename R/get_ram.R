@@ -1,71 +1,59 @@
-to_Bytes = function(value) {
-  num = as.numeric(value[1])
-  units = value[2]
-  power = match(units, c("kB", "MB", "GB", "TB"))
-  if(!is.na(power)) return(num*1000^power)
-  
-  power = match(units, c("Kilobytes", "Megabytes", "Gigabytes", "Terabytes"))
-  if(!is.na(power)) return(num*1000^power)
-  num
+system_ram = function(os) {
+  if(length(grep("^linux", os))) {
+    cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
+    ram = system(cmd, intern=TRUE)
+  } else if(length(grep("^darwin", os))) {
+    (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1])
+  } else if(length(grep("^solaris", os))) {
+    cmd = "prtconf | grep Memory"
+    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
+  } else {
+    ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1]
+  }
+  ram
 }
 
-clean_linux_ram = function(ram) {
-  as.numeric(ram)*1000
-}
-clean_darwin_ram = function(ram) {
-  ram = remove_white(ram)
-  to_Bytes(unlist(strsplit(ram, " "))[2:3])
-}
-  
-clean_solaris_ram = function(ram) {
-  ram = remove_white(ram)
-  to_Bytes(unlist(strsplit(ram, " "))[3:4])
-}
-
-clean_win_ram = function(ram) {
-    ram = remove_white(ram)
-    ram = ram[nchar(ram) > 0]
-    sum(as.numeric(ram))
-}
 
 #' Get the amount of RAM
 #' 
-#' Extracting the amount of RAM is OS specific and hence messy.
+#' Attempt to extracting the amount of RAM on the current host. This is OS 
+#' specific:
 #' \itemize{
 #' \item Linux: \code{proc/meminfo}
 #' \item Apple: \code{system_profiler -detailLevel mini}
 #' \item Windows: \code{memory.size()}
 #' \item Solaris: \code{prtconf}
 #' }
+#' A value of `NA` is return if it isn't possible to determine the amount of RAM.
 #' @export
+#' @references The \code{print.bytes} function was taken from the \pkg{pryr} package.
 #' @examples 
 #' ## Return (and pretty print) the amount of RAM
 #' get_ram()
 get_ram = function() {
   os = R.version$os
-  
-  if(length(grep("^linux", os))) {
-    cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
-    ram = system(cmd, intern=TRUE)
-    clean_ram = suppressWarnings(try(clean_linux_ram(ram), silent=TRUE))
-  } else if(length(grep("^darwin", os))) {
-    (ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1])
-    clean_ram = suppressWarnings(try(clean_darwin_ram(ram), silent=TRUE))
-  } else if(length(grep("^solaris", os))) {
-    cmd = "prtconf | grep Memory"
-    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
-    clean_ram = suppressWarnings(try(clean_solaris_ram(ram), silent=TRUE))
+  ram = try(system_ram(os), silent=TRUE)
+  if(class(ram) == "try-error") {
+    message("\t Unable to detect your RAM. 
+            Please raise an issue at https://github.com/csgillespie/benchmarkme")
+    ram = structure(NA, names="ram")
   } else {
-    ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1]
-    clean_ram = suppressWarnings(try(clean_win_ram(ram), silent=TRUE))
+    
+    cleaned_ram = suppressWarnings(try(clean_ram(ram,os), silent=TRUE))
+    
+    if(class(cleaned_ram) == "try-error") {
+      message("\t Unable to detect your RAM. 
+            Please raise an issue at https://github.com/csgillespie/benchmarkme")
+      ram = structure(NA, names="ram")
+    } else {
+      ram = structure(cleaned_ram, class="bytes", names="ram")
+      
+    }
   }
-  
-  if(!(class(clean_ram) == "try-error")) ram = clean_ram
-  structure(ram, class="bytes", names="ram")
+  return(ram)
 }
 
 
-# @references The print.bytes function was taken from the pryr package.
 #' @S3method  print bytes
 print.bytes = function (x, digits = 3, ...) {
   power <- min(floor(log(abs(x), 1000)), 4)

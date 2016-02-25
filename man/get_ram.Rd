@@ -7,16 +7,21 @@
 get_ram()
 }
 \description{
-Extracting the amount of RAM is OS specific and hence messy.
+Attempt to extracting the amount of RAM on the current host. This is OS 
+specific:
 \itemize{
 \item Linux: \code{proc/meminfo}
 \item Apple: \code{system_profiler -detailLevel mini}
 \item Windows: \code{memory.size()}
 \item Solaris: \code{prtconf}
 }
+A value of `NA` is return if it isn't possible to determine the amount of RAM.
 }
 \examples{
 ## Return (and pretty print) the amount of RAM
 get_ram()
+}
+\references{
+The \code{print.bytes} function was taken from the \pkg{pryr} package.
 }
 
