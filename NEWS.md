@@ -1,6 +1,6 @@
 ## Version 0.2.3 
   * Return `NA` for `get_cpu()`/`get_ram()` when it isn't possible to determine
-  CPU/RAM
+  CPU/RAM.
   
 ## Version 0.2.2
   * First CRAN version
