@@ -1,3 +1,6 @@
+## Version 0.2.4
+  * Vignette describing benchmarks.
+
 ## Version 0.2.3 
   * Return `NA` for `get_cpu()`/`get_ram()` when it isn't possible to determine
   CPU/RAM.
@@ -6,7 +9,7 @@
   * First CRAN version
   
 ## Version 0.2.0
-  * More flexibilty in plot and datatable functions - you can now specify the test you want to compare.
+  * More flexibility in plot and datatable functions - you can now specify the test you want to compare.
   * The number of cores returned by `get_cpu()`.
   * Adding io benchmarks.
   * New shiny interface.
@@ -31,7 +34,7 @@
   * Bug fix: Remove white space from apple RAM output (thanks to @vzemlys). Fixes #2. 
   
 ## Version 0.1.3
-  * Add a fallback when getting RAM - grab everything.
+  * Add a fall-back when getting RAM - grab everything.
   * Minor: Added a horizontal line automatically generated plots.
   * Deprecated `benchmark_all` (use `benchmark_std`).
 
