@@ -16,7 +16,7 @@ system_ram = function(os) {
 
 #' Get the amount of RAM
 #' 
-#' Attempt to extracting the amount of RAM on the current host. This is OS 
+#' Attempt to extract the amount of RAM on the current host. This is OS 
 #' specific:
 #' \itemize{
 #' \item Linux: \code{proc/meminfo}
@@ -24,7 +24,7 @@ system_ram = function(os) {
 #' \item Windows: \code{memory.size()}
 #' \item Solaris: \code{prtconf}
 #' }
-#' A value of `NA` is return if it isn't possible to determine the amount of RAM.
+#' A value of \code{NA} is return if it isn't possible to determine the amount of RAM.
 #' @export
 #' @references The \code{print.bytes} function was taken from the \pkg{pryr} package.
 #' @examples 

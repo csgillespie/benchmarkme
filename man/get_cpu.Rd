@@ -7,13 +7,15 @@
 get_cpu()
 }
 \description{
-Attempt to extracting the CPU model on the current host. This is OS 
+Attempt to extract the CPU model on the current host. This is OS 
 specific:
 \itemize{
 \item Linux: \code{/proc/cpuinfo}
 \item Apple: \code{sysctl -n}
+\item Solaris: Not implemented.
 \item Windows: \code{wmic cpu}
 }
+A value of \code{NA} is return if it isn't possible to obtain the CPU.
 }
 \examples{
 ## Return the machine CPU
