@@ -1,12 +1,14 @@
 #' CPU Description
 #' 
-#' Attempt to extracting the CPU model on the current host. This is OS 
+#' Attempt to extract the CPU model on the current host. This is OS 
 #' specific:
 #' \itemize{
 #' \item Linux: \code{/proc/cpuinfo}
 #' \item Apple: \code{sysctl -n}
+#' \item Solaris: Not implemented.
 #' \item Windows: \code{wmic cpu}
 #' }
+#' A value of \code{NA} is return if it isn't possible to obtain the CPU.
 #' @importFrom parallel detectCores
 #' @export
 #' @examples 
@@ -34,6 +36,9 @@ get_cpu_internal = function() {
   } else if(length(grep("^darwin", os))) {
     vendor_id = system("sysctl -n machdep.cpu.vendor",intern=TRUE) 
     model_name = system("sysctl -n machdep.cpu.brand_string",intern=TRUE) 
+  } else if(length(grep("^solaris", os))) {
+    vendor_id = NA
+    model_name = NA
   } else {
     ## CPU
     model_name = system("wmic cpu get name", intern=TRUE)[2]
