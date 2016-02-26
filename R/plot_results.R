@@ -54,8 +54,8 @@ make_plot = function(x, test_group, byte_optimize, blas_optimize, log, ...){
   no_of_reps = length(x$test)/length(unique(x$test))
   ben_sum = sum(x[,3])/no_of_reps
   ben_rank = which(ben_sum < results$time)[1]
-  message("You are ranked ", ben_rank, " out of ", nrow(results)+1, " machines.")
   if(is.na(ben_rank)) ben_rank = nrow(results) + 1
+  message("You are ranked ", ben_rank, " out of ", nrow(results)+1, " machines.")
   
   ## Arrange plot colours and layout
   op = par(mar=c(3,3,2,1), 
