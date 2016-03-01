@@ -5,6 +5,9 @@ r:
   - release
   - devel
 
+r_binary_packages: 
+  - RcppGSL
+
 install_r:
   - covr
 
