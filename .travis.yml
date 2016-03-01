@@ -1,18 +1,16 @@
 language: r
-cache: packages
+sudo: true
+
 r:
   - oldrel
-  - release
+  - release COVERAGE=true
   - devel
-
-r_binary_packages: 
-  - RcppGSL
 
 install_r:
   - covr
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - if [[ ! -z "$COVERAGE" ]];then  Rscript -e 'covr::codecov()'; fi
 
 notifications:
   email:
