@@ -1,16 +1,17 @@
 language: r
-sudo: true
+sudo: required
 
 r:
   - oldrel
-  - release COVERAGE=true
-  - devel
+#  - release COVERAGE=true
+#  - devel
 
 install_r:
   - covr
 
 after_success:
   - if [[ ! -z "$COVERAGE" ]];then  Rscript -e 'covr::codecov()'; fi
+  - echo $TRAVIS_R_VERSION
 
 notifications:
   email:
