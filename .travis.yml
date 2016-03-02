@@ -2,16 +2,22 @@ language: r
 sudo: required
 
 r:
-  - oldrel
-#  - release COVERAGE=true
-#  - devel
+  - release 
+#  - oldrel
+  #  - devel
 
+r_binary_package: 
+  - RcppZiggurat
+  
 install_r:
   - covr
 
-after_success:
-  - if [[ ! -z "$COVERAGE" ]];then  Rscript -e 'covr::codecov()'; fi
+before_install:
   - echo $TRAVIS_R_VERSION
+
+
+after_success:
+  - Rscript -e 'if(length(grep("1$", ${TRAVIS_JOB_NUMBER}$"))) covr::codecov()';
 
 notifications:
   email:
