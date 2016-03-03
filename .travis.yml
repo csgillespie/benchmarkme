@@ -2,25 +2,22 @@ language: r
 sudo: required
 
 r:
+  - oldrel
   - release 
-#  - oldrel
-  #  - devel
+  - devel
 
-r_binary_package: 
-  - RcppZiggurat
-  
-install_r:
+r_packages:
   - covr
 
 before_install:
-  - echo $TRAVIS_R_VERSION
+  - sudo apt-get install -y libgsl0-dev # For RCppZigg
 
-
+## Only run covr on release
 after_success:
-  - Rscript -e 'if(length(grep("1$", ${TRAVIS_JOB_NUMBER}$"))) covr::codecov()';
+  - Rscript -e "if(length(grep('2\$', ${TRAVIS_JOB_NUMBER}))) covr::codecov()";
 
 notifications:
   email:
     on_success: change
     on_failure: change
-    
+
