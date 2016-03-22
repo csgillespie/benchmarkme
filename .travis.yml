@@ -1,5 +1,7 @@
 language: r
-sudo: required
+cache: packages
+
+#sudo: required
 
 r:
   - oldrel
@@ -9,8 +11,13 @@ r:
 r_packages:
   - covr
 
-before_install:
-  - sudo apt-get install -y libgsl0-dev # For RCppZigg
+addons:
+  apt:
+    packages:
+      - libgsl0-dev # For RCppZigg
+
+#before_install:
+#  - sudo apt-get install -y libgsl0-dev 
 
 ## Only run covr on release
 after_success:
