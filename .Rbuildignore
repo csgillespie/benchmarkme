@@ -5,3 +5,5 @@ add_to_drat.R
 ^.travis.yml$
 ^pkg-build.sh$
 .lintr
+^README\.Rmd$
+^README-.*\.png$
