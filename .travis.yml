@@ -1,8 +1,6 @@
 language: r
 cache: packages
 
-#sudo: required
-
 r:
   - oldrel
   - release 
@@ -16,9 +14,6 @@ addons:
     packages:
       - libgsl0-dev # For RCppZigg
 
-#before_install:
-#  - sudo apt-get install -y libgsl0-dev 
-
 ## Only run covr on release
 after_success:
   - Rscript -e "if(length(grep('2\$', ${TRAVIS_JOB_NUMBER}))) covr::codecov()";
@@ -27,4 +22,3 @@ notifications:
   email:
     on_success: change
     on_failure: change
-
