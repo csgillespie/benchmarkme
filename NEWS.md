@@ -1,5 +1,7 @@
 ## Version 0.2.4
-  * Vignette describing benchmarks.
+  * New vignette describing benchmarks included.
+  * Used `Sys.getpid()` to try and determine the BLAS/LAPACK library (suggested by
+  Ashley Ford).
 
 ## Version 0.2.3 
   * Return `NA` for `get_cpu()`/`get_ram()` when it isn't possible to determine

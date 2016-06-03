@@ -10,4 +10,7 @@ get_linear_algebra()
 This currently only works under Linux. For other OS, \code{NA}'s 
 are returned.
 }
+\details{
+Calls `Sys.getpid()` and greps blas/lapack
+}
 
