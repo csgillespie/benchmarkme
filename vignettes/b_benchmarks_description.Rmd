@@ -1,7 +1,6 @@
 ---
 title: "Benchmark overview"
 author: "Colin Gillespie"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Benchmark overview}
@@ -50,7 +49,13 @@ A collection of matrix benchmark functions
   * Cholesky decomposition of a $3000 \times 3000$ matrix - `bm_matrix_fun_cholesky`.
   * Inverse of a $1600 \times 1600$ random matrix - `bm_matrix_fun_inverse`.
 
-# IO
+# Input/Output (`io`)
+
+  * Reading a $5$, $50$ and $200$MB csv file
+  * Writing a $5$, $50$ and $200$MB csv file
+  
+The purpose of this benchmark isn't to compare `write.csv` to another package. Instead, 
+we went to assess your machine.
 
 
 --- 

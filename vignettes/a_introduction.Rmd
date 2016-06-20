@@ -1,7 +1,6 @@
 ---
 title: "Crowd sourced benchmarks"
 author: "Colin Gillespie"
-date: "2015-12-02"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Crowd sourced benchmarks}
@@ -15,11 +14,14 @@ data(sample_results, package="benchmarkme")
 res = sample_results
 ```
 
-
-
 ## Overview 
 
-A straightforward way of speeding up your analysis, is to buy a better computer. Modern desktops are relatively cheap, especially compared to user time. However, it isn't clear clear if upgrading your computing is worth the cost. `benchmarkme` provides a set of benchmarks to help quantify your system. More importantly, it allows you to compare your timings with other systems.
+A straightforward way of speeding up your analysis, is to buy a
+better computer. Modern desktops are relatively cheap, especially
+compared to user time. However, it isn't clear if upgrading
+your computing is worth the cost. The `benchmarkme` package provides a set of
+benchmarks to help quantify your system. More importantly, it allows
+you to compare your timings with _other_ systems.
 
 ## Getting Started
 
@@ -30,7 +32,7 @@ library("benchmarkme")
 res = benchmark_std(runs = 3)
 ```
 
-The `runs` argument controls the number of replicates. If you have a fast system, then consider increasing this number. Currently it takes around a minute to run a single benchmark on a standard system (so $3$ minutes for $3$ runs).
+The `runs` argument controls the number of replicates. If you have a fast system, then consider increasing this number. Currently it takes around a minute to run a single benchmark on a standard system (so around $3$ minutes for $3$ runs).
 
 You can upload the results using
 
@@ -57,17 +59,19 @@ head(past_results, 3)
 
 and can plotted via
 
-```{r, fig.width=7, fig.height=3.5}
+```{r, fig.width=7, fig.height=3.5, message=FALSE}
 plot_past()
 ## shine() # if you have shiny
 ```
 
 You can also see how you computer measures up with others
 
-```{r, fig.width=7, fig.height=3.5}
+```{r, fig.width=7, fig.height=3.5, message=FALSE, results="hide"}
 plot(res)
-## shine(res) # if you have shiny
 ```
+The three sets of graphs generated each correspond to a particular set of benchmarks. See the other vignette for details.
+
+There is also a shiny interface that can be accessed via `shine(res)`.
 
 ## Interactive Tables
 
@@ -84,3 +88,31 @@ and run
 get_datatable(res)
 get_datatable_past()
 ```
+
+## Input/Output benchmarks
+
+The function `benchmark_std` attempts to assess computational speed. To assess the speed of file access, use
+
+```{r eval=FALSE}
+res_io = benchmark_io()
+upload_results(res_io)
+## Sample size is small, so don't split by byte/blas
+plot(res_io, byte_optimize=NULL, blas_optimize=NULL)
+```
+
+This benchmark creates a $5$, $50$ and $200$ MB data frame and times reading/wrting of the file. By default the files 
+are created in a temporary directory specified as
+```{r eval=FALSE}
+Sys.getenv("TMPDIR")
+```
+Depending on your set-up, this can be on a network drive. You can change where the files are created via
+
+```{r eval=FALSE}
+res_io = benchmark_io(tmpdir="some_other_directory")
+```
+
+
+
+
+
+
