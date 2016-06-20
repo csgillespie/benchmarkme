@@ -1,4 +1,4 @@
-## Version 0.2.4
+## Version 0.3.0
   * New vignette describing benchmarks included.
   * Used `Sys.getpid()` to try and determine the BLAS/LAPACK library (suggested by
   Ashley Ford).
