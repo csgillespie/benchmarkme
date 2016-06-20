@@ -50,6 +50,7 @@ bm_io = function (runs = 3, size = c(5, 50, 200),
     timings[2 * i - 1, 1:3] = system.time({
       write.csv(m, fname,row.names = FALSE)
     })[1:3]
+    invisible(gc())
     timings[2 * i, 1:3] = system.time({
       read.csv(fname)
     })[1:3]
