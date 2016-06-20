@@ -7,13 +7,14 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="author" content="Colin Gillespie" />
 
-<meta name="date" content="2016-02-26" />
 
 <title>Benchmark overview</title>
+
 
 
 
@@ -27,14 +28,10 @@
 
 
 
-<div class="fluid-row" id="header">
 
-
-<h1 class="title">Benchmark overview</h1>
+<h1 class="title toc-ignore">Benchmark overview</h1>
 <h4 class="author"><em>Colin Gillespie</em></h4>
-<h4 class="date"><em>2016-02-26</em></h4>
 
-</div>
 
 
 <div id="overview" class="section level1">
@@ -84,8 +81,13 @@
 <li>Inverse of a <span class="math inline">\(1600 \times 1600\)</span> random matrix - <code>bm_matrix_fun_inverse</code>.</li>
 </ul>
 </div>
-<div id="io" class="section level1">
-<h1>IO</h1>
+<div id="inputoutput-io" class="section level1">
+<h1>Input/Output (<code>io</code>)</h1>
+<ul>
+<li>Reading a <span class="math inline">\(5\)</span>, <span class="math inline">\(50\)</span> and <span class="math inline">\(200\)</span>MB csv file</li>
+<li>Writing a <span class="math inline">\(5\)</span>, <span class="math inline">\(50\)</span> and <span class="math inline">\(200\)</span>MB csv file</li>
+</ul>
+<p>The purpose of this benchmark isn’t to compare <code>write.csv</code> to another package. Instead, we went to assess your machine.</p>
 <hr />
 <p>These benchmarks have been developed by many <a href="http://r.research.att.com/benchmarks/R-benchmark-25.R">authors</a>.</p>
 </div>

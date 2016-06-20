@@ -60,8 +60,8 @@ head(past_results, 3)
 and can plotted via
 
 ```{r, fig.width=7, fig.height=3.5, message=FALSE}
-plot_past()
 ## shine() # if you have shiny
+plot_past()
 ```
 
 You can also see how you computer measures up with others
