@@ -74,7 +74,7 @@ make_plot = function(x, test_group, byte_optimize, blas_optimize, log, ...){
   
   ## Standard timings
   plot(results$time, xlab="Rank", ylab="Total timing (secs)", 
-       ylim=c(ymin, ymax), xlim=c(1, nrow(results)+1), 
+       ylim=c(ymin, ymax), xlim=c(0.5, nrow(results)+1), 
        panel.first=grid(), cex=0.7, log=log, ...)
   points(ben_rank-1/2,ben_sum, bg=4, pch=21)
   abline(v=ben_rank-1/2, col=4, lty=3)
@@ -84,7 +84,7 @@ make_plot = function(x, test_group, byte_optimize, blas_optimize, log, ...){
   fastest = min(ben_sum, results$time)
   ymax= ymax/fastest
   plot(results$time/fastest, xlab="Rank", ylab="Relative timing", 
-       ylim=c(1, ymax), xlim=c(1, nrow(results)+1), 
+       ylim=c(1, ymax), xlim=c(0.5, nrow(results)+1), 
        panel.first=grid(), cex=0.7, log=log, ...)
   abline(h=1, lty=3)
   abline(v=ben_rank-1/2, col=4, lty=3)
