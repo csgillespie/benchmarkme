@@ -7,7 +7,7 @@
 get_linear_algebra()
 }
 \description{
-This currently only works under Linux. For other OS, \code{NA}'s 
+This currently only works under Linux and Apple OS. For other OS, e.g. Windows \code{NA}'s 
 are returned.
 }
 \details{
