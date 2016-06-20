@@ -67,7 +67,7 @@ get_sys_details = function(sys_info = TRUE, platform_info = TRUE,
   else l$locale = NA
   
   if(installed_packages) l$installed_packages  = installed.packages()
-  else   l$installed_packages = NA
+  else l$installed_packages = NA
 
   if(machine) l$machine = .Machine
   else l$machine = NA
