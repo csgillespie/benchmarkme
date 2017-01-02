@@ -16,10 +16,10 @@ res = sample_results
 
 ## Overview 
 
-A straightforward way of speeding up your analysis, is to buy a
+A straightforward way of speeding up your analysis is to buy a
 better computer. Modern desktops are relatively cheap, especially
 compared to user time. However, it isn't clear if upgrading
-your computing is worth the cost. The `benchmarkme` package provides a set of
+your computing is worth the cost. The **benchmarkme** package provides a set of
 benchmarks to help quantify your system. More importantly, it allows
 you to compare your timings with _other_ systems.
 
@@ -48,7 +48,7 @@ dataset in future versions of the package.
 Past results are included in a companion package and can be accessed via
 
 ```{r}
-data(past_results, package="benchmarkmeData")
+data(past_results, package = "benchmarkmeData")
 ```
 
 The data set is a simple data frame
@@ -64,7 +64,7 @@ and can plotted via
 plot_past()
 ```
 
-You can also see how you computer measures up with others
+You can also see how your computer measures up with others
 
 ```{r, fig.width=7, fig.height=3.5, message=FALSE, results="hide"}
 plot(res)
@@ -97,7 +97,7 @@ The function `benchmark_std` attempts to assess computational speed. To assess t
 res_io = benchmark_io()
 upload_results(res_io)
 ## Sample size is small, so don't split by byte/blas
-plot(res_io, byte_optimize=NULL, blas_optimize=NULL)
+plot(res_io, byte_optimize = NULL, blas_optimize = NULL)
 ```
 
 This benchmark creates a $5$, $50$ and $200$ MB data frame and times reading/wrting of the file. By default the files 
@@ -108,7 +108,7 @@ Sys.getenv("TMPDIR")
 Depending on your set-up, this can be on a network drive. You can change where the files are created via
 
 ```{r eval=FALSE}
-res_io = benchmark_io(tmpdir="some_other_directory")
+res_io = benchmark_io(tmpdir = "some_other_directory")
 ```
 
 

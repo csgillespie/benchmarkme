@@ -12,8 +12,8 @@ data(past_results, package="benchmarkmeData")
 head(past_results, 3)
 
 ## ---- fig.width=7, fig.height=3.5, message=FALSE-------------------------
-plot_past()
 ## shine() # if you have shiny
+plot_past()
 
 ## ---- fig.width=7, fig.height=3.5, message=FALSE, results="hide"---------
 plot(res)
