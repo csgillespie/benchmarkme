@@ -1,5 +1,8 @@
+## Version 0.4.0
+  * Update to shinyapps.io example
+
 ## Version 0.3.0
-  * New vignette describing benchmarks included.
+  * New vignette describing benchmarks.
   * Used `Sys.getpid()` to try and determine the BLAS/LAPACK library (suggested by
   Ashley Ford).
 

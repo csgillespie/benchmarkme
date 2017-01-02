@@ -7,3 +7,4 @@ add_to_drat.R
 .lintr
 ^README\.Rmd$
 ^README-.*\.png$
+dash*

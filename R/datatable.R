@@ -28,13 +28,12 @@ get_datatable = function(results,
     test_group = test_group[1]
   }
   make_DT(results, test_group, byte_optimize, blas_optimize)
-
-  
 }
 
 make_DT = function(results, test_group, byte_optimize, blas_optimize) {
   
-  pas_res = select_results(test_group, byte_optimize, blas_optimize)
+  pas_res = select_results(test_group, byte_optimize = byte_optimize, 
+                           blas_optimize = blas_optimize)
   ## New result
   results = results[results$test_group %in% test_group,]
   no_of_reps = length(results$test)/length(unique(results$test))
