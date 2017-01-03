@@ -17,7 +17,7 @@ Imports:
     httr, 
     methods, 
     benchmarkmeData(>= 0.3.1), utils, graphics
-Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, shiny, rmarkdown
+Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 License: GPL-2 | GPL-3
