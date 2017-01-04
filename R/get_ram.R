@@ -50,7 +50,7 @@ get_ram = function() {
 }
 
 
-#' @export
+#' @method print.bytes
 print.bytes = function (x, digits = 3, ...) {
   power = min(floor(log(abs(x), 1000)), 4)
   if (power < 1) {
@@ -60,7 +60,7 @@ print.bytes = function (x, digits = 3, ...) {
     x = x/(1000^power)
   }
   formatted = format(signif(x, digits = digits), big.mark = ",", 
-                      scientific = FALSE)
+                      scientific = FALSE, ...)
   cat(unclass(formatted), " ", unit, "\n", sep = "")
   invisible(paste(unclass(formatted), unit))
 }
