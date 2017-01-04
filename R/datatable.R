@@ -19,6 +19,9 @@ get_datatable = function(results,
                          test_group=unique(results$test_group), 
                          byte_optimize=get_byte_compiler(), 
                          blas_optimize=is_blas_optimize(results)) {
+  .Deprecated(msg = "This function is deprecated and will be removed in the next version. 
+              Instead, use https://jumpingrivers.shinyapps.io/benchmarkme/")
+  
   if(!requireNamespace("DT", quietly = TRUE))
     stop("Install DT package to use datatable")
   
