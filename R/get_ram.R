@@ -49,8 +49,8 @@ get_ram = function() {
   return(ram)
 }
 
-
-#' @method print.bytes
+## Not sure why export doesn't work here
+#' @rawNamespace S3method(print,bytes)
 print.bytes = function (x, digits = 3, ...) {
   power = min(floor(log(abs(x), 1000)), 4)
   if (power < 1) {
