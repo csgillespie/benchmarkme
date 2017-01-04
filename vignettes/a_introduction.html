@@ -75,6 +75,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>A straightforward way of speeding up your analysis is to buy a better computer. Modern desktops are relatively cheap, especially compared to user time. However, it isn’t clear if upgrading your computing is worth the cost. The <strong>benchmarkme</strong> package provides a set of benchmarks to help quantify your system. More importantly, it allows you to compare your timings with <em>other</em> systems.</p>
+<p>You can view past benchmarks via the <a href="https://jumpingrivers.shinyapps.io/benchmarkme/">Shiny</a> interface.</p>
 </div>
 <div id="overview-1" class="section level2">
 <h2>Overview</h2>
@@ -89,13 +90,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>The benchmark_std() function</h3>
 <p>This benchmarks numerical operations such as loops and matrix operations. This benchmark comprises of three separate benchmarks: <code>prog</code>, <code>matrix_fun</code>, and <code>matrix_cal</code>. If you have less than 3GB of RAM (run <code>get_ram()</code> to find out how much is available on your system), then you should kill any memory hungry applications, e.g. firefox, and set <code>runs = 1</code> as an argument.</p>
 <p>To benchmark your system, use</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Increase runs if you have a higher spec machine
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;benchmarkme&quot;</span>)
+## Increase runs if you have a higher spec machine
 res =<span class="st"> </span><span class="kw">benchmark_std</span>(<span class="dt">runs =</span> <span class="dv">3</span>)</code></pre></div>
 <p>and upload your results</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## You can control exactly what is uploaded. See details below.
 <span class="kw">upload_results</span>(res)</code></pre></div>
 <p>You can compare your results to other users via</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(res)</code></pre></div>
+<p>You can also compare your results using the <a href="https://jumpingrivers.shinyapps.io/benchmarkme/">Shiny</a> interface. Simply create a results bundle</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">create_bundle</span>(res, <span class="dt">filename =</span> <span class="st">&quot;results.rds&quot;</span>)</code></pre></div>
+<p>and upload to the webpage.</p>
 </div>
 <div id="the-benchmark_io-function" class="section level3">
 <h3>The benchmark_io() function</h3>
@@ -105,7 +110,10 @@ res =<span class="st"> </span><span class="kw">benchmark_std</span>(<span class=
 <span class="kw">plot</span>(res_io)</code></pre></div>
 <p>By default the files are written to a temporary directory generated</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tempdir</span>()</code></pre></div>
+<p>which depends on the value of</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.getenv</span>(<span class="st">&quot;TMPDIR&quot;</span>)</code></pre></div>
 <p>You can alter this to via the <code>tmpdir</code> argument. This is useful for comparing hard drive access to a network drive.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res_io =<span class="st"> </span><span class="kw">benchmark_io</span>(<span class="dt">tmpdir =</span> <span class="st">&quot;some_other_directory&quot;</span>)</code></pre></div>
 </div>
 </div>
 <div id="machine-specs" class="section level2">
@@ -151,10 +159,6 @@ res =<span class="st"> </span><span class="kw">benchmark_std</span>(<span class=
 </ul>
 <p>The function <code>Sys.info()</code> does include the user and nodenames. In the public release of the data, this information will be removed. If you don’t wish to upload certain information, just set the corresponding argument, i.e.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">upload_results</span>(res, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">sys_info=</span><span class="ot">FALSE</span>))</code></pre></div>
-<p>This benchmark creates a <span class="math inline">\(5\)</span>, <span class="math inline">\(50\)</span> and <span class="math inline">\(200\)</span> MB data frame and times reading/wrting of the file. By default the files are created in a temporary directory specified as</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.getenv</span>(<span class="st">&quot;TMPDIR&quot;</span>)</code></pre></div>
-<p>Depending on your set-up, this can be on a network drive. You can change where the files are created via</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res_io =<span class="st"> </span><span class="kw">benchmark_io</span>(<span class="dt">tmpdir =</span> <span class="st">&quot;some_other_directory&quot;</span>)</code></pre></div>
 </div>
 
 
