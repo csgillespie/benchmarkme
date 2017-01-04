@@ -9,7 +9,7 @@ rank_results(results, test_group = unique(results$test_group),
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 
-\code{benchmark_std()}.}
+\code{benchmark_std()} or \code{benchmark_io()}.}
 
 \item{test_group}{Default \code{unique(x$test_group)}. 
 The default behaviour is select the groups from your benchmark results.}
