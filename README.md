@@ -7,63 +7,75 @@ System benchmarking
 
 R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at <http://r.research.att.com/benchmarks/R-benchmark-25.R>, for assessing the speed of your system.
 
-Installation
-------------
+Overview
+--------
 
-The package is now on CRAN and can be installed in the usual way
+The package is on [CRAN](https://cran.r-project.org/web/packages/benchmarkme/) and can be installed in the usual way
 
 ``` r
 install.packages("benchmarkme")
 ```
 
-To install the development version, use
+There are two groups of benchmarks:
 
-``` r
-devtools::install_github("csgillespie/benchmarkme")
-```
+-   `benchmark_std()`: this benchmarks numerical operations such as loops and matrix operations. The benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
+-   `benchmark_io()`: this benchmarks reading and writing a 5, 50, and 200 MB csv file.
 
-Usage
------
+### The benchmark\_std() function
 
-Load the package in the usual way
-
-``` r
-library("benchmarkme")
-## View past results
-plot_past()
-```
-
-![](README-past_results-1.png)
-
-``` r
-## See also shine() # Needs shiny
-## get_datatable_past() # Needs DT
-```
-
-Obviously the impact on your system will depend on how much RAM and the speed of your CPU. If you have less than 3GB of RAM (run `get_ram()` to find out how much is available on your system), then you should kill any memory hungry applications, e.g. firefox, and only have a single replicate.
+This benchmarks numerical operations such as loops and matrix operations. This benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`. If you have less than 3GB of RAM (run `get_ram()` to find out how much is available on your system), then you should kill any memory hungry applications, e.g. firefox, and set `runs = 1` as an argument.
 
 To benchmark your system, use
 
 ``` r
-## This will take somewhere between 0.5 and 5 minutes
 ## Increase runs if you have a higher spec machine
-res = benchmark_std(runs=3)
-```
-
-You can compare your results other users
-
-``` r
-plot(res)
-## See also shine(res)
-## get_datatable(res)
+res = benchmark_std(runs = 3)
 ```
 
 and upload your results
 
-    ## You can control exactly what is uploaded. See details below.
-    upload_results(res)
+``` r
+## You can control exactly what is uploaded. See details below.
+upload_results(res)
+```
 
-This function returns a unique identifier that will allow you to identifier your results from the public data sets.
+You can compare your results to other users via
+
+``` r
+plot(res)
+```
+
+### The benchmark\_io() function
+
+This function benchmarks reading and writing a 5MB, 50MB and 200MB (if you have less than 4GB of RAM, reduce the number of `runs` to 1). Run the benchmark using
+
+``` r
+res_io = benchmark_std(runs = 3)
+upload_results(res_io)
+plot(res_io)
+```
+
+By default the files are written to a temporary directory generated
+
+``` r
+tempdir()
+```
+
+You can alter this to via the `tmpdir` argument. This is useful for comparing hard drive access to a network drive.
+
+Machine specs
+-------------
+
+The package has a few useful functions for extracting system specs:
+
+-   RAM: `get_ram()`
+-   CPUs: `get_cpu()`
+-   BLAS library: `get_linear_algebra()`
+-   Is byte compiling enabled: `get_byte_compiler()`
+-   General platform info: `get_platform_info()`
+-   R version: `get_r_version()`
+
+The above functions have been tested on a number of systems. If they don't work on your system, please raise [GitHub](https://github.com/csgillespie/benchmarkme/issues) issue.
 
 Uploaded data sets
 ------------------
@@ -71,7 +83,7 @@ Uploaded data sets
 A summary of the uploaded data sets is available in the [benchmarkmeData](https://github.com/csgillespie/benchmarkme-data) package
 
 ``` r
-data(past_results, package="benchmarkmeData")
+data(past_results, package = "benchmarkmeData")
 ```
 
 A column of this data set, contains the unique identifier returned by the `upload_results` function. A complete version of the uploaded data sets will be made available (soon) in a companion package.
@@ -81,7 +93,7 @@ What's uploaded
 
 Two objects are uploaded:
 
-1.  Your benchmarks (`benchmark_std`);
+1.  Your benchmarks from `benchmark_std` or `benchmark_io`;
 2.  A summary of your system information (`get_sys_details()`).
 
 The `get_sys_details()` returns:
@@ -102,5 +114,5 @@ The `get_sys_details()` returns:
 The function `Sys.info()` does include the user and nodenames. In the public release of the data, this information will be removed. If you don't wish to upload certain information, just set the corresponding argument, i.e.
 
 ``` r
-upload_results(res, args=list(sys_info=FALSE))
+upload_results(res, args = list(sys_info=FALSE))
 ```
