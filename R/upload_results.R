@@ -1,13 +1,30 @@
+#' @param filename default \code{NULL}. A character vector of where to 
+#' store the results (in an .rds file). If \code{NULL}, results are not saved.
+#' @rdname upload_results
+#' @export
+create_bundle = function(results, filename = NULL, args = NULL) {
+  if(is.null(args)) args = list()
+  message("Getting system specs. This can take a while on Macs")
+  type = do.call(get_sys_details, args)  
+  
+  type$results = results
+  
+  if(!is.null(filename)) {
+    saveRDS(type, file = filename)
+  } 
+  type
+}
+
 #' @title Upload benchmark results
 #' 
 #' @description This function uploads the benchmarking results. 
 #' These results will then be incorparated
 #' in future versions of the package.
 #' @param results Benchmark results. Probably obtained from 
-#' \code{benchmark_std()}.
+#' \code{benchmark_std()} or \code{benchmark_io()}.
 #' @param url The location of where to upload the results.
 #' @param args Default \code{NULL}. A list of arguments to 
-#' be passed to \code{get_sys_details}. 
+#' be passed to \code{get_sys_details()}. 
 #' @export
 #' @importFrom httr POST upload_file
 #' @examples
@@ -17,20 +34,15 @@
 #' upload_results(res)
 #' }
 upload_results = function(results, 
-                          url="http://www.mas.ncl.ac.uk/~ncsg3/form.php",
+                          url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
                           args = NULL) {
-
-  if(is.null(args)) args = list()
-  message("Getting system specs. This can take a while on Macs")
-  type = do.call(get_sys_details, args)  
-
-  type$results = results
   message("Creating temporary file")
-  fname = tempfile(fileext=".RData")
-  saveRDS(type, file=fname)
+  fname = tempfile(fileext = ".rds")
+  create_bundle(results, fname)
+  
   message("Uploading results")
-  r = POST(url, 
-           body = list(userFile = upload_file(fname)),
+  r = httr::POST(url, 
+           body = list(userFile = httr::upload_file(fname)),
            encode = "multipart")
   unlink(fname)        
   message("Upload complete")
