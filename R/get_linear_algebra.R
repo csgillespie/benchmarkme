@@ -3,7 +3,9 @@
 #' This currently only works under Linux and Apple OS. For other OS, e.g. Windows \code{NA}'s 
 #' are returned.
 #' 
-#' @details Calls `Sys.getpid()` and greps blas/lapack
+#' @details Calls `Sys.getpid()` and greps blas/lapack. Under Linux a warning is raised
+#' "lsof: WARNING: can't stat() tracefs file system /sys/kernel/debug/tracing Output information may be incomplete."
+#' There seems to be no way to avoid this http://askubuntu.com/q/748498/1986
 #' @export
 get_linear_algebra = function() {
   ##XXX: ?R CMD config BLAS_LIBS
