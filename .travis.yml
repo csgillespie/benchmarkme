@@ -8,7 +8,9 @@ r:
 
 r_packages:
   - covr
-
+r_github_packages:
+  - csgillespie/benchmarkme-data
+  
 addons:
   apt:
     packages:
