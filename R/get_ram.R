@@ -13,7 +13,6 @@ system_ram = function(os) {
   ram
 }
 
-
 #' Get the amount of RAM
 #' 
 #' Attempt to extract the amount of RAM on the current machine. This is OS 
@@ -51,16 +50,16 @@ get_ram = function() {
 }
 
 
-#' @S3method  print bytes
+#' @export
 print.bytes = function (x, digits = 3, ...) {
-  power <- min(floor(log(abs(x), 1000)), 4)
+  power = min(floor(log(abs(x), 1000)), 4)
   if (power < 1) {
-    unit <- "B"
+    unit = "B"
   } else {
-    unit <- c("kB", "MB", "GB", "TB")[[power]]
-    x <- x/(1000^power)
+    unit = c("kB", "MB", "GB", "TB")[[power]]
+    x = x/(1000^power)
   }
-  formatted <- format(signif(x, digits = digits), big.mark = ",", 
+  formatted = format(signif(x, digits = digits), big.mark = ",", 
                       scientific = FALSE)
   cat(unclass(formatted), " ", unit, "\n", sep = "")
   invisible(paste(unclass(formatted), unit))

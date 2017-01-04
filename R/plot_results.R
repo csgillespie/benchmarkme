@@ -27,7 +27,7 @@ nice_palette = function(){
 #' @importFrom utils data
 #' @importFrom stats aggregate
 #' @importFrom benchmarkmeData select_results is_blas_optimize
-#' @S3method plot ben_results
+#' @export
 #' @examples 
 #' data(sample_results)
 #' plot(sample_results)
