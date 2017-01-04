@@ -38,7 +38,7 @@ upload_results = function(results,
                           args = NULL) {
   message("Creating temporary file")
   fname = tempfile(fileext = ".rds")
-  create_bundle(results, fname)
+  type = create_bundle(results, fname)
   
   message("Uploading results")
   r = httr::POST(url, 
