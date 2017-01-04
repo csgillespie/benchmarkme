@@ -1,5 +1,7 @@
 ## Version 0.4.0
   * Update to shinyapps.io example
+  * Moved benchmark description to shinyapps.io
+  * Additional checks on `get_ram()`
 
 ## Version 0.3.0
   * New vignette describing benchmarks.
