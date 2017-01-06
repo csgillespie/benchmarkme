@@ -3,12 +3,12 @@ system_ram = function(os) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
     ram = system(cmd, intern=TRUE)
   } else if(length(grep("^darwin", os))) {
-    ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1]
+    ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1] # nocov
   } else if(length(grep("^solaris", os))) {
-    cmd = "prtconf | grep Memory"
-    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes
+    cmd = "prtconf | grep Memory" # nocov
+    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes # nocov
   } else {
-    ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1]
+    ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1] # nocov
   }
   ram
 }
@@ -33,14 +33,14 @@ get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
   if(class(ram) == "try-error" || length(ram) == 0) {
-    message("\t Unable to detect your RAM. 
-            Please raise an issue at https://github.com/csgillespie/benchmarkme")
-    ram = structure(NA, names="ram")
+    message("\t Unable to detect your RAM. # nocov
+            Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
+    ram = structure(NA, names="ram") # nocov
   } else {
     cleaned_ram = suppressWarnings(try(clean_ram(ram,os), silent=TRUE))
     if(class(cleaned_ram) == "try-error" || length(ram) == 0) {
-      message("\t Unable to detect your RAM. 
-            Please raise an issue at https://github.com/csgillespie/benchmarkme")
+      message("\t Unable to detect your RAM. # nocov 
+            Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
       ram = structure(NA, names="ram")
     } else {
       ram = structure(cleaned_ram, class = "bytes", names="ram")

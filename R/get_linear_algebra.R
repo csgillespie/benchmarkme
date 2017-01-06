@@ -17,10 +17,10 @@ get_linear_algebra = function() {
     blas = try(system(cmd_blas, intern=TRUE), silent=TRUE)
     lapack = try(system(cmd_lapack, intern=TRUE), silent=TRUE)
     if(class(blas) == "try-error") {
-      blas = lapack = NA
+      blas = lapack = NA # nocov
     }
   } else {
-    blas = lapack = NA
+    blas = lapack = NA # nocov
   }
   list(blas = blas, lapack=lapack)
 }
