@@ -8,3 +8,4 @@ add_to_drat.R
 ^README\.Rmd$
 ^README-.*\.png$
 dash*
+.codecov.yml
