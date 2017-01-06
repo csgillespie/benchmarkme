@@ -10,6 +10,13 @@ R benchmarking made easy. The package contains a number of benchmarks, heavily b
 Overview
 --------
 
+A straightforward way of speeding up your analysis is to buy a better computer. Modern desktops are relatively cheap, especially compared to user time. However, it isn't clear if upgrading your computing is worth the cost. The **benchmarkme** package provides a set of benchmarks to help quantify your system. More importantly, it allows you to compare your timings with *other* systems.
+
+You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.
+
+Overview
+--------
+
 The package is on [CRAN](https://cran.r-project.org/web/packages/benchmarkme/) and can be installed in the usual way
 
 ``` r
@@ -28,6 +35,7 @@ This benchmarks numerical operations such as loops and matrix operations. This b
 To benchmark your system, use
 
 ``` r
+library("benchmarkme")
 ## Increase runs if you have a higher spec machine
 res = benchmark_std(runs = 3)
 ```
@@ -45,6 +53,14 @@ You can compare your results to other users via
 plot(res)
 ```
 
+You can also compare your results using the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface. Simply create a results bundle
+
+``` r
+create_bundle(res, filename = "results.rds")
+```
+
+and upload to the webpage.
+
 ### The benchmark\_io() function
 
 This function benchmarks reading and writing a 5MB, 50MB and 200MB (if you have less than 4GB of RAM, reduce the number of `runs` to 1). Run the benchmark using
@@ -61,7 +77,17 @@ By default the files are written to a temporary directory generated
 tempdir()
 ```
 
+which depends on the value of
+
+``` r
+Sys.getenv("TMPDIR")
+```
+
 You can alter this to via the `tmpdir` argument. This is useful for comparing hard drive access to a network drive.
+
+``` r
+res_io = benchmark_io(tmpdir = "some_other_directory")
+```
 
 Machine specs
 -------------
