@@ -41,7 +41,7 @@ get_ram = function() {
     if(class(cleaned_ram) == "try-error" || length(ram) == 0) {
       message("\t Unable to detect your RAM. # nocov 
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
-      ram = structure(NA, names="ram")
+      ram = structure(NA, names="ram") #nocov
     } else {
       ram = structure(cleaned_ram, class = "bytes", names="ram")
     }
