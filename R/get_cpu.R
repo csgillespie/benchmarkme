@@ -25,7 +25,6 @@ get_cpu = function() {
   cpu
 }
 
-
 get_cpu_internal = function() {
   os = R.version$os
   if(length(grep("^linux", os))) {
