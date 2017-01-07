@@ -19,6 +19,8 @@ addons:
 ## Only run covr on release
 after_success:
   - Rscript -e "if(length(grep('2\$', ${TRAVIS_JOB_NUMBER}))) covr::codecov()";
+  - Rscript -e "if(length(grep('2\$', ${TRAVIS_JOB_NUMBER}))) res = benchmarkme::benchmarkme_std(); upload_results(res)"
+  - Rscript -e "if(length(grep('2\$', ${TRAVIS_JOB_NUMBER}))) res = benchmarkme::benchmarkme_io(); upload_results(res)"
 
 notifications:
   email:
