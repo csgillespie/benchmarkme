@@ -35,7 +35,9 @@ get_byte_compiler = function() {
   }
   
   if(comp == 0L){
-    out = capture.output(benchmark_std)
+    # Get function definition
+    # Check if cmpfun has been used
+    out = capture.output(get("benchmark_std", envir = globalenv()))
     is_byte = out[length(out)-1]
     if(length(grep("bytecode: ", is_byte)) > 0) {
       comp = compiler::getCompilerOption("optimize")

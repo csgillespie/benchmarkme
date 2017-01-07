@@ -3,5 +3,10 @@ test_that("Test Byte Compiler", {
   byte = get_byte_compiler()
   expect_gte(byte, 0L)
   expect_lte(byte, 3L)
+  
+  benchmark_std = compiler::cmpfun(benchmarkme::benchmark_std)
+  expect_gt(byte, get_byte_compiler())
 }
 )
+
+

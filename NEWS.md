@@ -1,3 +1,6 @@
+## Version 0.5.0
+  * Bug fix in get_byte_compiler when `cmpfun` was used.
+  
 ## Version 0.4.0
   * Update to shinyapps.io example
   * Moved benchmark description to shinyapps.io
