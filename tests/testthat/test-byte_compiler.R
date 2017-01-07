@@ -5,7 +5,8 @@ test_that("Test Byte Compiler", {
   expect_lte(byte, 3L)
   
   benchmark_std = compiler::cmpfun(benchmarkme::benchmark_std)
-  expect_gt(byte, get_byte_compiler())
+  assign("benchmark_std", benchmark_std, envir = globalenv())
+  expect_gt(get_byte_compiler(), 0L)
 }
 )
 
