@@ -31,7 +31,7 @@ bm_io = function (runs = 3, size = c(5, 50, 200),
 {
  
   if(!(size %in% c(5, 50, 200))) stop("Size must be one of 5, 50, 200")
-  if(size == 200) message("This may take a while")
+  if(size == 200) message("This may take a while") # nocov
   n = 12.5e4*size
   set.seed(1)
   on.exit(set.seed(NULL))
