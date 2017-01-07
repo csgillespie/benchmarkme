@@ -13,7 +13,7 @@ run_benchmarks = function(bm, runs, verbose) {
 #' @examples 
 #' get_available_benchmarks()
 get_available_benchmarks = function() {
-  c("benchmark_prog", "benchmark_matrix_cal", "benchmark_matrix_fun", "benchmark_io")
+  c("benchmark_std", "benchmark_prog", "benchmark_matrix_cal", "benchmark_matrix_fun", "benchmark_io")
 }
 
 
