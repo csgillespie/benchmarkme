@@ -41,7 +41,7 @@ plot.ben_results = function(x,
   for(i in seq_along(test_group)) {
     make_plot(x, test_group[i], byte_optimize, blas_optimize, log, ...)
     if(length(test_group) != i)
-      readline("Press return get next plot ")
+      readline("Press return to get next plot ")
   }
   
 }
