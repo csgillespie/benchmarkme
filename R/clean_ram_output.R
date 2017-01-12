@@ -31,8 +31,6 @@ clean_linux_ram = function(ram) {
 
 clean_darwin_ram = function(ram) {
   as.numeric(ram)
-  #ram = remove_white(ram)
-  #to_Bytes(unlist(strsplit(ram, " "))[2:3])
 }
 
 clean_solaris_ram = function(ram) {

@@ -3,7 +3,6 @@ system_ram = function(os) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
     ram = system(cmd, intern=TRUE)
   } else if(length(grep("^darwin", os))) {
-    #ram = system('system_profiler -detailLevel mini | grep "  Memory:"', intern=TRUE)[1] # nocov
     ram = substring(system("sysctl hw.memsize", intern = TRUE), 13) #nocov
   } else if(length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory" # nocov
