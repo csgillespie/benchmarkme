@@ -26,7 +26,7 @@ clean_ram = function(ram, os) {
 
 
 clean_linux_ram = function(ram) {
-  as.numeric(ram)*1000
+  as.numeric(ram)*1024
 }
 
 clean_darwin_ram = function(ram) {
