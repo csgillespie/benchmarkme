@@ -25,6 +25,8 @@ create_bundle = function(results, filename = NULL, args = NULL) {
 #' @param url The location of where to upload the results.
 #' @param args Default \code{NULL}. A list of arguments to 
 #' be passed to \code{get_sys_details()}. 
+#' @param id_prefix Character string to prefix the benchmark id. Makes it
+#' easier to retrieve past results.
 #' @export
 #' @importFrom httr POST upload_file
 #' @examples
@@ -35,7 +37,8 @@ create_bundle = function(results, filename = NULL, args = NULL) {
 #' }
 upload_results = function(results, 
                           url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
-                          args = NULL) {
+                          args = NULL, 
+                          id_prefix = "") {
   message("Creating temporary file")
   fname = tempfile(fileext = ".rds")
   type = create_bundle(results, fname)
@@ -45,6 +48,7 @@ upload_results = function(results,
            body = list(userFile = httr::upload_file(fname)),
            encode = "multipart")
   unlink(fname)        
+  type$id = paste0(id_prefix, type$id)
   message("Upload complete")
   message("Tracking id: ", type$id)
   type$id
