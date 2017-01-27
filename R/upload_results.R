@@ -41,13 +41,15 @@ upload_results = function(results,
                           id_prefix = "") {
   message("Creating temporary file")
   fname = tempfile(fileext = ".rds")
+  on.exit(unlink(fname))
+  
   type = create_bundle(results, fname)
   
   message("Uploading results")
   r = httr::POST(url, 
            body = list(userFile = httr::upload_file(fname)),
            encode = "multipart")
-  unlink(fname)        
+         
   type$id = paste0(id_prefix, type$id)
   message("Upload complete")
   message("Tracking id: ", type$id)
