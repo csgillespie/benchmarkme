@@ -6,7 +6,7 @@ create_bundle = function(results, filename = NULL, args = NULL, id_prefix = "") 
   if(is.null(args)) args = list()
   message("Getting system specs. This can take a while on Macs")
   type = do.call(get_sys_details, args)  
-  
+  type$id = paste0(id_prefix, type$id)
   type$results = results
   
   if(!is.null(filename)) {
