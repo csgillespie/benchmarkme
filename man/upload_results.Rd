@@ -5,7 +5,7 @@
 \alias{upload_results}
 \title{Upload benchmark results}
 \usage{
-create_bundle(results, filename = NULL, args = NULL)
+create_bundle(results, filename = NULL, args = NULL, id_prefix = "")
 
 upload_results(results, url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
   args = NULL, id_prefix = "")
@@ -20,10 +20,10 @@ store the results (in an .rds file). If \code{NULL}, results are not saved.}
 \item{args}{Default \code{NULL}. A list of arguments to 
 be passed to \code{get_sys_details()}.}
 
-\item{url}{The location of where to upload the results.}
-
 \item{id_prefix}{Character string to prefix the benchmark id. Makes it
 easier to retrieve past results.}
+
+\item{url}{The location of where to upload the results.}
 }
 \description{
 This function uploads the benchmarking results. 

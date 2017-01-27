@@ -2,7 +2,7 @@
 #' store the results (in an .rds file). If \code{NULL}, results are not saved.
 #' @rdname upload_results
 #' @export
-create_bundle = function(results, filename = NULL, args = NULL) {
+create_bundle = function(results, filename = NULL, args = NULL, id_prefix = "") {
   if(is.null(args)) args = list()
   message("Getting system specs. This can take a while on Macs")
   type = do.call(get_sys_details, args)  
@@ -43,14 +43,14 @@ upload_results = function(results,
   fname = tempfile(fileext = ".rds")
   on.exit(unlink(fname))
   
-  type = create_bundle(results, fname)
+  type = create_bundle(results, fname, id_prefix = id_prefix)
   
   message("Uploading results")
   r = httr::POST(url, 
            body = list(userFile = httr::upload_file(fname)),
            encode = "multipart")
          
-  type$id = paste0(id_prefix, type$id)
+
   message("Upload complete")
   message("Tracking id: ", type$id)
   type$id
