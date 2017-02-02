@@ -1,5 +1,5 @@
 run_benchmarks = function(bm, runs, verbose) {
-  results = lapply(bm, do.call, list(runs=runs, verbose=verbose))
+  results = lapply(bm, do.call, list(runs=runs, verbose=verbose), envir = environment(run_benchmarks))
   results = Reduce("rbind", results)
   class(results) = c("ben_results", class(results))
   results
