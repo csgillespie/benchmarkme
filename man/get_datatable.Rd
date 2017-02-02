@@ -37,4 +37,3 @@ res = benchmark_std(3)
 plot(res)
 }
 }
-

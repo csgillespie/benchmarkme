@@ -57,4 +57,3 @@ is contains the output from:
 ## Returns all details about your machine
 get_sys_details()
 }
-

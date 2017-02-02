@@ -24,4 +24,3 @@ get_ram()
 \references{
 The \code{print.bytes} function was taken from the \pkg{pryr} package.
 }
-

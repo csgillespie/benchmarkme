@@ -21,4 +21,3 @@ A value of \code{NA} is return if it isn't possible to obtain the CPU.
 ## Return the machine CPU
 get_cpu()
 }
-

@@ -9,4 +9,3 @@ get_r_version()
 \description{
 Returns \code{unclass(R.version)}
 }
-

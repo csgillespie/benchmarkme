@@ -22,4 +22,3 @@ Benchmarking reading and writing a csv file (containing random numbers).
 The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
 Of \code{size}MB.
 }
-

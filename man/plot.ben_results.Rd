@@ -34,4 +34,3 @@ data(sample_results)
 plot(sample_results)
 plot(sample_results, byte_optimze=NULL)
 }
-

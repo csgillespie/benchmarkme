@@ -2,8 +2,8 @@
 % Please edit documentation in R/benchmarkme-package.R
 \docType{package}
 \name{benchmarkme-package}
-\alias{benchmarkme}
 \alias{benchmarkme-package}
+\alias{benchmarkme}
 \title{The benchmarkme package}
 \description{
 Benchmark your CPU and compare against other CPUs. Also provides 
@@ -18,11 +18,10 @@ upload_results(res)
 plot(res)
 }
 }
-\author{
-\email{csgillespie@gmail.com}
-}
 \seealso{
 \url{https://github.com/csgillespie/benchmarkme}
 }
+\author{
+\email{csgillespie@gmail.com}
+}
 \keyword{package}
-

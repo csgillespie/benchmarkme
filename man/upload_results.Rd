@@ -37,4 +37,3 @@ res = benchmark_std()
 upload_results(res)
 }
 }
-

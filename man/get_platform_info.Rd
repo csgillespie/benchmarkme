@@ -9,4 +9,3 @@ get_platform_info()
 \description{
 This function just returns the outpu of \code{.Platform}
 }
-

@@ -8,4 +8,3 @@
 \description{
 Sample benchmark results. Used in the vignette.
 }
-

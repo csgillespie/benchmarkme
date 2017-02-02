@@ -19,5 +19,5 @@ Imports:
     benchmarkmeData(>= 0.4.0), utils, graphics
 Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.0
 License: GPL-2 | GPL-3

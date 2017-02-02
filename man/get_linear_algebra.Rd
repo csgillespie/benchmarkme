@@ -15,4 +15,3 @@ Calls `Sys.getpid()` and greps blas/lapack. Under Linux a warning is raised
 "lsof: WARNING: can't stat() tracefs file system /sys/kernel/debug/tracing Output information may be incomplete."
 There seems to be no way to avoid this http://askubuntu.com/q/748498/1986
 }
-

@@ -17,4 +17,3 @@ Attempts to detect if byte compiling or JIT has been used on the package.
 ## Detect if you use byte optimization
 get_byte_compiler()
 }
-

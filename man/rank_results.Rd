@@ -22,4 +22,3 @@ byte_optimized setting. To use all results, set to \code{NULL}.}
 \description{
 Comparison with past results.
 }
-

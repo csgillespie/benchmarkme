@@ -12,4 +12,3 @@ The function returns the available benchmarks
 \examples{
 get_available_benchmarks()
 }
-
