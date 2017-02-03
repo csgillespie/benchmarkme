@@ -60,17 +60,13 @@ print.bytes = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
   if (power < 1) {
     unit = "B"
   } else {
-    switch(
+    unit_labels = switch(
       unit_system,
-      metric = {
-        unit = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")[[power]]
-        x = x/(base^power)
-      },
-      iec = {
-        unit = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")[[power]]
-        x = x/(base^power)
-      }
+      metric = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
+      iec = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
     )
+    unit = unit_labels[[power]]
+    x = x/(base^power)
   }
   formatted = format(signif(x, digits = digits), big.mark = ",", 
     scientific = FALSE, ...)
