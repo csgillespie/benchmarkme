@@ -50,17 +50,30 @@ get_ram = function() {
 }
 
 ## Not sure why export doesn't work here
+#' @param unit_system Either "metric", for units that are powers of 1000 bytes, or 
+#' "iec", for units that are powers of 1024 bytes.
 #' @rawNamespace S3method(print,bytes)
-print.bytes = function (x, digits = 3, ...) {
-  power = min(floor(log(abs(x), 1000)), 4)
+print.bytes = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
+  unit_system = match.arg(unit_system)
+  base = switch(unit_system, metric = 1000, iec = 1024)
+  power = min(floor(log(abs(x), base)), 8)
   if (power < 1) {
     unit = "B"
   } else {
-    unit = c("kB", "MB", "GB", "TB")[[power]]
-    x = x/(1000^power)
+    switch(
+      unit_system,
+      metric = {
+        unit = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")[[power]]
+        x = x/(base^power)
+      },
+      iec = {
+        unit = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")[[power]]
+        x = x/(base^power)
+      }
+    )
   }
   formatted = format(signif(x, digits = digits), big.mark = ",", 
-                      scientific = FALSE, ...)
+    scientific = FALSE, ...)
   cat(unclass(formatted), " ", unit, "\n", sep = "")
   invisible(paste(unclass(formatted), unit))
 }
