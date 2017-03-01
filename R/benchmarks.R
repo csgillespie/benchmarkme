@@ -41,6 +41,7 @@ benchmark_matrix_cal = function(runs=3, verbose=TRUE) {
   run_benchmarks(bm, runs, verbose)
 }
 
+
 #' @inheritParams benchmark_std
 #' @rdname bm_matrix_fun_fft
 #' @export
@@ -53,4 +54,13 @@ benchmark_matrix_fun = function(runs=3, verbose=TRUE) {
   run_benchmarks(bm, runs, verbose)  
 }
 
-
+#' @inheritParams benchmark_mc
+#' @rdname bm_matrix_cal_manip
+#' @export
+benchmark_matrix_cal_mc = function(runs=3, cores = NULL, verbose=TRUE) {
+  bm =  c("bm_matrix_cal_manip_mc")
+  if(verbose)
+    message("# Matrix calculation benchmarks (1 test):")
+  
+  run_benchmarks(bm, runs, verbose)
+}
