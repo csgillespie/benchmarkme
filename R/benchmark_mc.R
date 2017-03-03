@@ -10,8 +10,8 @@
 #' }
 #' To view the list of benchmarks, see \code{get_available_benchmarks}.
 #' @param runs Number of times to run the test. Default 3.
-#' @param cores Number of cores to try to use. Default is \code{detectCores}
 #' @param verbose Default TRUE.
+#' @param cores Number of cores to try to use. Default is \code{detectCores}
 #' @importFrom parallel detectCores
 #' @import foreach
 #' @export
@@ -23,10 +23,11 @@
 #' ## Plot results
 #' plot(res)
 #' }
-benchmark_mc = function(runs=3, cores = NULL, verbose=TRUE) {
+benchmark_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   if(missing(cores)){
     cores <- parallel::detectCores()
   }
-  rbind(benchmark_matrix_cal_mc(runs, cores, verbose)
+  setup_parallel()
+  rbind(benchmark_matrix_cal_mc(runs, verbose, cores)
   )
 }

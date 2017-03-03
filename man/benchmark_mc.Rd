@@ -4,14 +4,14 @@
 \alias{benchmark_mc}
 \title{Run multicore benchmarks}
 \usage{
-benchmark_mc(runs = 3, cores = NULL, verbose = TRUE)
+benchmark_mc(runs = 3, verbose = TRUE, cores = NULL)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
-\item{cores}{Number of cores to try to use. Default is \code{detectCores}}
-
 \item{verbose}{Default TRUE.}
+
+\item{cores}{Number of cores to try to use. Default is \code{detectCores}}
 }
 \description{
 This function runs a set of multicore benchmarks, which should be suitable for most

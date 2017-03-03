@@ -2,16 +2,19 @@
 % Please edit documentation in R/benchmark_matrix_calc_mc.R
 \name{bm_matrix_cal_manip_mc}
 \alias{bm_matrix_cal_manip_mc}
+\alias{bm_matrix_cal_power_mc}
 \title{Matrix calculation benchmarks}
 \usage{
-bm_matrix_cal_manip_mc(runs = 3, cores = NULL, verbose = TRUE)
+bm_matrix_cal_manip_mc(runs = 3, verbose = TRUE, cores = NULL)
+
+bm_matrix_cal_power_mc(runs = 3, verbose = TRUE, cores = NULL)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
-\item{cores}{Number of cores to try to use. Default is \code{detectCores}}
-
 \item{verbose}{Default TRUE.}
+
+\item{cores}{Number of cores to try to use. Default is \code{detectCores}}
 }
 \description{
 A collection of matrix benchmark functions aimed at

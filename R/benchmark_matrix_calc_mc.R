@@ -14,14 +14,10 @@
 #' @inheritParams benchmark_mc
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' @export
-bm_matrix_cal_manip_mc = function(runs=3, cores = NULL, verbose=TRUE) {
-  if(missing(cores)){
-    cores <- parallel::detectCores()
-  }
-  a = 0; b = 0; K = cores * runs
+bm_matrix_cal_manip_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  a = 0; b = 0; K = cores * runs;
   timings = data.frame(user = numeric(runs), system=0, elapsed=0,
                        test="manip", test_group="matrix_cal_mc")
-  setup_parallel()
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
@@ -39,16 +35,21 @@ bm_matrix_cal_manip_mc = function(runs=3, cores = NULL, verbose=TRUE) {
   timings
 }
 
-#' @rdname bm_matrix_cal_manip
+#' @rdname bm_matrix_cal_manip_mc
 #' @export
-bm_matrix_cal_power_mc = function(runs=3, verbose=TRUE) {
-  b = 0
+bm_matrix_cal_power_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  b = 0; K = cores * runs;
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="power", test_group="matrix_cal")
   for (i in 1:runs) {
     a <- abs(matrix(Rnorm(2500*2500)/2, ncol=2500, nrow=2500));
     invisible(gc())
-    timings[i,1:3] = system.time({b <- a^1000})[1:3]
+    timing <- system.time({
+      foreach(k = 1:K) %dopar% ({
+        b <- a^1000
+      })
+    })
+    timings[i, 1:3] = timing[1:3]
   }
   if(verbose)
     message(c("\t2500x2500 normal distributed random matrix ^1000", timings_mean(timings)))
@@ -57,14 +58,19 @@ bm_matrix_cal_power_mc = function(runs=3, verbose=TRUE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_sort_mc = function(runs=3, verbose=TRUE) {
-  b = 0
+bm_matrix_cal_sort_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  b = 0; K = cores * runs;
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="sort", test_group="matrix_cal")
   for (i in 1:runs) {
     a = Rnorm(7000000)
     invisible(gc())
-    timings[i,1:3] = system.time({b <- sort(a, method="quick")})[1:3]
+    timing <- system.time({
+      foreach(k = 1:K) %dopar% ({
+        b <- sort(a, method="quick")
+      })
+    })
+    timings[i, 1:3] = timing[1:3]
   }
   if(verbose)
     message(c("\tSorting of 7,000,000 random values", timings_mean(timings)))
@@ -73,14 +79,19 @@ bm_matrix_cal_sort_mc = function(runs=3, verbose=TRUE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_cross_product_mc = function(runs=3, verbose=TRUE) {
-  b = 0
+bm_matrix_cal_cross_product_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  b = 0; K = cores * runs;
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="cross_product", test_group="matrix_cal")
   for (i in 1:runs) {
     a = Rnorm(2500*2500); dim(a) = c(2500, 2500)
     invisible(gc())
-    timings[i,1:3] = system.time({b <- crossprod(a)})[1:3]
+    timing <- system.time({
+      foreach(k = 1:K) %dopar% ({
+        b <- crossprod(a)
+      })
+    })
+    timings[i, 1:3] = timing[1:3]
   }
   if(verbose)
     message(c("\t2500x2500 cross-product matrix (b = a' * a)", timings_mean(timings)))
@@ -89,15 +100,20 @@ bm_matrix_cal_cross_product_mc = function(runs=3, verbose=TRUE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_lm_mc = function(runs=3, verbose=TRUE) {
-  ans = 0
+bm_matrix_cal_lm_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  ans = 0; K = cores * runs;
   b = as.double(1:2000)
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="lm", test_group="matrix_cal")
   for (i in 1:runs) {
     a = new("dgeMatrix", x = Rnorm(2000*2000), Dim = as.integer(c(2000,2000)))
     invisible(gc())
-    timings[i,1:3] = system.time({ans = solve(crossprod(a), crossprod(a,b))})[1:3]
+    timing <- system.time({
+      foreach(k = 1:K) %dopar% ({
+        ans = solve(crossprod(a), crossprod(a,b))
+      })
+    })
+    timings[i, 1:3] = timing[1:3]
   }
   if(verbose)
     message(c("\tLinear regr. over a 3000x3000 matrix (c = a \\ b')", timings_mean(timings)))
