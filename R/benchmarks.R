@@ -39,6 +39,19 @@ benchmark_prog = function(runs=3, verbose=TRUE) {
   run_benchmarks(bm, runs, verbose)
 }
 
+#' @inheritParams benchmark_mc
+#' @rdname bm_prog_fib
+#' @export
+benchmark_prog_mc = function(runs=3, verbose=TRUE, cores=NULL) {
+  bm = c("bm_prog_fib_mc", "bm_prog_gcd_mc", "bm_prog_hilbert_mc", 
+         "bm_prog_toeplitz_mc", "bm_prog_escoufier_mc")
+  if(verbose)
+    message("# Programming benchmarks (5 tests):")
+  
+  run_benchmarks_mc(bm, runs, verbose, cores)
+}
+
+
 #' @inheritParams benchmark_std
 #' @rdname bm_matrix_cal_manip
 #' @export

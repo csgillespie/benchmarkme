@@ -19,7 +19,7 @@ Imports:
     parallel,
     foreach,
     benchmarkmeData(>= 0.4.0), utils, graphics
-Suggests: testthat, DT, knitr, ggplot2, rmarkdown, doParallel
+Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown, doParallel
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 License: GPL-2 | GPL-3

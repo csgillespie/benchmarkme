@@ -3,11 +3,20 @@
 \name{bm_matrix_cal_manip_mc}
 \alias{bm_matrix_cal_manip_mc}
 \alias{bm_matrix_cal_power_mc}
+\alias{bm_matrix_cal_sort_mc}
+\alias{bm_matrix_cal_cross_product_mc}
+\alias{bm_matrix_cal_lm_mc}
 \title{Matrix calculation benchmarks}
 \usage{
 bm_matrix_cal_manip_mc(runs = 3, verbose = TRUE, cores = NULL)
 
 bm_matrix_cal_power_mc(runs = 3, verbose = TRUE, cores = NULL)
+
+bm_matrix_cal_sort_mc(runs = 3, verbose = TRUE, cores = NULL)
+
+bm_matrix_cal_cross_product_mc(runs = 3, verbose = TRUE, cores = NULL)
+
+bm_matrix_cal_lm_mc(runs = 3, verbose = TRUE, cores = NULL)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}

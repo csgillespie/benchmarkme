@@ -56,7 +56,7 @@ bm_matrix_cal_power_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   timings
 }
 
-#' @rdname bm_matrix_cal_manip
+#' @rdname bm_matrix_cal_manip_mc
 #' @export
 bm_matrix_cal_sort_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   b = 0; K = cores * runs;
@@ -77,7 +77,7 @@ bm_matrix_cal_sort_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   timings
 }
 
-#' @rdname bm_matrix_cal_manip
+#' @rdname bm_matrix_cal_manip_mc
 #' @export
 bm_matrix_cal_cross_product_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   b = 0; K = cores * runs;
@@ -98,7 +98,7 @@ bm_matrix_cal_cross_product_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   timings
 }
 
-#' @rdname bm_matrix_cal_manip
+#' @rdname bm_matrix_cal_manip_mc
 #' @export
 bm_matrix_cal_lm_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   ans = 0; K = cores * runs;

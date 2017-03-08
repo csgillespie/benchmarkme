@@ -28,6 +28,7 @@ benchmark_mc = function(runs=3, verbose=TRUE, cores = NULL) {
     cores <- parallel::detectCores()
   }
   setup_parallel()
-  rbind(benchmark_matrix_cal_mc(runs, verbose, cores)
+  rbind(benchmark_prog(runs, verbose, cores),
+    benchmark_matrix_cal_mc(runs, verbose, cores)
   )
 }
