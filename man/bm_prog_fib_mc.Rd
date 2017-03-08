@@ -16,7 +16,7 @@ bm_prog_gcd_mc(runs = 3, verbose = TRUE, cores = NULL)
 
 bm_prog_toeplitz_mc(runs = 3, verbose = TRUE, cores = NULL)
 
-bm_prog_escoufier_mc(runs = 3, verbose = TRUE)
+bm_prog_escoufier_mc(runs = 3, verbose = TRUE, cores = NULL)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}

@@ -1,11 +1,7 @@
 test_that("Test benchmark_mc", {
   skip_on_cran()
   # expect_error(benchmark_io(size = 1))
-  library(doParallel)
-  cl <- makePSOCKcluster(2)
-  registerDoParallel(cl)
-  res = benchmark_mc(runs = 2)
-  stopCluster(cl)
+  res = benchmark_mc(runs = 1, cores = 2)
   # expect_equal(nrow(res), 2)
   # expect_equal(ncol(res), 5)
 })

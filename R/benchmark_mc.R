@@ -27,8 +27,21 @@ benchmark_mc = function(runs=3, verbose=TRUE, cores = NULL) {
   if(missing(cores)){
     cores <- parallel::detectCores()
   }
-  setup_parallel()
-  rbind(benchmark_prog(runs, verbose, cores),
-    benchmark_matrix_cal_mc(runs, verbose, cores)
-  )
+  coreList <- 2^(0:sqrt(cores))
+  maxCores <- max(coreList)
+  results <- data.frame(user = NA, system = NA, elapsed = NA, test = NA, 
+                        test_group = NA, cores = NA)
+  for(i in coreList){
+    cl <- parallel::makeCluster(i)
+    doParallel::registerDoParallel(cl)
+    res <- rbind(benchmark_prog_mc(runs, verbose, maxCores),
+                 benchmark_matrix_cal_mc(runs, verbose, maxCores))
+    res$cores <- i
+    results <- rbind(results, res)
+    parallel::stopCluster(cl)
+    rm(res)
+  }
+  results <- na.omit(results)
+  return(results)
+  
 }

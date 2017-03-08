@@ -70,7 +70,7 @@ bm_prog_gcd_mc = function(runs=3, verbose=TRUE, cores = NULL) {
          ans <- gcd2(a, b)
          })
       })
-    timings <- timing[i,1:3]
+    timings[i,1:3] = timing[1:3]
   }
   if(verbose)
     message(c("\tGrand common divisors of 1,000,000 pairs (recursion)", timings_mean(timings)))
@@ -110,7 +110,8 @@ bm_prog_toeplitz_mc = function(runs=3, verbose=TRUE, cores = NULL) {
 #' @importFrom stats cor
 #' @rdname bm_prog_fib_mc
 #' @export
-bm_prog_escoufier_mc = function(runs=3, verbose=TRUE) {
+bm_prog_escoufier_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  K = cores * runs;
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="escoufier", test_group="prog")
   p <- 0; vt <- 0; vr <- 0; vrt <- 0; rvt <- 0; RV <- 0; j <- 0; k <- 0;
