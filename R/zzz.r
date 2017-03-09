@@ -1,3 +1,5 @@
+#' @importFrom stats na.omit
+
 .onAttach = function(...) {
   if (!interactive()) return()
 

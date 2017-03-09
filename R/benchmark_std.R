@@ -24,6 +24,3 @@ benchmark_std = function(runs=3, verbose=TRUE) {
         benchmark_matrix_cal(runs, verbose), 
         benchmark_matrix_fun(runs, verbose))
 }
-
-
-

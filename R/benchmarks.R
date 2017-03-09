@@ -1,5 +1,16 @@
 run_benchmarks = function(bm, runs, verbose) {
-  results = lapply(bm, do.call, list(runs=runs, verbose=verbose), envir = environment(run_benchmarks))
+  results = lapply(bm, do.call, list(runs=runs, verbose=verbose), 
+                   envir = environment(run_benchmarks))
+  results = Reduce("rbind", results)
+  class(results) = c("ben_results", class(results))
+  results
+}
+
+run_benchmarks_mc = function(bm, runs, verbose, cores) {
+  results = lapply(bm, do.call, list(runs=runs, 
+                                     verbose=verbose, 
+                                     cores=cores), 
+                   envir = environment(run_benchmarks_mc))
   results = Reduce("rbind", results)
   class(results) = c("ben_results", class(results))
   results
@@ -29,6 +40,19 @@ benchmark_prog = function(runs=3, verbose=TRUE) {
   run_benchmarks(bm, runs, verbose)
 }
 
+#' @inheritParams benchmark_mc
+#' @rdname bm_prog_fib
+#' @export
+benchmark_prog_mc = function(runs=3, verbose=TRUE, cores=NULL) {
+  bm = c("bm_prog_fib_mc", "bm_prog_gcd_mc", "bm_prog_hilbert_mc", 
+         "bm_prog_toeplitz_mc", "bm_prog_escoufier_mc")
+  if(verbose)
+    message("# Programming benchmarks (5 tests):")
+  
+  run_benchmarks_mc(bm, runs, verbose, cores)
+}
+
+
 #' @inheritParams benchmark_std
 #' @rdname bm_matrix_cal_manip
 #' @export
@@ -41,6 +65,20 @@ benchmark_matrix_cal = function(runs=3, verbose=TRUE) {
   run_benchmarks(bm, runs, verbose)
 }
 
+#' @inheritParams benchmark_mc
+#' @rdname bm_matrix_cal_manip
+#' @export
+benchmark_matrix_cal_mc = function(runs=3, verbose=TRUE, cores = NULL) {
+  bm =  c("bm_matrix_cal_manip_mc", "bm_matrix_cal_power_mc", 
+          "bm_matrix_cal_sort_mc", "bm_matrix_cal_cross_product_mc", 
+          "bm_matrix_cal_lm_mc")
+  if(verbose)
+    message("# Matrix calculation benchmarks (5 test):")
+  
+  run_benchmarks_mc(bm, runs, verbose, cores)
+}
+
+
 #' @inheritParams benchmark_std
 #' @rdname bm_matrix_fun_fft
 #' @export
@@ -52,5 +90,4 @@ benchmark_matrix_fun = function(runs=3, verbose=TRUE) {
     message("# Matrix function benchmarks (5 tests):")
   run_benchmarks(bm, runs, verbose)  
 }
-
 
