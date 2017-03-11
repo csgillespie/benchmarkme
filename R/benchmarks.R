@@ -5,6 +5,43 @@ run_benchmarks = function(bm, runs, verbose) {
   results
 }
 
+bm_parallel <- function(bm, runs, verbose, cores){
+  coreList <- 2^(0:sqrt(cores))
+  maxCores <- max(coreList)
+  K <- runs * maxCores
+  #TODO consider dropping first results from parallel results due to overhead
+  results <- data.frame(user = NA, system = NA, elapsed = NA, test = NA, 
+                        test_group = NA, cores = NA)
+  for(i in coreList){
+    cl <- parallel::makeCluster(i)
+    doParallel::registerDoParallel(cl)
+    tmp <- data.frame(user = numeric(runs), system=0, elapsed=0,
+                      test=NA, test_group=NA, cores = NA)
+    for(j in 1:runs){
+      tmp[j, 1:3] <- system.time({
+        out <- foreach(k = 1:K,  .export = bm) %dopar% 
+          do.call(bm, list(runs = 1), quote = TRUE)
+      })[1:3]
+    }
+    tmp$cores <- i
+    tmp$test <- as.character(out[[1]]$test)
+    tmp$test_group <- as.character(out[[1]]$test_group)
+    results <- rbind(results, tmp)
+    parallel::stopCluster(cl)
+  }
+  return(na.omit(results))
+}
+
+
+library(doParallel)
+library(foreach)
+runs <- 3
+cores <- 2
+
+bm_parallel("bm_prog_fib", runs = 4, verbose = TRUE, cores = 2)
+bm_parallel("bm_matrix_fun_eigen", runs = 4, verbose = TRUE, cores = 2)
+
+
 
 #' Available benchmarks
 #' 
