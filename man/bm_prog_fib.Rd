@@ -19,12 +19,15 @@ bm_prog_toeplitz(runs = 3, verbose = TRUE)
 
 bm_prog_escoufier(runs = 3, verbose = TRUE)
 
-benchmark_prog(runs = 3, verbose = TRUE)
+benchmark_prog(runs = 3, verbose = TRUE, ...)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
 \item{verbose}{Default TRUE.}
+
+\item{...}{additional arguments, set cores to an integer value to benchmark 
+parallel performance}
 }
 \description{
 A collection of matrix programming benchmark functions

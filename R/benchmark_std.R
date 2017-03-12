@@ -10,6 +10,8 @@
 #' To view the list of benchmarks, see \code{get_available_benchmarks}.
 #' @param runs Number of times to run the test. Default 3.
 #' @param verbose Default TRUE.
+#' @param ... additional arguments, set cores to an integer value to benchmark 
+#' parallel performance
 #' @export
 #' @examples 
 #' ## Benchmark your system
@@ -19,10 +21,10 @@
 #' ## Plot results
 #' plot(res)
 #' }
-benchmark_std = function(runs=3, verbose=TRUE) {
-  rbind(benchmark_prog(runs, verbose), 
-        benchmark_matrix_cal(runs, verbose), 
-        benchmark_matrix_fun(runs, verbose))
+benchmark_std = function(runs=3, verbose=TRUE, ...) {
+  rbind(benchmark_prog(runs, verbose, ...), 
+        benchmark_matrix_cal(runs, verbose, ...), 
+        benchmark_matrix_fun(runs, verbose, ...))
 }
 
 
