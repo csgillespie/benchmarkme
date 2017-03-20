@@ -4,7 +4,7 @@
 \alias{bm_parallel}
 \title{Benchmark in parallel}
 \usage{
-bm_parallel(bm, runs, verbose, cores)
+bm_parallel(bm, runs, verbose, cores, ...)
 }
 \arguments{
 \item{bm}{character name of benchmark function to run from \code{\link{get_available_benchmarks}}}
@@ -14,6 +14,8 @@ bm_parallel(bm, runs, verbose, cores)
 \item{verbose}{display messages during benchmarking}
 
 \item{cores}{number of cores to benchmark}
+
+\item{...}{additional arguments to pass to \code{bm}}
 }
 \description{
 When a user specifies cores, the benchmark will be run on a 

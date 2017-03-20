@@ -23,6 +23,7 @@ run_benchmarks = function(bm, runs, verbose, cores = NULL) {
 #' @param runs number of runs of benchmark to make
 #' @param verbose display messages during benchmarking
 #' @param cores number of cores to benchmark
+#' @param ... additional arguments to pass to \code{bm}
 #' @description When a user specifies cores, the benchmark will be run on a 
 #' maximum number of cores, and all counts descending in powers of 2 from that 
 #' maximum. If a user specifies 6 cores, then the benchmarks will be repeated 
@@ -39,7 +40,9 @@ run_benchmarks = function(bm, runs, verbose, cores = NULL) {
 #' results <- lapply(bm, bm_parallel, 
 #'                 runs = 5, verbose = TRUE, cores = 2L)
 #' }
-bm_parallel <- function(bm, runs, verbose, cores){
+bm_parallel <- function(bm, runs, verbose, cores, ...){
+  args <- list(...)
+  args[['runs']] <- 1
   if(cores == 1){
     coreList <- 1
   } else{
@@ -58,7 +61,7 @@ bm_parallel <- function(bm, runs, verbose, cores){
     for(j in 1:runs){
       tmp[j, 1:3] <- system.time({
         out <- foreach(k = 1:K,  .export = bm) %dopar% 
-          do.call(bm, list(runs = 1), quote = TRUE) #, envir = environment(bm_parallel))
+          do.call(bm, args, quote = TRUE) #, envir = environment(bm_parallel))
       })[1:3]
     }
     tmp$cores <- i
@@ -77,7 +80,8 @@ bm_parallel <- function(bm, runs, verbose, cores){
 #' @examples 
 #' get_available_benchmarks()
 get_available_benchmarks = function() {
-  c("benchmark_std", "benchmark_prog", "benchmark_matrix_cal", "benchmark_matrix_fun", "benchmark_io")
+  c("benchmark_std", "benchmark_prog", "benchmark_matrix_cal", 
+    "benchmark_matrix_fun", "benchmark_io")
 }
 
 

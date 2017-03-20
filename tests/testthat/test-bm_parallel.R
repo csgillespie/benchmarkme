@@ -9,4 +9,9 @@ test_that("Test bm_parallel", {
   expect_equal(nrow(res), 4)
   expect_equal(ncol(res), 6)
   expect_identical(c(1, 1, 2, 2), res$cores)
+  res <- bm_parallel(bm = "bm_read_io", runs = 2, verbose = FALSE, 
+                     cores = 2, size = 5)
+  expect_equal(nrow(res), 4)
+  expect_equal(ncol(res), 6)
+  expect_identical(c(1, 1, 2, 2), res$cores)
 })

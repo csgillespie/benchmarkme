@@ -2,23 +2,54 @@
 % Please edit documentation in R/benchmark_io.R
 \name{benchmark_io}
 \alias{benchmark_io}
+\alias{bm_write_io}
+\alias{bm_read_io}
 \title{IO benchmarks}
 \usage{
 benchmark_io(runs = 3, size = c(5, 50, 200), tmpdir = tempdir(),
-  verbose = TRUE)
+  verbose = TRUE, cores = NULL)
+
+bm_write_io(runs = 3, size = 5, tmpdir = tempdir(), verbose = TRUE)
+
+bm_read_io(runs = 3, size = 5, tmpdir = tempdir(), verbose = TRUE)
 }
 \arguments{
-\item{runs}{Number of times to run the test. Default 3.}
+\item{runs}{Integer, length 1, Number of times to run the benchmark}
 
 \item{size}{a number specifying the approximate size of the generated csv. Must be one of
 5,  50, 200.}
 
 \item{tmpdir}{a non-empty character vector giving the directory name. Default \code{tempdir()}}
 
-\item{verbose}{Default TRUE.}
+\item{verbose}{logical, default TRUE, should verbose output be returned?}
+
+\item{cores, }{integer, default to NULL and single threaded performance only is 
+tested, specify an integer to test multithreaded performance}
+
+\item{size}{Integer, must be one of 5, 50, 200; default = 5}
+
+\item{tmpdir}{path, where to write and read temporary data from}
+
+\item{runs}{Integer, length 1, Number of times to run the benchmark}
+
+\item{size}{Integer, can be length greater than 1, size in MB of temp file to 
+read and write; default = 5}
+
+\item{tmpdir}{path, where to write and read temporary data from}
+
+\item{verbose}{logical, default TRUE, should verbose output be returned?}
+}
+\value{
+results data.frame
+
+results data.frame
 }
 \description{
 Benchmarking reading and writing a csv file (containing random numbers).
 The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
 Of \code{size}MB.
+
+A benchmark to test input/output performance in R
+
+A benchmark to test input/output performance in R
 }
