@@ -4,12 +4,15 @@
 \alias{benchmark_std}
 \title{Run standard benchmarks}
 \usage{
-benchmark_std(runs = 3, verbose = TRUE)
+benchmark_std(runs = 3, verbose = TRUE, ...)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
 \item{verbose}{Default TRUE.}
+
+\item{...}{additional arguments, set cores to an integer value to benchmark 
+parallel performance}
 }
 \description{
 This function runs a set of standard benchmarks, which should be suitable for most

@@ -19,12 +19,15 @@ bm_matrix_fun_cholesky(runs = 3, verbose = TRUE)
 
 bm_matrix_fun_inverse(runs = 3, verbose = TRUE)
 
-benchmark_matrix_fun(runs = 3, verbose = TRUE)
+benchmark_matrix_fun(runs = 3, verbose = TRUE, ...)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}
 
 \item{verbose}{Default TRUE.}
+
+\item{...}{additional arguments, set cores to an integer value to benchmark 
+parallel performance}
 }
 \description{
 A collection of matrix benchmark functions

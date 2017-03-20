@@ -6,15 +6,33 @@ r:
   - release 
   - devel
 
-r_packages:
-  - covr
-r_github_packages:
-  - csgillespie/benchmarkme-data
-  
 addons:
   apt:
     packages:
       - libgsl0-dev # For RCppZigg
+
+r_binary_packages:
+  - Matrix
+  - compiler
+  - httr
+  - parallel
+  - doParallel
+  - foreach
+  - testthat
+  - DT
+  - knitr
+  - ggplot2
+  - rmarkdown
+
+r_packages:
+  - covr
+
+r_github_packages:
+  - csgillespie/benchmarkme-data
+
+script:
+ - travis_wait 30 R CMD build --no-build-vignettes --no-manual
+ - travis_wait 30 R CMD check benchmarkme_0.4.1.9003.tar.gz --no-build-vignettes --no-manual
 
 ## Only run covr on release
 after_success:
