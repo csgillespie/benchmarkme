@@ -10,6 +10,10 @@
 #' To view the list of benchmarks, see \code{get_available_benchmarks}.
 #' @param runs Number of times to run the test. Default 3.
 #' @param verbose Default TRUE.
+#' @param parallel, default \code{NULL}. The default is single threaded performance.
+#' An integer value greater than zero will use multiple cores.
+#' @details Setting \code{cores} equal to 1 is useful for assessing the impact of the 
+#' parallel computing overhead.  
 #' @export
 #' @examples 
 #' ## Benchmark your system
@@ -19,10 +23,10 @@
 #' ## Plot results
 #' plot(res)
 #' }
-benchmark_std = function(runs=3, verbose=TRUE) {
-  rbind(benchmark_prog(runs, verbose), 
-        benchmark_matrix_cal(runs, verbose), 
-        benchmark_matrix_fun(runs, verbose))
+benchmark_std = function(runs = 3, verbose = TRUE, parallel = FALSE) {
+  rbind(benchmark_prog(runs, verbose, parallel), 
+        benchmark_matrix_cal(runs, verbose, parallel), 
+        benchmark_matrix_fun(runs, verbose, parallel))
 }
 
 

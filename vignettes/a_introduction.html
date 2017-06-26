@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -77,8 +77,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>A straightforward way of speeding up your analysis is to buy a better computer. Modern desktops are relatively cheap, especially compared to user time. However, it isn’t clear if upgrading your computing is worth the cost. The <strong>benchmarkme</strong> package provides a set of benchmarks to help quantify your system. More importantly, it allows you to compare your timings with <em>other</em> systems.</p>
 <p>You can view past benchmarks via the <a href="https://jumpingrivers.shinyapps.io/benchmarkme/">Shiny</a> interface.</p>
 </div>
-<div id="overview-1" class="section level2">
-<h2>Overview</h2>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
 <p>The package is on <a href="https://cran.r-project.org/web/packages/benchmarkme/">CRAN</a> and can be installed in the usual way</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;benchmarkme&quot;</span>)</code></pre></div>
 <p>There are two groups of benchmarks:</p>
@@ -100,7 +100,7 @@ res =<span class="st"> </span><span class="kw">benchmark_std</span>(<span class=
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(res)</code></pre></div>
 <p>You can also compare your results using the <a href="https://jumpingrivers.shinyapps.io/benchmarkme/">Shiny</a> interface. Simply create a results bundle</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">create_bundle</span>(res, <span class="dt">filename =</span> <span class="st">&quot;results.rds&quot;</span>)</code></pre></div>
-<p>and upload to the webpage.</p>
+<p>and upload the file <code>results.rds</code> to the webpage.</p>
 </div>
 <div id="the-benchmark_io-function" class="section level3">
 <h3>The benchmark_io() function</h3>
@@ -168,7 +168,7 @@ res =<span class="st"> </span><span class="kw">benchmark_std</span>(<span class=
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

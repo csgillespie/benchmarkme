@@ -1,3 +1,6 @@
+## Version 0.6.0
+  * Adding parallel benchmarks (thanks to @jknowles)
+
 ## Version 0.5.1
   * Add id_prefix to the upload function
   * Can now run `benchmark_std` if the package is not attached (thanks to @YvesCR)
