@@ -50,8 +50,6 @@ get_ram = function() {
 }
 
 ## Not sure why export doesn't work here
-#' @param unit_system Either "metric", for units that are powers of 1000 bytes, or 
-#' "iec", for units that are powers of 1024 bytes.
 #' @rawNamespace S3method(print,bytes)
 print.bytes = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
   unit_system = match.arg(unit_system)

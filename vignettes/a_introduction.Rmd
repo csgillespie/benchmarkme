@@ -17,16 +17,15 @@ res = sample_results
 
 ## Overview 
 
-A straightforward way of speeding up your analysis is to buy a
-better computer. Modern desktops are relatively cheap, especially
-compared to user time. However, it isn't clear if upgrading
-your computing is worth the cost. The **benchmarkme** package provides a set of
-benchmarks to help quantify your system. More importantly, it allows
+A straightforward way of speeding up your analysis is to buy a better computer. Modern
+desktops are relatively cheap, especially compared to user time. However, it isn't
+clear if upgrading your computing is worth the cost. The **benchmarkme** package
+provides a set of benchmarks to help quantify your system. More importantly, it allows
 you to compare your timings with _other_ systems.
 
 You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.
 
-## Overview
+## Installation
 
 The package is on [CRAN](https://cran.r-project.org/web/packages/benchmarkme/) and can be installed in the usual way
 
@@ -42,11 +41,11 @@ There are two groups of benchmarks:
 
 ### The benchmark_std() function
 
-This benchmarks numerical operations such as loops and matrix operations. 
-This benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
-If you have less than 3GB of RAM (run `get_ram()` to find out how much is
-available on your system), then you should kill any memory hungry applications, e.g.
-firefox, and set `runs = 1` as an argument.
+This benchmarks numerical operations such as loops and matrix operations. This
+benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and
+`matrix_cal`. If you have less than 3GB of RAM (run `get_ram()` to find out how much
+is available on your system), then you should kill any memory hungry applications,
+e.g. firefox, and set `runs = 1` as an argument.
 
 To benchmark your system, use
 
@@ -73,7 +72,7 @@ Simply create a results bundle
 ```{r, eval=FALSE}
 create_bundle(res, filename = "results.rds")
 ```
-and upload to the webpage.
+and upload the file `results.rds` to the webpage.
 
 ### The benchmark_io() function
 

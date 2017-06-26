@@ -22,14 +22,12 @@ knitr::opts_chunk$set(
 R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at http://r.research.att.com/benchmarks/R-benchmark-25.R, for assessing 
 the speed of your system. 
 
-
 ## Overview 
 
-A straightforward way of speeding up your analysis is to buy a
-better computer. Modern desktops are relatively cheap, especially
-compared to user time. However, it isn't clear if upgrading
-your computing is worth the cost. The **benchmarkme** package provides a set of
-benchmarks to help quantify your system. More importantly, it allows
+A straightforward way of speeding up your analysis is to buy a better computer. Modern
+desktops are relatively cheap, especially compared to user time. However, it isn't
+clear if upgrading your computing is worth the cost. The **benchmarkme** package
+provides a set of benchmarks to help quantify your system. More importantly, it allows
 you to compare your timings with _other_ systems.
 
 You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.
@@ -105,7 +103,6 @@ hard drive access to a network drive.
 ```{r eval=FALSE}
 res_io = benchmark_io(tmpdir = "some_other_directory")
 ```
-
 
 ## Machine specs
 

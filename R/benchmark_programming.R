@@ -1,4 +1,3 @@
-
 #' @title Programming benchmarks
 #' @description A collection of matrix programming benchmark functions
 #' \itemize{

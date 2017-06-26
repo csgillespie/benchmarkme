@@ -2,6 +2,7 @@
   * Add id_prefix to the upload function
   * Can now run `benchmark_std` if the package is not attached (thanks to @YvesCR)
   * Nicer version of `print.bytes` (thanks to @richierocks)
+  * Adding parallel benchmarks (thanks to @jknowles)
   
 ## Version 0.5.0
   * Bug fix in get_byte_compiler when `cmpfun` was used.
