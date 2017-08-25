@@ -40,13 +40,17 @@ bm_parallel = function(bm, runs, verbose, cores, ...){
                         test_group = NA, cores = NA)
   for(core in cores){
     cl = parallel::makeCluster(core, outfile = "")
-   
+    
+    parallel::clusterExport(cl, bm) # Export 
     doParallel::registerDoParallel(cl)
-    tmp = data.frame(user = numeric(runs), system=0, elapsed=0,
+    tmp = data.frame(user = numeric(length(runs)), system=0, elapsed=0,
                      test=NA, test_group=NA, cores = NA, stringsAsFactors = FALSE)
+
     for(j in 1:runs){
+      # Warm-up; needed to avoid optimistic answers
+      out <- foreach(k = 1:2) %dopar% {do.call(bm, args, quote = TRUE)}
       tmp[j, 1:3] <- system.time({
-        out <- foreach(k = 1:core, .export = bm) %dopar% 
+        out <- foreach(k = 1:(core)) %dopar% 
           do.call(bm, args, quote = TRUE) #, envir = environment(bm_parallel))
       })[1:3]
     }
