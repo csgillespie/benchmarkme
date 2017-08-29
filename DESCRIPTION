@@ -16,7 +16,7 @@ Imports:
     compiler,
     httr, 
     methods, 
-    benchmarkmeData(>= 0.4.0), utils, graphics,
+    benchmarkmeData(>= 0.5.0), utils, graphics,
     parallel, doParallel, foreach
 Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
 VignetteBuilder: knitr
