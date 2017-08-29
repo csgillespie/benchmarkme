@@ -27,7 +27,7 @@ You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/
 
 ## Installation
 
-The package is on [CRAN](https://cran.r-project.org/web/packages/benchmarkme/) and can be installed in the usual way
+The package is on [CRAN](https://CRAN.R-project.org/package=benchmarkme) and can be installed in the usual way
 
 ```{r, eval=FALSE}
 install.packages("benchmarkme")
