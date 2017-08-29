@@ -1,5 +1,6 @@
 ## Version 0.6.0
   * Adding parallel benchmarks (thanks to @jknowles)
+  * Since JIT has been introduced, just byte compile the package for ease of comparison.
 
 ## Version 0.5.1
   * Add id_prefix to the upload function
