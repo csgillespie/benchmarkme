@@ -11,7 +11,8 @@ This currently only works under Linux and Apple OS. For other OS, e.g. Windows \
 are returned.
 }
 \details{
-Calls `Sys.getpid()` and greps blas/lapack. Under Linux a warning is raised
+Calls `Sys.getpid()` and greps for blas,lapack and libmkl. 
+Under Linux a warning is raised 
 "lsof: WARNING: can't stat() tracefs file system /sys/kernel/debug/tracing Output information may be incomplete."
 There seems to be no way to avoid this http://askubuntu.com/q/748498/1986
 }

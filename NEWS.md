@@ -1,3 +1,6 @@
+## Version 0.6.1 
+  * Improved BLAS detection (suggested by @ck37 #15)
+
 ## Version 0.6.0
   * Adding parallel benchmarks (thanks to @jknowles)
   * Since JIT has been introduced, just byte compile the package for ease of comparison.

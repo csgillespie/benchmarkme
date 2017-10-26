@@ -1,7 +1,7 @@
 Package: benchmarkme
 Type: Package
 Title: Crowd Sourced System Benchmarks
-Version: 0.6.0
+Version: 0.6.1
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
