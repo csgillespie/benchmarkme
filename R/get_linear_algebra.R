@@ -35,6 +35,14 @@ la_helper = function() {
 #' There seems to be no way to avoid this http://askubuntu.com/q/748498/1986
 #' @export
 get_linear_algebra = function() {
+  r_version = paste(R.version$major, R.version$minor, sep=".")
+  if(compareVersion(r_version, "3.4.0") >=0) {
+    s = sessionInfo()
+    blas = s$BLAS
+    lapack = s$LAPACK
+    return(list(blas = blas, lapack = lapack))
+  }
+  
   os = R.version$os
   if(length(grep("^linux", os)) || length(grep("^darwin", os))) {
     linear_algebra = la_helper()
