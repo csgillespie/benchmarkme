@@ -23,4 +23,5 @@ Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0
 License: GPL-2 | GPL-3
-ByteCompile: true
+Encoding: UTF-8 
+
