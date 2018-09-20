@@ -83,17 +83,18 @@ bm_matrix_cal_cross_product = function(runs=3, verbose=TRUE) {
 
 #' @rdname bm_matrix_cal_manip
 #' @export
-bm_matrix_cal_lm = function(runs=3, verbose=TRUE) {
+bm_matrix_cal_lm = function(runs = 3, verbose=TRUE) {
   ans = 0
-  b = as.double(1:2000)
+  b = as.double(1:5000)
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
                        test="lm", test_group="matrix_cal")
   for (i in 1:runs) {
-    a = new("dgeMatrix", x = Rnorm(2000*2000), Dim = as.integer(c(2000,2000)))
+    a = new("dgeMatrix", x = Rnorm(5000 * 500), 
+            Dim = as.integer(c(5000, 500)))
     invisible(gc())
-    timings[i,1:3] = system.time({ans = solve(crossprod(a), crossprod(a,b))})[1:3]
+    timings[i, 1:3] = system.time({ans = solve(crossprod(a), crossprod(a,b))})[1:3]
   }
   if(verbose)
-    message(c("\tLinear regr. over a 3000x3000 matrix (c = a \\ b')", timings_mean(timings)))
+    message(c("\tLinear regr. over a 5,000 x 500 matrix (c = a \\ b')", timings_mean(timings)))
   timings
 }
