@@ -4,7 +4,6 @@
 \name{reexports}
 \alias{reexports}
 \alias{get_datatable_past}
-\alias{reexports}
 \alias{plot_past}
 \title{Objects exported from other packages}
 \keyword{internal}

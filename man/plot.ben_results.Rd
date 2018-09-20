@@ -5,8 +5,8 @@
 \title{Compare results to past tests}
 \usage{
 \method{plot}{ben_results}(x, test_group = unique(x$test_group),
-  byte_optimize = get_byte_compiler(), blas_optimize = is_blas_optimize(x),
-  log = "y", ...)
+  byte_optimize = get_byte_compiler(),
+  blas_optimize = is_blas_optimize(x), log = "y", ...)
 }
 \arguments{
 \item{x}{The output from a \code{benchmark_*} call.}

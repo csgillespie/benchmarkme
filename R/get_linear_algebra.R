@@ -1,6 +1,7 @@
 #' Get BLAS and LAPACK libraries
-#' Extract the the blas/lapack from sessionIfno 
+#' Extract the the blas/lapack from \code{sessionInfo()} 
 #' 
+#' @importFrom utils sessionInfo
 #' @export
 get_linear_algebra = function() {
     s = sessionInfo()

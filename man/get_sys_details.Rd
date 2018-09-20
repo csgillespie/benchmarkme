@@ -4,9 +4,10 @@
 \alias{get_sys_details}
 \title{General system information}
 \usage{
-get_sys_details(sys_info = TRUE, platform_info = TRUE, r_version = TRUE,
-  ram = TRUE, cpu = TRUE, byte_compiler = TRUE, linear_algebra = TRUE,
-  locale = TRUE, installed_packages = TRUE, machine = TRUE)
+get_sys_details(sys_info = TRUE, platform_info = TRUE,
+  r_version = TRUE, ram = TRUE, cpu = TRUE, byte_compiler = TRUE,
+  linear_algebra = TRUE, locale = TRUE, installed_packages = TRUE,
+  machine = TRUE)
 }
 \arguments{
 \item{sys_info}{Default \code{TRUE}.}
