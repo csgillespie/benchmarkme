@@ -5,7 +5,7 @@
 \title{Benchmark rankings}
 \usage{
 rank_results(results, test_group = unique(results$test_group),
-  byte_optimize = get_byte_compiler(), verbose = TRUE)
+  verbose = TRUE)
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 
@@ -13,9 +13,6 @@ rank_results(results, test_group = unique(results$test_group),
 
 \item{test_group}{Default \code{unique(x$test_group)}. 
 The default behaviour is select the groups from your benchmark results.}
-
-\item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
-byte_optimized setting. To use all results, set to \code{NULL}.}
 
 \item{verbose}{Default TRUE.}
 }

@@ -1,7 +1,7 @@
 Package: benchmarkme
 Type: Package
 Title: Crowd Sourced System Benchmarks
-Version: 0.6.1
+Version: 1.0.0
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
@@ -18,10 +18,9 @@ Imports:
     httr, 
     methods, 
     benchmarkmeData(>= 0.5.0), utils, graphics,
-    parallel, doParallel, foreach
+    parallel, doParallel, foreach, dplyr
 Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 License: GPL-2 | GPL-3
 Encoding: UTF-8 
-

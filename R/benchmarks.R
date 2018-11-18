@@ -1,16 +1,16 @@
 run_benchmarks = function(bm, runs, verbose, parallel) {
   if(is.logical(parallel) && !parallel) {
-    results = lapply(bm, do.call, list(runs=runs, verbose=verbose), 
+    results = lapply(bm, do.call, list(runs = runs, verbose = verbose), 
                      envir = environment(run_benchmarks))
     results = Reduce("rbind", results)
-    results$cores = 0
-  } else {
+    results$cores = 1
+   } else {
     results = lapply(bm, bm_parallel, 
                       runs = runs, verbose = verbose, cores = parallel)
     results = Reduce("rbind", results)
   }
   
-  
+  results$parallel = parallel > 0L 
   class(results) = c("ben_results", class(results))
   results
 }

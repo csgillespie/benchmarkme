@@ -5,17 +5,14 @@
 \title{Compare results to past tests}
 \usage{
 \method{plot}{ben_results}(x, test_group = unique(x$test_group),
-  byte_optimize = get_byte_compiler(),
-  blas_optimize = is_blas_optimize(x), log = "y", ...)
+  blas_optimize = is_blas_optimize(x), normalize = FALSE, log = "y",
+  ...)
 }
 \arguments{
 \item{x}{The output from a \code{benchmark_*} call.}
 
 \item{test_group}{Default \code{unique(x$test_group)}. 
 The default behaviour is select the groups from your benchmark results.}
-
-\item{byte_optimize}{The default behaviour is to compare your results with results that use the same 
-byte_optimized setting. To use all results, set to \code{NULL}.}
 
 \item{blas_optimize}{Logical. Default The default behaviour 
 is to compare your results with results that use the same 
@@ -32,5 +29,4 @@ Plotting
 \examples{
 data(sample_results)
 plot(sample_results)
-plot(sample_results, byte_optimze=NULL)
 }

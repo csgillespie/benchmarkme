@@ -1,3 +1,6 @@
+## Version 1.0.0
+  * Update version focused on R 3.5 & above. Start anew.
+
 ## Version 0.6.1 
   * Improved BLAS detection (suggested by @ck37 #15)
 

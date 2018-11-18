@@ -15,7 +15,7 @@
 bm_prog_fib = function(runs=3, verbose=TRUE) {
   a = 0; b = 0; phi = 1.6180339887498949
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="fib", test_group="prog")
+                       test="fib", test_group="prog", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = floor(runif(3500000)*1000)
     invisible(gc())
@@ -34,7 +34,7 @@ bm_prog_fib = function(runs=3, verbose=TRUE) {
 bm_prog_hilbert = function(runs=3, verbose=TRUE) {
   a = 3500; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="hilbert", test_group="prog")
+                       test="hilbert", test_group="prog", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     invisible(gc())
     start = proc.time()
@@ -44,7 +44,7 @@ bm_prog_hilbert = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = (stop - start)[1:3]
   }
   if(verbose)
-    message(c("\tCreation of a 3500x3500 Hilbert matrix (matrix calc)", timings_mean(timings)))
+    message(c("\tCreation of a 3,500 x 3,500 Hilbert matrix (matrix calc)", timings_mean(timings)))
   timings
 }
 
@@ -53,7 +53,7 @@ bm_prog_hilbert = function(runs=3, verbose=TRUE) {
 bm_prog_gcd = function(runs=3, verbose=TRUE) {
   ans = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="gcd", test_group="prog")
+                       test="gcd", test_group="prog", stringsAsFactors = FALSE)
   gcd2 = function(x, y) {if (sum(y > 1.0E-4) == 0) x else {y[y == 0] <- x[y == 0]; Recall(y, x %% y)}}
   for (i in 1:runs) {
     a = ceiling(runif(1000000)*1000)
@@ -73,7 +73,7 @@ bm_prog_gcd = function(runs=3, verbose=TRUE) {
 #' @export
 bm_prog_toeplitz = function(runs=3, verbose=TRUE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="toeplitz", test_group="prog")
+                       test="toeplitz", test_group="prog", stringsAsFactors = FALSE)
   N = 3000
   ans = rep(0, N*N)
   dim(ans) = c(N, N)
@@ -89,7 +89,7 @@ bm_prog_toeplitz = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = (stop - start)[1:3]
   }
   if(verbose)
-    message(c("\tCreation of a 3000x3000 Toeplitz matrix (loops)", timings_mean(timings)))
+    message(c("\tCreation of a 3,000 x 3,000 Toeplitz matrix (loops)", timings_mean(timings)))
   timings
 }
 
@@ -99,7 +99,7 @@ bm_prog_toeplitz = function(runs=3, verbose=TRUE) {
 #' @export
 bm_prog_escoufier = function(runs=3, verbose=TRUE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="escoufier", test_group="prog")
+                       test="escoufier", test_group="prog", stringsAsFactors = FALSE)
   p <- 0; vt <- 0; vr <- 0; vrt <- 0; rvt <- 0; RV <- 0; j <- 0; k <- 0;
   x2 <- 0; R <- 0; Rxx <- 0; Ryy <- 0; Rxy <- 0; Ryx <- 0; Rvmax <- 0
   # Calculate the trace of a matrix (sum of its diagonal elements)
@@ -140,6 +140,6 @@ bm_prog_escoufier = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = (stop - start)[1:3]
   }
   if(verbose)
-    message(c("\tEscoufier's method on a 60x60 matrix (mixed)", timings_mean(timings)))
+    message(c("\tEscoufier's method on a 60 x 60 matrix (mixed)", timings_mean(timings)))
   timings
 }

@@ -156,8 +156,12 @@ of the data, this information will be removed. If you don't wish to upload certa
 information, just set the corresponding argument, i.e.
 
 ```{r eval=FALSE}
-upload_results(res, args = list(sys_info=FALSE))
+upload_results(res, args = list(sys_info = FALSE))
 ```
+
+---
+
+Development of this package was supported by [Jumping Rivers](https://www.jumpingrivers.com)
 
 
 

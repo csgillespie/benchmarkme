@@ -21,7 +21,7 @@ clean_ram = function(ram, os) {
   } else {
     clean_ram = clean_win_ram(ram) # nocov
   }
-  clean_ram
+  unname(clean_ram)
 }
 
 

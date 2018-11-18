@@ -17,7 +17,7 @@
 bm_matrix_cal_manip = function(runs=3, verbose=TRUE) {
   a = 0; b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0,
-                       test="manip", test_group="matrix_cal")
+                       test="manip", test_group="matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     invisible(gc())
     timing <- system.time({
@@ -29,7 +29,7 @@ bm_matrix_cal_manip = function(runs=3, verbose=TRUE) {
     timings[i,1:3] = timing[1:3]
   }
   if(verbose)
-    message(c("\tCreation, transp., deformation of a 5000x5000 matrix", timings_mean(timings)))
+    message(c("\tCreation, transp., deformation of a 5,000 x 5,000 matrix", timings_mean(timings)))
   timings
 }
 
@@ -38,14 +38,14 @@ bm_matrix_cal_manip = function(runs=3, verbose=TRUE) {
 bm_matrix_cal_power = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="power", test_group="matrix_cal")
+                       test="power", test_group="matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a <- abs(matrix(Rnorm(2500*2500)/2, ncol=2500, nrow=2500));
     invisible(gc())
     timings[i,1:3] = system.time({b <- a^1000})[1:3]
   }
   if(verbose)
-    message(c("\t2500x2500 normal distributed random matrix ^1000", timings_mean(timings)))
+    message(c("\t2,500 x 2,500 normal distributed random matrix^1,000", timings_mean(timings)))
   timings
 }
 
@@ -54,7 +54,7 @@ bm_matrix_cal_power = function(runs=3, verbose=TRUE) {
 bm_matrix_cal_sort = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="sort", test_group="matrix_cal")
+                       test="sort", test_group="matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(7000000)
     invisible(gc())
@@ -70,14 +70,14 @@ bm_matrix_cal_sort = function(runs=3, verbose=TRUE) {
 bm_matrix_cal_cross_product = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="cross_product", test_group="matrix_cal")
+                       test="cross_product", test_group="matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(2500*2500); dim(a) = c(2500, 2500)
     invisible(gc())
     timings[i,1:3] = system.time({b <- crossprod(a)})[1:3]
   }
   if(verbose)
-    message(c("\t2500x2500 cross-product matrix (b = a' * a)", timings_mean(timings)))
+    message(c("\t2,500 x 2,500 cross-product matrix (b = a' * a)", timings_mean(timings)))
   timings
 }
 
@@ -87,7 +87,7 @@ bm_matrix_cal_lm = function(runs = 3, verbose=TRUE) {
   ans = 0
   b = as.double(1:5000)
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="lm", test_group="matrix_cal")
+                       test="lm", test_group="matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = new("dgeMatrix", x = Rnorm(5000 * 500), 
             Dim = as.integer(c(5000, 500)))

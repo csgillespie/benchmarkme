@@ -13,17 +13,12 @@ bm_parallel(bm, runs, verbose, cores, ...)
 
 \item{verbose}{display messages during benchmarking}
 
-\item{cores}{number of cores to benchmark}
+\item{cores}{number of cores to benchmark. If cores is specified, the benchmark is also 
+run for cores = 1 to allow for normalisation.}
 
 \item{...}{additional arguments to pass to \code{bm}}
 }
 \description{
-When a user specifies cores, the benchmark will be run on a 
-maximum number of cores, and all counts descending in powers of 2 from that 
-maximum. If a user specifies 6 cores, then the benchmarks will be repeated 
-for 6 core, 4 core, 2 core, and finally single core performance.
-}
-\details{
 This function runs benchmarks in parallel to test multithreading
 }
 \examples{

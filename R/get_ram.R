@@ -35,24 +35,24 @@ get_ram = function() {
   if(class(ram) == "try-error" || length(ram) == 0) {
     message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
-    ram = structure(NA, names="ram") # nocov
+    ram = structure(NA, class = "ram") # nocov
   } else {
     cleaned_ram = suppressWarnings(try(clean_ram(ram,os), silent=TRUE))
     if(class(cleaned_ram) == "try-error" || length(ram) == 0) {
       message("\t Unable to detect your RAM. # nocov 
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
-      ram = structure(NA, names="ram") #nocov
+      ram = structure(NA, class = "ram") #nocov
     } else {
-      ram = structure(cleaned_ram, class = "bytes", names="ram")
+      ram = structure(cleaned_ram, class = "ram")
     }
   }
   return(ram)
 }
 
-## Not sure why export doesn't work here
-#' @rawNamespace S3method(print,bytes)
-print.bytes = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
-  unit_system = match.arg(unit_system)
+#' @rawNamespace S3method(print,ram)
+print.ram = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
+  #unit_system = match.arg(unit_system)
+  unit_system = "metric"
   base = switch(unit_system, metric = 1000, iec = 1024)
   power = min(floor(log(abs(x), base)), 8)
   if (power < 1) {
@@ -64,8 +64,9 @@ print.bytes = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
       iec = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
     )
     unit = unit_labels[[power]]
-    x = x/(base^power)
+    x = x / (base^power)
   }
+  
   formatted = format(signif(x, digits = digits), big.mark = ",", 
     scientific = FALSE, ...)
   cat(unclass(formatted), " ", unit, "\n", sep = "")

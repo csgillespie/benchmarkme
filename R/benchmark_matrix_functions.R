@@ -17,7 +17,7 @@
 bm_matrix_fun_fft = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="fft", test_group="matrix_fun")
+                       test="fft", test_group="matrix_fun", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(2500000)
     invisible(gc())
@@ -34,7 +34,7 @@ bm_matrix_fun_fft = function(runs=3, verbose=TRUE) {
 bm_matrix_fun_eigen = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="eigen", test_group="matrix_fun")
+                       test="eigen", test_group="matrix_fun", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = array(Rnorm(600*600), dim = c(600, 600))
     invisible(gc())
@@ -50,7 +50,7 @@ bm_matrix_fun_eigen = function(runs=3, verbose=TRUE) {
 bm_matrix_fun_determinant = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="determinant", test_group="matrix_fun")
+                       test="determinant", test_group="matrix_fun", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(2500*2500); dim(a) = c(2500, 2500)
     invisible(gc())
@@ -67,7 +67,7 @@ bm_matrix_fun_determinant = function(runs=3, verbose=TRUE) {
 #' @export
 bm_matrix_fun_cholesky = function(runs=3, verbose=TRUE) {
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="cholesky", test_group="matrix_fun")
+                       test="cholesky", test_group="matrix_fun", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = crossprod(new("dgeMatrix", x = Rnorm(3000*3000),
                        Dim = as.integer(c(3000, 3000))))
@@ -84,7 +84,7 @@ bm_matrix_fun_cholesky = function(runs=3, verbose=TRUE) {
 bm_matrix_fun_inverse = function(runs=3, verbose=TRUE) {
   b = 0
   timings = data.frame(user = numeric(runs), system=0, elapsed=0, 
-                       test="inverse", test_group="matrix_fun")
+                       test="inverse", test_group="matrix_fun", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = new("dgeMatrix", x = Rnorm(1600*1600), Dim = as.integer(c(1600, 1600)))
     invisible(gc())
