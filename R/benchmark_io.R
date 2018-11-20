@@ -11,24 +11,25 @@
 #' @rdname benchmark_io
 #' @export
 benchmark_io = function(runs = 3, 
-                        size = c(5, 50, 200),
+                        size = c(5, 50),
                         tmpdir = tempdir(),
                         verbose = TRUE, 
-                        parallel = FALSE) {
+                        cores = 0L) {
   # Order size largest to smallest for trial run. 
   # Trial on largest
   
-  if(!(size %in% c(5, 50, 200))) {
-    stop("Size must be one of 5, 50, or 500", call. = FALSE)
+  if (!(size %in% c(5, 50))) {
+    stop("Size must be one of 5, 50", call. = FALSE)
   }
   size = sort(size, decreasing = TRUE) 
-  if (!isFALSE(parallel)) {
+  if (cores > 0) {
     results = benchmark_io_parallel(runs = runs, size = size, 
                                     tmpdir = tmpdir, verbose = verbose, 
-                                    parallel = parallel)
+                                    cores = cores)
   } else { 
     results = benchmark_io_serial(runs = runs, size = size, 
                                   tmpdir = tmpdir, verbose = verbose)
+    
   }
   class(results) = c("ben_results", class(results))
   results
@@ -48,34 +49,33 @@ benchmark_io_serial = function(runs, size, tmpdir, verbose) {
     res = bm_read(runs, size = s, tmpdir, verbose)
     results = rbind(results, res)
   }
-  results$parallel = FALSE
   results$cores = 1
   results
 }
 
-benchmark_io_parallel = function(runs, size, tmpdir, verbose, parallel) {
+benchmark_io_parallel = function(runs, size, tmpdir, verbose, cores) {
   message("Preparing read/write io")
   bm_parallel("bm_write", runs = 1, 
               size = size[1], tmpdir = tmpdir, 
-              verbose = verbose, cores = max(parallel))
+              verbose = verbose, cores = max(cores))
   results = NULL
   for (s in size) {
     if (verbose) message("# IO benchmarks (2 tests) for size ", s, " MB (parallel)")
     results = rbind(results,
                     bm_parallel("bm_write", runs = runs, size = s, tmpdir = tmpdir, 
-                                verbose = verbose, cores = parallel))
+                                verbose = verbose, cores = cores))
     results = rbind(results,
                     bm_parallel("bm_read", runs = runs, size = s, tmpdir = tmpdir, 
-                                verbose = verbose, cores = parallel))
+                                verbose = verbose, cores = cores))
   }
-  results$parallel = TRUE
+
   results
 }
 
 #bm_io(runs = runs, size = s, tmpdir = tmpdir, verbose = verbose)
 #' @rdname benchmark_io
 #' @export
-bm_read = function (runs = 3, size = c(5, 50, 200),
+bm_read = function(runs = 3, size = c(5, 50),
                   tmpdir = tempdir(), verbose = TRUE) {
   n = 12.5e4 * size
   set.seed(1);  on.exit(set.seed(NULL))
@@ -105,7 +105,7 @@ bm_read = function (runs = 3, size = c(5, 50, 200),
 
 #' @rdname benchmark_io
 #' @export
-bm_write = function (runs = 3, size = c(5, 50, 200),
+bm_write = function(runs = 3, size = c(5, 50),
                      tmpdir = tempdir(), verbose = TRUE) {
   n = 12.5e4 * size
   set.seed(1); on.exit(set.seed(NULL))

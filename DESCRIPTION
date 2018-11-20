@@ -18,7 +18,7 @@ Imports:
     httr, 
     methods, 
     benchmarkmeData(>= 0.5.0), utils, graphics,
-    parallel, doParallel, foreach, dplyr
+    parallel, doParallel, foreach, dplyr, tibble
 Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1

@@ -2,7 +2,7 @@ test_that("Test benchmark_io", {
   skip_on_cran()
   expect_error(benchmark_io(size = 1))
   res = benchmark_io(runs = 1, size = 5)
-  res2 = benchmark_io(runs = 1, size = 5, parallel = 2)
+  res2 = benchmark_io(runs = 1, size = 5, cores = 2)
   expect_equal(nrow(res), 2)
   expect_equal(ncol(res), 6)
   expect_equal(nrow(res2), 4)

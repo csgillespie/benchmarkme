@@ -44,7 +44,7 @@ There are two groups of benchmarks:
 
   * `benchmark_std()`: this benchmarks numerical operations such as loops and matrix operations. The benchmark comprises 
   of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
-  * `benchmark_io()`: this benchmarks reading and writing a 5, 50, and 200 MB csv file.
+  * `benchmark_io()`: this benchmarks reading and writing a 5 / 50, MB csv file.
 
 ### The benchmark_std() function
 

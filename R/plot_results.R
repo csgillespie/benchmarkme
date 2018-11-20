@@ -1,11 +1,11 @@
 nice_palette = function() {
   alpha = 150
-  palette(c(rgb(85, 130, 169, alpha=alpha, maxColorValue=255),
-            rgb(200, 79, 178, alpha=alpha, maxColorValue=255), 
-            rgb(105, 147, 45, alpha=alpha, maxColorValue=255),
-            rgb(204, 74, 83, alpha=alpha, maxColorValue=255),
-            rgb(183, 110, 39, alpha=alpha, maxColorValue=255),
-            rgb(131, 108, 192, alpha=alpha, maxColorValue=255)))
+  palette(c(rgb(85, 130, 169, alpha = alpha, maxColorValue = 255),
+            rgb(200, 79, 178, alpha = alpha, maxColorValue = 255), 
+            rgb(105, 147, 45, alpha = alpha, maxColorValue = 255),
+            rgb(204, 74, 83, alpha = alpha, maxColorValue = 255),
+            rgb(183, 110, 39, alpha = alpha, maxColorValue = 255),
+            rgb(131, 108, 192, alpha = alpha, maxColorValue = 255)))
 }
 
 #' Compare results to past tests
@@ -23,63 +23,46 @@ nice_palette = function() {
 #' @importFrom graphics abline grid par plot points text legend title
 #' @importFrom grDevices palette rgb
 #' @importFrom utils data
-#' @importFrom stats aggregate
 #' @importFrom benchmarkmeData select_results is_blas_optimize
 #' @export
 #' @examples 
 #' data(sample_results)
-#' plot(sample_results)
+#' plot(sample_results, blas_optimize = NULL)
 plot.ben_results = function(x, 
                             test_group = unique(x$test_group), 
                             blas_optimize = is_blas_optimize(x),
-                            normalize = FALSE, 
                             log = "y", ...) {
   
-  for(i in seq_along(test_group)) {
-    make_plot(x, test_group = test_group[i], 
-              blas_optimize = blas_optimize,
-              normalize = normalize,
-              log = log, ...)
-    if(length(test_group) != i)
+  for (i in seq_along(test_group)) {
+    group = x[x$test_group == test_group[i], ]
+    for (core in unique(group$cores)) {
+      make_plot(x = group[group$cores == core, ],
+                                 blas_optimize = blas_optimize,
+                                 log = log, ...)
+    }
+    if (length(test_group) != i)
       readline("Press return to get next plot ")
   }
 }
 
 #' @import dplyr
-make_plot = function(x, test_group, blas_optimize, normalize, log, ...) {
-  results = benchmarkmeData::select_results(test_group, 
+make_plot = function(x, blas_optimize, log, ...) {
+ 
+  test_group = unique(x$test_group)
+ 
+  results = benchmarkmeData::select_results(test_group = test_group, 
                                             blas_optimize = blas_optimize, 
-                                            cores = unique(x$cores), 
-                                            normalize = normalize)
+                                            cores = unique(x$cores))
   
-  ## Manipulate new data
-  benchmarks = x %>%
-    dplyr::filter(test_group %in% !!test_group) %>%
-    group_by(cores, test) %>%
-    summarise(elapsed = sum(elapsed)/length(elapsed)) %>%
-    summarise(elapsed = sum(elapsed)) 
-  
-  if(normalize) {
-    benchmarks$elapsed = benchmarks$elapsed[benchmarks$cores != 1] / 
-      benchmarks$elapsed[benchmarks$cores == 1]
-  }  
-  ben_sum = benchmarks$elapsed[benchmarks$cores == max(benchmarks$cores)]
-  
-  # results
-  # 
-  # results
-  # x = x[x$test_group %in% test_group,]
-  # no_of_reps = length(x$test) / length(unique(x$test))
-  # ben_sum = sum(x[,3]) / no_of_reps
-  ben_rank = which(ben_sum < results$time)[1]
-  if(is.na(ben_rank)) ben_rank = nrow(results) + 1
-  message("You are ranked ", ben_rank, " out of ", 
-          nrow(results) + 1, " machines.")
-  
+  ben_rank = rank_results(x, 
+                          blas_optimize = blas_optimize,
+                          verbose = TRUE)
+  no_of_reps = length(x$test) / length(unique(x$test))
+  ben_sum = sum(x[,3]) / no_of_reps
+
   ## Arrange plot colours and layout
-  op = par(mar=c(3, 3, 2, 1), 
-           mgp=c(2, 0.4, 0), tck=-.01,
-           cex.axis = 0.8, las = 1, mfrow=c(1,2)) 
+  op = par(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0), tck = -.01,
+           cex.axis = 0.8, las = 1, mfrow = c(1,2)) 
   old_pal = palette()
   on.exit({palette(old_pal); par(op)})
   nice_palette()
@@ -92,17 +75,21 @@ make_plot = function(x, test_group, blas_optimize, normalize, log, ...) {
   ymax = max(results$time, ben_sum)
   
   ## Standard timings
-  plot(results$time, xlab="Rank", ylab="Total timing (secs)", 
-       ylim=c(ymin, ymax), xlim=c(0.5, nrow(results)+1), 
-       panel.first=grid(), cex=0.7, log=log, ...)
-  points(ben_rank-1/2,ben_sum, bg=4, pch=21)
-  abline(v=ben_rank-1/2, col=4, lty=3)
-  text(ben_rank-1/2, ymin, "You", col=4, adj=adj)
-  title(paste("Benchmark:", test_group), cex=0.9)
+  plot(results$time, xlab = "Rank", ylab = "Total timing (secs)", 
+       ylim = c(ymin, ymax), xlim = c(0.5, nrow(results) + 1), 
+       panel.first = grid(), cex = 0.7, log = log, ...)
+  points(ben_rank - 1/2, ben_sum, bg = 4, pch = 21)
+  abline(v = ben_rank - 1/2, col = 4, lty = 3)
+  text(ben_rank - 1/2, ymin, "You", col = 4, adj = adj)
+  if (unique(x$cores) == 0)
+    title(paste0("Benchmark: ", test_group), cex = 0.9)
+  else
+    title(paste0("Benchmark: ", test_group, 
+                 "(",unique(x$cores), " cores)"), cex = 0.9)
   
   ## Relative timings  
   fastest = min(ben_sum, results$time)
-  ymax= ymax/fastest
+  ymax = ymax/fastest
   plot(results$time/fastest, xlab="Rank", ylab="Relative timing", 
        ylim=c(1, ymax), xlim=c(0.5, nrow(results)+1), 
        panel.first=grid(), cex=0.7, log=log, ...)

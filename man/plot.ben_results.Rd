@@ -5,8 +5,7 @@
 \title{Compare results to past tests}
 \usage{
 \method{plot}{ben_results}(x, test_group = unique(x$test_group),
-  blas_optimize = is_blas_optimize(x), normalize = FALSE, log = "y",
-  ...)
+  blas_optimize = is_blas_optimize(x), log = "y", ...)
 }
 \arguments{
 \item{x}{The output from a \code{benchmark_*} call.}
@@ -28,5 +27,5 @@ Plotting
 }
 \examples{
 data(sample_results)
-plot(sample_results)
+plot(sample_results, blas_optimize = NULL)
 }

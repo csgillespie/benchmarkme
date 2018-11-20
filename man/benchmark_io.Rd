@@ -6,13 +6,13 @@
 \alias{bm_write}
 \title{IO benchmarks}
 \usage{
-benchmark_io(runs = 3, size = c(5, 50, 200), tmpdir = tempdir(),
-  verbose = TRUE, parallel = FALSE)
+benchmark_io(runs = 3, size = c(5, 50), tmpdir = tempdir(),
+  verbose = TRUE, cores = 0L)
 
-bm_read(runs = 3, size = c(5, 50, 200), tmpdir = tempdir(),
+bm_read(runs = 3, size = c(5, 50), tmpdir = tempdir(),
   verbose = TRUE)
 
-bm_write(runs = 3, size = c(5, 50, 200), tmpdir = tempdir(),
+bm_write(runs = 3, size = c(5, 50), tmpdir = tempdir(),
   verbose = TRUE)
 }
 \arguments{
@@ -25,8 +25,7 @@ Must be one of 5, 50, & 200.}
 
 \item{verbose}{Default TRUE.}
 
-\item{parallel}{default \code{NULL}. The default is single threaded performance.
-An integer value greater than zero will use multiple cores.}
+\item{cores}{Default 0 (serial). When cores > 0, the benchmark is run in parallel.}
 }
 \description{
 Benchmarking reading and writing a csv file (containing random numbers).
