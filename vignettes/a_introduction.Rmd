@@ -15,6 +15,16 @@ res = sample_results
 ```
 
 
+# System benchmarking 
+
+[![Build Status](https://travis-ci.org/csgillespie/benchmarkme.svg?branch=master)](https://travis-ci.org/csgillespie/benchmarkme)
+[![codecov.io](https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master)](https://codecov.io/github/csgillespie/benchmarkme?branch=master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen)](http://cran.rstudio.com/package=benchmarkme)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/benchmarkme)](http://cran.r-project.org/package=benchmarkme)
+
+R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at http://r.research.att.com/benchmarks/R-benchmark-25.R, for assessing 
+the speed of your system. 
+
 ## Overview 
 
 A straightforward way of speeding up your analysis is to buy a better computer. Modern
@@ -23,11 +33,11 @@ clear if upgrading your computing is worth the cost. The **benchmarkme** package
 provides a set of benchmarks to help quantify your system. More importantly, it allows
 you to compare your timings with _other_ systems.
 
-You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.
+<!-- You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface. -->
 
-## Installation
+## Overview
 
-The package is on [CRAN](https://CRAN.R-project.org/package=benchmarkme) and can be installed in the usual way
+The package is on [CRAN](https://cran.r-project.org/web/packages/benchmarkme/) and can be installed in the usual way
 
 ```{r, eval=FALSE}
 install.packages("benchmarkme")
@@ -37,15 +47,15 @@ There are two groups of benchmarks:
 
   * `benchmark_std()`: this benchmarks numerical operations such as loops and matrix operations. The benchmark comprises 
   of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
-  * `benchmark_io()`: this benchmarks reading and writing a 5, 50, and 200 MB csv file.
+  * `benchmark_io()`: this benchmarks reading and writing a 5 / 50, MB csv file.
 
 ### The benchmark_std() function
 
-This benchmarks numerical operations such as loops and matrix operations. This
-benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and
-`matrix_cal`. If you have less than 3GB of RAM (run `get_ram()` to find out how much
-is available on your system), then you should kill any memory hungry applications,
-e.g. firefox, and set `runs = 1` as an argument.
+This benchmarks numerical operations such as loops and matrix operations. 
+This benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
+If you have less than 3GB of RAM (run `get_ram()` to find out how much is
+available on your system), then you should kill any memory hungry applications, e.g.
+firefox, and set `runs = 1` as an argument.
 
 To benchmark your system, use
 
@@ -67,16 +77,16 @@ You can compare your results to other users via
 plot(res)
 ```
 
-You can also compare your results using the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface. 
-Simply create a results bundle
-```{r, eval=FALSE}
-create_bundle(res, filename = "results.rds")
-```
-and upload the file `results.rds` to the webpage.
+<!-- You can also compare your results using the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.  -->
+<!-- Simply create a results bundle -->
+<!-- ```{r, eval=FALSE} -->
+<!-- create_bundle(res, filename = "results.rds") -->
+<!-- ``` -->
+<!-- and upload to the webpage. -->
 
 ### The benchmark_io() function
 
-This function benchmarks reading and writing a 5MB, 50MB and 200MB (if you have less than 4GB of RAM, reduce the number
+This function benchmarks reading and writing a 5MB or 50MB (if you have less than 4GB of RAM, reduce the number
 of `runs` to 1). Run the benchmark using
 ```{r eval=FALSE}
 res_io = benchmark_std(runs = 3)
@@ -97,6 +107,25 @@ hard drive access to a network drive.
 res_io = benchmark_io(tmpdir = "some_other_directory")
 ```
 
+### Parallel benchmarks
+
+The benchmark functions above have a parallel option - just simply specify the number of cores you
+want to test. For example to test using four cores
+```{r eval=FALSE}
+res_io = benchmark_std(runs = 3, cores = 4)
+```
+
+## Previous versions of this
+
+This package was started around 2015. However, multiple changes in the byte compiler
+over the last few years, has made it very difficult to use previous results. So we have to 
+start from scratch.
+
+The previous data can be obtained via
+
+```{r}
+data(past_results, package = "benchmarkmeData")
+```
 
 ## Machine specs
 
@@ -116,12 +145,11 @@ on your system, please raise [GitHub](https://github.com/csgillespie/benchmarkme
 
 A summary of the uploaded data sets is available in the [benchmarkmeData](https://github.com/csgillespie/benchmarkme-data) package
 ```{r}
-data(past_results, package = "benchmarkmeData")
+data(past_results_v2, package = "benchmarkmeData")
 ```
 
 A column of this data set, contains the unique identifier returned by the
-`upload_results` function. A complete version of the uploaded data sets will be made
-available (soon) in a companion package.
+`upload_results()` function.
 
 ## What's uploaded
 
@@ -150,11 +178,10 @@ of the data, this information will be removed. If you don't wish to upload certa
 information, just set the corresponding argument, i.e.
 
 ```{r eval=FALSE}
-upload_results(res, args = list(sys_info=FALSE))
+upload_results(res, args = list(sys_info = FALSE))
 ```
 
+---
 
-
-
-
+Development of this package was supported by [Jumping Rivers](https://www.jumpingrivers.com)
 
