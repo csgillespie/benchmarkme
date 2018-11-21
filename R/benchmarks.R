@@ -7,7 +7,7 @@ run_benchmarks = function(bm, runs, verbose, cores) {
                      envir = environment(run_benchmarks))
   }
   results = Reduce("rbind", results)
-  results$cores = 0
+  results$cores = cores
   class(results) = c("ben_results", class(results))
   results
 }

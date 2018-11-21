@@ -49,7 +49,6 @@ plot.ben_results = function(x,
 make_plot = function(x, blas_optimize, log, ...) {
  
   test_group = unique(x$test_group)
- 
   results = benchmarkmeData::select_results(test_group = test_group, 
                                             blas_optimize = blas_optimize, 
                                             cores = unique(x$cores))

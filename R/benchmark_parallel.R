@@ -24,10 +24,6 @@ bm_parallel = function(bm, runs, verbose, cores, ...){
   args = list(...)
   args[['runs']] = 1
   
-  if(!isFALSE(cores)) {
-    cores = unique(c(1, cores))
-  } 
-  
   #TODO consider dropping first results from parallel results due to overhead
   results = data.frame(user = NA, system = NA, elapsed = NA, test = NA, 
                         test_group = NA, cores = NA)

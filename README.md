@@ -21,10 +21,10 @@ computer. Modern desktops are relatively cheap, especially compared to
 user time. However, it isn’t clear if upgrading your computing is worth
 the cost. The **benchmarkme** package provides a set of benchmarks to
 help quantify your system. More importantly, it allows you to compare
-your timings with *other* systems.
+your timings with *other*
+systems.
 
-You can view past benchmarks via the
-[Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.
+<!-- You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface. -->
 
 ## Overview
 
@@ -41,8 +41,8 @@ There are two groups of benchmarks:
   - `benchmark_std()`: this benchmarks numerical operations such as
     loops and matrix operations. The benchmark comprises of three
     separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
-  - `benchmark_io()`: this benchmarks reading and writing a 5, 50, and
-    200 MB csv file.
+  - `benchmark_io()`: this benchmarks reading and writing a 5 / 50, MB
+    csv file.
 
 ### The benchmark\_std() function
 
@@ -68,27 +68,30 @@ and upload your results
 upload_results(res)
 ```
 
-You can compare your results to other users via
+You can compare your results to other users
+via
 
 ``` r
 plot(res)
 ```
 
-You can also compare your results using the
-[Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.
-Simply create a results bundle
+<!-- You can also compare your results using the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.  -->
 
-``` r
-create_bundle(res, filename = "results.rds")
-```
+<!-- Simply create a results bundle -->
 
-and upload to the webpage.
+<!-- ```{r, eval=FALSE} -->
+
+<!-- create_bundle(res, filename = "results.rds") -->
+
+<!-- ``` -->
+
+<!-- and upload to the webpage. -->
 
 ### The benchmark\_io() function
 
-This function benchmarks reading and writing a 5MB, 50MB and 200MB (if
-you have less than 4GB of RAM, reduce the number of `runs` to 1). Run
-the benchmark using
+This function benchmarks reading and writing a 5MB or 50MB (if you have
+less than 4GB of RAM, reduce the number of `runs` to 1). Run the
+benchmark using
 
 ``` r
 res_io = benchmark_std(runs = 3)
@@ -115,6 +118,28 @@ comparing hard drive access to a network drive.
 res_io = benchmark_io(tmpdir = "some_other_directory")
 ```
 
+### Parallel benchmarks
+
+The benchmark functions above have a parallel option - just simply
+specify the number of cores you want to test. For example to test using
+four cores
+
+``` r
+res_io = benchmark_std(runs = 3, cores = 4)
+```
+
+## Previous versions of this
+
+This package was started around 2015. However, multiple changes in the
+byte compiler over the last few years, has made it very difficult to use
+previous results. So we have to start from scratch.
+
+The previous data can be obtained via
+
+``` r
+data(past_results, package = "benchmarkmeData")
+```
+
 ## Machine specs
 
 The package has a few useful functions for extracting system specs:
@@ -137,12 +162,11 @@ A summary of the uploaded data sets is available in the
 package
 
 ``` r
-data(past_results, package = "benchmarkmeData")
+data(past_results_v2, package = "benchmarkmeData")
 ```
 
 A column of this data set, contains the unique identifier returned by
-the `upload_results` function. A complete version of the uploaded data
-sets will be made available (soon) in a companion package.
+the `upload_results()` function.
 
 ## What’s uploaded
 
