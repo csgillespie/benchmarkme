@@ -94,7 +94,7 @@ less than 4GB of RAM, reduce the number of `runs` to 1). Run the
 benchmark using
 
 ``` r
-res_io = benchmark_std(runs = 3)
+res_io = benchmark_io(runs = 3)
 upload_results(res_io)
 plot(res_io)
 ```
@@ -128,7 +128,7 @@ four cores
 res_io = benchmark_std(runs = 3, cores = 4)
 ```
 
-## Previous versions of this
+## Previous versions of the package
 
 This package was started around 2015. However, multiple changes in the
 byte compiler over the last few years, has made it very difficult to use
