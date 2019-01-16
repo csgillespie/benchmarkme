@@ -10,3 +10,5 @@
 #vignettes/*.pdf
 .Rproj.user
 add_to_drat.R
+README.knit.md
+README.utf8.md

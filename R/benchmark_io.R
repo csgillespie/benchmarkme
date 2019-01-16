@@ -6,7 +6,7 @@
 #' @inheritParams benchmark_std
 #' @param tmpdir a non-empty character vector giving the directory name. Default \code{tempdir()}
 #' @param size a number specifying the approximate size of the generated csv. 
-#' Must be one of 5, 50, & 200.
+#' Must be one of 5 or 50
 #' @importFrom utils read.csv write.csv
 #' @rdname benchmark_io
 #' @export
@@ -18,7 +18,7 @@ benchmark_io = function(runs = 3,
   # Order size largest to smallest for trial run. 
   # Trial on largest
   
-  if (!(size %in% c(5, 50))) {
+  if (!all(size %in% c(5, 50))) {
     stop("Size must be one of 5, 50", call. = FALSE)
   }
   size = sort(size, decreasing = TRUE) 
@@ -49,7 +49,7 @@ benchmark_io_serial = function(runs, size, tmpdir, verbose) {
     res = bm_read(runs, size = s, tmpdir, verbose)
     results = rbind(results, res)
   }
-  results$cores = 1
+  results$cores = 0
   results
 }
 
@@ -99,7 +99,7 @@ bm_read = function(runs = 3, size = c(5, 50),
     }
   }
   unlink(fname)
-  
+  invisible(gc())
   timings
 }
 
