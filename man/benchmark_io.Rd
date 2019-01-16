@@ -19,7 +19,7 @@ bm_write(runs = 3, size = c(5, 50), tmpdir = tempdir(),
 \item{runs}{Number of times to run the test. Default 3.}
 
 \item{size}{a number specifying the approximate size of the generated csv. 
-Must be one of 5, 50, & 200.}
+Must be one of 5 or 50}
 
 \item{tmpdir}{a non-empty character vector giving the directory name. Default \code{tempdir()}}
 
