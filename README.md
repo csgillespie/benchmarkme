@@ -6,8 +6,8 @@
 [![Build
 Status](https://travis-ci.org/csgillespie/benchmarkme.svg?branch=master)](https://travis-ci.org/csgillespie/benchmarkme)
 [![codecov.io](https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master)](https://codecov.io/github/csgillespie/benchmarkme?branch=master)
-[![Downloads](http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen)](http://cran.rstudio.com/package=benchmarkme)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/benchmarkme)](http://cran.r-project.org/package=benchmarkme)
+[![Downloads](http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen)](https://cran.r-project.org/package=benchmarkme)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/benchmarkme)](https://cran.r-project.org/package=benchmarkme)
 
 R benchmarking made easy. The package contains a number of benchmarks,
 heavily based on the benchmarks at
@@ -28,9 +28,8 @@ systems.
 
 ## Overview
 
-The package is on
-[CRAN](https://cran.r-project.org/web/packages/benchmarkme/) and can be
-installed in the usual way
+The package is on [CRAN](https://cran.r-project.org/package=benchmarkme)
+and can be installed in the usual way
 
 ``` r
 install.packages("benchmarkme")
