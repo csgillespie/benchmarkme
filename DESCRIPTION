@@ -19,7 +19,14 @@ Imports:
     methods, 
     benchmarkmeData(>= 1.0.0), utils, graphics,
     parallel, doParallel, foreach, dplyr, tibble
-Suggests: RcppZiggurat, testthat, DT, knitr, ggplot2, rmarkdown
+Suggests: 
+    RcppZiggurat,
+    testthat,
+    DT,
+    knitr,
+    ggplot2,
+    rmarkdown,
+    covr
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 License: GPL-2 | GPL-3

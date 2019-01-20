@@ -4,7 +4,8 @@
 \alias{rank_results}
 \title{Benchmark rankings}
 \usage{
-rank_results(results, blas_optimize = blas_optimize, verbose = TRUE)
+rank_results(results, blas_optimize = is_blas_optimize(results),
+  verbose = TRUE)
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 

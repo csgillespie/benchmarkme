@@ -5,6 +5,6 @@ test_that("Test benchmark_io", {
   res2 = benchmark_io(runs = 1, size = 5, cores = 2)
   expect_equal(nrow(res), 2)
   expect_equal(ncol(res), 6)
-  expect_equal(nrow(res2), 4)
+  expect_equal(nrow(res2), 2)
   expect_equal(ncol(res2), 6)
 })

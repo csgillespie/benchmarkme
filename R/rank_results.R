@@ -1,3 +1,7 @@
+#' @importFrom benchmarkmeData is_blas_optimize
+#' @export
+benchmarkmeData::is_blas_optimize
+
 #' Benchmark rankings
 #' 
 #' Comparison with past results.
@@ -8,7 +12,7 @@
 #' @import dplyr
 #' @export
 rank_results = function(results,
-                        blas_optimize = blas_optimize, 
+                        blas_optimize = is_blas_optimize(results), 
                         verbose = TRUE) {
   
   
