@@ -28,7 +28,9 @@ system_ram = function(os) {
 #' @references The \code{print.bytes} function was taken from the \pkg{pryr} package.
 #' @examples 
 #' ## Return (and pretty print) the amount of RAM
+#' \dontrun{
 #' get_ram()
+#' }
 get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
