@@ -10,7 +10,7 @@ to_Bytes = function(value) {
 }
 
 clean_ram = function(ram, os) {
-  if(is.na(ram)) return(NA)
+  if(length(ram) > 1 || is.na(ram)) return(NA)
   
   if(length(grep("^linux", os))) {
     clean_ram = clean_linux_ram(ram)

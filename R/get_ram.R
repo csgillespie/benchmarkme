@@ -57,7 +57,7 @@ print.ram = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
   unit_system = "metric"
   base = switch(unit_system, metric = 1000, iec = 1024)
   power = min(floor(log(abs(x), base)), 8)
-  if (power < 1) {
+  if (is.na(x) || power < 1) {
     unit = "B"
   } else {
     unit_labels = switch(
