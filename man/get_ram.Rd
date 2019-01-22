@@ -19,9 +19,7 @@ A value of \code{NA} is return if it isn't possible to determine the amount of R
 }
 \examples{
 ## Return (and pretty print) the amount of RAM
-\dontrun{
 get_ram()
-}
 }
 \references{
 The \code{print.bytes} function was taken from the \pkg{pryr} package.

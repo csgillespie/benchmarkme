@@ -81,7 +81,7 @@ bm_read = function(runs = 3, size = c(5, 50),
   set.seed(1);  on.exit(set.seed(NULL))
   x = Rnorm(n)
   m = data.frame(matrix(x, ncol = 10))
-  test = test_group = rep(paste0("read",  size), runs)
+  test = rep(paste0("read",  size), runs)
   timings = data.frame(user = numeric(runs), system = 0, 
                        elapsed = 0, test = test, 
                        test_group = test, 
@@ -95,7 +95,7 @@ bm_read = function(runs = 3, size = c(5, 50),
     })[1:3]
     if (verbose) {
       message(c("\t Reading a csv with ", n, " values", 
-                timings_mean(timings[timings$test_group == paste0("read", size),])))
+                timings_mean(timings[timings$test_group == paste0("read", size), ])))
     }
   }
   unlink(fname)
@@ -111,7 +111,7 @@ bm_write = function(runs = 3, size = c(5, 50),
   set.seed(1); on.exit(set.seed(NULL))
   x = Rnorm(n)
   m = data.frame(matrix(x, ncol = 10))
-  test = test_group = rep(paste0("write",  size), runs)
+  test = rep(paste0("write",  size), runs)
   timings = data.frame(user = numeric(runs), system = 0, 
                        elapsed = 0, test = test, 
                        test_group = test, 
@@ -126,7 +126,7 @@ bm_write = function(runs = 3, size = c(5, 50),
     invisible(gc())
     if (verbose) {
       message(c("\t Writing a csv with ", n, " values", 
-                timings_mean(timings[timings$test_group == paste0("write", size),])))
+                timings_mean(timings[timings$test_group == paste0("write", size), ])))
     }
   }
   timings

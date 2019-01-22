@@ -1,15 +1,3 @@
-linters: with_defaults(
-    assignment_linter = NULL, # 176
-    infix_spaces_linter = NULL, # 54
-    trailing_whitespace_linter = trailing_whitespace_linter, # 45
-    line_length_linter = NULL, # 21
-    open_curly_linter = open_curly_linter(TRUE), # 18
-    closed_curly_linter = closed_curly_linter(TRUE), # 17
-    object_usage_linter = object_length_linter, # 11
-    trailing_blank_lines_linter = trailing_blank_lines_linter, # 8
-    absolute_paths_linter = NULL, # 4
-    commas_linter = commas_linter, # 3
-    spaces_left_parentheses_linter = NULL, # 3
-    commented_code_linter = NULL, # 1
-    NULL
-  )
+linters: with_defaults(commented_code_linter = NULL,assignment_linter =NULL,open_curly_linter = NULL,trailing_whitespace_linter=NULL, NULL)
+exclude_start: "## Begin exclude"
+exclude_end: "## End exclude"
