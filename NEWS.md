@@ -1,3 +1,6 @@
+## Version 1.0.1
+  * Typo in vignette (thanks to @tmartensecon)
+
 ## Version 1.0.0
   * Update version focused on R 3.5 & above. Start anew. Sorry everyone
 

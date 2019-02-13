@@ -84,7 +84,7 @@ plot(res)
 This function benchmarks reading and writing a 5MB or 50MB (if you have less than 4GB of RAM, reduce the number
 of `runs` to 1). Run the benchmark using
 ```{r eval=FALSE}
-res_io = benchmark_std(runs = 3)
+res_io = benchmark_io(runs = 3)
 upload_results(res_io)
 plot(res_io)
 ```
