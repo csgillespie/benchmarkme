@@ -109,6 +109,14 @@ want to test. For example to test using four cores
 ```{r eval=FALSE}
 res_io = benchmark_std(runs = 3, cores = 4)
 ```
+The process for the parallel benchmarks of the pseudo function `benchmark_x(cores = n)` is:
+  - initialise the parallel environment
+  - Start timer
+  - Run job x in core 1, 2, ..., n simultaneously
+  - when __all__ jobs finish stop timer
+  - stop parallel environment
+This procedure is repeat `runs` times.
+
 
 ## Previous versions of this
 
