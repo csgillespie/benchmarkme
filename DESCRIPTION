@@ -11,7 +11,7 @@ Description: Benchmark your CPU and compare against other CPUs. Also provides
 URL: https://github.com/csgillespie/benchmarkme
 BugReports: https://github.com/csgillespie/benchmarkme/issues
 LazyData: TRUE
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.4.0)
 Imports:
     Matrix,
     compiler,
