@@ -39,7 +39,7 @@ get_byte_compiler = function() {
   #  compiler::enableJIT(comp)
   #}
   
-  if(comp == 0L){
+  if(comp == 0L && require("benchmarkme")) {
     # Get function definition
     # Check if cmpfun has been used
     out = capture.output(get("benchmark_std", envir = globalenv()))

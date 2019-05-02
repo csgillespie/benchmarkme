@@ -1,7 +1,7 @@
 Package: benchmarkme
 Type: Package
 Title: Crowd Sourced System Benchmarks
-Version: 1.0.1
+Version: 1.0.1.0001
 Authors@R: person(given="Colin", family="Gillespie",
     email="csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
@@ -17,7 +17,7 @@ Imports:
     compiler,
     httr, 
     methods, 
-    benchmarkmeData(>= 1.0.0), utils, graphics,
+    benchmarkmeData(>= 1.0.1), utils, graphics,
     parallel, doParallel, foreach, dplyr, tibble
 Suggests: 
     RcppZiggurat,

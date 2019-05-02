@@ -1,3 +1,6 @@
+## Version 1.0.2
+  * Minor Bug fix for get_sys_details (thanks to @dipterix)
+
 ## Version 1.0.1
   * Typo in vignette (thanks to @tmartensecon)
 
