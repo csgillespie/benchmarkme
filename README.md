@@ -129,6 +129,7 @@ four cores
 
 ``` r
 res_io = benchmark_std(runs = 3, cores = 4)
+plot(res_io)
 ```
 
 ## Previous versions of the package

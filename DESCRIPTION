@@ -1,33 +1,44 @@
-Package: benchmarkme
 Type: Package
+Package: benchmarkme
 Title: Crowd Sourced System Benchmarks
-Version: 1.0.1.0001
-Authors@R: person(given="Colin", family="Gillespie",
-    email="csgillespie@gmail.com", role = c("aut", "cre"))
+Version: 1.0.2
+Authors@R: 
+    person(given = "Colin",
+           family = "Gillespie",
+           role = c("aut", "cre"),
+           email = "csgillespie@gmail.com")
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
-Description: Benchmark your CPU and compare against other CPUs. Also provides 
-    functions for obtaining system specifications, such as
+Description: Benchmark your CPU and compare against other CPUs.
+    Also provides functions for obtaining system specifications, such as
     RAM, CPU type, and R version.
+License: GPL-2 | GPL-3
 URL: https://github.com/csgillespie/benchmarkme
 BugReports: https://github.com/csgillespie/benchmarkme/issues
-LazyData: TRUE
-Depends: R (>= 3.5.0)
+Depends: 
+    R (>= 3.5.0)
 Imports:
-    Matrix,
+    benchmarkmeData (>= 1.0.1),
     compiler,
-    httr, 
-    methods, 
-    benchmarkmeData(>= 1.0.1), utils, graphics,
-    parallel, doParallel, foreach, dplyr, tibble
+    doParallel,
+    dplyr,
+    foreach,
+    graphics,
+    httr,
+    Matrix,
+    methods,
+    parallel,
+    tibble,
+    utils
 Suggests: 
-    RcppZiggurat,
-    testthat,
+    covr,
     DT,
-    knitr,
     ggplot2,
+    knitr,
+    RcppZiggurat,
     rmarkdown,
-    covr
-VignetteBuilder: knitr
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: TRUE
 RoxygenNote: 6.1.1
-License: GPL-2 | GPL-3
-Encoding: UTF-8 

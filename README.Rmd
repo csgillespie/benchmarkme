@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -113,6 +115,7 @@ The benchmark functions above have a parallel option - just simply specify the n
 want to test. For example to test using four cores
 ```{r eval=FALSE}
 res_io = benchmark_std(runs = 3, cores = 4)
+plot(res_io)
 ```
 
 ## Previous versions of the package
