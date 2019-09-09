@@ -6,7 +6,8 @@ Authors@R:
     person(given = "Colin",
            family = "Gillespie",
            role = c("aut", "cre"),
-           email = "csgillespie@gmail.com")
+           email = "csgillespie@gmail.com",
+           comment = c(ORCID = "0000-0003-1787-0275"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
 Description: Benchmark your CPU and compare against other CPUs.
     Also provides functions for obtaining system specifications, such as
