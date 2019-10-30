@@ -1,3 +1,17 @@
+get_windows_ram = function() {
+  ram = try(system("grep MemTotal /proc/meminfo", intern = TRUE), silent = TRUE)
+  if (class(ram) != "try-error" && length(ram) != 0) {
+    ram = strsplit(ram, " ")[[1]]
+    ram = as.numeric(ram[length(ram) - 1])
+    ram_size = ram
+  } else {
+    # Fallback: This was the old method I used
+    # It worked for Windows 7 and below.
+    ram_size = system("wmic MemoryChip get Capacity", intern = TRUE)[-1]
+  }
+  return(ram_size)
+}
+
 system_ram = function(os) {
   if(length(grep("^linux", os))) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
@@ -8,7 +22,7 @@ system_ram = function(os) {
     cmd = "prtconf | grep Memory" # nocov
     ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes # nocov
   } else {
-    ram = system("wmic MemoryChip get Capacity", intern=TRUE)[-1] # nocov
+    ram = get_windows_ram() # nocov
   }
   ram
 }
