@@ -1,7 +1,7 @@
 Type: Package
 Package: benchmarkme
 Title: Crowd Sourced System Benchmarks
-Version: 1.0.2.9001
+Version: 1.0.2.9002
 Authors@R: 
     person(given = "Colin",
            family = "Gillespie",

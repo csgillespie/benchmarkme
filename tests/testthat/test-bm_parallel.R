@@ -10,5 +10,5 @@ test_that("Test bm_parallel", {
   res = bm_parallel(bm = "bm_matrix_cal_power", runs = 2, verbose = TRUE, cores = 1:2)
   expect_equal(nrow(res), 4)
   expect_equal(ncol(res), 6)
-  expect_equal(c(1,1, 2, 2), res$cores)
+  expect_equal(c(1, 1, 2, 2), res$cores)
 })

@@ -29,6 +29,7 @@ Must be one of 5 or 50}
 }
 \description{
 Benchmarking reading and writing a csv file (containing random numbers).
-The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} is a data frame.
+The tests are essentially \code{write.csv(x)} and \code{read.csv(...)} where \code{x} 
+is a data frame.
 Of \code{size}MB.
 }

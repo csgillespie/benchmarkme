@@ -13,14 +13,14 @@ get_windows_ram = function() {
 }
 
 system_ram = function(os) {
-  if(length(grep("^linux", os))) {
+  if (length(grep("^linux", os))) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
-    ram = system(cmd, intern=TRUE)
-  } else if(length(grep("^darwin", os))) {
+    ram = system(cmd, intern = TRUE)
+  } else if (length(grep("^darwin", os))) {
     ram = substring(system("sysctl hw.memsize", intern = TRUE), 13) #nocov
-  } else if(length(grep("^solaris", os))) {
+  } else if (length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory" # nocov
-    ram = system(cmd, intern=TRUE) ## Memory size: XXX Megabytes # nocov
+    ram = system(cmd, intern = TRUE) ## Memory size: XXX Megabytes # nocov
   } else {
     ram = get_windows_ram() # nocov
   }
@@ -46,13 +46,13 @@ system_ram = function(os) {
 get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
-  if(class(ram) == "try-error" || length(ram) == 0) {
+  if (class(ram) == "try-error" || length(ram) == 0) {
     message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
     ram = structure(NA, class = "ram") # nocov
   } else {
-    cleaned_ram = suppressWarnings(try(clean_ram(ram,os), silent=TRUE))
-    if(class(cleaned_ram) == "try-error" || length(ram) == 0) {
+    cleaned_ram = suppressWarnings(try(clean_ram(ram, os), silent = TRUE))
+    if (class(cleaned_ram) == "try-error" || length(ram) == 0) {
       message("\t Unable to detect your RAM. # nocov 
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
       ram = structure(NA, class = "ram") #nocov
@@ -64,7 +64,7 @@ get_ram = function() {
 }
 
 #' @rawNamespace S3method(print,ram)
-print.ram = function (x, digits = 3, unit_system = c("metric", "iec"), ...) {
+print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
   #unit_system = match.arg(unit_system)
   unit_system = "metric"
   base = switch(unit_system, metric = 1000, iec = 1024)

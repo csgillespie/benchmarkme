@@ -57,17 +57,17 @@ make_plot = function(x, blas_optimize, log, ...) {
                           blas_optimize = blas_optimize,
                           verbose = TRUE)
   no_of_reps = length(x$test) / length(unique(x$test))
-  ben_sum = sum(x[,3]) / no_of_reps
+  ben_sum = sum(x[, 3]) / no_of_reps
 
   ## Arrange plot colours and layout
   op = par(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0), tck = -.01,
-           cex.axis = 0.8, las = 1, mfrow = c(1,2)) 
+           cex.axis = 0.8, las = 1, mfrow = c(1, 2)) 
   old_pal = palette()
   on.exit({palette(old_pal); par(op)})
   nice_palette()
   
   ## Calculate adjustment for sensible "You" placement
-  adj = ifelse(ben_rank < nrow(results)/2, -1.5, 1.5)
+  adj = ifelse(ben_rank < nrow(results) / 2, -1.5, 1.5)
   
   ## Plot limits
   ymin = min(results$time, ben_sum)
@@ -77,26 +77,27 @@ make_plot = function(x, blas_optimize, log, ...) {
   plot(results$time, xlab = "Rank", ylab = "Total timing (secs)", 
        ylim = c(ymin, ymax), xlim = c(0.5, nrow(results) + 1), 
        panel.first = grid(), cex = 0.7, log = log, ...)
-  points(ben_rank - 1/2, ben_sum, bg = 4, pch = 21)
-  abline(v = ben_rank - 1/2, col = 4, lty = 3)
-  text(ben_rank - 1/2, ymin, "You", col = 4, adj = adj)
+  points(ben_rank - 1 / 2, ben_sum, bg = 4, pch = 21)
+  abline(v = ben_rank - 1 / 2, col = 4, lty = 3)
+  text(ben_rank - 1 / 2, ymin, "You", col = 4, adj = adj)
   if (unique(x$cores) == 0)
     title(paste0("Benchmark: ", test_group), cex = 0.9)
   else
     title(paste0("Benchmark: ", test_group, 
-                 "(",unique(x$cores), " cores)"), cex = 0.9)
+                 "(", unique(x$cores), " cores)"), cex = 0.9)
   
   ## Relative timings  
   fastest = min(ben_sum, results$time)
-  ymax = ymax/fastest
-  plot(results$time/fastest, xlab="Rank", ylab="Relative timing", 
-       ylim=c(1, ymax), xlim=c(0.5, nrow(results)+1), 
-       panel.first=grid(), cex=0.7, log=log, ...)
-  abline(h=1, lty=3)
-  abline(v=ben_rank-1/2, col=4, lty=3)
-  points(ben_rank-1/2,ben_sum/fastest, bg=4, pch=21)
-  text(ben_rank-1/2, 1.2, "You", col=4, adj=adj)
-  title(paste("Benchmark:", test_group), cex=0.9)
+  ymax = ymax / fastest
+  plot(results$time / fastest, 
+       xlab = "Rank", ylab = "Relative timing", 
+       ylim = c(1, ymax), xlim = c(0.5, nrow(results) + 1), 
+       panel.first = grid(), cex = 0.7, log = log, ...)
+  abline(h = 1, lty = 3)
+  abline(v = ben_rank - 1 / 2, col = 4, lty = 3)
+  points(ben_rank - 1 / 2, ben_sum / fastest, bg = 4, pch = 21)
+  text(ben_rank - 1 / 2, 1.2, "You", col = 4, adj = adj)
+  title(paste("Benchmark:", test_group), cex = 0.9)
 }
 
 

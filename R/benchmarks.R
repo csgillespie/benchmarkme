@@ -39,7 +39,7 @@ benchmark_prog = function(runs = 3, verbose = TRUE, cores = 0L) {
 #' @rdname bm_matrix_cal_manip
 #' @export
 benchmark_matrix_cal = function(runs = 3, verbose = TRUE, cores = 0L) {
-  bm =  c("bm_matrix_cal_manip","bm_matrix_cal_power", "bm_matrix_cal_sort", 
+  bm =  c("bm_matrix_cal_manip", "bm_matrix_cal_power", "bm_matrix_cal_sort", 
           "bm_matrix_cal_cross_product", "bm_matrix_cal_lm")
   if (verbose)
     message("# Matrix calculation benchmarks (5 tests):")
@@ -58,5 +58,3 @@ benchmark_matrix_fun = function(runs = 3, verbose = TRUE, cores = 0L) {
     message("# Matrix function benchmarks (5 tests):")
   run_benchmarks(bm, runs, verbose, cores)  
 }
-
-

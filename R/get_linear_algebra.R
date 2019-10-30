@@ -9,4 +9,3 @@ get_linear_algebra = function() {
     lapack = s$LAPACK
     return(list(blas = blas, lapack = lapack))
 }
-

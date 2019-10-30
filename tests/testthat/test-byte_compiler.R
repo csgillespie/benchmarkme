@@ -9,5 +9,3 @@ test_that("Test Byte Compiler", {
   expect_gt(get_byte_compiler(), 0L)
 }
 )
-
-

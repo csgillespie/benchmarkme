@@ -16,15 +16,15 @@
 #' get_byte_compiler()
 get_byte_compiler = function() {
   comp = Sys.getenv("R_COMPILE_PKGS")
-  if(nchar(comp) > 0L) comp = as.numeric(comp)
+  if (nchar(comp) > 0L) comp = as.numeric(comp)
   else comp = 0L
 
   ## Try to detect compilePKGS - long shot
   ## Return to same state as we found it
-  if(comp == 0L) {
+  if (comp == 0L) {
     comp = compiler::compilePKGS(1)
     compiler::compilePKGS(comp)
-    if(comp) {
+    if (comp) {
       comp = compiler::getCompilerOption("optimize")
     } else {
       comp = 0L
@@ -39,12 +39,12 @@ get_byte_compiler = function() {
   #  compiler::enableJIT(comp)
   #}
   
-  if(comp == 0L && require("benchmarkme")) {
+  if (comp == 0L && require("benchmarkme")) {
     # Get function definition
     # Check if cmpfun has been used
     out = capture.output(get("benchmark_std", envir = globalenv()))
-    is_byte = out[length(out)-1]
-    if(length(grep("bytecode: ", is_byte)) > 0) {
+    is_byte = out[length(out) - 1]
+    if (length(grep("bytecode: ", is_byte)) > 0) {
       comp = compiler::getCompilerOption("optimize")
     }
   }

@@ -20,14 +20,14 @@
 #'                 runs = 5, verbose = TRUE, cores = 2L)
 #' }
 #' @importFrom foreach foreach %dopar%
-bm_parallel = function(bm, runs, verbose, cores, ...){
+bm_parallel = function(bm, runs, verbose, cores, ...) {
   args = list(...)
-  args[['runs']] = 1
+  args[["runs"]] = 1
   
   #TODO consider dropping first results from parallel results due to overhead
   results = data.frame(user = NA, system = NA, elapsed = NA, test = NA, 
                         test_group = NA, cores = NA)
-  for(core in cores) {
+  for (core in cores) {
     cl = parallel::makeCluster(core, outfile = "")
     
     parallel::clusterExport(cl, bm) # Export 
@@ -36,9 +36,9 @@ bm_parallel = function(bm, runs, verbose, cores, ...){
                      test = NA, test_group = NA, cores = NA, stringsAsFactors = FALSE)
 
     args$runs = 1
-    for(j in 1:runs){
-      tmp[j, 1:3] <- system.time({
-        out <- foreach(k = 1:(core)) %dopar% 
+    for (j in 1:runs) {
+      tmp[j, 1:3] = system.time({
+        out = foreach(k = 1:(core)) %dopar% 
           do.call(bm, args, quote = TRUE) #, envir = environment(bm_parallel))
       })[1:3]
     }
@@ -51,4 +51,3 @@ bm_parallel = function(bm, runs, verbose, cores, ...){
   
   return(na.omit(results))
 }
-

@@ -5,16 +5,28 @@ r:
 #  - oldrel
   - release 
   - devel
+env:
+  global:
+    - NO_IMPORTS=5
 
 r_packages:
   - covr
+
 r_github_packages:
   - csgillespie/benchmarkme-data
+  - jumpingrivers/inteRgrate
   
 addons:
   apt:
     packages:
       - libgsl0-dev # For RCppZigg
+
+script:
+  - Rscript -e "inteRgrate::check_pkg(install = FALSE)"
+  - Rscript -e "inteRgrate::check_r_filenames()"
+  - Rscript -e "inteRgrate::check_tidy_description()"
+  - Rscript -e "inteRgrate::check_lintr()"
+  - Rscript -e "inteRgrate::check_namespace()"
 
 ## Only run covr on release
 after_success:

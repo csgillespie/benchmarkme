@@ -27,6 +27,3 @@ benchmark_std = function(runs = 3, verbose = TRUE, cores = 0L) {
         benchmark_matrix_cal(runs, verbose, cores),
         benchmark_matrix_fun(runs, verbose, cores))
 }
-
-
-
