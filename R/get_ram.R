@@ -2,8 +2,12 @@ get_windows_ram = function() {
   ram = try(system("grep MemTotal /proc/meminfo", intern = TRUE), silent = TRUE)
   if (class(ram) != "try-error" && length(ram) != 0) {
     ram = strsplit(ram, " ")[[1]]
+    mult = switch(ram[length(ram)],
+                  'B' = 1L,
+                  'kB' = 1024L,
+                  'MB' = 1048576L)
     ram = as.numeric(ram[length(ram) - 1])
-    ram_size = ram
+    ram_size = ram * mult
   } else {
     # Fallback: This was the old method I used
     # It worked for Windows 7 and below.
