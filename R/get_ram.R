@@ -3,9 +3,9 @@ get_windows_ram = function() {
   if (class(ram) != "try-error" && length(ram) != 0) {
     ram = strsplit(ram, " ")[[1]]
     mult = switch(ram[length(ram)],
-                  'B' = 1L,
-                  'kB' = 1024L,
-                  'MB' = 1048576L)
+                  "B" = 1L,
+                  "kB" = 1024L,
+                  "MB" = 1048576L)
     ram = as.numeric(ram[length(ram) - 1])
     ram_size = ram * mult
   } else {
