@@ -1,3 +1,4 @@
+#' @importFrom utils globalVariables
 globalVariables(c("a", "b", "ans"))
 #' Matrix calculation benchmarks
 #' 
