@@ -12,6 +12,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{benchmarkmeData}{\code{\link[benchmarkmeData]{plot_past}}, \code{\link[benchmarkmeData]{is_blas_optimize}}}
+  \item{benchmarkmeData}{\code{\link[benchmarkmeData]{is_blas_optimize}}, \code{\link[benchmarkmeData]{plot_past}}}
 }}
 

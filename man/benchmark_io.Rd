@@ -6,14 +6,17 @@
 \alias{bm_write}
 \title{IO benchmarks}
 \usage{
-benchmark_io(runs = 3, size = c(5, 50), tmpdir = tempdir(),
-  verbose = TRUE, cores = 0L)
+benchmark_io(
+  runs = 3,
+  size = c(5, 50),
+  tmpdir = tempdir(),
+  verbose = TRUE,
+  cores = 0L
+)
 
-bm_read(runs = 3, size = c(5, 50), tmpdir = tempdir(),
-  verbose = TRUE)
+bm_read(runs = 3, size = c(5, 50), tmpdir = tempdir(), verbose = TRUE)
 
-bm_write(runs = 3, size = c(5, 50), tmpdir = tempdir(),
-  verbose = TRUE)
+bm_write(runs = 3, size = c(5, 50), tmpdir = tempdir(), verbose = TRUE)
 }
 \arguments{
 \item{runs}{Number of times to run the test. Default 3.}

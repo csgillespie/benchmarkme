@@ -7,8 +7,12 @@
 \usage{
 create_bundle(results, filename = NULL, args = NULL, id_prefix = "")
 
-upload_results(results, url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
-  args = NULL, id_prefix = "")
+upload_results(
+  results,
+  url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
+  args = NULL,
+  id_prefix = ""
+)
 }
 \arguments{
 \item{results}{Benchmark results. Probably obtained from 
