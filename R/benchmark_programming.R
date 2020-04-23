@@ -7,7 +7,7 @@
 #' \item Creation of a 1600x1600 Toeplitz matrix (loops).
 #' \item Escoufier's method on a 60x60 matrix (mixed).
 #' }
-#' These benchmarks have been developed by many authors. 
+#' These benchmarks have been developed by many authors.
 #' See http://r.research.att.com/benchmarks/R-benchmark-25.R
 #' for a complete history. The function \code{benchmark_prog()} runs the five \code{bm} functions.
 #' @inheritParams benchmark_std
@@ -15,7 +15,7 @@
 #' @export
 bm_prog_fib = function(runs=3, verbose=TRUE) {
   a = 0; b = 0; phi = 1.6180339887498949
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "fib", test_group = "prog", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = floor(runif(3500000) * 1000)
@@ -34,7 +34,7 @@ bm_prog_fib = function(runs=3, verbose=TRUE) {
 #' @export
 bm_prog_hilbert = function(runs=3, verbose=TRUE) {
   a = 3500; b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "hilbert", test_group = "prog", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     invisible(gc())
@@ -53,11 +53,11 @@ bm_prog_hilbert = function(runs=3, verbose=TRUE) {
 #' @export
 bm_prog_gcd = function(runs = 3, verbose = TRUE) {
   ans = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "gcd", test_group = "prog", stringsAsFactors = FALSE)
   gcd2 = function(x, y) {
     if (sum(y > 1.0E-4) == 0) {
-      x 
+      x
     } else {
       y[y == 0] <- x[y == 0]; Recall(y, x %% y)
     }
@@ -79,8 +79,8 @@ bm_prog_gcd = function(runs = 3, verbose = TRUE) {
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_toeplitz = function(runs = 3, verbose = TRUE) {
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "toeplitz", test_group = "prog", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "toeplitz", test_group = "prog",
                        stringsAsFactors = FALSE)
   N = 3000 #nolint
   ans = rep(0, N * N)
@@ -106,8 +106,8 @@ bm_prog_toeplitz = function(runs = 3, verbose = TRUE) {
 #' @rdname bm_prog_fib
 #' @export
 bm_prog_escoufier = function(runs = 3, verbose = TRUE) {
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "escoufier", test_group = "prog", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "escoufier", test_group = "prog",
                        stringsAsFactors = FALSE)
   p <- 0; vt <- 0; vr <- 0; vrt <- 0; rvt <- 0; RV <- 0; j <- 0; k <- 0; #nolint
   x2 <- 0; R <- 0; r_xx <- 0; r_yy <- 0; r_xy <- 0; r_yx <- 0; r_vmax <- 0    #nolint
@@ -148,7 +148,7 @@ bm_prog_escoufier = function(runs = 3, verbose = TRUE) {
       vt <- vt[vt != vr[j]]                      # reidentify variables to test
     }
     stop = proc.time()
-    
+
     timings[i, 1:3] = (stop - start)[1:3]
   }
   if (verbose)

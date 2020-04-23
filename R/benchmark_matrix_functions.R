@@ -1,5 +1,5 @@
 #' Matrix function benchmarks
-#' 
+#'
 #' @description A collection of matrix benchmark functions
 #' \itemize{
 #' \item FFT over 2,500,000 random values.
@@ -8,9 +8,9 @@
 #' \item Cholesky decomposition of a 3000x3000 matrix.
 #' \item Inverse of a 1600x1600 random matrix.
 #' }
-#' These benchmarks have been developed by many authors. 
+#' These benchmarks have been developed by many authors.
 #' See http://r.research.att.com/benchmarks/R-benchmark-25.R
-#' for a complete history. The function \code{benchmark_matrix_fun()} 
+#' for a complete history. The function \code{benchmark_matrix_fun()}
 #' runs the five \code{bm} functions.
 #' @inheritParams benchmark_std
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
@@ -18,8 +18,8 @@
 #' @export
 bm_matrix_fun_fft = function(runs=3, verbose=TRUE) {
   b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "fft", test_group = "matrix_fun", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "fft", test_group = "matrix_fun",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(2500000)
@@ -36,8 +36,8 @@ bm_matrix_fun_fft = function(runs=3, verbose=TRUE) {
 #' @export
 bm_matrix_fun_eigen = function(runs=3, verbose=TRUE) {
   b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "eigen", test_group = "matrix_fun", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "eigen", test_group = "matrix_fun",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = array(Rnorm(600 * 600), dim = c(600, 600))
@@ -54,7 +54,7 @@ bm_matrix_fun_eigen = function(runs=3, verbose=TRUE) {
 #' @export
 bm_matrix_fun_determinant = function(runs = 3, verbose = TRUE) {
   b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "determinant", test_group = "matrix_fun",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
@@ -72,8 +72,8 @@ bm_matrix_fun_determinant = function(runs = 3, verbose = TRUE) {
 #' @import Matrix
 #' @export
 bm_matrix_fun_cholesky = function(runs = 3, verbose = TRUE) {
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "cholesky", test_group = "matrix_fun", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "cholesky", test_group = "matrix_fun",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = crossprod(new("dgeMatrix", x = Rnorm(3000 * 3000),
@@ -90,8 +90,8 @@ bm_matrix_fun_cholesky = function(runs = 3, verbose = TRUE) {
 #' @export
 bm_matrix_fun_inverse = function(runs=3, verbose=TRUE) {
   b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "inverse", test_group = "matrix_fun", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "inverse", test_group = "matrix_fun",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = new("dgeMatrix", x = Rnorm(1600 * 1600), Dim = as.integer(c(1600, 1600)))

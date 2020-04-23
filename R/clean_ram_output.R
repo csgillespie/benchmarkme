@@ -3,7 +3,7 @@ to_bytes = function(value) {
   units = value[2]
   power = match(units, c("kB", "MB", "GB", "TB"))
   if (!is.na(power)) return(num * 1000 ^ power)
-  
+
   power = match(units, c("Kilobytes", "Megabytes", "Gigabytes", "Terabytes"))
   if (!is.na(power)) return(num * 1000 ^ power)
   num
@@ -11,7 +11,7 @@ to_bytes = function(value) {
 
 clean_ram = function(ram, os) {
   if (length(ram) > 1 || is.na(ram)) return(NA)
-  
+
   if (length(grep("^linux", os))) {
     clean_ram = clean_linux_ram(ram)
   } else if (length(grep("^darwin", os))) {

@@ -1,7 +1,7 @@
 #' Byte compiler status
-#' 
-#' Attempts to detect if byte compiling or JIT has been used on the package. 
-#' @details For R 3.5.0 all packages are byte compiled. Before 3.5.0 it was messy. 
+#'
+#' Attempts to detect if byte compiling or JIT has been used on the package.
+#' @details For R 3.5.0 all packages are byte compiled. Before 3.5.0 it was messy.
 #' Sometimes the user would turn it on via JIT, or ByteCompiling the package. On top of that
 #' R 3.4.X(?) was byte compiled, but R 3.4.Y(?) was, not fully optimised!!! What this means is
 #' don't trust historical results!
@@ -28,9 +28,9 @@ get_byte_compiler = function() {
       comp = compiler::getCompilerOption("optimize")
     } else {
       comp = 0L
-    } 
-  } 
-  
+    }
+  }
+
   ## Try to detect enableJIT
   ## Return to same state as we found it
   ## This shouldn't affect benchmark tests. So remove.
@@ -38,7 +38,7 @@ get_byte_compiler = function() {
   #  comp = compiler::enableJIT(3)
   #  compiler::enableJIT(comp)
   #}
-  
+
   if (comp == 0L && require("benchmarkme")) {
     # Get function definition
     # Check if cmpfun has been used

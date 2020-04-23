@@ -1,7 +1,7 @@
 #' @importFrom utils globalVariables
 globalVariables(c("a", "b", "ans"))
 #' Matrix calculation benchmarks
-#' 
+#'
 #' @description A collection of matrix benchmark functions aimed at
 #' assessing the calculation speed.
 #' \itemize{
@@ -11,9 +11,9 @@ globalVariables(c("a", "b", "ans"))
 #' \item 2500x2500 cross-product matrix (b = a' * a)
 #' \item Linear regr. over a 3000x3000 matrix.
 #' }
-#' These benchmarks have been developed by many authors. 
+#' These benchmarks have been developed by many authors.
 #' See http://r.research.att.com/benchmarks/R-benchmark-25.R
-#' for a complete history. The function \code{benchmark_matrix_cal()} runs 
+#' for a complete history. The function \code{benchmark_matrix_cal()} runs
 #' the five \code{bm} functions.
 #' @inheritParams benchmark_std
 #' @references http://r.research.att.com/benchmarks/R-benchmark-25.R
@@ -22,7 +22,7 @@ bm_matrix_cal_manip = function(runs = 3, verbose = TRUE) {
   a = 0
   b = 0
   timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
-                       test = "manip", test_group = "matrix_cal", 
+                       test = "manip", test_group = "matrix_cal",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
     invisible(gc())
@@ -42,7 +42,7 @@ bm_matrix_cal_manip = function(runs = 3, verbose = TRUE) {
 #' @rdname bm_matrix_cal_manip
 #' @export
 bm_matrix_cal_power = function(runs = 3, verbose = TRUE) {
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "power", test_group = "matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = abs(matrix(Rnorm(2500 * 2500) / 2, ncol = 2500, nrow = 2500))
@@ -58,7 +58,7 @@ bm_matrix_cal_power = function(runs = 3, verbose = TRUE) {
 #' @export
 bm_matrix_cal_sort = function(runs = 3, verbose = TRUE) {
   b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "sort", test_group = "matrix_cal", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(7000000)
@@ -74,8 +74,8 @@ bm_matrix_cal_sort = function(runs = 3, verbose = TRUE) {
 #' @export
 bm_matrix_cal_cross_product = function(runs = 3, verbose = TRUE) {
   b = 0
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "cross_product", test_group = "matrix_cal", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "cross_product", test_group = "matrix_cal",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
     a = Rnorm(2500 * 2500)
@@ -93,11 +93,11 @@ bm_matrix_cal_cross_product = function(runs = 3, verbose = TRUE) {
 bm_matrix_cal_lm = function(runs = 3, verbose = TRUE) {
   ans = 0
   b = as.double(1:5000)
-  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0, 
-                       test = "lm", test_group = "matrix_cal", 
+  timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
+                       test = "lm", test_group = "matrix_cal",
                        stringsAsFactors = FALSE)
   for (i in 1:runs) {
-    a = new("dgeMatrix", x = Rnorm(5000 * 500), 
+    a = new("dgeMatrix", x = Rnorm(5000 * 500),
             Dim = as.integer(c(5000, 500)))
     invisible(gc())
     timings[i, 1:3] = system.time({ans = solve(crossprod(a), crossprod(a, b))})[1:3]

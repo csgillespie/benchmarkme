@@ -32,8 +32,8 @@ system_ram = function(os) {
 }
 
 #' Get the amount of RAM
-#' 
-#' Attempt to extract the amount of RAM on the current machine. This is OS 
+#'
+#' Attempt to extract the amount of RAM on the current machine. This is OS
 #' specific:
 #' \itemize{
 #' \item Linux: \code{proc/meminfo}
@@ -44,7 +44,7 @@ system_ram = function(os) {
 #' A value of \code{NA} is return if it isn't possible to determine the amount of RAM.
 #' @export
 #' @references The \code{print.bytes} function was taken from the \pkg{pryr} package.
-#' @examples 
+#' @examples
 #' ## Return (and pretty print) the amount of RAM
 #' get_ram()
 get_ram = function() {
@@ -57,7 +57,7 @@ get_ram = function() {
   } else {
     cleaned_ram = suppressWarnings(try(clean_ram(ram, os), silent = TRUE))
     if (class(cleaned_ram) == "try-error" || length(ram) == 0) {
-      message("\t Unable to detect your RAM. # nocov 
+      message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
       ram = structure(NA, class = "ram") #nocov
     } else {
@@ -84,8 +84,8 @@ print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
     unit = unit_labels[[power]]
     x = x / (base^power)
   }
-  
-  formatted = format(signif(x, digits = digits), big.mark = ",", 
+
+  formatted = format(signif(x, digits = digits), big.mark = ",",
     scientific = FALSE, ...)
   cat(unclass(formatted), " ", unit, "\n", sep = "")
   invisible(paste(unclass(formatted), unit))
