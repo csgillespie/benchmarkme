@@ -2,9 +2,10 @@ language: r
 cache: packages
 
 r:
-#  - oldrel
-  - release 
-#  - devel
+  - oldrel
+  - release
+  - devel
+
 env:
   global:
     - NO_IMPORTS=5
@@ -15,7 +16,7 @@ r_packages:
 r_github_packages:
   - csgillespie/benchmarkme-data
   - jumpingrivers/inteRgrate
-  
+
 addons:
   apt:
     packages:
