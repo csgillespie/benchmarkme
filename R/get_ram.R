@@ -38,7 +38,8 @@ system_ram = function(os) {
 #' \itemize{
 #' \item Linux: \code{proc/meminfo}
 #' \item Apple: \code{system_profiler -detailLevel mini}
-#' \item Windows: \code{memory.size()}
+#' \item Windows: First tries \code{grep MemTotal /proc/meminfo} then falls back to
+#' \code{wmic MemoryChip get Capacity}
 #' \item Solaris: \code{prtconf}
 #' }
 #' A value of \code{NA} is return if it isn't possible to determine the amount of RAM.
@@ -69,8 +70,8 @@ get_ram = function() {
 
 #' @rawNamespace S3method(print,ram)
 print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
-  #unit_system = match.arg(unit_system)
-  unit_system = "metric"
+  unit_system = match.arg(unit_system)
+  #unit_system = "metric"
   base = switch(unit_system, metric = 1000, iec = 1024)
   power = min(floor(log(abs(x), base)), 8)
   if (is.na(x) || power < 1) {
