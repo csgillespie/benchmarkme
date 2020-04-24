@@ -7,7 +7,7 @@
 get_ram()
 }
 \description{
-Attempt to extract the amount of RAM on the current machine. This is OS 
+Attempt to extract the amount of RAM on the current machine. This is OS
 specific:
 \itemize{
 \item Linux: \code{proc/meminfo}

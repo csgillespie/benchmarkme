@@ -15,13 +15,13 @@ upload_results(
 )
 }
 \arguments{
-\item{results}{Benchmark results. Probably obtained from 
+\item{results}{Benchmark results. Probably obtained from
 \code{benchmark_std()} or \code{benchmark_io()}.}
 
-\item{filename}{default \code{NULL}. A character vector of where to 
+\item{filename}{default \code{NULL}. A character vector of where to
 store the results (in an .rds file). If \code{NULL}, results are not saved.}
 
-\item{args}{Default \code{NULL}. A list of arguments to 
+\item{args}{Default \code{NULL}. A list of arguments to
 be passed to \code{get_sys_details()}.}
 
 \item{id_prefix}{Character string to prefix the benchmark id. Makes it
@@ -30,7 +30,7 @@ easier to retrieve past results.}
 \item{url}{The location of where to upload the results.}
 }
 \description{
-This function uploads the benchmarking results. 
+This function uploads the benchmarking results.
 These results will then be incorparated
 in future versions of the package.
 }

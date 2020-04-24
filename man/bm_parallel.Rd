@@ -13,7 +13,7 @@ bm_parallel(bm, runs, verbose, cores, ...)
 
 \item{verbose}{display messages during benchmarking}
 
-\item{cores}{number of cores to benchmark. If cores is specified, the benchmark is also 
+\item{cores}{number of cores to benchmark. If cores is specified, the benchmark is also
 run for cores = 1 to allow for normalisation.}
 
 \item{...}{additional arguments to pass to \code{bm}}
@@ -24,9 +24,9 @@ This function runs benchmarks in parallel to test multithreading
 \examples{
 \dontrun{
 bm_parallel("bm_matrix_cal_manip", runs = 3, verbose = TRUE, cores = 2)
-bm = c("bm_matrix_cal_manip","bm_matrix_cal_power", "bm_matrix_cal_sort", 
+bm = c("bm_matrix_cal_manip","bm_matrix_cal_power", "bm_matrix_cal_sort",
        "bm_matrix_cal_cross_product", "bm_matrix_cal_lm")
-results = lapply(bm, bm_parallel, 
+results = lapply(bm, bm_parallel,
                 runs = 5, verbose = TRUE, cores = 2L)
 }
 }

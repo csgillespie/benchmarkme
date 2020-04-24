@@ -4,7 +4,9 @@
 \name{sample_results}
 \alias{sample_results}
 \title{Sample benchmarking results}
-\format{A data frame}
+\format{
+A data frame
+}
 \description{
 Sample benchmark results. Used in the vignette.
 }

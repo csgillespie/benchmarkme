@@ -14,7 +14,7 @@ details.
 Attempts to detect if byte compiling or JIT has been used on the package.
 }
 \details{
-For R 3.5.0 all packages are byte compiled. Before 3.5.0 it was messy. 
+For R 3.5.0 all packages are byte compiled. Before 3.5.0 it was messy.
 Sometimes the user would turn it on via JIT, or ByteCompiling the package. On top of that
 R 3.4.X(?) was byte compiled, but R 3.4.Y(?) was, not fully optimised!!! What this means is
 don't trust historical results!

@@ -37,9 +37,9 @@ A collection of matrix benchmark functions
 \item Cholesky decomposition of a 3000x3000 matrix.
 \item Inverse of a 1600x1600 random matrix.
 }
-These benchmarks have been developed by many authors. 
+These benchmarks have been developed by many authors.
 See http://r.research.att.com/benchmarks/R-benchmark-25.R
-for a complete history. The function \code{benchmark_matrix_fun()} 
+for a complete history. The function \code{benchmark_matrix_fun()}
 runs the five \code{bm} functions.
 }
 \references{

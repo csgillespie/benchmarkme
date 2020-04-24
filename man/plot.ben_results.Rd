@@ -15,14 +15,14 @@
 \arguments{
 \item{x}{The output from a \code{benchmark_*} call.}
 
-\item{test_group}{Default \code{unique(x$test_group)}. 
+\item{test_group}{Default \code{unique(x$test_group)}.
 The default behaviour is select the groups from your benchmark results.}
 
-\item{blas_optimize}{Logical. Default The default behaviour 
-is to compare your results with results that use the same 
+\item{blas_optimize}{Logical. Default The default behaviour
+is to compare your results with results that use the same
 blas_optimize setting. To use all results, set to \code{NULL}.}
 
-\item{log}{By default the y axis is plotted on the log scale. To change, set the 
+\item{log}{By default the y axis is plotted on the log scale. To change, set the
 the argument equal to the empty parameter string, \code{""}.}
 
 \item{...}{Arguments to be passed to other downstream methods.}

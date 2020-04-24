@@ -11,11 +11,11 @@ rank_results(
 )
 }
 \arguments{
-\item{results}{Benchmark results. Probably obtained from 
+\item{results}{Benchmark results. Probably obtained from
 \code{benchmark_std()} or \code{benchmark_io()}.}
 
-\item{blas_optimize}{Logical. Default The default behaviour 
-is to compare your results with results that use the same 
+\item{blas_optimize}{Logical. Default The default behaviour
+is to compare your results with results that use the same
 blas_optimize setting. To use all results, set to \code{NULL}.}
 
 \item{verbose}{Default TRUE.}

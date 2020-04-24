@@ -24,7 +24,7 @@ machines. It runs a collection of matrix benchmark functions
 To view the list of benchmarks, see \code{get_available_benchmarks}.
 }
 \details{
-Setting \code{cores} equal to 1 is useful for assessing the impact of the 
+Setting \code{cores} equal to 1 is useful for assessing the impact of the
 parallel computing overhead.
 }
 \examples{

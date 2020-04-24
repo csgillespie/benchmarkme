@@ -7,7 +7,7 @@
 get_cpu()
 }
 \description{
-Attempt to extract the CPU model on the current host. This is OS 
+Attempt to extract the CPU model on the current host. This is OS
 specific:
 \itemize{
 \item Linux: \code{/proc/cpuinfo}

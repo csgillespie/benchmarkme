@@ -6,12 +6,12 @@
 \alias{benchmarkme}
 \title{The benchmarkme package}
 \description{
-Benchmark your CPU and compare against other CPUs. Also provides 
-functions for obtaining system specifications, such as 
+Benchmark your CPU and compare against other CPUs. Also provides
+functions for obtaining system specifications, such as
 RAM, CPU type, and R version.
 }
 \examples{
-## Benchmark your system and compare 
+## Benchmark your system and compare
 \dontrun{
 res = benchmark_std()
 upload_results(res)

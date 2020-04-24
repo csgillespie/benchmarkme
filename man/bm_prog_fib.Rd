@@ -37,7 +37,7 @@ A collection of matrix programming benchmark functions
 \item Creation of a 1600x1600 Toeplitz matrix (loops).
 \item Escoufier's method on a 60x60 matrix (mixed).
 }
-These benchmarks have been developed by many authors. 
+These benchmarks have been developed by many authors.
 See http://r.research.att.com/benchmarks/R-benchmark-25.R
 for a complete history. The function \code{benchmark_prog()} runs the five \code{bm} functions.
 }

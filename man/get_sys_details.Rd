@@ -42,10 +42,10 @@ get_sys_details(
 A list
 }
 \description{
-The \code{get_sys_info} returns general system level information as a list. The 
+The \code{get_sys_info} returns general system level information as a list. The
 function parameters control the information to upload. If a parameter is set to
 \code{FALSE}, an \code{NA} is uploaded instead. Each element of the list
-is contains the output from: 
+is contains the output from:
 \itemize{
 \item \code{Sys.info()};
 \item \code{get_platform_info()};

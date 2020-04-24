@@ -38,9 +38,9 @@ assessing the calculation speed.
 \item 2500x2500 cross-product matrix (b = a' * a)
 \item Linear regr. over a 3000x3000 matrix.
 }
-These benchmarks have been developed by many authors. 
+These benchmarks have been developed by many authors.
 See http://r.research.att.com/benchmarks/R-benchmark-25.R
-for a complete history. The function \code{benchmark_matrix_cal()} runs 
+for a complete history. The function \code{benchmark_matrix_cal()} runs
 the five \code{bm} functions.
 }
 \references{
