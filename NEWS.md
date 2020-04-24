@@ -1,4 +1,4 @@
-# benchmarkme (development version)
+# Version 1.0.4
   * Improve RAM detection in Windows (thanks to @xiaodaigh #25)
   * Example on using IEC units (#22)
 
