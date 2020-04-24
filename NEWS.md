@@ -1,5 +1,6 @@
 # benchmarkme (development version)
-  * Improve RAM detection in Winodws (thanks to @xiaodaigh #25)
+  * Improve RAM detection in Windows (thanks to @xiaodaigh #25)
+  * Example on using IEC units (#22)
 
 ## Version 1.0.2
   * Minor Bug fix for get_sys_details (thanks to @dipterix)

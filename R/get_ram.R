@@ -48,6 +48,8 @@ system_ram = function(os) {
 #' @examples
 #' ## Return (and pretty print) the amount of RAM
 #' get_ram()
+#' ## Display using iec units
+#' print(get_ram(), unit_system = "iec")
 get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
