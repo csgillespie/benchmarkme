@@ -1,7 +1,7 @@
 Type: Package
 Package: benchmarkme
 Title: Crowd Sourced System Benchmarks
-Version: 1.0.4
+Version: 1.0.5
 Authors@R: 
     person(given = "Colin",
            family = "Gillespie",
@@ -42,4 +42,4 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

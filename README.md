@@ -3,8 +3,7 @@
 
 # System benchmarking
 
-[![Build
-Status](https://travis-ci.org/csgillespie/benchmarkme.svg?branch=master)](https://travis-ci.org/csgillespie/benchmarkme)
+[![R-CMD-check](https://github.com/csgillespie/benchmarkme/workflows/R-CMD-check/badge.svg)](https://github.com/csgillespie/benchmarkme/actions)
 [![codecov.io](https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master)](https://codecov.io/github/csgillespie/benchmarkme?branch=master)
 [![Downloads](http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen)](https://cran.r-project.org/package=benchmarkme)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/benchmarkme)](https://cran.r-project.org/package=benchmarkme)
@@ -25,8 +24,7 @@ computer. Modern desktops are relatively cheap, especially compared to
 user time. However, it isn’t clear if upgrading your computing is worth
 the cost. The **benchmarkme** package provides a set of benchmarks to
 help quantify your system. More importantly, it allows you to compare
-your timings with *other*
-systems.
+your timings with *other* systems.
 
 <!-- You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface. -->
 
@@ -41,10 +39,10 @@ install.packages("benchmarkme")
 
 There are two groups of benchmarks:
 
-  - `benchmark_std()`: this benchmarks numerical operations such as
+-   `benchmark_std()`: this benchmarks numerical operations such as
     loops and matrix operations. The benchmark comprises of three
     separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
-  - `benchmark_io()`: this benchmarks reading and writing a 5 / 50, MB
+-   `benchmark_io()`: this benchmarks reading and writing a 5 / 50, MB
     csv file.
 
 ### The benchmark\_std() function
@@ -53,7 +51,7 @@ This benchmarks numerical operations such as loops and matrix
 operations. This benchmark comprises of three separate benchmarks:
 `prog`, `matrix_fun`, and `matrix_cal`. If you have less than 3GB of RAM
 (run `get_ram()` to find out how much is available on your system), then
-you should kill any memory hungry applications, e.g. firefox, and set
+you should kill any memory hungry applications, e.g. firefox, and set
 `runs = 1` as an argument.
 
 To benchmark your system, use
@@ -71,23 +69,17 @@ and upload your results
 upload_results(res)
 ```
 
-You can compare your results to other users
-via
+You can compare your results to other users via
 
 ``` r
 plot(res)
 ```
 
 <!-- You can also compare your results using the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.  -->
-
 <!-- Simply create a results bundle -->
-
 <!-- ```{r, eval=FALSE} -->
-
 <!-- create_bundle(res, filename = "results.rds") -->
-
 <!-- ``` -->
-
 <!-- and upload to the webpage. -->
 
 ### The benchmark\_io() function
@@ -148,12 +140,12 @@ data(past_results, package = "benchmarkmeData")
 
 The package has a few useful functions for extracting system specs:
 
-  - RAM: `get_ram()`
-  - CPUs: `get_cpu()`
-  - BLAS library: `get_linear_algebra()`
-  - Is byte compiling enabled: `get_byte_compiler()`
-  - General platform info: `get_platform_info()`
-  - R version: `get_r_version()`
+-   RAM: `get_ram()`
+-   CPUs: `get_cpu()`
+-   BLAS library: `get_linear_algebra()`
+-   Is byte compiling enabled: `get_byte_compiler()`
+-   General platform info: `get_platform_info()`
+-   R version: `get_r_version()`
 
 The above functions have been tested on a number of systems. If they
 don’t work on your system, please raise
@@ -181,18 +173,18 @@ Two objects are uploaded:
 
 The `get_sys_details()` returns:
 
-  - `Sys.info()`;
-  - `get_platform_info()`;
-  - `get_r_version()`;
-  - `get_ram()`;
-  - `get_cpu()`;
-  - `get_byte_compiler()`;
-  - `get_linear_algebra()`;
-  - `installed.packages()`;
-  - `Sys.getlocale()`;
-  - The `benchmarkme` version number;
-  - Unique ID - used to extract results;
-  - The current date.
+-   `Sys.info()`;
+-   `get_platform_info()`;
+-   `get_r_version()`;
+-   `get_ram()`;
+-   `get_cpu()`;
+-   `get_byte_compiler()`;
+-   `get_linear_algebra()`;
+-   `installed.packages()`;
+-   `Sys.getlocale()`;
+-   The `benchmarkme` version number;
+-   Unique ID - used to extract results;
+-   The current date.
 
 The function `Sys.info()` does include the user and nodenames. In the
 public release of the data, this information will be removed. If you
@@ -203,7 +195,7 @@ argument, i.e.
 upload_results(res, args = list(sys_info = FALSE))
 ```
 
------
+------------------------------------------------------------------------
 
 Development of this package was supported by [Jumping
 Rivers](https://www.jumpingrivers.com)
