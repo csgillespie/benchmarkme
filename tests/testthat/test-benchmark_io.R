@@ -1,5 +1,6 @@
 test_that("Test benchmark_io", {
   skip_on_cran()
+  library("benchmarkme")
   expect_error(benchmark_io(size = 1))
   res = benchmark_io(runs = 1, size = 5)
   res2 = benchmark_io(runs = 1, size = 5, cores = 2)
