@@ -42,6 +42,7 @@ bm_parallel = function(bm, runs, verbose, cores, ...) {
     cl = parallel::makeCluster(core, outfile = "")
     export = try(parallel::clusterExport(cl, bm), silent = TRUE) # Export
     check_export(export, cl)
+    parallel::clusterEvalQ(cl, "library(benchmarkme')")
 
     doParallel::registerDoParallel(cl)
     tmp = data.frame(user = numeric(length(runs)), system = 0, elapsed = 0,

@@ -1,4 +1,4 @@
-# Version 1.0.5 _2021-02-08_
+# benchmarkme Version 1.0.5 _2021-02-08_
   * Internal: Move to GitHub Actions
   * Internal: Detect `sysctl` on Macs
   * Bug: To run parallel checks, the package needs to be attached (thanks to @davidhen #33)
