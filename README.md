@@ -10,7 +10,7 @@
 
 R benchmarking made easy. The package contains a number of benchmarks,
 heavily based on the benchmarks at
-<http://r.research.att.com/benchmarks/R-benchmark-25.R>, for assessing
+<https://mac.R-project.org/benchmarks/R-benchmark-25.R>, for assessing
 the speed of your system.
 
 The package is for R 3.5 and above. In previous versions R, detecting
