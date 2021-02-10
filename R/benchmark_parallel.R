@@ -1,3 +1,13 @@
+check_export = function(export, cl) {
+  if (class(export) %in% "try-error") {
+    parallel::stopCluster(cl)
+    stop("You need to call library(benchmarkme) before running parallel tests.\\
+       If you think you can avoid this, see github.com/csgillespie/benchmarkme/issues/33",
+       call. = FALSE)
+  }
+  return(invisible(NULL))
+}
+
 #' Benchmark in parallel
 #'
 #' This function runs benchmarks in parallel to test multithreading
@@ -27,10 +37,13 @@ bm_parallel = function(bm, runs, verbose, cores, ...) {
   #TODO consider dropping first results from parallel results due to overhead
   results = data.frame(user = NA, system = NA, elapsed = NA, test = NA,
                         test_group = NA, cores = NA)
+
   for (core in cores) {
     cl = parallel::makeCluster(core, outfile = "")
+    export = try(parallel::clusterExport(cl, bm), silent = TRUE) # Export
+    check_export(export, cl)
+    parallel::clusterEvalQ(cl, "library('benchmarkme')")
 
-    parallel::clusterExport(cl, bm) # Export
     doParallel::registerDoParallel(cl)
     tmp = data.frame(user = numeric(length(runs)), system = 0, elapsed = 0,
                      test = NA, test_group = NA, cores = NA, stringsAsFactors = FALSE)

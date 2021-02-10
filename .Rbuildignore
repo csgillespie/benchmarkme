@@ -8,3 +8,7 @@
 ^README-.*\.png$
 ^.lintr$
 ^codecov.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^.github$

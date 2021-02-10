@@ -33,8 +33,13 @@ get_cpu_internal = function() {
     cmd  = "awk '/model name/' /proc/cpuinfo"
     model_name = gsub("model name\t: ", "", unique(system(cmd, intern = TRUE)))
   } else if (length(grep("^darwin", os))) {
-    vendor_id = system("sysctl -n machdep.cpu.vendor", intern = TRUE) # nocov
-    model_name = system("sysctl -n machdep.cpu.brand_string", intern = TRUE) # nocov
+    sysctl = Sys.which("sysctl")
+    if (nchar(sysctl) == 0L) {
+      vendor_id = model_name = NA
+    } else {
+      vendor_id = system(paste(sysctl, "-n machdep.cpu.vendor"), intern = TRUE) # nocov
+      model_name = system(paste(sysctl, "-n machdep.cpu.brand_string"), intern = TRUE) # nocov
+    }
   } else if (length(grep("^solaris", os))) {
     vendor_id = NA # nocov
     model_name = NA # nocov

@@ -21,7 +21,13 @@ system_ram = function(os) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
     ram = system(cmd, intern = TRUE)
   } else if (length(grep("^darwin", os))) {
-    ram = substring(system("sysctl hw.memsize", intern = TRUE), 13) #nocov
+    sysctl = Sys.which("sysctl")
+    if (nchar(sysctl) == 0L) {
+      ram = NA
+    } else {
+      ram = system(paste(sysctl, "hw.memsize"), intern = TRUE) #nocov
+      ram = substring(ram, 13)
+    }
   } else if (length(grep("^solaris", os))) {
     cmd = "prtconf | grep Memory" # nocov
     ram = system(cmd, intern = TRUE) ## Memory size: XXX Megabytes # nocov
@@ -53,7 +59,7 @@ system_ram = function(os) {
 get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
-  if (class(ram) == "try-error" || length(ram) == 0) {
+  if (class(ram) == "try-error" || length(ram) == 0 || is.na(ram)) {
     message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
     ram = structure(NA, class = "ram") # nocov
