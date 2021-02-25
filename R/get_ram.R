@@ -21,8 +21,8 @@ system_ram = function(os) {
     cmd = "awk '/MemTotal/ {print $2}' /proc/meminfo"
     ram = system(cmd, intern = TRUE)
   } else if (length(grep("^darwin", os))) {
-    sysctl = Sys.which("sysctl")
-    if (nchar(sysctl) == 0L) {
+    sysctl = get_sysctl()
+    if (is.na(sysctl)) {
       ram = NA
     } else {
       ram = system(paste(sysctl, "hw.memsize"), intern = TRUE) #nocov

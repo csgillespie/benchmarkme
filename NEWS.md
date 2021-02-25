@@ -1,3 +1,6 @@
+# benchmarkme Version 1.0.6 _2021-02-25_
+  * Internal: Better detection of `sysctl`
+
 # benchmarkme Version 1.0.5 _2021-02-08_
   * Internal: Move to GitHub Actions
   * Internal: Detect `sysctl` on Macs
