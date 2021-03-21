@@ -38,7 +38,7 @@ get_cpu_internal = function() {
       vendor_id = model_name = NA
     } else {
       vendor_id = suppressWarnings(system2(sysctl,  "-n machdep.cpu.vendor",
-                                           stdout = TRUE, stderr = NULL))
+                                           stdout = TRUE, stderr = NULL))  # nocov
 
       model_name = suppressWarnings(system2(sysctl, "-n machdep.cpu.brand_string",
                                             stdout = TRUE, stderr = NULL)) # nocov
