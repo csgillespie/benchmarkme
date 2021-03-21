@@ -1,3 +1,6 @@
+# benchmarkme Version 1.0.7 _2021-03-21_
+  * Internal: Suppress warnings on `sysctl` calls
+
 # benchmarkme Version 1.0.6 _2021-02-25_
   * Internal: Better detection of `sysctl`
 
