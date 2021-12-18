@@ -80,7 +80,7 @@ get_ram = function() {
 print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
   unit_system = match.arg(unit_system)
   #unit_system = "metric"
-  base = switch(unit_system, metric = 1000, iec = 1024)
+  base = switch(unit_system, iec = 1000, metric = 1024)
   power = min(floor(log(abs(x), base)), 8)
   if (is.na(x) || power < 1) {
     unit = "B"
