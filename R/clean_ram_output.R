@@ -41,5 +41,5 @@ clean_solaris_ram = function(ram) {
 clean_win_ram = function(ram) {
   ram = remove_white(ram)
   ram = ram[nchar(ram) > 0]
-  sum(as.numeric(ram))
+  sum(as.numeric(ram), na.rm=T)
 }
