@@ -10,7 +10,7 @@ to_bytes = function(value) {
 }
 
 clean_ram = function(ram, os) {
-  if (length(ram) > 1 || is.na(ram)) return(NA)
+  if (length(ram) > 1 && is.na(ram)) return(NA)
 
   if (length(grep("^linux", os))) {
     clean_ram = clean_linux_ram(ram)
@@ -41,5 +41,5 @@ clean_solaris_ram = function(ram) {
 clean_win_ram = function(ram) {
   ram = remove_white(ram)
   ram = ram[nchar(ram) > 0]
-  sum(as.numeric(ram), na.rm=T)
+  sum(as.numeric(ram))
 }
