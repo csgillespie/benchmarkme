@@ -77,18 +77,18 @@ get_ram = function() {
 }
 
 #' @rawNamespace S3method(print,ram)
-print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
+print.ram = function(x, digits = 3, unit_system = c("iec", "metric"), ...) {
   unit_system = match.arg(unit_system)
   #unit_system = "metric"
-  base = switch(unit_system, iec = 1000, metric = 1024)
+  base = switch(unit_system, metric = 1000, iec = 1024)
   power = min(floor(log(abs(x), base)), 8)
   if (is.na(x) || power < 1) {
     unit = "B"
   } else {
     unit_labels = switch(
       unit_system,
-      metric = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
-      iec = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
+      iec = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
+      metric = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
     )
     unit = unit_labels[[power]]
     x = x / (base^power)
