@@ -87,8 +87,8 @@ print.ram = function(x, digits = 3, unit_system = c("iec", "metric"), ...) {
   } else {
     unit_labels = switch(
       unit_system,
-      iec = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
-      metric = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
+      metric = c("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
+      iec = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
     )
     unit = unit_labels[[power]]
     x = x / (base^power)
