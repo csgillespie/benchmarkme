@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">benchmarkme</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.6</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -66,7 +62,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/csgillespie/benchmarkme/">
+  <a href="https://github.com/csgillespie/benchmarkme/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,24 +79,24 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="system-benchmarking" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#system-benchmarking" class="anchor"></a>System benchmarking</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="system-benchmarking">System benchmarking<a class="anchor" aria-label="anchor" href="#system-benchmarking"></a>
+</h1></div>
 
-<p>R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at <a href="https://mac.R-project.org/benchmarks/R-benchmark-25.R" class="uri">https://mac.R-project.org/benchmarks/R-benchmark-25.R</a>, for assessing the speed of your system.</p>
+<p>R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at <a href="https://mac.R-project.org/benchmarks/R-benchmark-25.R" class="external-link uri">https://mac.R-project.org/benchmarks/R-benchmark-25.R</a>, for assessing the speed of your system.</p>
 <p>The package is for R 3.5 and above. In previous versions R, detecting the effect of the byte compiler was tricky and produced unrealistic comparisons.</p>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>A straightforward way of speeding up your analysis is to buy a better computer. Modern desktops are relatively cheap, especially compared to user time. However, it isn’t clear if upgrading your computing is worth the cost. The <strong>benchmarkme</strong> package provides a set of benchmarks to help quantify your system. More importantly, it allows you to compare your timings with <em>other</em> systems.</p>
 <!-- You can view past benchmarks via the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface. -->
 </div>
-<div id="overview-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview-1" class="anchor"></a>Overview</h2>
-<p>The package is on <a href="https://cran.r-project.org/package=benchmarkme">CRAN</a> and can be installed in the usual way</p>
+<div class="section level2">
+<h2 id="overview-1">Overview<a class="anchor" aria-label="anchor" href="#overview-1"></a>
+</h2>
+<p>The package is on <a href="https://cran.r-project.org/package=benchmarkme" class="external-link">CRAN</a> and can be installed in the usual way</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"benchmarkme"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"benchmarkme"</span><span class="op">)</span></code></pre></div>
 <p>There are two groups of benchmarks:</p>
 <ul>
 <li>
@@ -108,22 +104,22 @@
 <li>
 <code><a href="reference/benchmark_io.html">benchmark_io()</a></code>: this benchmarks reading and writing a 5 / 50, MB csv file.</li>
 </ul>
-<div id="the-benchmark_std-function" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-benchmark_std-function" class="anchor"></a>The benchmark_std() function</h3>
+<div class="section level3">
+<h3 id="the-benchmark_std-function">The benchmark_std() function<a class="anchor" aria-label="anchor" href="#the-benchmark_std-function"></a>
+</h3>
 <p>This benchmarks numerical operations such as loops and matrix operations. This benchmark comprises of three separate benchmarks: <code>prog</code>, <code>matrix_fun</code>, and <code>matrix_cal</code>. If you have less than 3GB of RAM (run <code><a href="reference/get_ram.html">get_ram()</a></code> to find out how much is available on your system), then you should kill any memory hungry applications, e.g. firefox, and set <code>runs = 1</code> as an argument.</p>
 <p>To benchmark your system, use</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/csgillespie/benchmarkme">"benchmarkme"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/csgillespie/benchmarkme" class="external-link">"benchmarkme"</a></span><span class="op">)</span>
 <span class="co">## Increase runs if you have a higher spec machine</span>
 <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="reference/benchmark_std.html">benchmark_std</a></span><span class="op">(</span>runs <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p>and upload your results</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## You can control exactly what is uploaded. See details below.</span>
-<span class="fu"><a href="reference/create_bundle.html">upload_results</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="reference/upload_results.html">upload_results</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <p>You can compare your results to other users via</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <!-- You can also compare your results using the [Shiny](https://jumpingrivers.shinyapps.io/benchmarkme/) interface.  -->
 <!-- Simply create a results bundle -->
 <!-- ```{r, eval=FALSE} -->
@@ -131,44 +127,44 @@
 <!-- ``` -->
 <!-- and upload to the webpage. -->
 </div>
-<div id="the-benchmark_io-function" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-benchmark_io-function" class="anchor"></a>The benchmark_io() function</h3>
+<div class="section level3">
+<h3 id="the-benchmark_io-function">The benchmark_io() function<a class="anchor" aria-label="anchor" href="#the-benchmark_io-function"></a>
+</h3>
 <p>This function benchmarks reading and writing a 5MB or 50MB (if you have less than 4GB of RAM, reduce the number of <code>runs</code> to 1). Run the benchmark using</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res_io</span> <span class="op">=</span> <span class="fu"><a href="reference/benchmark_io.html">benchmark_io</a></span><span class="op">(</span>runs <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="reference/create_bundle.html">upload_results</a></span><span class="op">(</span><span class="va">res_io</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res_io</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="reference/upload_results.html">upload_results</a></span><span class="op">(</span><span class="va">res_io</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res_io</span><span class="op">)</span></code></pre></div>
 <p>By default the files are written to a temporary directory generated</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which depends on the value of</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"TMPDIR"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"TMPDIR"</span><span class="op">)</span></code></pre></div>
 <p>You can alter this to via the <code>tmpdir</code> argument. This is useful for comparing hard drive access to a network drive.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res_io</span> <span class="op">=</span> <span class="fu"><a href="reference/benchmark_io.html">benchmark_io</a></span><span class="op">(</span>tmpdir <span class="op">=</span> <span class="st">"some_other_directory"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="parallel-benchmarks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#parallel-benchmarks" class="anchor"></a>Parallel benchmarks</h3>
+<div class="section level3">
+<h3 id="parallel-benchmarks">Parallel benchmarks<a class="anchor" aria-label="anchor" href="#parallel-benchmarks"></a>
+</h3>
 <p>The benchmark functions above have a parallel option - just simply specify the number of cores you want to test. For example to test using four cores</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res_io</span> <span class="op">=</span> <span class="fu"><a href="reference/benchmark_std.html">benchmark_std</a></span><span class="op">(</span>runs <span class="op">=</span> <span class="fl">3</span>, cores <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res_io</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res_io</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="previous-versions-of-the-package" class="section level2">
-<h2 class="hasAnchor">
-<a href="#previous-versions-of-the-package" class="anchor"></a>Previous versions of the package</h2>
+<div class="section level2">
+<h2 id="previous-versions-of-the-package">Previous versions of the package<a class="anchor" aria-label="anchor" href="#previous-versions-of-the-package"></a>
+</h2>
 <p>This package was started around 2015. However, multiple changes in the byte compiler over the last few years, has made it very difficult to use previous results. So we have to start from scratch.</p>
 <p>The previous data can be obtained via</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">past_results</span>, package <span class="op">=</span> <span class="st">"benchmarkmeData"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">past_results</span>, package <span class="op">=</span> <span class="st">"benchmarkmeData"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="machine-specs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#machine-specs" class="anchor"></a>Machine specs</h2>
+<div class="section level2">
+<h2 id="machine-specs">Machine specs<a class="anchor" aria-label="anchor" href="#machine-specs"></a>
+</h2>
 <p>The package has a few useful functions for extracting system specs:</p>
 <ul>
 <li>RAM: <code><a href="reference/get_ram.html">get_ram()</a></code>
@@ -184,28 +180,28 @@
 <li>R version: <code><a href="reference/get_r_version.html">get_r_version()</a></code>
 </li>
 </ul>
-<p>The above functions have been tested on a number of systems. If they don’t work on your system, please raise <a href="https://github.com/csgillespie/benchmarkme/issues">GitHub</a> issue.</p>
+<p>The above functions have been tested on a number of systems. If they don’t work on your system, please raise <a href="https://github.com/csgillespie/benchmarkme/issues" class="external-link">GitHub</a> issue.</p>
 </div>
-<div id="uploaded-data-sets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#uploaded-data-sets" class="anchor"></a>Uploaded data sets</h2>
-<p>A summary of the uploaded data sets is available in the <a href="https://github.com/csgillespie/benchmarkme-data">benchmarkmeData</a> package</p>
+<div class="section level2">
+<h2 id="uploaded-data-sets">Uploaded data sets<a class="anchor" aria-label="anchor" href="#uploaded-data-sets"></a>
+</h2>
+<p>A summary of the uploaded data sets is available in the <a href="https://github.com/csgillespie/benchmarkme-data" class="external-link">benchmarkmeData</a> package</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">past_results_v2</span>, package <span class="op">=</span> <span class="st">"benchmarkmeData"</span><span class="op">)</span></code></pre></div>
-<p>A column of this data set, contains the unique identifier returned by the <code><a href="reference/create_bundle.html">upload_results()</a></code> function.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">past_results_v2</span>, package <span class="op">=</span> <span class="st">"benchmarkmeData"</span><span class="op">)</span></code></pre></div>
+<p>A column of this data set, contains the unique identifier returned by the <code><a href="reference/upload_results.html">upload_results()</a></code> function.</p>
 </div>
-<div id="whats-uploaded" class="section level2">
-<h2 class="hasAnchor">
-<a href="#whats-uploaded" class="anchor"></a>What’s uploaded</h2>
+<div class="section level2">
+<h2 id="whats-uploaded">What’s uploaded<a class="anchor" aria-label="anchor" href="#whats-uploaded"></a>
+</h2>
 <p>Two objects are uploaded:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>Your benchmarks from <code>benchmark_std</code> or <code>benchmark_io</code>;</li>
 <li>A summary of your system information (<code><a href="reference/get_sys_details.html">get_sys_details()</a></code>).</li>
 </ol>
 <p>The <code><a href="reference/get_sys_details.html">get_sys_details()</a></code> returns:</p>
 <ul>
 <li>
-<code><a href="https://rdrr.io/r/base/Sys.info.html">Sys.info()</a></code>;</li>
+<code><a href="https://rdrr.io/r/base/Sys.info.html" class="external-link">Sys.info()</a></code>;</li>
 <li>
 <code><a href="reference/get_platform_info.html">get_platform_info()</a></code>;</li>
 <li>
@@ -219,68 +215,78 @@
 <li>
 <code><a href="reference/get_linear_algebra.html">get_linear_algebra()</a></code>;</li>
 <li>
-<code><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages()</a></code>;</li>
+<code><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages()</a></code>;</li>
 <li>
-<code><a href="https://rdrr.io/r/base/locales.html">Sys.getlocale()</a></code>;</li>
+<code><a href="https://rdrr.io/r/base/locales.html" class="external-link">Sys.getlocale()</a></code>;</li>
 <li>The <code>benchmarkme</code> version number;</li>
 <li>Unique ID - used to extract results;</li>
 <li>The current date.</li>
 </ul>
-<p>The function <code><a href="https://rdrr.io/r/base/Sys.info.html">Sys.info()</a></code> does include the user and nodenames. In the public release of the data, this information will be removed. If you don’t wish to upload certain information, just set the corresponding argument, i.e.</p>
+<p>The function <code><a href="https://rdrr.io/r/base/Sys.info.html" class="external-link">Sys.info()</a></code> does include the user and nodenames. In the public release of the data, this information will be removed. If you don’t wish to upload certain information, just set the corresponding argument, i.e.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/create_bundle.html">upload_results</a></span><span class="op">(</span><span class="va">res</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sys_info <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/upload_results.html">upload_results</a></span><span class="op">(</span><span class="va">res</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sys_info <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <hr>
-<p>Development of this package was supported by <a href="https://www.jumpingrivers.com">Jumping Rivers</a></p>
+<p>Development of this package was supported by <a href="https://www.jumpingrivers.com" class="external-link">Jumping Rivers</a></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=benchmarkme">https://​cloud.r-project.org/​package=benchmarkme</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/csgillespie/benchmarkme/">https://​github.com/​csgillespie/​benchmarkme/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/csgillespie/benchmarkme/issues">https://​github.com/​csgillespie/​benchmarkme/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://www.r-project.org/Licenses/GPL-2">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a>
-</li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Colin Gillespie <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1787-0275" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://cloud.r-project.org/package=benchmarkme" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/csgillespie/benchmarkme/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/csgillespie/benchmarkme/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/csgillespie/benchmarkme/actions"><img src="https://github.com/csgillespie/benchmarkme/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/github/csgillespie/benchmarkme?branch=master"><img src="https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master" alt="codecov.io"></a></li>
-<li><a href="https://cran.r-project.org/package=benchmarkme"><img src="http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen" alt="Downloads"></a></li>
-<li><a href="https://cran.r-project.org/package=benchmarkme"><img src="http://www.r-pkg.org/badges/version/benchmarkme" alt="CRAN_Status_Badge"></a></li>
+<li>
+<a href="https://www.r-project.org/Licenses/GPL-2" class="external-link">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a>
+</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing benchmarkme</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Colin Gillespie <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1787-0275" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/csgillespie/benchmarkme/actions" class="external-link"><img src="https://github.com/csgillespie/benchmarkme/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/github/csgillespie/benchmarkme?branch=master" class="external-link"><img src="https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master" alt="codecov.io"></a></li>
+<li><a href="https://cran.r-project.org/package=benchmarkme" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen" alt="Downloads"></a></li>
+<li><a href="https://cran.r-project.org/package=benchmarkme" class="external-link"><img src="http://www.r-pkg.org/badges/version/benchmarkme" alt="CRAN_Status_Badge"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Gillespie.</p>
+  <p></p>
+<p>Developed by Colin Gillespie.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -288,6 +294,8 @@
 
   
 
+
+  
 
   </body>
 </html>
