@@ -77,7 +77,7 @@ get_ram = function() {
 }
 
 #' @rawNamespace S3method(print,ram)
-print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
+print.ram = function(x, digits = 3, unit_system = c("iec", "metric"), ...) {
   unit_system = match.arg(unit_system)
   #unit_system = "metric"
   base = switch(unit_system, metric = 1000, iec = 1024)
