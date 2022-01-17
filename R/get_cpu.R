@@ -48,7 +48,7 @@ get_cpu_internal = function() {
     model_name = system("wmic cpu get name", intern = TRUE)[2] # nocov
     vendor_id = system("wmic cpu get manufacturer", intern = TRUE)[2] # nocov
   }
-  list(vendor_id = remove_white(vendor_id),
-       model_name = remove_white(model_name),
+  list(vendor_id = stringr::str_squish(vendor_id),
+       model_name = stringr::str_squish(model_name),
        no_of_cores = parallel::detectCores())
 }

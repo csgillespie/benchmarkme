@@ -10,14 +10,18 @@ to_bytes = function(value) {
 }
 
 clean_ram = function(ram, os) {
-  if (length(ram) > 1 && is.na(ram)) return(NA)
+  ram = stringr::str_squish(ram)
+  ram = ram[nchar(ram) > 0L]
+  if (length(ram) > 1 ||
+      is.na(ram)) ||
+      length(grep("^solaris", os))) { # Don't care about solaris
+    return(NA)
+  }
 
   if (length(grep("^linux", os))) {
     clean_ram = clean_linux_ram(ram)
   } else if (length(grep("^darwin", os))) {
     clean_ram = clean_darwin_ram(ram) # nocov
-  } else if (length(grep("^solaris", os))) {
-    clean_ram = clean_solaris_ram(ram) # nocov
   } else {
     clean_ram = clean_win_ram(ram) # nocov
   }
@@ -33,13 +37,6 @@ clean_darwin_ram = function(ram) {
   as.numeric(ram)
 }
 
-clean_solaris_ram = function(ram) {
-  ram = remove_white(ram)
-  to_bytes(unlist(strsplit(ram, " "))[3:4])
-}
-
 clean_win_ram = function(ram) {
-  ram = remove_white(ram)
-  ram = ram[nchar(ram) > 0]
   sum(as.numeric(ram))
 }

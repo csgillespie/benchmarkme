@@ -3,15 +3,12 @@ Package: benchmarkme
 Title: Crowd Sourced System Benchmarks
 Version: 1.0.6
 Authors@R: 
-    person(given = "Colin",
-           family = "Gillespie",
-           role = c("aut", "cre"),
-           email = "csgillespie@gmail.com",
+    person("Colin", "Gillespie", , "csgillespie@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1787-0275"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
-Description: Benchmark your CPU and compare against other CPUs.
-    Also provides functions for obtaining system specifications, such as
-    RAM, CPU type, and R version.
+Description: Benchmark your CPU and compare against other CPUs.  Also
+    provides functions for obtaining system specifications, such as RAM,
+    CPU type, and R version.
 License: GPL-2 | GPL-3
 URL: https://github.com/csgillespie/benchmarkme
 BugReports: https://github.com/csgillespie/benchmarkme/issues
@@ -28,6 +25,7 @@ Imports:
     Matrix,
     methods,
     parallel,
+    stringr,
     tibble,
     utils
 Suggests: 
