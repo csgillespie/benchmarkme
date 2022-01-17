@@ -13,7 +13,7 @@ clean_ram = function(ram, os) {
   ram = stringr::str_squish(ram)
   ram = ram[nchar(ram) > 0L]
   if (length(ram) > 1 ||
-      is.na(ram)) ||
+      is.na(ram) ||
       length(grep("^solaris", os))) { # Don't care about solaris
     return(NA)
   }
