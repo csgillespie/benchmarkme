@@ -73,7 +73,6 @@ benchmark_io_parallel = function(runs, size, tmpdir, verbose, cores) {
   results
 }
 
-#bm_io(runs = runs, size = s, tmpdir = tmpdir, verbose = verbose)
 #' @rdname benchmark_io
 #' @export
 bm_read = function(runs = 3, size = c(5, 50),

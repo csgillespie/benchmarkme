@@ -29,8 +29,7 @@ system_ram = function(os) {
       ram = substring(ram, 13)
     }
   } else if (length(grep("^solaris", os))) {
-    cmd = "prtconf | grep Memory" # nocov
-    ram = system(cmd, intern = TRUE) ## Memory size: XXX Megabytes # nocov
+    ram = NA
   } else {
     ram = get_windows_ram() # nocov
   }
@@ -79,7 +78,6 @@ get_ram = function() {
 #' @rawNamespace S3method(print,ram)
 print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
   unit_system = match.arg(unit_system)
-  #unit_system = "metric"
   base = switch(unit_system, metric = 1000, iec = 1024)
   power = min(floor(log(abs(x), base)), 8)
   if (is.na(x) || power < 1) {

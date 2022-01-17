@@ -31,14 +31,6 @@ get_byte_compiler = function() {
     }
   }
 
-  ## Try to detect enableJIT
-  ## Return to same state as we found it
-  ## This shouldn't affect benchmark tests. So remove.
-  #if(comp == 0L) {
-  #  comp = compiler::enableJIT(3)
-  #  compiler::enableJIT(comp)
-  #}
-
   if (comp == 0L && require("benchmarkme")) {
     # Get function definition
     # Check if cmpfun has been used

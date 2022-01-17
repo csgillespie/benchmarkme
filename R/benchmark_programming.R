@@ -39,8 +39,8 @@ bm_prog_hilbert = function(runs=3, verbose=TRUE) {
   for (i in 1:runs) {
     invisible(gc())
     start = proc.time()
-    b <- rep(1:a, a); dim(b) <- c(a, a);
-    b <- 1 / (t(b) + 0:(a - 1))
+    b = rep(1:a, a); dim(b) = c(a, a);
+    b = 1 / (t(b) + 0:(a - 1))
     stop = proc.time()
     timings[i, 1:3] = (stop - start)[1:3]
   }
@@ -59,7 +59,7 @@ bm_prog_gcd = function(runs = 3, verbose = TRUE) {
     if (sum(y > 1.0E-4) == 0) {
       x
     } else {
-      y[y == 0] <- x[y == 0]; Recall(y, x %% y)
+      y[y == 0] = x[y == 0]; Recall(y, x %% y)
     }
   }
   for (i in 1:runs) {
@@ -67,9 +67,9 @@ bm_prog_gcd = function(runs = 3, verbose = TRUE) {
     b = ceiling(runif(1000000) * 1000)
     invisible(gc())
     start = proc.time()
-    ans <- gcd2(a, b)# gcd2 is a recursive function
+    ans = gcd2(a, b)# gcd2 is a recursive function
     stop = proc.time()
-    timings[i, 1:3] <- (stop - start)[1:3]
+    timings[i, 1:3] = (stop - start)[1:3]
   }
   if (verbose)
     message(c("\tGrand common divisors of 1,000,000 pairs (recursion)", timings_mean(timings)))
@@ -109,8 +109,8 @@ bm_prog_escoufier = function(runs = 3, verbose = TRUE) {
   timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "escoufier", test_group = "prog",
                        stringsAsFactors = FALSE)
-  p <- 0; vt <- 0; vr <- 0; vrt <- 0; rvt <- 0; RV <- 0; j <- 0; k <- 0; #nolint
-  x2 <- 0; R <- 0; r_xx <- 0; r_yy <- 0; r_xy <- 0; r_yx <- 0; r_vmax <- 0    #nolint
+  p = 0; vt = 0; vr = 0; vrt = 0; rvt = 0; RV = 0; j = 0; k = 0; #nolint
+  x2 = 0; R = 0; r_xx = 0; r_yy = 0; r_xy = 0; r_yx = 0; r_vmax = 0    #nolint
   # Calculate the trace of a matrix (sum of its diagonal elements)
   tr = function(y) {
     sum(c(y)[1 + 0:(min(dim(y)) - 1) * (dim(y)[1] + 1)], na.rm = FALSE)
@@ -121,31 +121,31 @@ bm_prog_escoufier = function(runs = 3, verbose = TRUE) {
     invisible(gc())
     start = proc.time()
     # Calculation of Escoufier's equivalent vectors
-    p <- ncol(x)
-    vt <- 1:p                                  # Variables to test
-    vr <- NULL                                 # Result: ordered variables
-    RV <- 1:p                                  # Result: correlations #nolint
-    vrt <- NULL
+    p = ncol(x)
+    vt = 1:p                                  # Variables to test
+    vr = NULL                                 # Result: ordered variables
+    RV = 1:p                                  # Result: correlations #nolint
+    vrt = NULL
     # loop on the variable number
     for (j in 1:p) {
-      r_vmax <- 0
+      r_vmax = 0
       # loop on the variables
       for (k in 1:(p - j + 1)) {
-        x2 <- cbind(x, x[, vr], x[, vt[k]])
-        R <- cor(x2)                           # Correlations table #nolint
-        r_yy <- R[1:p, 1:p]
-        r_xx <- R[(p + 1):(p + j), (p + 1):(p + j)]
-        r_xy <- R[(p + 1):(p + j), 1:p]
-        r_yx <- t(r_xy)
-        rvt <- tr(r_yx %*% r_xy) / sqrt(tr(r_yy %*% r_yy) * tr(r_xx %*% r_xx)) # RV calculation
+        x2 = cbind(x, x[, vr], x[, vt[k]])
+        R = cor(x2)                           # Correlations table #nolint
+        r_yy = R[1:p, 1:p]
+        r_xx = R[(p + 1):(p + j), (p + 1):(p + j)]
+        r_xy = R[(p + 1):(p + j), 1:p]
+        r_yx = t(r_xy)
+        rvt = tr(r_yx %*% r_xy) / sqrt(tr(r_yy %*% r_yy) * tr(r_xx %*% r_xx)) # RV calculation
         if (rvt > r_vmax) {
-          r_vmax <- rvt                         # test of RV
-          vrt <- vt[k]                         # temporary held variable
+          r_vmax = rvt                         # test of RV
+          vrt = vt[k]                         # temporary held variable
         }
       }
-      vr[j] <- vrt                             # Result: variable
-      RV[j] <- r_vmax                           # Result: correlation
-      vt <- vt[vt != vr[j]]                      # reidentify variables to test
+      vr[j] = vrt                             # Result: variable
+      RV[j] = r_vmax                           # Result: correlation
+      vt = vt[vt != vr[j]]                      # reidentify variables to test
     }
     stop = proc.time()
 

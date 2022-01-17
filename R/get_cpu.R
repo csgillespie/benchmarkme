@@ -37,8 +37,12 @@ get_cpu_internal = function() {
     if (is.na(sysctl)) {
       vendor_id = model_name = NA
     } else {
-      vendor_id = system(paste(sysctl, "-n machdep.cpu.vendor"), intern = TRUE) # nocov
-      model_name = system(paste(sysctl, "-n machdep.cpu.brand_string"), intern = TRUE) # nocov
+      vendor_id = suppressWarnings(system2(sysctl,  "-n machdep.cpu.vendor",
+                                           stdout = TRUE, stderr = NULL))  # nocov
+
+      model_name = suppressWarnings(system2(sysctl, "-n machdep.cpu.brand_string",
+                                            stdout = TRUE, stderr = NULL)) # nocov
+
     }
   } else if (length(grep("^solaris", os))) {
     vendor_id = NA # nocov
@@ -48,7 +52,7 @@ get_cpu_internal = function() {
     model_name = system("wmic cpu get name", intern = TRUE)[2] # nocov
     vendor_id = system("wmic cpu get manufacturer", intern = TRUE)[2] # nocov
   }
-  list(vendor_id = remove_white(vendor_id),
-       model_name = remove_white(model_name),
+  list(vendor_id = stringr::str_squish(vendor_id),
+       model_name = stringr::str_squish(model_name),
        no_of_cores = parallel::detectCores())
 }

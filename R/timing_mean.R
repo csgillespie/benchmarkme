@@ -4,5 +4,3 @@ timings_mean = function(timings) {
   m = mean(ti)
   paste0(": ", signif(m, 3), " (sec).")
 }
-
-remove_white = function(x) gsub("(^[[:space:]]+|[[:space:]]+$)", "", x)

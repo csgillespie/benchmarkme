@@ -1,3 +1,8 @@
+# benchmarkme Version 1.0.7 _2022-01-17_
+  * Internal: Suppress warnings on `sysctl` calls
+  * Fix: `get_ram()` for windows (thanks to @ArkaB-DS #41)
+  * Deprecate Solaris support
+
 # benchmarkme Version 1.0.6 _2021-02-25_
   * Internal: Better detection of `sysctl`
 

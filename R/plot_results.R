@@ -63,7 +63,7 @@ make_plot = function(x, blas_optimize, log, ...) {
   op = par(mar = c(3, 3, 2, 1), mgp = c(2, 0.4, 0), tck = -.01,
            cex.axis = 0.8, las = 1, mfrow = c(1, 2))
   old_pal = palette()
-  on.exit({palette(old_pal); par(op)})
+  on.exit({palette(old_pal); par(op)}) #nolint
   nice_palette()
 
   ## Calculate adjustment for sensible "You" placement
