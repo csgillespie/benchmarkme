@@ -12,6 +12,11 @@ to_bytes = function(value) {
 clean_ram = function(ram, os) {
   ram = stringr::str_squish(ram)
   ram = ram[nchar(ram) > 0L]
+  # Some Windows machine with multiple physical RAM modules will report RAM in a
+  # vector hence this logic to handle that case
+  if(.Platform$OS.type == "windows" && length(ram) > 1) {
+    return(sum(sapply(ram, clean_win_ram)))
+  }
   if (length(ram) > 1 ||
       is.na(ram) ||
       length(grep("^solaris", os))) { # Don't care about solaris
