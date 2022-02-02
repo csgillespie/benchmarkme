@@ -15,7 +15,8 @@ clean_ram = function(ram, os) {
   # Some Windows machine with multiple physical RAM modules will report RAM in a
   # vector hence this logic to handle that case
   if(.Platform$OS.type == "windows" && length(ram) > 1) {
-    return(sum(sapply(ram, clean_win_ram)))
+    clean_ram = clean_win_ram(ram) # nocov
+    return(unname(clean_ram))
   }
   if (length(ram) > 1 ||
       is.na(ram) ||
