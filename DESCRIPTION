@@ -1,7 +1,7 @@
 Type: Package
 Package: benchmarkme
 Title: Crowd Sourced System Benchmarks
-Version: 1.0.7
+Version: 1.0.8
 Authors@R: 
     person("Colin", "Gillespie", , "csgillespie@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1787-0275"))
