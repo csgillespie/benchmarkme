@@ -1,3 +1,6 @@
+# benchmarkme Version 1.0.8 _2022-02-02_
+  * Fix: `get_ram()` for windows (thanks to @ArkaB-DS @xiaodaigh #45)
+  
 # benchmarkme Version 1.0.7 _2022-01-17_
   * Internal: Suppress warnings on `sysctl` calls
   * Fix: `get_ram()` for windows (thanks to @ArkaB-DS #41)
