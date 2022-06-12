@@ -16,7 +16,7 @@
 #' get_cpu()
 get_cpu = function() {
   cpu = try(get_cpu_internal(), silent = TRUE)
-  if (class(cpu) == "try-error") {
+  if (inherits(cpu, "try-error")) {
     message("\t Unable to detect your CPU.
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
     cpu = list(vendor_id = NA_character_, model_name = NA_character_) # nocov

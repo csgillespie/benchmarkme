@@ -64,5 +64,5 @@ is contains the output from:
 }
 \examples{
 ## Returns all details about your machine
-get_sys_details()
+get_sys_details(cpu = FALSE, installed_packages = FALSE, ram = FALSE)
 }

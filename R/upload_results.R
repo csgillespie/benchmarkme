@@ -46,9 +46,9 @@ upload_results = function(results,
   type = create_bundle(results, fname, id_prefix = id_prefix)
 
   message("Uploading results")
-  r = httr::POST(url,
-           body = list(userFile = httr::upload_file(fname)),
-           encode = "multipart")
+  httr::POST(url,
+             body = list(userFile = httr::upload_file(fname)),
+             encode = "multipart")
 
   message("Upload complete")
   message("Tracking id: ", type$id)

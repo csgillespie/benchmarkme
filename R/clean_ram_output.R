@@ -14,7 +14,7 @@ clean_ram = function(ram, os) {
   ram = ram[nchar(ram) > 0L]
   # Some Windows machine with multiple physical RAM modules will report RAM in a
   # vector hence this logic to handle that case
-  if(.Platform$OS.type == "windows" && length(ram) > 1) {
+  if (.Platform$OS.type == "windows" && length(ram) > 1) {
     clean_ram = clean_win_ram(ram) # nocov
     return(unname(clean_ram))
   }

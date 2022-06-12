@@ -1,6 +1,6 @@
 get_windows_ram = function() {
   ram = try(system("grep MemTotal /proc/meminfo", intern = TRUE), silent = TRUE)
-  if (class(ram) != "try-error" && length(ram) != 0) {
+  if (!inherits(ram, "try-error") && length(ram) != 0) {
     ram = strsplit(ram, " ")[[1]]
     mult = switch(ram[length(ram)],
                   "B" = 1L,
@@ -58,13 +58,13 @@ system_ram = function(os) {
 get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
-  if (class(ram) == "try-error" || length(ram) == 0 || is.na(ram)) {
+  if (inherits(ram, "try-error") || length(ram) == 0L || is.na(ram)) {
     message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
     ram = structure(NA, class = "ram") # nocov
   } else {
     cleaned_ram = suppressWarnings(try(clean_ram(ram, os), silent = TRUE))
-    if (class(cleaned_ram) == "try-error" || length(ram) == 0) {
+    if (inherits(cleaned_ram, "try-error") || length(ram) == 0L) {
       message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
       ram = structure(NA, class = "ram") #nocov

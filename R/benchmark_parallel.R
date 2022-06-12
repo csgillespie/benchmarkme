@@ -62,5 +62,5 @@ bm_parallel = function(bm, runs, verbose, cores, ...) {
     parallel::stopCluster(cl)# Would be nice to have on.exit here, but we run out of memory
   }
 
-  return(na.omit(results))
+  return(stats::na.omit(results))
 }
