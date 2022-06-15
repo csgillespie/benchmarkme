@@ -34,13 +34,13 @@
 #' @export
 #' @examples
 #' ## Returns all details about your machine
-#' get_sys_details()
+#' get_sys_details(cpu = FALSE, installed_packages = FALSE, ram = FALSE)
 get_sys_details = function(sys_info = TRUE, platform_info = TRUE,
-                           r_version = TRUE, ram=TRUE,
-                           cpu=TRUE, byte_compiler=TRUE,
-                           linear_algebra=TRUE,
-                           locale = TRUE, installed_packages=TRUE,
-                           machine=TRUE) {
+                           r_version = TRUE, ram = TRUE,
+                           cpu = TRUE, byte_compiler = TRUE,
+                           linear_algebra = TRUE,
+                           locale = TRUE, installed_packages = TRUE,
+                           machine = TRUE) {
   l = list()
   if (sys_info) l$sys_info = as.list(Sys.info())
   else l$sys_info = NA

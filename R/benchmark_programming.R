@@ -13,8 +13,8 @@
 #' @inheritParams benchmark_std
 #' @importFrom stats runif
 #' @export
-bm_prog_fib = function(runs=3, verbose=TRUE) {
-  a = 0; b = 0; phi = 1.6180339887498949
+bm_prog_fib = function(runs = 3, verbose = TRUE) {
+  a = 0; b = 0; phi = 1.6180339887498949 #nolint
   timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "fib", test_group = "prog", stringsAsFactors = FALSE)
   for (i in 1:runs) {
@@ -32,14 +32,14 @@ bm_prog_fib = function(runs=3, verbose=TRUE) {
 
 #' @rdname bm_prog_fib
 #' @export
-bm_prog_hilbert = function(runs=3, verbose=TRUE) {
-  a = 3500; b = 0
+bm_prog_hilbert = function(runs = 3, verbose = TRUE) {
+  a = 3500; b = 0 #nolint
   timings = data.frame(user = numeric(runs), system = 0, elapsed = 0,
                        test = "hilbert", test_group = "prog", stringsAsFactors = FALSE)
   for (i in 1:runs) {
     invisible(gc())
     start = proc.time()
-    b = rep(1:a, a); dim(b) = c(a, a);
+    b = rep(1:a, a); dim(b) = c(a, a) #nolint
     b = 1 / (t(b) + 0:(a - 1))
     stop = proc.time()
     timings[i, 1:3] = (stop - start)[1:3]
@@ -59,7 +59,8 @@ bm_prog_gcd = function(runs = 3, verbose = TRUE) {
     if (sum(y > 1.0E-4) == 0) {
       x
     } else {
-      y[y == 0] = x[y == 0]; Recall(y, x %% y)
+      y[y == 0] = x[y == 0]
+      Recall(y, x %% y)
     }
   }
   for (i in 1:runs) {
@@ -124,7 +125,7 @@ bm_prog_escoufier = function(runs = 3, verbose = TRUE) {
     p = ncol(x)
     vt = 1:p                                  # Variables to test
     vr = NULL                                 # Result: ordered variables
-    RV = 1:p                                  # Result: correlations #nolint
+    rv_cor = 1:p                                  # Result: correlations #nolint
     vrt = NULL
     # loop on the variable number
     for (j in 1:p) {
@@ -137,14 +138,14 @@ bm_prog_escoufier = function(runs = 3, verbose = TRUE) {
         r_xx = R[(p + 1):(p + j), (p + 1):(p + j)]
         r_xy = R[(p + 1):(p + j), 1:p]
         r_yx = t(r_xy)
-        rvt = tr(r_yx %*% r_xy) / sqrt(tr(r_yy %*% r_yy) * tr(r_xx %*% r_xx)) # RV calculation
+        rvt = tr(r_yx %*% r_xy) / sqrt(tr(r_yy %*% r_yy) * tr(r_xx %*% r_xx)) # rv_cor calculation
         if (rvt > r_vmax) {
-          r_vmax = rvt                         # test of RV
+          r_vmax = rvt                         # test of rv_cor
           vrt = vt[k]                         # temporary held variable
         }
       }
       vr[j] = vrt                             # Result: variable
-      RV[j] = r_vmax                           # Result: correlation
+      rv_cor[j] = r_vmax                           # Result: correlation
       vt = vt[vt != vr[j]]                      # reidentify variables to test
     }
     stop = proc.time()
