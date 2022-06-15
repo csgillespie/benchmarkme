@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -58,9 +58,10 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.8" id="benchmarkme-version-108-2022-02-02">benchmarkme Version 1.0.8 <em>2022-02-02</em>
-<a class="anchor" aria-label="anchor" href="#benchmarkme-version-108-2022-02-02"></a></h2>
-<ul><li>Fix: <code><a href="../reference/get_ram.html">get_ram()</a></code> for windows (thanks to <a href="https://github.com/ArkaB-DS" class="external-link">@ArkaB-DS</a> <a href="https://github.com/xiaodaigh" class="external-link">@xiaodaigh</a> <a href="https://github.com/csgillespie/benchmarkme/issues/45" class="external-link">#45</a>)</li>
+<h2 class="page-header" data-toc-text="1.0.8" id="benchmarkme-version-108-2022-06-02">benchmarkme Version 1.0.8 <em>2022-06-02</em>
+<small>2022-06-12</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-108-2022-06-02"></a></h2>
+<ul><li>fix: <code><a href="../reference/get_ram.html">get_ram()</a></code> for windows (thanks to <a href="https://github.com/ArkaB-DS" class="external-link">@ArkaB-DS</a> <a href="https://github.com/xiaodaigh" class="external-link">@xiaodaigh</a> <a href="https://github.com/csgillespie/benchmarkme/issues/45" class="external-link">#45</a>)</li>
+<li>internal: linting &amp; format NEWS.md file</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.7" id="benchmarkme-version-107-2022-01-17">benchmarkme Version 1.0.7 <em>2022-01-17</em>
@@ -73,8 +74,7 @@
 <h2 class="page-header" data-toc-text="1.0.6" id="benchmarkme-version-106-2021-02-25">benchmarkme Version 1.0.6 <em>2021-02-25</em>
 <small>2021-02-26</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-106-2021-02-25"></a></h2>
 <ul><li>Internal: Better detection of <code>sysctl</code>
-</li>
-</ul></div>
+</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.5" id="benchmarkme-version-105-2021-02-08">benchmarkme Version 1.0.5 <em>2021-02-08</em>
 <small>2021-02-09</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-105-2021-02-08"></a></h2>
@@ -83,103 +83,92 @@
 <li>Bug: To run parallel checks, the package needs to be attached (thanks to <a href="https://github.com/davidhen" class="external-link">@davidhen</a> <a href="https://github.com/csgillespie/benchmarkme/issues/33" class="external-link">#33</a>)</li>
 </ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.4" id="version-104">Version 1.0.4<small>2020-05-09</small><a class="anchor" aria-label="anchor" href="#version-104"></a></h2>
+<h2 class="page-header" data-toc-text="1.0.4" id="benchmarkme-version-104">benchmarkme Version 1.0.4<small>2020-05-09</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-104"></a></h2>
 <ul><li>Improve RAM detection in Windows (thanks to <a href="https://github.com/xiaodaigh" class="external-link">@xiaodaigh</a> <a href="https://github.com/csgillespie/benchmarkme/issues/25" class="external-link">#25</a>)</li>
 <li>Example on using IEC units (<a href="https://github.com/csgillespie/benchmarkme/issues/22" class="external-link">#22</a>)</li>
-</ul><div class="section level3">
-<h3 id="version-1-0-4">Version 1.0.2<a class="anchor" aria-label="anchor" href="#version-1-0-4"></a></h3>
-<ul><li>Minor Bug fix for get_sys_details (thanks to <a href="https://github.com/dipterix" class="external-link">@dipterix</a>)</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-1">Version 1.0.1<a class="anchor" aria-label="anchor" href="#version-1-0-4-1"></a></h3>
-<ul><li>Typo in vignette (thanks to <a href="https://github.com/tmartensecon" class="external-link">@tmartensecon</a>)</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-2">Version 1.0.0<a class="anchor" aria-label="anchor" href="#version-1-0-4-2"></a></h3>
-<ul><li>Update version focused on R 3.5 &amp; above. Start anew. Sorry everyone</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-3">Version 0.6.1<a class="anchor" aria-label="anchor" href="#version-1-0-4-3"></a></h3>
-<ul><li>Improved BLAS detection (suggested by <a href="https://github.com/ck37" class="external-link">@ck37</a> <a href="https://github.com/csgillespie/benchmarkme/issues/15" class="external-link">#15</a>)</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-4">Version 0.6.0<a class="anchor" aria-label="anchor" href="#version-1-0-4-4"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.2" id="benchmarkme-version-102">benchmarkme Version 1.0.2<small>2019-08-19</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-102"></a></h2>
+<ul><li>Minor Bug fix for get_sys_details (thanks to <a href="https://github.com/dipterix" class="external-link">@dipterix</a>)</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.1" id="benchmarkme-version-101">benchmarkme Version 1.0.1<a class="anchor" aria-label="anchor" href="#benchmarkme-version-101"></a></h2>
+<ul><li>Typo in vignette (thanks to <a href="https://github.com/tmartensecon" class="external-link">@tmartensecon</a>)</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.0" id="benchmarkme-version-100">benchmarkme Version 1.0.0<small>2019-01-28</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-100"></a></h2>
+<ul><li>Update version focused on R 3.5 &amp; above. Start anew. Sorry everyone</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.1" id="benchmarkme-version-061">benchmarkme Version 0.6.1<a class="anchor" aria-label="anchor" href="#benchmarkme-version-061"></a></h2>
+<ul><li>Improved BLAS detection (suggested by <a href="https://github.com/ck37" class="external-link">@ck37</a> <a href="https://github.com/csgillespie/benchmarkme/issues/15" class="external-link">#15</a>)</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.0" id="benchmarkme-version-060">benchmarkme Version 0.6.0<small>2017-08-30</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-060"></a></h2>
 <ul><li>Adding parallel benchmarks (thanks to <a href="https://github.com/jknowles" class="external-link">@jknowles</a>)</li>
 <li>Since JIT has been introduced, just byte compile the package for ease of comparison.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-5">Version 0.5.1<a class="anchor" aria-label="anchor" href="#version-1-0-4-5"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.1" id="benchmarkme-version-051">benchmarkme Version 0.5.1<a class="anchor" aria-label="anchor" href="#benchmarkme-version-051"></a></h2>
 <ul><li>Add id_prefix to the upload function</li>
-<li>Can now run <code>benchmark_std</code> if the package is not attached (thanks to <a href="https://github.com/YvesCR" class="external-link">@YvesCR</a>)</li>
-<li>Nicer version of <code>print.bytes</code> (thanks to <a href="https://github.com/richierocks" class="external-link">@richierocks</a>)</li>
+<li>Can now run <code><a href="../reference/benchmark_std.html">benchmark_std()</a></code> if the package is not attached (thanks to <a href="https://github.com/YvesCR" class="external-link">@YvesCR</a>)</li>
+<li>Nicer version of <code>print.bytes()</code> (thanks to <a href="https://github.com/richierocks" class="external-link">@richierocks</a>)</li>
 <li>Adding parallel benchmarks (thanks to <a href="https://github.com/jknowles" class="external-link">@jknowles</a>)</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-6">Version 0.5.0<a class="anchor" aria-label="anchor" href="#version-1-0-4-6"></a></h3>
-<ul><li>Bug fix in get_byte_compiler when <code>cmpfun</code> was used.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-7">Version 0.4.0<a class="anchor" aria-label="anchor" href="#version-1-0-4-7"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.0" id="benchmarkme-version-050">benchmarkme Version 0.5.0<a class="anchor" aria-label="anchor" href="#benchmarkme-version-050"></a></h2>
+<ul><li>Bug fix in get_byte_compiler when <code>cmpfun</code> was used.</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.4.0" id="benchmarkme-version-040">benchmarkme Version 0.4.0<small>2017-01-05</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-040"></a></h2>
 <ul><li>Update to shinyapps.io example</li>
 <li>Moved benchmark description to shinyapps.io</li>
 <li>Additional checks on <code><a href="../reference/get_ram.html">get_ram()</a></code>
 </li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-8">Version 0.3.0<a class="anchor" aria-label="anchor" href="#version-1-0-4-8"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.0" id="benchmarkme-version-030">benchmarkme Version 0.3.0<small>2016-06-25</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-030"></a></h2>
 <ul><li>New vignette describing benchmarks.</li>
 <li>Used <code><a href="https://rdrr.io/r/base/Sys.getpid.html" class="external-link">Sys.getpid()</a></code> to try and determine the BLAS/LAPACK library (suggested by Ashley Ford).</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-9">Version 0.2.3<a class="anchor" aria-label="anchor" href="#version-1-0-4-9"></a></h3>
-<ul><li>Return <code>NA</code> for <code><a href="../reference/get_cpu.html">get_cpu()</a></code>/<code><a href="../reference/get_ram.html">get_ram()</a></code> when it isn’t possible to determine CPU/RAM.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-10">Version 0.2.2<a class="anchor" aria-label="anchor" href="#version-1-0-4-10"></a></h3>
-<ul><li>First CRAN version</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-11">Version 0.2.0<a class="anchor" aria-label="anchor" href="#version-1-0-4-11"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.3" id="benchmarkme-version-023">benchmarkme Version 0.2.3<small>2016-02-26</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-023"></a></h2>
+<ul><li>Return <code>NA</code> for <code><a href="../reference/get_cpu.html">get_cpu()</a></code>/<code><a href="../reference/get_ram.html">get_ram()</a></code> when it isn’t possible to determine CPU/RAM.</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.2" id="benchmarkme-version-022">benchmarkme Version 0.2.2<small>2016-02-24</small><a class="anchor" aria-label="anchor" href="#benchmarkme-version-022"></a></h2>
+<ul><li>First CRAN version</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.0" id="benchmarkme-version-020">benchmarkme Version 0.2.0<a class="anchor" aria-label="anchor" href="#benchmarkme-version-020"></a></h2>
 <ul><li>More flexibility in plot and datatable functions - you can now specify the test you want to compare.</li>
 <li>The number of cores returned by <code><a href="../reference/get_cpu.html">get_cpu()</a></code>.</li>
 <li>Adding io benchmarks.</li>
 <li>New shiny interface.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-12">Version 0.1.9<a class="anchor" aria-label="anchor" href="#version-1-0-4-12"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.9" id="benchmarkme-version-019">benchmarkme Version 0.1.9<a class="anchor" aria-label="anchor" href="#benchmarkme-version-019"></a></h2>
 <ul><li>Default log scale on y-axis (suggested by <a href="https://github.com/eddelbuettel" class="external-link">@eddelbuettel</a>). Fixes <a href="https://github.com/csgillespie/benchmarkme/issues/5" class="external-link">#5</a>.</li>
-<li>Moved data sets to <code>benchmarkmeData</code> package.</li>
+<li>Moved data sets to {benchmarkmeData} package.</li>
 <li>New ranking function to compare results with past.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-13">Version 0.1.8<a class="anchor" aria-label="anchor" href="#version-1-0-4-13"></a></h3>
-<ul><li>Added introduction to <code>benchmarkme</code> vignette.</li>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.8" id="benchmarkme-version-018">benchmarkme Version 0.1.8<a class="anchor" aria-label="anchor" href="#benchmarkme-version-018"></a></h2>
+<ul><li>Added introduction to {benchmarkme} vignette.</li>
 <li>Adjust placement of “You” in the S3 plot.</li>
 <li>Add <code>.Machine</code> to <code>get_sys_details</code>.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-14">Version 0.1.7<a class="anchor" aria-label="anchor" href="#version-1-0-4-14"></a></h3>
-<ul><li>Add locale to <code>get_sys_details</code>.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-15">Version 0.1.6<a class="anchor" aria-label="anchor" href="#version-1-0-4-15"></a></h3>
-<ul><li>Further RAM and Mac issues.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-16">Version 0.1.4<a class="anchor" aria-label="anchor" href="#version-1-0-4-16"></a></h3>
-<ul><li>Bug fix: Remove white space from apple RAM output (thanks to <a href="https://github.com/vzemlys" class="external-link">@vzemlys</a>). Fixes <a href="https://github.com/csgillespie/benchmarkme/issues/2" class="external-link">#2</a>.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-17">Version 0.1.3<a class="anchor" aria-label="anchor" href="#version-1-0-4-17"></a></h3>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.7" id="benchmarkme-version-017">benchmarkme Version 0.1.7<a class="anchor" aria-label="anchor" href="#benchmarkme-version-017"></a></h2>
+<ul><li>Add locale to <code>get_sys_details</code>.</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.6" id="benchmarkme-version-016">benchmarkme Version 0.1.6<a class="anchor" aria-label="anchor" href="#benchmarkme-version-016"></a></h2>
+<ul><li>Further RAM and Mac issues.</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.4" id="benchmarkme-version-014">benchmarkme Version 0.1.4<a class="anchor" aria-label="anchor" href="#benchmarkme-version-014"></a></h2>
+<ul><li>Bug fix: Remove white space from apple RAM output (thanks to <a href="https://github.com/vzemlys" class="external-link">@vzemlys</a>). Fixes <a href="https://github.com/csgillespie/benchmarkme/issues/2" class="external-link">#2</a>.</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.3" id="benchmarkme-version-013">benchmarkme Version 0.1.3<a class="anchor" aria-label="anchor" href="#benchmarkme-version-013"></a></h2>
 <ul><li>Add a fall-back when getting RAM - grab everything.</li>
 <li>Minor: Added a horizontal line automatically generated plots.</li>
 <li>Deprecated <code>benchmark_all</code> (use <code>benchmark_std</code>).</li>
 </ul></div>
-<div class="section level3">
-<h3 id="version-1-0-4-18">Version 0.1.2<a class="anchor" aria-label="anchor" href="#version-1-0-4-18"></a></h3>
-<ul><li>First public release.</li>
-</ul></div>
-</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.2" id="benchmarkme-version-012">benchmarkme Version 0.1.2<a class="anchor" aria-label="anchor" href="#benchmarkme-version-012"></a></h2>
+<ul><li>First public release.</li></ul></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -194,7 +183,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

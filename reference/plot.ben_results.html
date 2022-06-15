@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,18 +77,27 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>The output from a <code>benchmark_*</code> call.</p></dd>
+
+
 <dt>test_group</dt>
 <dd><p>Default <code>unique(x$test_group)</code>.
 The default behaviour is select the groups from your benchmark results.</p></dd>
+
+
 <dt>blas_optimize</dt>
 <dd><p>Logical. Default The default behaviour
 is to compare your results with results that use the same
 blas_optimize setting. To use all results, set to <code>NULL</code>.</p></dd>
+
+
 <dt>log</dt>
 <dd><p>By default the y axis is plotted on the log scale. To change, set the
 the argument equal to the empty parameter string, <code>""</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Arguments to be passed to other downstream methods.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
@@ -117,7 +126,7 @@ the argument equal to the empty parameter string, <code>""</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
