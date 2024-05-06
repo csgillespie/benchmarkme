@@ -58,7 +58,7 @@ system_ram = function(os) {
 get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
-  if (inherits(ram, "try-error") || length(ram) == 0L || is.na(ram)) {
+  if (inherits(ram, "try-error") || length(ram) == 0L || any(is.na(ram))) {
     message("\t Unable to detect your RAM. # nocov
             Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
     ram = structure(NA, class = "ram") # nocov
