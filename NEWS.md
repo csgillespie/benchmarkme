@@ -1,3 +1,7 @@
+# benchmarkme Version 1.0.9 _2024-05-06_
+  * fix: #49 thanks to @ptompalski
+  * feat: Add website to description #5o. Thanks to @olivroy
+
 # benchmarkme Version 1.0.8 _2022-06-02_
   * fix: `get_ram()` for windows (thanks to @ArkaB-DS @xiaodaigh #45)
   * internal: linting & format NEWS.md file
