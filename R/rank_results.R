@@ -11,18 +11,12 @@ benchmarkmeData::is_blas_optimize
 #' @importFrom tibble tibble
 #' @import dplyr
 #' @export
-rank_results = function(results,
-                        blas_optimize = is_blas_optimize(results),
-                        verbose = TRUE) {
-
-
-  no_of_test_groups =  length(unique(results$test_group))
-  if (no_of_test_groups != 1)
-    stop("Can only rank a single group at a time", call. = FALSE)
+rank_results = function(results, blas_optimize = is_blas_optimize(results), verbose = TRUE) {
+  no_of_test_groups = length(unique(results$test_group))
+  if (no_of_test_groups != 1) stop("Can only rank a single group at a time", call. = FALSE)
 
   no_of_reps = length(results$test) / length(unique(results$test))
-  results_tib = tibble(time = sum(results$elapsed) / no_of_reps,
-                               is_past = FALSE)
+  results_tib = tibble(time = sum(results$elapsed) / no_of_reps, is_past = FALSE)
 
   if (is.null(blas_optimize)) blas_optimize = c(FALSE, TRUE)
   tmp_env = new.env()
@@ -42,7 +36,6 @@ rank_results = function(results,
 
   ben_rank = which(!rankings$is_past)
 
-  if (verbose)
-    message("You are ranked ", ben_rank, " out of ", nrow(rankings), " machines.")
+  if (verbose) message("You are ranked ", ben_rank, " out of ", nrow(rankings), " machines.")
   ben_rank
 }

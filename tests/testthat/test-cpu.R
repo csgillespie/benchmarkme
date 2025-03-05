@@ -3,5 +3,4 @@ test_that("Test CPU", {
   cpu = get_cpu()
   expect_equal(length(cpu), 3)
   expect_equal(anyNA(cpu), FALSE)
-}
-)
+})

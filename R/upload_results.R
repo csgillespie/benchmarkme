@@ -35,10 +35,12 @@ create_bundle = function(results, filename = NULL, args = NULL, id_prefix = "") 
 #' res = benchmark_std()
 #' upload_results(res)
 #' }
-upload_results = function(results,
-                          url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
-                          args = NULL,
-                          id_prefix = "") {
+upload_results = function(
+  results,
+  url = "http://www.mas.ncl.ac.uk/~ncsg3/form.php",
+  args = NULL,
+  id_prefix = ""
+) {
   message("Creating temporary file")
   fname = tempfile(fileext = ".rds")
   on.exit(unlink(fname))
@@ -46,9 +48,7 @@ upload_results = function(results,
   type = create_bundle(results, fname, id_prefix = id_prefix)
 
   message("Uploading results")
-  httr::POST(url,
-             body = list(userFile = httr::upload_file(fname)),
-             encode = "multipart")
+  httr::POST(url, body = list(userFile = httr::upload_file(fname)), encode = "multipart")
 
   message("Upload complete")
   message("Tracking id: ", type$id)

@@ -1,6 +1,6 @@
 ---
 output: github_document
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
@@ -14,20 +14,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-# System benchmarking 
+# System benchmarking
 
-[![R-CMD-check](https://github.com/csgillespie/benchmarkme/workflows/R-CMD-check/badge.svg)](https://github.com/csgillespie/benchmarkme/actions)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/csgillespie/benchmarkme/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/csgillespie/benchmarkme/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/csgillespie/benchmarkme/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/csgillespie/benchmarkme/actions/workflows/R-CMD-check.yaml)
 [![codecov.io](https://codecov.io/github/csgillespie/benchmarkme/coverage.svg?branch=master)](https://codecov.io/github/csgillespie/benchmarkme?branch=master)
-[![Downloads](http://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen)](https://cran.r-project.org/package=benchmarkme)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/benchmarkme)](https://cran.r-project.org/package=benchmarkme)
+[![Downloads](https://cranlogs.r-pkg.org/badges/benchmarkme?color=brightgreen)](https://cran.r-project.org/package=benchmarkme)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/benchmarkme)](https://cran.r-project.org/package=benchmarkme)
 
-R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at https://mac.R-project.org/benchmarks/R-benchmark-25.R, for assessing 
-the speed of your system. 
+<!-- badges: end -->
+
+
+R benchmarking made easy. The package contains a number of benchmarks, heavily based on the benchmarks at https://mac.R-project.org/benchmarks/R-benchmark-25.R, for assessing
+the speed of your system.
 
 The package is for R 3.5 and above. In previous versions R, detecting the effect
 of the byte compiler was tricky and produced unrealistic comparisons.
 
-## Overview 
+## Overview
 
 A straightforward way of speeding up your analysis is to buy a better computer. Modern
 desktops are relatively cheap, especially compared to user time. However, it isn't
@@ -47,13 +51,13 @@ install.packages("benchmarkme")
 
 There are two groups of benchmarks:
 
-  * `benchmark_std()`: this benchmarks numerical operations such as loops and matrix operations. The benchmark comprises 
+  * `benchmark_std()`: this benchmarks numerical operations such as loops and matrix operations. The benchmark comprises
   of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
   * `benchmark_io()`: this benchmarks reading and writing a 5 / 50, MB csv file.
 
 ### The benchmark_std() function
 
-This benchmarks numerical operations such as loops and matrix operations. 
+This benchmarks numerical operations such as loops and matrix operations.
 This benchmark comprises of three separate benchmarks: `prog`, `matrix_fun`, and `matrix_cal`.
 If you have less than 3GB of RAM (run `get_ram()` to find out how much is
 available on your system), then you should kill any memory hungry applications, e.g.
@@ -99,7 +103,7 @@ By default the files are written to a temporary directory generated
 ```{r eval=FALSE}
 tempdir()
 ```
-which depends on the value of 
+which depends on the value of
 ```{r eval=FALSE}
 Sys.getenv("TMPDIR")
 ```
@@ -121,7 +125,7 @@ plot(res_io)
 ## Previous versions of the package
 
 This package was started around 2015. However, multiple changes in the byte compiler
-over the last few years, has made it very difficult to use previous results. So we have to 
+over the last few years, has made it very difficult to use previous results. So we have to
 start from scratch.
 
 The previous data can be obtained via
@@ -140,7 +144,7 @@ The package has a few useful functions for extracting system specs:
   * Is byte compiling enabled: `get_byte_compiler()`
   * General platform info: `get_platform_info()`
   * R version: `get_r_version()`
-  
+
 The above functions have been tested on a number of systems. If they don't work
 on your system, please raise [GitHub](https://github.com/csgillespie/benchmarkme/issues) issue.
 

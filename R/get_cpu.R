@@ -17,8 +17,10 @@
 get_cpu = function() {
   cpu = try(get_cpu_internal(), silent = TRUE)
   if (inherits(cpu, "try-error")) {
-    message("\t Unable to detect your CPU.
-            Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
+    message(
+      "\t Unable to detect your CPU.
+            Please raise an issue at https://github.com/csgillespie/benchmarkme"
+    ) # nocov
     cpu = list(vendor_id = NA_character_, model_name = NA_character_) # nocov
   }
   cpu$no_of_cores = parallel::detectCores()
@@ -28,21 +30,28 @@ get_cpu = function() {
 get_cpu_internal = function() {
   os = R.version$os
   if (length(grep("^linux", os))) {
-    cmd  = "awk '/vendor_id/' /proc/cpuinfo"
+    cmd = "awk '/vendor_id/' /proc/cpuinfo"
     vendor_id = gsub("vendor_id\t: ", "", unique(system(cmd, intern = TRUE)))
-    cmd  = "awk '/model name/' /proc/cpuinfo"
+    cmd = "awk '/model name/' /proc/cpuinfo"
     model_name = gsub("model name\t: ", "", unique(system(cmd, intern = TRUE)))
   } else if (length(grep("^darwin", os))) {
     sysctl = get_sysctl()
     if (is.na(sysctl)) {
       vendor_id = model_name = NA
     } else {
-      vendor_id = suppressWarnings(system2(sysctl,  "-n machdep.cpu.vendor",
-                                           stdout = TRUE, stderr = NULL))  # nocov
+      vendor_id = suppressWarnings(system2(
+        sysctl,
+        "-n machdep.cpu.vendor",
+        stdout = TRUE,
+        stderr = NULL
+      )) # nocov
 
-      model_name = suppressWarnings(system2(sysctl, "-n machdep.cpu.brand_string",
-                                            stdout = TRUE, stderr = NULL)) # nocov
-
+      model_name = suppressWarnings(system2(
+        sysctl,
+        "-n machdep.cpu.brand_string",
+        stdout = TRUE,
+        stderr = NULL
+      )) # nocov
     }
   } else if (length(grep("^solaris", os))) {
     vendor_id = NA # nocov
@@ -52,7 +61,9 @@ get_cpu_internal = function() {
     model_name = system("wmic cpu get name", intern = TRUE)[2] # nocov
     vendor_id = system("wmic cpu get manufacturer", intern = TRUE)[2] # nocov
   }
-  list(vendor_id = stringr::str_squish(vendor_id),
-       model_name = stringr::str_squish(model_name),
-       no_of_cores = parallel::detectCores())
+  list(
+    vendor_id = stringr::str_squish(vendor_id),
+    model_name = stringr::str_squish(model_name),
+    no_of_cores = parallel::detectCores()
+  )
 }

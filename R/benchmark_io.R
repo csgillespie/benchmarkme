@@ -11,11 +11,13 @@
 #' @importFrom utils read.csv write.csv
 #' @rdname benchmark_io
 #' @export
-benchmark_io = function(runs = 3,
-                        size = c(5, 50),
-                        tmpdir = tempdir(),
-                        verbose = TRUE,
-                        cores = 0L) {
+benchmark_io = function(
+  runs = 3,
+  size = c(5, 50),
+  tmpdir = tempdir(),
+  verbose = TRUE,
+  cores = 0L
+) {
   # Order size largest to smallest for trial run.
   # Trial on largest
 
@@ -24,13 +26,20 @@ benchmark_io = function(runs = 3,
   }
   size = sort(size, decreasing = TRUE)
   if (cores > 0) {
-    results = benchmark_io_parallel(runs = runs, size = size,
-                                    tmpdir = tmpdir, verbose = verbose,
-                                    cores = cores)
+    results = benchmark_io_parallel(
+      runs = runs,
+      size = size,
+      tmpdir = tmpdir,
+      verbose = verbose,
+      cores = cores
+    )
   } else {
-    results = benchmark_io_serial(runs = runs, size = size,
-                                  tmpdir = tmpdir, verbose = verbose)
-
+    results = benchmark_io_serial(
+      runs = runs,
+      size = size,
+      tmpdir = tmpdir,
+      verbose = verbose
+    )
   }
   class(results) = c("ben_results", class(results))
   results
@@ -56,18 +65,40 @@ benchmark_io_serial = function(runs, size, tmpdir, verbose) {
 
 benchmark_io_parallel = function(runs, size, tmpdir, verbose, cores) {
   message("Preparing read/write io")
-  bm_parallel("bm_write", runs = 1,
-              size = size[1], tmpdir = tmpdir,
-              verbose = verbose, cores = max(cores))
+  bm_parallel(
+    "bm_write",
+    runs = 1,
+    size = size[1],
+    tmpdir = tmpdir,
+    verbose = verbose,
+    cores = max(cores)
+  )
   results = NULL
   for (s in size) {
-    if (verbose) message("# IO benchmarks (2 tests) for size ", s, " MB (parallel)")
-    results = rbind(results,
-                    bm_parallel("bm_write", runs = runs, size = s, tmpdir = tmpdir,
-                                verbose = verbose, cores = cores))
-    results = rbind(results,
-                    bm_parallel("bm_read", runs = runs, size = s, tmpdir = tmpdir,
-                                verbose = verbose, cores = cores))
+    if (verbose)
+      message("# IO benchmarks (2 tests) for size ", s, " MB (parallel)")
+    results = rbind(
+      results,
+      bm_parallel(
+        "bm_write",
+        runs = runs,
+        size = s,
+        tmpdir = tmpdir,
+        verbose = verbose,
+        cores = cores
+      )
+    )
+    results = rbind(
+      results,
+      bm_parallel(
+        "bm_read",
+        runs = runs,
+        size = s,
+        tmpdir = tmpdir,
+        verbose = verbose,
+        cores = cores
+      )
+    )
   }
 
   results
@@ -75,18 +106,26 @@ benchmark_io_parallel = function(runs, size, tmpdir, verbose, cores) {
 
 #' @rdname benchmark_io
 #' @export
-bm_read = function(runs = 3, size = c(5, 50),
-                  tmpdir = tempdir(), verbose = TRUE) {
+bm_read = function(
+  runs = 3,
+  size = c(5, 50),
+  tmpdir = tempdir(),
+  verbose = TRUE
+) {
   n = 12.5e4 * size
   set.seed(1)
   on.exit(set.seed(NULL))
   x = Rnorm(n)
   m = data.frame(matrix(x, ncol = 10))
-  test = rep(paste0("read",  size), runs)
-  timings = data.frame(user = numeric(runs), system = 0,
-                       elapsed = 0, test = test,
-                       test_group = test,
-                       stringsAsFactors = FALSE)
+  test = rep(paste0("read", size), runs)
+  timings = data.frame(
+    user = numeric(runs),
+    system = 0,
+    elapsed = 0,
+    test = test,
+    test_group = test,
+    stringsAsFactors = FALSE
+  )
   fname = tempfile(fileext = ".csv", tmpdir = tmpdir)
   write.csv(m, fname, row.names = FALSE)
   for (i in 1:runs) {
@@ -95,8 +134,12 @@ bm_read = function(runs = 3, size = c(5, 50),
       read.csv(fname, colClasses = rep("numeric", 10))
     })[1:3]
     if (verbose) {
-      message(c("\t Reading a csv with ", n, " values",
-                timings_mean(timings[timings$test_group == paste0("read", size), ])))
+      message(c(
+        "\t Reading a csv with ",
+        n,
+        " values",
+        timings_mean(timings[timings$test_group == paste0("read", size), ])
+      ))
     }
   }
   unlink(fname)
@@ -106,18 +149,26 @@ bm_read = function(runs = 3, size = c(5, 50),
 
 #' @rdname benchmark_io
 #' @export
-bm_write = function(runs = 3, size = c(5, 50),
-                     tmpdir = tempdir(), verbose = TRUE) {
+bm_write = function(
+  runs = 3,
+  size = c(5, 50),
+  tmpdir = tempdir(),
+  verbose = TRUE
+) {
   n = 12.5e4 * size
   set.seed(1)
   on.exit(set.seed(NULL))
   x = Rnorm(n)
   m = data.frame(matrix(x, ncol = 10))
-  test = rep(paste0("write",  size), runs)
-  timings = data.frame(user = numeric(runs), system = 0,
-                       elapsed = 0, test = test,
-                       test_group = test,
-                       stringsAsFactors = FALSE)
+  test = rep(paste0("write", size), runs)
+  timings = data.frame(
+    user = numeric(runs),
+    system = 0,
+    elapsed = 0,
+    test = test,
+    test_group = test,
+    stringsAsFactors = FALSE
+  )
   for (i in 1:runs) {
     fname = tempfile(fileext = ".csv", tmpdir = tmpdir)
     invisible(gc())
@@ -127,8 +178,12 @@ bm_write = function(runs = 3, size = c(5, 50),
     unlink(fname)
     invisible(gc())
     if (verbose) {
-      message(c("\t Writing a csv with ", n, " values",
-                timings_mean(timings[timings$test_group == paste0("write", size), ])))
+      message(c(
+        "\t Writing a csv with ",
+        n,
+        " values",
+        timings_mean(timings[timings$test_group == paste0("write", size), ])
+      ))
     }
   }
   timings

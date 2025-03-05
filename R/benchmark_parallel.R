@@ -1,9 +1,11 @@
 check_export = function(export, cl) {
   if (class(export) %in% "try-error") {
     parallel::stopCluster(cl)
-    stop("You need to call library(benchmarkme) before running parallel tests.\\
+    stop(
+      "You need to call library(benchmarkme) before running parallel tests.\\
        If you think you can avoid this, see github.com/csgillespie/benchmarkme/issues/33",
-       call. = FALSE)
+      call. = FALSE
+    )
   }
   return(invisible(NULL))
 }
@@ -35,8 +37,14 @@ bm_parallel = function(bm, runs, verbose, cores, ...) {
   args[["runs"]] = 1
 
   #TODO consider dropping first results from parallel results due to overhead
-  results = data.frame(user = NA, system = NA, elapsed = NA, test = NA,
-                        test_group = NA, cores = NA)
+  results = data.frame(
+    user = NA,
+    system = NA,
+    elapsed = NA,
+    test = NA,
+    test_group = NA,
+    cores = NA
+  )
 
   for (core in cores) {
     cl = parallel::makeCluster(core, outfile = "")
@@ -45,8 +53,15 @@ bm_parallel = function(bm, runs, verbose, cores, ...) {
     parallel::clusterEvalQ(cl, "library('benchmarkme')")
 
     doParallel::registerDoParallel(cl)
-    tmp = data.frame(user = numeric(length(runs)), system = 0, elapsed = 0,
-                     test = NA, test_group = NA, cores = NA, stringsAsFactors = FALSE)
+    tmp = data.frame(
+      user = numeric(length(runs)),
+      system = 0,
+      elapsed = 0,
+      test = NA,
+      test_group = NA,
+      cores = NA,
+      stringsAsFactors = FALSE
+    )
 
     args$runs = 1
     for (j in 1:runs) {
@@ -59,7 +74,7 @@ bm_parallel = function(bm, runs, verbose, cores, ...) {
     tmp$test = as.character(out[[1]]$test)[1]
     tmp$test_group = as.character(out[[1]]$test_group)[1]
     results = rbind(results, tmp)
-    parallel::stopCluster(cl)# Would be nice to have on.exit here, but we run out of memory
+    parallel::stopCluster(cl) # Would be nice to have on.exit here, but we run out of memory
   }
 
   return(stats::na.omit(results))

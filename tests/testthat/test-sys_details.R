@@ -4,5 +4,4 @@ test_that("Test Sys Details", {
   expect_equal(length(sys), 13)
   expect_equal(is.na(sys$sys_info), TRUE)
   expect_equal(is.na(sys$installed_packages), TRUE)
-  }
-)
+})

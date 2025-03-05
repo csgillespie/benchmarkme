@@ -4,8 +4,8 @@
 #' @importFrom utils sessionInfo
 #' @export
 get_linear_algebra = function() {
-    s = sessionInfo()
-    blas = s$BLAS
-    lapack = s$LAPACK
-    return(list(blas = blas, lapack = lapack))
+  s = sessionInfo()
+  blas = s$BLAS
+  lapack = s$LAPACK
+  return(list(blas = blas, lapack = lapack))
 }
