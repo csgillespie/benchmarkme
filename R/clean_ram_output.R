@@ -44,5 +44,12 @@ clean_darwin_ram = function(ram) {
 }
 
 clean_win_ram = function(ram) {
-  sum(as.numeric(ram))
+  # Remove empty or non-numeric entries
+  ram = ram[!is.na(as.numeric(ram))]
+
+  # Sum the valid numeric entries
+  total_ram = sum(as.numeric(ram), na.rm = TRUE)
+
+  # Return the total RAM
+  return(total_ram)
 }
