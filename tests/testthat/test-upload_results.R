@@ -12,6 +12,4 @@ test_that("Test upload_results", {
   res = create_bundle(NULL, fname, args = list(sys_info = FALSE))
   expect_true(is.na(res$sys_info))
   unlink(fname)
-
-  }
-)
+})

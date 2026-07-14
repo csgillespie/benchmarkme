@@ -23,7 +23,9 @@
 #' plot(res)
 #' }
 benchmark_std = function(runs = 3, verbose = TRUE, cores = 0L) {
-  rbind(benchmark_prog(runs, verbose, cores),
-        benchmark_matrix_cal(runs, verbose, cores),
-        benchmark_matrix_fun(runs, verbose, cores))
+  rbind(
+    benchmark_prog(runs, verbose, cores),
+    benchmark_matrix_cal(runs, verbose, cores),
+    benchmark_matrix_fun(runs, verbose, cores)
+  )
 }

@@ -4,5 +4,4 @@ test_that("Test plot_past", {
   data(sample_results, envir = tmp_env, package = "benchmarkme")
   res = tmp_env$sample_results
   expect_null(plot(res))
-}
-)
+})

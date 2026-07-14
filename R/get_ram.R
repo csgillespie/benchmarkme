@@ -2,10 +2,7 @@ get_windows_ram = function() {
   ram = try(system("grep MemTotal /proc/meminfo", intern = TRUE), silent = TRUE)
   if (!inherits(ram, "try-error") && length(ram) != 0) {
     ram = strsplit(ram, " ")[[1]]
-    mult = switch(ram[length(ram)],
-                  "B" = 1L,
-                  "kB" = 1024L,
-                  "MB" = 1048576L)
+    mult = switch(ram[length(ram)], "B" = 1L, "kB" = 1024L, "MB" = 1048576L)
     ram = as.numeric(ram[length(ram) - 1])
     ram_size = ram * mult
   } else {
@@ -59,14 +56,18 @@ get_ram = function() {
   os = R.version$os
   ram = suppressWarnings(try(system_ram(os), silent = TRUE))
   if (inherits(ram, "try-error") || length(ram) == 0L || any(is.na(ram))) {
-    message("\t Unable to detect your RAM. # nocov
-            Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
+    message(
+      "\t Unable to detect your RAM. # nocov
+            Please raise an issue at https://github.com/csgillespie/benchmarkme"
+    ) # nocov
     ram = structure(NA, class = "ram") # nocov
   } else {
     cleaned_ram = suppressWarnings(try(clean_ram(ram, os), silent = TRUE))
     if (inherits(cleaned_ram, "try-error") || length(ram) == 0L) {
-      message("\t Unable to detect your RAM. # nocov
-            Please raise an issue at https://github.com/csgillespie/benchmarkme") # nocov
+      message(
+        "\t Unable to detect your RAM. # nocov
+            Please raise an issue at https://github.com/csgillespie/benchmarkme"
+      ) # nocov
       ram = structure(NA, class = "ram") #nocov
     } else {
       ram = structure(cleaned_ram, class = "ram")
@@ -92,8 +93,7 @@ print.ram = function(x, digits = 3, unit_system = c("metric", "iec"), ...) {
     x = x / (base^power)
   }
 
-  formatted = format(signif(x, digits = digits), big.mark = ",",
-    scientific = FALSE, ...)
+  formatted = format(signif(x, digits = digits), big.mark = ",", scientific = FALSE, ...)
   cat(unclass(formatted), " ", unit, "\n", sep = "")
   invisible(paste(unclass(formatted), unit))
 }

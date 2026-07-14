@@ -16,8 +16,7 @@
 #' get_byte_compiler()
 get_byte_compiler = function() {
   comp = Sys.getenv("R_COMPILE_PKGS")
-  if (nchar(comp) > 0L) comp = as.numeric(comp)
-  else comp = 0L
+  if (nchar(comp) > 0L) comp = as.numeric(comp) else comp = 0L
 
   ## Try to detect compilePKGS - long shot
   ## Return to same state as we found it

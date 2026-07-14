@@ -1,7 +1,12 @@
+# benchmarkme Version 1.0.9 _2024-05-06_
+  * fix: #49 thanks to @ptompalski
+  * feat: Add website to description #5o. Thanks to @olivroy
+  * chore: Use `air` for formatting
+
 # benchmarkme Version 1.0.8 _2022-06-02_
   * fix: `get_ram()` for windows (thanks to @ArkaB-DS @xiaodaigh #45)
   * internal: linting & format NEWS.md file
-  
+
 # benchmarkme Version 1.0.7 _2022-01-17_
   * Internal: Suppress warnings on `sysctl` calls
   * Fix: `get_ram()` for windows (thanks to @ArkaB-DS #41)
@@ -28,7 +33,7 @@
 # benchmarkme Version 1.0.0
   * Update version focused on R 3.5 & above. Start anew. Sorry everyone
 
-# benchmarkme Version 0.6.1 
+# benchmarkme Version 0.6.1
   * Improved BLAS detection (suggested by @ck37 #15)
 
 # benchmarkme Version 0.6.0
@@ -40,10 +45,10 @@
   * Can now run `benchmark_std()` if the package is not attached (thanks to @YvesCR)
   * Nicer version of `print.bytes()` (thanks to @richierocks)
   * Adding parallel benchmarks (thanks to @jknowles)
-  
+
 # benchmarkme Version 0.5.0
   * Bug fix in get_byte_compiler when `cmpfun` was used.
-  
+
 # benchmarkme Version 0.4.0
   * Update to shinyapps.io example
   * Moved benchmark description to shinyapps.io
@@ -54,13 +59,13 @@
   * Used `Sys.getpid()` to try and determine the BLAS/LAPACK library (suggested by
   Ashley Ford).
 
-# benchmarkme Version 0.2.3 
+# benchmarkme Version 0.2.3
   * Return `NA` for `get_cpu()`/`get_ram()` when it isn't possible to determine
   CPU/RAM.
-  
+
 # benchmarkme Version 0.2.2
   * First CRAN version
-  
+
 # benchmarkme Version 0.2.0
   * More flexibility in plot and datatable functions - you can now specify the test you want to compare.
   * The number of cores returned by `get_cpu()`.
@@ -84,7 +89,7 @@
   * Further RAM and Mac issues.
 
 # benchmarkme Version 0.1.4
-  * Bug fix: Remove white space from apple RAM output (thanks to @vzemlys). Fixes #2. 
+  * Bug fix: Remove white space from apple RAM output (thanks to @vzemlys). Fixes #2.
 
 # benchmarkme Version 0.1.3
   * Add a fall-back when getting RAM - grab everything.

@@ -1,3 +1,3 @@
-.onAttach = function(...) { #nolint
-
+.onAttach = function(...) {
+  #nolint
 }

@@ -12,3 +12,6 @@
 ^docs$
 ^pkgdown$
 ^.github$
+^.vscode$
+^air.toml$
+^\.github$

@@ -5,7 +5,6 @@
 #' RAM, CPU type, and R version.
 #' @name benchmarkme-package
 #' @aliases benchmarkme
-#' @docType package
 #' @author \email{csgillespie@gmail.com}
 #' @keywords package
 #' @seealso \url{https://github.com/csgillespie/benchmarkme}
